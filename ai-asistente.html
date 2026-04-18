@@ -264,32 +264,36 @@
             formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
             // 3. Aplicamos Links de Markdown [Texto](URL) y los protegemos
-            // Usamos un marcador temporal para que el siguiente paso no los toque
             const markdownLinkRegex = /\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g;
             formatted = formatted.replace(markdownLinkRegex, function(match, label, url) {
-                // Estilo de botón premium para links específicos
-                return `___LINK_START___<a href="${url}" target="_blank" class="inline-flex items-center gap-2 bg-autoser-red text-white px-5 py-2 rounded-sm font-bold hover:bg-autoser-black transition-all my-2 shadow-lg text-sm"><span class="material-symbols-outlined text-sm">open_in_new</span> ${label}</a>___LINK_END___`;
+                const isWA = url.includes('wa.me');
+                let displayLabel = label;
+                
+                // Si el label es una URL, lo cambiamos por algo legible
+                if (label.startsWith('http') || label.includes('wa.me')) {
+                    if (isWA) {
+                        displayLabel = i18n.currentLang === 'en' ? 'CONTACT ADVISOR' : 'CONTACTAR ASESOR';
+                    } else {
+                        displayLabel = i18n.currentLang === 'en' ? 'VIEW DETAILS' : 'VER DETALLES';
+                    }
+                }
+
+                const btnClass = isWA ? 'bg-green-600 shadow-green-900/20' : 'bg-autoser-red shadow-autoser-red/20';
+                const icon = isWA ? 'chat' : 'open_in_new';
+                
+                return `___LINK_START___<a href="${url}" target="_blank" class="inline-flex items-center gap-2 ${btnClass} text-white px-5 py-2 rounded-sm font-bold hover:scale-105 transition-all my-2 shadow-lg text-sm"><span class="material-symbols-outlined text-sm">${icon}</span> ${displayLabel}</a>___LINK_END___`;
             });
 
             // 4. Limpiamos URLs sueltas (Fuerza Bruta compatible con Safari)
-            // Dividimos el texto para no tocar lo que ya marcamos como link protegido
             const parts = formatted.split(/(___LINK_START___.*?___LINK_END___)/);
             
             const processedParts = parts.map(part => {
                 if (part.startsWith('___LINK_START___')) {
-                    // Restauramos el link protegido quitando las marcas
                     return part.replace('___LINK_START___', '').replace('___LINK_END___', '');
                 } else {
-                    // Ajustamos el regex para ser más "ambicioso" con links de WhatsApp
-                    // pero cuidando de no atrapar puntuación final que no sea del link
                     const rawUrlRegex = /(https?:\/\/[^\s<>]+)/g;
                     return part.replace(rawUrlRegex, function(url) {
-                        // Limpieza inteligente: quitamos puntuación común al final de una oración
-                        // pero permitimos paréntesis si parecen ser parte del mensaje de WhatsApp (codificados)
                         let cleanUrl = url.replace(/[.,;!]$/, "");
-                        
-                        // Si la URL termina en un paréntesis de cierre ")", verificamos si hay uno de apertura "("
-                        // Si no hay apertura, es probable que la URL esté dentro de paréntesis y el de cierre no sea parte del link
                         const openCount = (cleanUrl.match(/\(/g) || []).length;
                         const closeCount = (cleanUrl.match(/\)/g) || []).length;
                         if (closeCount > openCount) {
@@ -297,12 +301,14 @@
                         }
 
                         const isWA = cleanUrl.includes('wa.me');
+                        let displayLabel = isWA 
+                            ? (i18n.currentLang === 'en' ? 'CONTACT ADVISOR' : 'CONTACTAR ASESOR')
+                            : (i18n.currentLang === 'en' ? 'VIEW DETAILS' : 'VER DETALLES');
                         
-                        if (isWA) {
-                            return `<a href="${cleanUrl}" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-sm font-bold hover:bg-green-700 transition-all my-2 shadow-md text-sm"><span class="material-symbols-outlined text-sm">chat</span> CONTACTAR ASESOR</a>`;
-                        } else {
-                            return `<a href="${cleanUrl}" target="_blank" class="inline-flex items-center gap-2 bg-autoser-red/10 text-autoser-red px-5 py-2 rounded-sm font-bold hover:bg-autoser-red hover:text-white transition-all my-2 border border-autoser-red/20 text-sm"><span class="material-symbols-outlined text-sm">visibility</span> VER DETALLES</a>`;
-                        }
+                        const btnClass = isWA ? 'bg-green-600 shadow-green-900/20' : 'bg-autoser-red shadow-autoser-red/20';
+                        const icon = isWA ? 'chat' : 'open_in_new';
+
+                        return `<a href="${cleanUrl}" target="_blank" class="inline-flex items-center gap-2 ${btnClass} text-white px-5 py-2 rounded-sm font-bold hover:scale-105 transition-all my-2 shadow-lg text-sm"><span class="material-symbols-outlined text-sm">${icon}</span> ${displayLabel}</a>`;
                     });
                 }
             });
