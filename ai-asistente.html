@@ -363,18 +363,22 @@
                 const chatArea = document.getElementById('chat-area');
                 chatArea.scrollTop = chatArea.scrollHeight;
                 return true;
+            } else if (sessionId) {
+                // Si hay ID pero no hay historial guardado (ej. recién iniciado)
+                currentSessionId = sessionId;
             }
             return false;
         }
 
-        function resetConversation() {
+        const resetConversation = () => {
             if (confirm('¿Quieres borrar esta conversación y empezar una nueva?')) {
                 localStorage.removeItem('autoser_chat_history');
                 localStorage.removeItem('autoser_session_id');
                 localStorage.removeItem('autoser_agent_type');
+                localStorage.removeItem('last_agent_type');
                 location.reload();
             }
-        }
+        };
 
         // Elementos DOM
         const lobby = document.getElementById('lobby-screen');
@@ -386,21 +390,36 @@
         // Selección de Agente
         function selectAgent(type) {
             const agent = CONFIG[type];
+            const isChange = currentAgent !== null && currentAgent !== agent;
+            
             currentAgent = agent;
             localStorage.setItem('last_agent_type', type);
             
-            // Generamos un ID de sesión ÚNICO
-            currentSessionId = "autoser-" + type + "-" + Math.random().toString(36).substring(7);
+            // Session ID Persistente: Solo se crea si NO existe uno previo
+            if (!currentSessionId) {
+                currentSessionId = "autoser-" + type + "-" + Math.random().toString(36).substring(7);
+                localStorage.setItem('autoser_session_id', currentSessionId);
+            }
 
             // Transición visual
             lobby.classList.add('hidden');
             document.getElementById('agent-name').innerText = agent.name;
             document.getElementById('agent-icon').innerText = agent.icon;
             document.getElementById('agent-icon-bg').style.backgroundColor = agent.color;
+
+            // Si es un CAMBIO de agente, añadimos una nota en el historial en lugar de borrarlo
+            if (isChange) {
+                const divider = document.createElement('div');
+                divider.className = "text-center my-8";
+                divider.innerHTML = `<span class="text-[10px] text-gray-400 bg-white/5 border border-white/5 px-6 py-2 rounded-full uppercase tracking-[0.2em]">Consultando ahora con ${agent.name}</span>`;
+                messagesList.appendChild(divider);
+                appendMessage('bot', agent.welcome);
+            } else if (messagesList.innerHTML === "" || messagesList.innerHTML.includes('Cargando')) {
+                // Solo damos la bienvenida de cero si el historial está vacío
+                messagesList.innerHTML = `<div class="text-center mb-6"><span class="text-[9px] text-gray-600 bg-white/5 px-4 py-1 rounded-full uppercase tracking-widest">Hablando con ${agent.name}</span></div>`;
+                appendMessage('bot', agent.welcome);
+            }
             
-            // Limpiar y Dar Bienvenida
-            messagesList.innerHTML = `<div class="text-center mb-6"><span class="text-[9px] text-gray-600 bg-white/5 px-4 py-1 rounded-full uppercase tracking-widest">Hablando con ${agent.name}</span></div>`;
-            appendMessage('bot', agent.welcome);
             saveConversation();
         }
 
