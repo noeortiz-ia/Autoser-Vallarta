@@ -48,9 +48,15 @@
         }
 
         .message-bubble {
-            max-width: 80%;
+            max-width: 92%;
             animation: fadeIn 0.3s ease-out forwards;
-            line-height: 1.6;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .message-bubble {
+                max-width: 80%;
+            }
         }
 
         @keyframes fadeIn {
@@ -108,32 +114,32 @@
 <body class="bg-autoser-black text-white font-body min-h-screen overflow-hidden flex flex-col">
 
     <!-- Header Profesional -->
-    <header class="p-6 glass z-50">
+    <header class="p-4 md:p-6 glass z-50">
         <div class="max-w-5xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-3 md:gap-6">
                 <button onclick="showLobby()" class="p-2 hover:bg-white/5 rounded-full transition-colors group" title="Cambiar Departamento">
-                    <span class="material-symbols-outlined text-3xl group-hover:text-autoser-red transition-colors">apps</span>
+                    <span class="material-symbols-outlined text-2xl md:text-3xl group-hover:text-autoser-red transition-colors">apps</span>
                 </button>
-                <div class="flex items-center gap-4">
-                    <div id="agent-icon-bg" class="w-12 h-12 bg-autoser-red flex items-center justify-center rounded-sm shadow-lg shadow-autoser-red/20 transition-colors">
-                        <span id="agent-icon" class="material-symbols-outlined text-white text-3xl">smart_toy</span>
+                <div class="flex items-center gap-3 md:gap-4">
+                    <div id="agent-icon-bg" class="w-10 h-10 md:w-12 h-12 bg-autoser-red flex items-center justify-center rounded-sm shadow-lg shadow-autoser-red/20 transition-colors">
+                        <span id="agent-icon" class="material-symbols-outlined text-white text-2xl md:text-3xl">smart_toy</span>
                     </div>
                     <div>
-                        <h1 id="agent-name" class="font-headline font-bold text-base tracking-widest uppercase">Asistente Inteligente</h1>
+                        <h1 id="agent-name" class="font-headline font-bold text-xs md:text-base tracking-widest uppercase truncate max-w-[120px] md:max-w-none">Asistente AI</h1>
                         <div class="flex items-center gap-2">
-                            <div class="agent-status-dot"></div>
-                            <span class="text-xs text-gray-400 font-bold uppercase tracking-widest">Agente Online</span>
+                            <div class="agent-status-dot w-2 h-2 md:w-3 md:h-3"></div>
+                            <span class="text-[9px] md:text-xs text-gray-400 font-bold uppercase tracking-widest">Online</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="flex items-center gap-4">
-                <button onclick="resetConversation()" class="flex items-center gap-2 bg-white/5 hover:bg-autoser-red/20 text-gray-400 hover:text-autoser-red px-4 py-2 rounded-sm transition-all text-xs font-bold uppercase tracking-widest group border border-transparent hover:border-autoser-red/30">
-                    <span class="material-symbols-outlined text-lg group-hover:rotate-180 transition-transform duration-500">restart_alt</span>
+            <div class="flex items-center gap-2 md:gap-4">
+                <button onclick="resetConversation()" class="flex items-center gap-2 bg-white/5 hover:bg-autoser-red/20 text-gray-400 hover:text-autoser-red px-3 py-2 md:px-4 md:py-2 rounded-sm transition-all text-[9px] md:text-xs font-bold uppercase tracking-widest group border border-transparent hover:border-autoser-red/30">
+                    <span class="material-symbols-outlined text-base md:text-lg group-hover:rotate-180 transition-transform duration-500">restart_alt</span>
                     <span class="hidden sm:inline">Nuevo Chat</span>
                 </button>
-                <a href="/" class="hidden md:block">
+                <a href="/" class="hidden lg:block">
                     <img src="assets/img/logo-autoser.png" alt="Autoser" class="h-8 brightness-110">
                 </a>
             </div>
@@ -144,55 +150,55 @@
     <main class="flex-grow relative flex flex-col">
         
         <!-- Lobby: Selección de Departamento -->
-        <div id="lobby-screen" class="absolute inset-0 z-40 bg-autoser-black/98 backdrop-blur-xl p-8 overflow-y-auto flex flex-col items-center justify-center">
-            <div class="max-w-5xl w-full text-center space-y-16 py-12">
-                <div class="space-y-6">
-                    <span class="text-autoser-red font-headline font-bold text-sm uppercase tracking-[0.6em]">Centro de Atención Digital</span>
-                    <h2 class="text-4xl md:text-6xl font-headline font-black uppercase leading-tight tracking-tight">¿EN QUÉ PODEMOS <br><span class="text-autoser-red">AYUDARTE</span> HOY?</h2>
+        <div id="lobby-screen" class="absolute inset-0 z-40 bg-autoser-black/98 backdrop-blur-xl p-4 md:p-8 overflow-y-auto flex flex-col items-center justify-start md:justify-center">
+            <div class="max-w-5xl w-full text-center space-y-8 md:space-y-16 py-8 md:py-12">
+                <div class="space-y-4 md:space-y-6">
+                    <span class="text-autoser-red font-headline font-bold text-[10px] md:text-sm uppercase tracking-[0.2em] md:tracking-[0.6em]">Centro de Atención Digital</span>
+                    <h2 class="text-3xl md:text-6xl font-headline font-black uppercase leading-tight tracking-tight px-4">¿EN QUÉ PODEMOS <br class="hidden md:block"><span class="text-autoser-red">AYUDARTE</span>?</h2>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 px-4">
                     <!-- Ventas Card -->
-                    <button onclick="selectAgent('ventas')" class="lobby-card p-10 rounded-sm border border-white/5 text-center space-y-6 group">
-                        <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto group-hover:bg-autoser-red/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-autoser-red">directions_car</span>
+                    <button onclick="selectAgent('ventas')" class="lobby-card p-6 md:p-10 rounded-sm border border-white/5 text-center space-y-4 md:space-y-6 group">
+                        <div class="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto group-hover:bg-autoser-red/10 transition-colors">
+                            <span class="material-symbols-outlined text-3xl md:text-4xl text-autoser-red">directions_car</span>
                         </div>
                         <div>
-                            <h3 class="font-headline font-bold text-sm uppercase tracking-widest mb-3">Seminuevos</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed font-medium capitalize">Comprar o valuar un auto</p>
+                            <h3 class="font-headline font-bold text-xs md:text-sm uppercase tracking-widest mb-1 md:mb-3">Seminuevos</h3>
+                            <p class="text-[10px] md:text-xs text-gray-400 leading-relaxed font-medium">Comprar o valuar un auto</p>
                         </div>
                     </button>
 
                     <!-- Taller Card -->
-                    <button onclick="selectAgent('taller')" class="lobby-card p-10 rounded-sm border border-white/5 text-center space-y-6 group">
-                        <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto group-hover:bg-autoser-red/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-white group-hover:text-autoser-red transition-colors">build</span>
+                    <button onclick="selectAgent('taller')" class="lobby-card p-6 md:p-10 rounded-sm border border-white/5 text-center space-y-4 md:space-y-6 group">
+                        <div class="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto group-hover:bg-autoser-red/10 transition-colors">
+                            <span class="material-symbols-outlined text-3xl md:text-4xl text-white group-hover:text-autoser-red transition-colors">build</span>
                         </div>
                         <div>
-                            <h3 class="font-headline font-bold text-sm uppercase tracking-widest mb-3">Taller</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed font-medium capitalize">Mantenimiento y Citas</p>
+                            <h3 class="font-headline font-bold text-xs md:text-sm uppercase tracking-widest mb-1 md:mb-3">Taller</h3>
+                            <p class="text-[10px] md:text-xs text-gray-400 leading-relaxed font-medium">Mantenimiento y Citas</p>
                         </div>
                     </button>
 
                     <!-- HyP Card -->
-                    <button onclick="selectAgent('hyp')" class="lobby-card p-10 rounded-sm border border-white/5 text-center space-y-6 group">
-                        <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto group-hover:bg-autoser-red/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-white group-hover:text-autoser-red transition-colors">format_paint</span>
+                    <button onclick="selectAgent('hyp')" class="lobby-card p-6 md:p-10 rounded-sm border border-white/5 text-center space-y-4 md:space-y-6 group">
+                        <div class="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto group-hover:bg-autoser-red/10 transition-colors">
+                            <span class="material-symbols-outlined text-3xl md:text-4xl text-white group-hover:text-autoser-red transition-colors">format_paint</span>
                         </div>
                         <div>
-                            <h3 class="font-headline font-bold text-sm uppercase tracking-widest mb-3">Hojalatería</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed font-medium capitalize">Reparaciones de Carrocería</p>
+                            <h3 class="font-headline font-bold text-xs md:text-sm uppercase tracking-widest mb-1 md:mb-3">Hojalatería</h3>
+                            <p class="text-[10px] md:text-xs text-gray-400 leading-relaxed font-medium">Reparaciones de Carrocería</p>
                         </div>
                     </button>
 
                     <!-- Refacciones Card -->
-                    <button onclick="selectAgent('refacciones')" class="lobby-card p-10 rounded-sm border border-white/5 text-center space-y-6 group">
-                        <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto group-hover:bg-autoser-red/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-white group-hover:text-autoser-red transition-colors">settings_suggest</span>
+                    <button onclick="selectAgent('refacciones')" class="lobby-card p-6 md:p-10 rounded-sm border border-white/5 text-center space-y-4 md:space-y-6 group">
+                        <div class="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto group-hover:bg-autoser-red/10 transition-colors">
+                            <span class="material-symbols-outlined text-3xl md:text-4xl text-white group-hover:text-autoser-red transition-colors">settings_suggest</span>
                         </div>
                         <div>
-                            <h3 class="font-headline font-bold text-sm uppercase tracking-widest mb-3">Refacciones</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed font-medium capitalize">Piezas y Accesorios</p>
+                            <h3 class="font-headline font-bold text-xs md:text-sm uppercase tracking-widest mb-1 md:mb-3">Refacciones</h3>
+                            <p class="text-[10px] md:text-xs text-gray-400 leading-relaxed font-medium">Piezas y Accesorios</p>
                         </div>
                     </button>
                 </div>
@@ -200,30 +206,30 @@
         </div>
 
         <!-- Área de Chat -->
-        <div id="chat-area" class="flex-grow flex flex-col p-6 space-y-8 overflow-y-auto chat-container h-0">
-            <div id="messages-list" class="max-w-4xl mx-auto w-full space-y-8 flex flex-col">
+        <div id="chat-area" class="flex-grow flex flex-col p-4 md:p-6 space-y-6 md:space-y-8 overflow-y-auto chat-container h-0">
+            <div id="messages-list" class="max-w-4xl mx-auto w-full space-y-6 md:space-y-8 flex flex-col">
                 <!-- Los mensajes se cargan aquí -->
             </div>
             
-            <div id="typing-indicator" class="hidden max-w-4xl mx-auto w-full flex items-center gap-3 text-autoser-red px-4">
+            <div id="typing-indicator" class="hidden max-w-4xl mx-auto w-full flex items-center gap-3 text-autoser-red px-2">
                 <div class="typing-dot"></div>
                 <div class="typing-dot" style="animation-delay: 0.2s"></div>
                 <div class="typing-dot" style="animation-delay: 0.4s"></div>
-                <span class="text-xs uppercase font-bold tracking-widest ml-2">Escribiendo...</span>
+                <span class="text-[10px] uppercase font-bold tracking-widest ml-2">Escribiendo...</span>
             </div>
         </div>
 
         <!-- Input Island (Centralizada para mejor UX) -->
-        <div class="p-8 md:p-12">
+        <div class="p-4 md:p-12">
             <div class="max-w-3xl mx-auto w-full">
-                <div class="input-island flex items-center p-2 rounded-sm pr-4">
+                <div class="input-island flex items-center p-1 md:p-2 rounded-sm pr-4">
                     <textarea id="user-input" rows="1" placeholder="¿En qué puedo ayudarte?" 
-                        class="flex-grow bg-transparent border-none px-6 py-4 text-base text-white focus:ring-0 placeholder:text-gray-600 resize-none min-h-[56px] max-h-40"></textarea>
-                    <button id="send-btn" class="w-12 h-12 bg-white/5 hover:bg-autoser-red text-white flex items-center justify-center rounded-sm transition-all group disabled:opacity-20">
-                        <span class="material-symbols-outlined group-hover:scale-110 transition-transform">send</span>
+                        class="flex-grow bg-transparent border-none px-4 md:px-6 py-3 md:py-4 text-sm md:text-base text-white focus:ring-0 placeholder:text-gray-600 resize-none min-h-[48px] md:min-h-[56px] max-h-40 font-medium"></textarea>
+                    <button id="send-btn" class="w-10 h-10 md:w-12 md:h-12 bg-white/5 hover:bg-autoser-red text-white flex items-center justify-center rounded-sm transition-all group disabled:opacity-20 flex-shrink-0">
+                        <span class="material-symbols-outlined text-xl md:text-2xl group-hover:scale-110 transition-transform">send</span>
                     </button>
                 </div>
-                <p class="text-center text-[10px] text-gray-600 mt-6 uppercase tracking-widest font-bold">Respaldo Automotriz Garantizado por Autoser Vallarta</p>
+                <p class="text-center text-[8px] md:text-[10px] text-gray-600 mt-4 md:mt-6 uppercase tracking-widest font-bold">Respaldo Automotriz Garantizado por Autoser Vallarta</p>
             </div>
         </div>
     </main>
