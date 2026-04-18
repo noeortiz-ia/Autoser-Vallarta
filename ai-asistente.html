@@ -231,14 +231,27 @@
                 .replace(/</g, "&lt;")
                 .replace(/>/g, "&gt;");
 
-            // 2. Detectamos Links (http/https) y los convertimos en <a>
-            const urlRegex = /(https?:\/\/[^\s]+)/g;
-            formatted = formatted.replace(urlRegex, function(url) {
-                return `<a href="${url}" target="_blank" class="text-autoser-red underline hover:text-white transition-colors break-all">${url}</a>`;
+            // 2. Soporte para Negritas de Markdown (**texto**)
+            formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            // 3. Soporte para Links de Markdown: [Texto Legible](https://url)
+            // Esta es la forma más profesional de enviar links
+            const markdownLinkRegex = /\[(.*?)\]\((https?:\/\/[^\s]+)\)/g;
+            formatted = formatted.replace(markdownLinkRegex, function(match, label, url) {
+                return `<a href="${url}" target="_blank" class="inline-flex items-center gap-2 bg-autoser-red/10 text-autoser-red px-4 py-2 rounded-sm font-bold hover:bg-autoser-red hover:text-white transition-all my-2 shadow-sm border border-autoser-red/20 text-sm">
+                    <span class="material-symbols-outlined text-sm">open_in_new</span> ${label}
+                </a>`;
             });
 
-            // 3. Detectamos Negritas de Markdown (**texto**)
-            formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            // 4. Detectamos Links "sueltos" y los convertimos en botones limpios (Ver enlace)
+            // Solo si no fueron ya convertidos por el regex de markdown anterior
+            const rawUrlRegex = /(?<!href=")(https?:\/\/[^\s<]+)/g;
+            formatted = formatted.replace(rawUrlRegex, function(url) {
+                // Si es un link suelto, lo hacemos discreto pero legible
+                return `<a href="${url}" target="_blank" class="inline-flex items-center gap-2 text-autoser-red font-bold hover:underline">
+                    <span class="material-symbols-outlined text-sm">link</span> Ver enlace
+                </a>`;
+            });
 
             return formatted;
         }
