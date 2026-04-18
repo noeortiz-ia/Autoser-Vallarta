@@ -26,14 +26,14 @@ const FEATURED_UNITS = [
         url: "https://autoservallarta.com/seminuevo/nissan-frontier-pro-4x4/"
     },
     {
-        id: "ram-700-crew-cab-laramie-tm",
-        title: "Ram 700 Crew Cab Laramie",
-        year: "2022",
-        price: "$365,000",
-        specs: "63,000 km • Manual",
-        tag: "Versatilidad",
-        image: "https://autoservallarta.com/wp-content/uploads/fea-submissions/6-Ram-700-Crew-Cab-Laramie-2022-TM-69aa2682ee35b.jpeg",
-        url: "https://autoservallarta.com/seminuevo/ram-700-crew-cab-laramie-tm/"
+        id: "chevrolet-s10-max-crew-cab-2-4",
+        title: "Chevrolet S10 Max Crew Cab 2.4",
+        year: "2023",
+        price: "$340,000",
+        specs: "35,000 km • Manual",
+        tag: "Pickup Versátil",
+        image: "https://autoservallarta.com/wp-content/uploads/fea-submissions/10-Chevrolet-S10-Max-crew-cab-2.4--69df21d2e01ec.jpeg",
+        url: "https://autoservallarta.com/seminuevo/chevrolet-s10-max-crew-cab-2-4/"
     },
     {
         id: "jeep-renegade-latitude",
@@ -46,13 +46,13 @@ const FEATURED_UNITS = [
         url: "https://autoservallarta.com/seminuevo/jeep-renegade-latitude/"
     },
     {
-        id: "nissan-sentra-2025",
-        title: "Nissan Sentra Advance CVT",
-        year: "2025",
-        price: "$365,000",
-        specs: "6,820 KM • Automática",
-        tag: "Bajo Kilometraje",
-        image: "https://autoservallarta.com/wp-content/uploads/fea-submissions/3-Nissan-Sentra-Advance-CVT-2025-69aa218aaecfe.jpeg",
-        url: "https://autoservallarta.com/seminuevo/nissan-sentra-advance-cvt/"
+        id: "mazda-cx-5-signature-2-5-turbo",
+        title: "Mazda CX-5 Signature 2.5 Turbo",
+        year: "2022",
+        price: "$498,000",
+        specs: "75,000 km • Automática",
+        tag: "Premium SUV",
+        image: "https://autoservallarta.com/wp-content/uploads/11-Mazda-CX-5-signature-2.5Turbo-2022-75mil-km-69df22e26f9c8.jpeg",
+        url: "https://autoservallarta.com/seminuevo/mazda-cx-5-signature-2-5turbo/"
     }
 ];

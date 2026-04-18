@@ -139,9 +139,11 @@
                     <span class="material-symbols-outlined text-base md:text-lg group-hover:rotate-180 transition-transform duration-500">restart_alt</span>
                     <span class="hidden sm:inline">Nuevo Chat</span>
                 </button>
-                <a href="/" class="hidden lg:block">
-                    <img src="assets/img/logo-autoser.png" alt="Autoser" class="h-8 brightness-110">
-                </a>
+                <div class="h-8 w-px bg-white/10 hidden md:block"></div>
+                <button onclick="window.parent.closeAIModal()" class="flex items-center gap-2 bg-white/5 hover:bg-autoser-red text-white px-3 py-2 md:px-5 md:py-2 rounded-sm transition-all group border border-white/5">
+                    <span class="font-headline font-bold text-[9px] md:text-xs uppercase tracking-widest hidden sm:inline">Cerrar</span>
+                    <span class="material-symbols-outlined text-xl md:text-2xl group-hover:rotate-90 transition-transform select-none notranslate">close</span>
+                </button>
             </div>
         </div>
     </header>

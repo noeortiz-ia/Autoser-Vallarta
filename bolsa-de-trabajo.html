@@ -464,14 +464,8 @@
 
     <!-- AI Fullscreen Modal -->
     <div id="ai-modal" class="fixed inset-0 z-[10000] hidden opacity-0 transition-all duration-500 backdrop-blur-2xl bg-autoser-black/90">
-        <div class="absolute top-8 right-8 z-[10001]">
-            <button onclick="closeAIModal()" class="flex items-center gap-2 bg-white/5 hover:bg-autoser-red text-white px-6 py-3 rounded-sm transition-all group">
-                <span class="font-headline font-bold text-xs uppercase tracking-[0.3em]">Cerrar Asistente</span>
-                <span class="material-symbols-outlined group-hover:rotate-90 transition-transform select-none notranslate">close</span>
-            </button>
-        </div>
-        <div class="w-full h-full p-4 md:p-12">
-            <iframe id="ai-frame" src="about:blank" class="w-full h-full rounded-sm shadow-2xl border border-white/5 bg-autoser-black" frameborder="0"></iframe>
+        <div class="w-full h-full p-0 md:p-12">
+            <iframe id="ai-frame" src="about:blank" class="w-full h-full md:rounded-sm shadow-2xl border-none md:border md:border-white/5 bg-autoser-black" frameborder="0"></iframe>
         </div>
     </div>
 
