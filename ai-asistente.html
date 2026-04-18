@@ -454,12 +454,12 @@
                 if (botResponse) {
                     appendMessage('bot', botResponse);
                 } else {
-                    appendMessage('bot', "Recibí una respuesta pero el formato no es el esperado. Verifica n8n.");
+                    appendMessage('bot', "Recibí una respuesta pero el formato no es compatible. Por favor, reporta este detalle al administrador.");
                 }
 
             } catch (error) {
                 console.error("Error de conexión:", error);
-                appendMessage('bot', "No pude conectar con n8n. Por favor verifica que el webhook esté activo.");
+                appendMessage('bot', "Lo siento, no puedo conectar con el servidor en este momento. Por favor, intenta de nuevo más tarde o contacta directamente a la sucursal.");
             } finally {
                 typingIndicator.classList.add('hidden');
                 const chatArea = document.getElementById('chat-area');
