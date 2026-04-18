@@ -254,6 +254,7 @@
         };
 
         let currentAgent = null;
+        let currentSessionId = null;
 
         // Elementos DOM
         const lobby = document.getElementById('lobby-screen');
@@ -266,6 +267,9 @@
         function selectAgent(type) {
             const agent = CONFIG[type];
             currentAgent = agent;
+            
+            // Generamos un ID de sesión ÚNICO para esta conversación específico para este agente
+            currentSessionId = "autoser-" + type + "-" + Math.random().toString(36).substring(7);
 
             // Transición visual
             lobby.classList.add('hidden');
@@ -311,8 +315,8 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ 
-                        chatInput: text, // Cambiado de 'message' a 'chatInput' para n8n
-                        sessionId: "autoser-session-" + Date.now(), // Ayuda a n8n a mantener memoria
+                        chatInput: text, 
+                        sessionId: currentSessionId, // Ahora es persistente
                         agent: currentAgent.name 
                     })
                 });
