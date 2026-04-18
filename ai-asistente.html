@@ -225,45 +225,48 @@
         function formatMessage(text) {
             if (!text) return "";
             
-            // 1. Escapamos HTML básico para seguridad (XSS)
+            // 1. Escapamos HTML básico
             let formatted = text
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
                 .replace(/>/g, "&gt;");
 
-            // 2. Soporte para Negritas de Markdown (**texto**)
+            // 2. Aplicamos Negritas (**texto**)
             formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-            // 3. Soporte para Links de Markdown: [Texto Legible](https://url)
-            // Prioridad máxima: Si el bot ya envía un texto legible, lo respetamos.
-            const markdownLinkRegex = /\[(.*?)\]\((https?:\/\/[^\s]+)\)/g;
+            // 3. Aplicamos Links de Markdown [Texto](URL) y los protegemos
+            // Usamos un marcador temporal para que el siguiente paso no los toque
+            const markdownLinkRegex = /\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g;
             formatted = formatted.replace(markdownLinkRegex, function(match, label, url) {
-                return `<a href="${url}" target="_blank" class="inline-flex items-center gap-2 bg-autoser-red text-white px-4 py-2 rounded-sm font-bold hover:bg-autoser-black transition-all my-2 shadow-lg text-sm">
-                    <span class="material-symbols-outlined text-sm">open_in_new</span> ${label}
-                </a>`;
+                // Estilo de botón premium para links específicos
+                return `___LINK_START___<a href="${url}" target="_blank" class="inline-flex items-center gap-2 bg-autoser-red text-white px-5 py-2 rounded-sm font-bold hover:bg-autoser-black transition-all my-2 shadow-lg text-sm"><span class="material-symbols-outlined text-sm">open_in_new</span> ${label}</a>___LINK_END___`;
             });
 
-            // 4. Limpieza de URLs sueltas (Fuerza Bruta)
-            // Buscamos cualquier link que no esté ya dentro de un atributo href
-            const rawUrlRegex = /(?<!href=")(https?:\/\/[^\s)]+)/g;
-            formatted = formatted.replace(rawUrlRegex, function(url) {
-                // Quitamos puntos o comas al final que el regex pueda haber atrapado
-                const cleanUrl = url.replace(/[.,;]$/, "");
-                
-                // Si es un link de WhatsApp (wa.me)
-                if (cleanUrl.includes('wa.me')) {
-                    return `<a href="${cleanUrl}" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-sm font-bold hover:bg-green-700 transition-all my-2 shadow-md text-sm">
-                        <span class="material-symbols-outlined text-sm">chat</span> CONTACTAR ASESOR
-                    </a>`;
+            // 4. Limpiamos URLs sueltas (Fuerza Bruta compatible con Safari)
+            // Dividimos el texto para no tocar lo que ya marcamos como link protegido
+            const parts = formatted.split(/(___LINK_START___.*?___LINK_END___)/);
+            
+            const processedParts = parts.map(part => {
+                if (part.startsWith('___LINK_START___')) {
+                    // Restauramos el link protegido quitando las marcas
+                    return part.replace('___LINK_START___', '').replace('___LINK_END___', '');
+                } else {
+                    // En texto plano, buscamos cualquier URL y la convertimos en botón
+                    const rawUrlRegex = /(https?:\/\/[^\s)]+)/g;
+                    return part.replace(rawUrlRegex, function(url) {
+                        const cleanUrl = url.replace(/[.,;]$/, "");
+                        const isWA = cleanUrl.includes('wa.me');
+                        
+                        if (isWA) {
+                            return `<a href="${cleanUrl}" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-sm font-bold hover:bg-green-700 transition-all my-2 shadow-md text-sm"><span class="material-symbols-outlined text-sm">chat</span> CONTACTAR ASESOR</a>`;
+                        } else {
+                            return `<a href="${cleanUrl}" target="_blank" class="inline-flex items-center gap-2 bg-autoser-red/10 text-autoser-red px-5 py-2 rounded-sm font-bold hover:bg-autoser-red hover:text-white transition-all my-2 border border-autoser-red/20 text-sm"><span class="material-symbols-outlined text-sm">visibility</span> VER DETALLES</a>`;
+                        }
+                    });
                 }
-                
-                // Para cualquier otro link (vehículos, inventario, etc)
-                return `<a href="${cleanUrl}" target="_blank" class="inline-flex items-center gap-2 bg-autoser-red/10 text-autoser-red px-4 py-2 rounded-sm font-bold hover:bg-autoser-red hover:text-white transition-all my-2 border border-autoser-red/20 text-sm">
-                    <span class="material-symbols-outlined text-sm">visibility</span> VER DETALLES
-                </a>`;
             });
 
-            return formatted;
+            return processedParts.join('');
         }
 
         // Configuración de Agentes (Opción A)
