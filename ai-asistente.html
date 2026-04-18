@@ -116,9 +116,18 @@
     <header class="p-4 md:p-6 glass z-50">
         <div class="max-w-5xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3 md:gap-6">
-                <button onclick="showLobby()" class="p-2 hover:bg-white/5 rounded-full transition-colors group" title="Cambiar Departamento">
-                    <span class="material-symbols-outlined text-2xl md:text-3xl group-hover:text-autoser-red transition-colors">apps</span>
-                </button>
+                <div class="flex items-center gap-2 md:gap-3">
+                    <button onclick="showLobby()" class="relative p-2 hover:bg-white/5 rounded-full transition-colors group" title="Cambiar Departamento">
+                        <div class="absolute inset-0 bg-autoser-red/20 rounded-full animate-pulse group-hover:hidden"></div>
+                        <span class="material-symbols-outlined text-2xl md:text-3xl group-hover:text-autoser-red transition-colors relative z-10">apps</span>
+                        <!-- Notification Dot -->
+                        <div class="absolute top-1 right-1 w-2 h-2 bg-autoser-red rounded-full shadow-[0_0_8px_#ED1C24]"></div>
+                    </button>
+                    <div class="flex flex-col -space-y-1">
+                        <span class="text-[9px] md:text-[10px] text-autoser-red font-headline font-black uppercase tracking-[0.15em] animate-pulse" data-en="MENU">MENÚ</span>
+                        <span class="text-[7px] md:text-[8px] text-white/30 font-bold uppercase tracking-[0.1em] hidden sm:block" data-en="SWITCH SERVICE">CAMBIAR ÁREA</span>
+                    </div>
+                </div>
                 <div class="flex items-center gap-3 md:gap-4">
                     <div id="agent-icon-bg" class="w-10 h-10 md:w-12 h-12 bg-autoser-red flex items-center justify-center rounded-sm shadow-lg shadow-autoser-red/20 transition-colors">
                         <span id="agent-icon" class="material-symbols-outlined text-white text-2xl md:text-3xl">smart_toy</span>
