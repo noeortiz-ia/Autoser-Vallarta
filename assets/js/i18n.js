@@ -12,6 +12,8 @@ const i18n = {
         
         // Listen for internal language changes
         window.addEventListener('languageChanged', (e) => {
+            // Avoid redundant calls if the requested language is already applied
+            if (this.lastAppliedLang === e.detail.lang) return;
             this.applyLanguage(e.detail.lang);
         });
     },
@@ -22,11 +24,15 @@ const i18n = {
         this.applyLanguage(this.currentLang);
         this.updateButtonsUI();
         
-        // Dispatch event for other scripts (like AI assistant or dynamic inventory)
+        // Dispatch event for other scripts
         window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: this.currentLang } }));
     },
 
     applyLanguage(lang) {
+        if (this.isApplying) return;
+        this.isApplying = true;
+        this.lastAppliedLang = lang;
+
         document.documentElement.lang = lang;
         const isEn = lang === 'en';
 
@@ -34,7 +40,8 @@ const i18n = {
         document.querySelectorAll('[data-en]').forEach(el => {
             // Store original Spanish state and its type (text vs html)
             if (!el.hasAttribute('data-i18n-es')) {
-                const hasTags = el.children.length > 0;
+                // Ensure we capture the original state before any translation happened
+                const hasTags = el.children.length > 0 || el.innerHTML.includes('<br');
                 el.setAttribute('data-i18n-es', hasTags ? el.innerHTML : el.innerText.trim());
                 el.setAttribute('data-i18n-type', hasTags ? 'html' : 'text');
             }
@@ -49,11 +56,13 @@ const i18n = {
                 if (icon) {
                     // Preserve icon while translating
                     const iconHTML = icon.outerHTML;
-                    const isIconAtStart = el.innerHTML.trim().startsWith('<span');
+                    // Check original HTML to see where the icon was
+                    const isIconAtStart = original.trim().startsWith('<span');
                     el.innerHTML = isIconAtStart ? `${iconHTML} ${translation}` : `${translation} ${iconHTML}`;
                 } else {
                     // Respect HTML in translations (allows <br> in data-en)
-                    if (translation.includes('<')) {
+                    // We use innerHTML if translation has tags or if the element is an HTML type
+                    if (translation.includes('<') || type === 'html') {
                         el.innerHTML = translation;
                     } else {
                         el.innerText = translation;
@@ -69,7 +78,7 @@ const i18n = {
             }
         });
 
-        // 2. Handle attributes (placeholders, titles, alt)
+        // 2. Handle attributes
         document.querySelectorAll('[data-en-placeholder]').forEach(el => {
             if (!el.hasAttribute('data-i18n-es-placeholder')) { el.setAttribute('data-i18n-es-placeholder', el.placeholder); }
             el.placeholder = isEn ? el.getAttribute('data-en-placeholder') : el.getAttribute('data-i18n-es-placeholder');
@@ -79,6 +88,8 @@ const i18n = {
             if (!el.hasAttribute('data-i18n-es-alt')) { el.setAttribute('data-i18n-es-alt', el.alt); }
             el.alt = isEn ? el.getAttribute('data-en-alt') : el.getAttribute('data-i18n-es-alt');
         });
+
+        this.isApplying = false;
     },
 
     updateButtonsUI() {

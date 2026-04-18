@@ -245,12 +245,19 @@
             </div>
 
             <div class="flex items-center gap-2 lg:gap-4">
+                <!-- Language Toggle Button -->
+                <button onclick="i18n.toggle()" 
+                    class="flex items-center gap-1 px-3 py-1.5 border border-gray-200 rounded-sm text-[10px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
+                    <span class="lang-toggle-text">EN</span>
+                </button>
+
                 <a href="tel:3222263500" class="hidden md:flex items-center justify-center w-10 h-10 lg:w-auto lg:h-auto bg-autoser-red/5 lg:bg-transparent rounded-full lg:rounded-none gap-2 font-headline font-bold text-sm hover:text-autoser-red transition-all text-autoser-charcoal group">
                     <span class="material-symbols-outlined text-autoser-red notranslate select-none group-hover:scale-110 transition-transform">phone_in_talk</span>
                     <span class="hidden xl:inline">322 226 3500</span>
                 </a>
                 <a href="vende-tu-auto" class="hidden sm:flex items-center bg-autoser-black text-white px-4 lg:px-6 py-2 lg:py-3 rounded-sm font-headline text-[0.6rem] lg:text-[0.65rem] font-bold uppercase tracking-widest hover:bg-autoser-red transition-all whitespace-nowrap">
-                    VER INVENTARIO
+                    <span data-en="VIEW INVENTORY">VER INVENTARIO</span>
                 </a>
                 <button class="xl:hidden flex items-center justify-center w-10 h-10 text-autoser-black hover:text-autoser-red transition-all focus:outline-none" onclick="toggleMobileMenu()">
                     <span class="material-symbols-outlined text-3xl select-none notranslate">menu</span>
@@ -272,10 +279,11 @@
                     <span class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                     <span class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Únete a Nuestro Equipo</span>
                 </div>
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold text-white leading-tight mb-8 tracking-wide uppercase">TU TALENTO <br /><span class="text-autoser-red shimmer px-2">NUESTRO MOTOR.</span></h1>
-                <p class="text-gray-300 text-xl mb-12 max-w-2xl leading-relaxed">En Autoser Vallarta, construimos confianza. Buscamos profesionales apasionados por la excelencia automotriz.</p>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold text-white leading-tight mb-8 tracking-wide uppercase">
+                    <span data-en="YOUR TALENT">TU TALENTO</span> <br /><span class="text-autoser-red px-2 inline-block"><span class="shimmer inline-block" data-en="OUR MOTOR.">NUESTRO MOTOR.</span></span></h1>
+                <p class="text-gray-300 text-xl mb-12 max-w-2xl leading-relaxed" data-en="At Autoser Vallarta, we build trust. We are looking for professionals passionate about automotive excellence.">En Autoser Vallarta, construimos confianza. Buscamos profesionales apasionados por la excelencia automotriz.</p>
                 <div class="flex flex-wrap gap-6">
-                    <a href="#vacantes" class="btn-agency px-12">VER VACANTES</a>
+                    <a href="#vacantes" class="btn-agency px-12" data-en="VIEW VACANCIES">VER VACANTES</a>
                 </div>
             </div>
         </div>
@@ -304,10 +312,10 @@
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
             <div class="space-y-8 text-left">
                 <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage" class="h-16 w-auto opacity-100">
-                <p class="text-gray-400 text-sm leading-relaxed">Orgullosamente Vallartenses. Más de dos décadas brindando confianza y calidad en cada kilómetro.</p>
+                <p class="text-gray-400 text-sm leading-relaxed" data-en="Proudly Vallartenses. More than two decades providing trust and quality in every kilometer.">Orgullosamente Vallartenses. Más de dos décadas brindando confianza y calidad en cada kilómetro.</p>
             </div>
             <div class="text-left">
-                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white">DEPARTAMENTOS</h4>
+                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white" data-en="DEPARTMENTS">DEPARTAMENTOS</h4>
                 <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
                     <li><a href="/" class="hover:text-autoser-red transition-colors">Inicio</a></li>
                     <li><a href="vende-tu-auto" class="hover:text-autoser-red transition-colors">Seminuevos</a></li>
@@ -458,7 +466,7 @@
         <button id="ai-widget-trigger" onclick="openAIModal()" class="group relative flex items-center gap-3 bg-autoser-red text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300">
             <div class="absolute inset-0 rounded-full bg-autoser-red animate-ping opacity-20 group-hover:opacity-0"></div>
             <span class="material-symbols-outlined text-3xl select-none notranslate">smart_toy</span>
-            <span class="max-w-0 overflow-hidden whitespace-nowrap font-headline font-bold text-xs uppercase tracking-widest group-hover:max-w-xs transition-all duration-500 ease-in-out">Agente AI 24/7</span>
+            <span class="max-w-0 overflow-hidden whitespace-nowrap font-headline font-bold text-xs uppercase tracking-widest group-hover:max-w-xs transition-all duration-500 ease-in-out" data-en="24/7 AI Agent">Agente AI 24/7</span>
         </button>
     </div>
 
