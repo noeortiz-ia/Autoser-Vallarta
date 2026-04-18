@@ -324,28 +324,32 @@
         let currentAgent = null;
         let currentSessionId = null;
 
-        // --- LÓGICA DE PERSISTENCIA (LocalStorage) ---
+        // --- LÓGICA DE PERSISTENCIA POR AGENTE (Multi-Silo) ---
         function saveConversation() {
             if (!currentAgent) return;
+            // Usamos un sufijo basado en el tipo de agente para aislar las memorias
+            const agentType = localStorage.getItem('last_agent_type');
+            if (!agentType) return;
+
             const history = Array.from(messagesList.children).map(msg => ({
                 className: msg.className,
                 innerHTML: msg.innerHTML
             }));
-            localStorage.setItem('autoser_chat_history', JSON.stringify(history));
-            localStorage.setItem('autoser_session_id', currentSessionId);
-            localStorage.setItem('autoser_agent_type', localStorage.getItem('last_agent_type'));
+
+            localStorage.setItem(`autoser_history_${agentType}`, JSON.stringify(history));
+            localStorage.setItem(`autoser_session_${agentType}`, currentSessionId);
+            localStorage.setItem('autoser_active_agent', agentType);
         }
 
-        function loadConversation() {
-            const history = JSON.parse(localStorage.getItem('autoser_chat_history'));
-            const sessionId = localStorage.getItem('autoser_session_id');
-            const agentType = localStorage.getItem('autoser_agent_type');
+        function loadAgentState(agentType) {
+            const history = JSON.parse(localStorage.getItem(`autoser_history_${agentType}`));
+            const sessionId = localStorage.getItem(`autoser_session_${agentType}`);
 
-            if (history && sessionId && agentType && CONFIG[agentType]) {
+            if (history && sessionId) {
                 currentSessionId = sessionId;
                 currentAgent = CONFIG[agentType];
                 
-                // Restaurar UI del Agente
+                // Mostrar UI del Agente
                 lobby.classList.add('hidden');
                 document.getElementById('agent-name').innerText = currentAgent.name;
                 document.getElementById('agent-icon').innerText = currentAgent.icon;
@@ -363,19 +367,27 @@
                 const chatArea = document.getElementById('chat-area');
                 chatArea.scrollTop = chatArea.scrollHeight;
                 return true;
-            } else if (sessionId) {
-                // Si hay ID pero no hay historial guardado (ej. recién iniciado)
-                currentSessionId = sessionId;
+            }
+            return false;
+        }
+
+        function loadAppState() {
+            // Al cargar la app, intentamos restaurar el ÚLTIMO agente activo si existía
+            const lastActive = localStorage.getItem('autoser_active_agent');
+            if (lastActive && CONFIG[lastActive]) {
+                return loadAgentState(lastActive);
             }
             return false;
         }
 
         const resetConversation = () => {
-            if (confirm('¿Quieres borrar esta conversación y empezar una nueva?')) {
-                localStorage.removeItem('autoser_chat_history');
-                localStorage.removeItem('autoser_session_id');
-                localStorage.removeItem('autoser_agent_type');
-                localStorage.removeItem('last_agent_type');
+            const agentType = localStorage.getItem('last_agent_type');
+            if (!agentType) return;
+
+            if (confirm(`¿Quieres borrar la conversación actual con ${CONFIG[agentType].name}?`)) {
+                localStorage.removeItem(`autoser_history_${agentType}`);
+                localStorage.removeItem(`autoser_session_${agentType}`);
+                localStorage.removeItem('autoser_active_agent');
                 location.reload();
             }
         };
@@ -390,40 +402,32 @@
         // Selección de Agente
         function selectAgent(type) {
             const agent = CONFIG[type];
-            const isChange = currentAgent !== null && currentAgent !== agent;
-            
-            currentAgent = agent;
             localStorage.setItem('last_agent_type', type);
             
-            // Session ID Persistente: Solo se crea si NO existe uno previo
-            if (!currentSessionId) {
-                currentSessionId = "autoser-" + type + "-" + Math.random().toString(36).substring(7);
-                localStorage.setItem('autoser_session_id', currentSessionId);
+            // 1. Intentamos cargar si este agente ya tenía historia
+            if (loadAgentState(type)) {
+                return; // Si cargó historia, salimos (ya restauró la UI)
             }
 
+            // 2. Si no hay historia, iniciamos de cero para este agente
+            currentAgent = agent;
+            currentSessionId = "autoser-" + type + "-" + Math.random().toString(36).substring(7);
+            
             // Transición visual
             lobby.classList.add('hidden');
             document.getElementById('agent-name').innerText = agent.name;
             document.getElementById('agent-icon').innerText = agent.icon;
             document.getElementById('agent-icon-bg').style.backgroundColor = agent.color;
 
-            // Si es un CAMBIO de agente, añadimos una nota en el historial en lugar de borrarlo
-            if (isChange) {
-                const divider = document.createElement('div');
-                divider.className = "text-center my-8";
-                divider.innerHTML = `<span class="text-[10px] text-gray-400 bg-white/5 border border-white/5 px-6 py-2 rounded-full uppercase tracking-[0.2em]">Consultando ahora con ${agent.name}</span>`;
-                messagesList.appendChild(divider);
-                appendMessage('bot', agent.welcome);
-            } else if (messagesList.innerHTML === "" || messagesList.innerHTML.includes('Cargando')) {
-                // Solo damos la bienvenida de cero si el historial está vacío
-                messagesList.innerHTML = `<div class="text-center mb-6"><span class="text-[9px] text-gray-600 bg-white/5 px-4 py-1 rounded-full uppercase tracking-widest">Hablando con ${agent.name}</span></div>`;
-                appendMessage('bot', agent.welcome);
-            }
+            // Limpiar área de mensajes y dar Bienvenida
+            messagesList.innerHTML = `<div class="text-center mb-6"><span class="text-[9px] text-gray-600 bg-white/5 px-4 py-1 rounded-full uppercase tracking-widest">Iniciando consulta con ${agent.name}</span></div>`;
+            appendMessage('bot', agent.welcome);
             
             saveConversation();
         }
 
         function showLobby() {
+            localStorage.removeItem('autoser_active_agent'); // Al volver al lobby, no hay agente "activo"
             lobby.classList.remove('hidden');
         }
 
@@ -502,13 +506,13 @@
             this.style.height = (this.scrollHeight) + 'px';
         });
 
-        // INICIALIZACIÓN
+        // --- INICIALIZACIÓN ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Intentar cargar conversación previa
-            const hasHistory = loadConversation();
-
-            // Si no hay historia, ver si se fuerza un agente por URL
-            if (!hasHistory) {
+            // Intentamos restaurar la sesión completa (Agente + Historial)
+            if (!loadAppState()) {
+                // Si no hay nada, mostramos el lobby
+                lobby.classList.remove('hidden');
+                
                 const urlParams = new URLSearchParams(window.location.search);
                 const forceAgent = urlParams.get('agente');
                 if (forceAgent && CONFIG[forceAgent]) {
