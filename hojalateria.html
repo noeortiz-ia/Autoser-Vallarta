@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
+    <script src="assets/js/i18n.js"></script>
     <meta name="description"
         content="Centro especializado en hojalatería y pintura multimarca en Puerto Vallarta. Reparaciones de colisión con acabados nivel agencia, igualación computarizada y convenios con aseguradoras.">
     <meta name="keywords"
@@ -382,50 +383,55 @@
             <div
                 class="hidden xl:flex gap-4 lg:gap-8 xl:gap-10 font-headline text-[0.75rem] uppercase tracking-widest text-autoser-charcoal items-center">
                 <a href="/"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">Inicio</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="Home">Inicio</a>
                 <!-- Dropdown Seminuevos -->
                 <div class="relative group py-4">
-                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="PRE-OWNED">
                         SEMINUEVOS <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-56 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">VER
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="VIEW INVENTORY">VER
                             INVENTARIO</a>
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">COMPRAMOS
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="WE BUY YOUR CAR">COMPRAMOS
                             TU AUTO</a>
                     </div>
                 </div>
 
                 <!-- Dropdown Taller -->
                 <div class="relative group py-4">
-                    <button class="nav-link active font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link active font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="WORKSHOP">
                         TALLER <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-64 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="taller"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">TALLER MULTIMARCA</a>
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="MULTI-BRAND WORKSHOP">TALLER MULTIMARCA</a>
                         <a href="hojalateria"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">HOJALATERÍA Y PINTURA</a>
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="BODY & PAINT SHOP">HOJALATERÍA Y PINTURA</a>
                     </div>
                 </div>
 
                 <a href="refacciones"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">REFACCIONES</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PARTS">REFACCIONES</a>
                 <a href="seguros"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">SEGUROS</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="INSURANCE">SEGUROS</a>
                 <a href="promociones"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">PROMOCIONES</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PROMOTIONS">PROMOCIONES</a>
                 <a href="nosotros"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">NOSOTROS</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="ABOUT US">NOSOTROS</a>
             </div>
 
             <div class="flex items-center gap-2 lg:gap-4">
+                <button onclick="i18n.toggle()" 
+                    class="flex items-center gap-1 px-3 py-1.5 border border-autoser-black/10 rounded-sm text-[9px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
+                    <span class="lang-toggle-text">EN</span>
+                </button>
                 <a href="tel:3222263500"
                     class="hidden md:flex items-center justify-center w-10 h-10 lg:w-auto lg:h-auto bg-autoser-red/5 lg:bg-transparent rounded-full lg:rounded-none gap-2 font-headline font-bold text-sm hover:text-autoser-red transition-all text-autoser-charcoal group">
                     <span
@@ -434,7 +440,7 @@
                 </a>
                 <a href="vende-tu-auto"
                     class="hidden sm:flex items-center bg-transparent border-2 border-autoser-black text-autoser-black lg:bg-autoser-black lg:text-white px-4 lg:px-6 py-2 lg:py-3 rounded-sm font-headline text-[0.6rem] lg:text-[0.65rem] font-bold uppercase tracking-widest hover:bg-autoser-red hover:border-autoser-red hover:text-white transition-all">
-                    <span class="hidden lg:inline mr-1">VER</span> INVENTARIO
+                    <span class="hidden lg:inline mr-1" data-en="VIEW">VER</span> <span data-en="INVENTORY">INVENTARIO</span>
                 </a>
                 <button
                     class="xl:hidden text-autoser-black hover:text-autoser-red transition-all focus:outline-none"
@@ -464,25 +470,23 @@
                     <span
                         class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                     <span
-                        class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Calidad
+                        class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Dealership Quality">Calidad
                         de Concesionario</span>
                 </div>
                 <h1
                     class="text-3xl sm:text-4xl md:text-6xl font-headline font-extrabold text-white leading-tight mb-8 tracking-wide uppercase">
-                    HOJALATERÍA <br /><span class="text-autoser-red shimmer px-2">Y PINTURA PROFESIONAL.</span>
+                    <span data-en="PROFESSIONAL BODYWORK">HOJALATERÍA</span> <br /><span class="text-autoser-red shimmer px-2" data-en="& PAINTING.">Y PINTURA PROFESIONAL.</span>
                 </h1>
-                <p class="text-gray-300 text-xl mb-12 leading-relaxed">
+                <p class="text-gray-300 text-xl mb-12 leading-relaxed" data-en="Major and express bodywork with cutting-edge technology. The only professional baking booth in the region for high-quality finishes.">
                     Hojalatería mayor y express con tecnología de vanguardia. Única cabina de horneado profesional en la
                     región para acabados de alta calidad.
                 </p>
                 <div
                     class="flex items-center gap-12 text-white/60 font-headline font-bold text-xs tracking-widest uppercase">
                     <div class="flex items-center gap-2"><span
-                            class="material-symbols-outlined text-autoser-red notranslate select-none">check_circle</span>CABINA
-                        TÉRMICA</div>
+                            class="material-symbols-outlined text-autoser-red notranslate select-none">check_circle</span><span data-en="THERMAL BOOTH">CABINA TÉRMICA</span></div>
                     <div class="flex items-center gap-2"><span
-                            class="material-symbols-outlined text-autoser-red notranslate select-none">check_circle</span>RESGUARDO
-                        TECHADO</div>
+                            class="material-symbols-outlined text-autoser-red notranslate select-none">check_circle</span><span data-en="ROOFED STORAGE">RESGUARDO TECHADO</span></div>
                 </div>
             </div>
 
@@ -490,28 +494,28 @@
             <div
                 class="bg-white/5 backdrop-blur-xl p-10 border border-white/10 shadow-2xl relative overflow-hidden shimmer reveal-from-right">
                 <div class="absolute top-0 left-0 w-full h-1 bg-autoser-red"></div>
-                <h3 class="text-2xl font-headline font-extrabold text-white mb-1 uppercase tracking-wide">PRE-COTIZA
+                <h3 class="text-2xl font-headline font-extrabold text-white mb-1 uppercase tracking-wide" data-en="FAST QUOTE">PRE-COTIZA
                     RÁPIDO</h3>
-                <p class="text-[10px] text-gray-400 mb-8 font-bold uppercase tracking-widest">ENVÍA FOTOS POR WHATSAPP O
+                <p class="text-[10px] text-gray-400 mb-8 font-bold uppercase tracking-widest" data-en="SEND PHOTOS BY WHATSAPP OR FORM">ENVÍA FOTOS POR WHATSAPP O
                     FORMULARIO</p>
                 <form class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" placeholder="NOMBRE" class="form-input">
-                        <input type="tel" placeholder="WHATSAPP / TEL" class="form-input">
+                        <input type="text" placeholder="NOMBRE" data-en-placeholder="NAME" class="form-input">
+                        <input type="tel" placeholder="WHATSAPP / TEL" data-en-placeholder="WHATSAPP / TEL" class="form-input">
                     </div>
-                    <input type="text" placeholder="MODELO DEL AUTO" class="form-input">
-                    <textarea placeholder="DESCRIBE EL DAÑO" class="form-input h-16"></textarea>
+                    <input type="text" placeholder="MODELO DEL AUTO" data-en-placeholder="CAR MODEL" class="form-input">
+                    <textarea placeholder="DESCRIBE EL DAÑO" data-en-placeholder="DESCRIBE THE DAMAGE" class="form-input h-16"></textarea>
                     <div
                         class="border-2 border-dashed border-white/10 bg-white/5 py-4 px-6 text-center rounded-sm hover:bg-white/10 hover:border-autoser-red transition-all cursor-pointer">
                         <span
                             class="material-symbols-outlined text-autoser-red text-2xl mb-1 notranslate select-none">cloud_upload</span>
-                        <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest leading-tight">SOLO Sube
+                        <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest leading-tight" data-en="Upload photo of damage for precise quote">SOLO Sube
                             foto del daño para cotización precisa</p>
                     </div>
                     <button
-                        class="btn-agency w-full py-4 text-xs font-black uppercase tracking-widest shadow-xl">SOLICITAR
+                        class="btn-agency w-full py-4 text-xs font-black uppercase tracking-widest shadow-xl" data-en="REQUEST VALUATION">SOLICITAR
                         VALUACIÓN</button>
-                    <p class="text-[9px] text-center text-gray-500 font-bold uppercase tracking-widest mt-2">
+                    <p class="text-[9px] text-center text-gray-500 font-bold uppercase tracking-widest mt-2" data-en="IMMEDIATE RESPONSE BY CERTIFIED SPECIALISTS">
                         RESPUESTA INMEDIATA POR ESPECIALISTAS CERTIFICADOS
                     </p>
                 </form>
@@ -560,7 +564,7 @@
         <div class="container mx-auto px-8">
             <div class="text-center mb-24 reveal-on-scroll">
                 <h2
-                    class="text-4xl md:text-5xl font-headline font-extrabold text-autoser-black mb-6 uppercase tracking-wide">
+                    class="text-4xl md:text-5xl font-headline font-extrabold text-autoser-black mb-6 uppercase tracking-wide" data-en="WHY CHOOSE US?">
                     ¿POR QUÉ ELEGIRNOS?</h2>
                 <div class="w-24 h-1.5 bg-autoser-red mx-auto"></div>
             </div>
@@ -573,8 +577,8 @@
                         <span class="material-symbols-outlined text-4xl notranslate select-none"
                             style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48">brush</span>
                     </div>
-                    <h4 class="font-headline font-extrabold text-lg mb-4 uppercase tracking-wide">PINTURA PREMIUM</h4>
-                    <p class="text-xs text-autoser-charcoal leading-relaxed opacity-70 max-w-[200px]">Líneas de altos
+                    <h4 class="font-headline font-extrabold text-lg mb-4 uppercase tracking-wide" data-en="PREMIUM PAINT">PINTURA PREMIUM</h4>
+                    <p class="text-xs text-autoser-charcoal leading-relaxed opacity-70 max-w-[200px]" data-en="High solid lines for superior color depth and gloss above the commercial average.">Líneas de altos
                         sólidos para una profundidad de color y brillo superior a la media comercial.</p>
                 </div>
                 <div class="group text-center flex flex-col items-center reveal-on-scroll"
@@ -584,8 +588,8 @@
                         <span class="material-symbols-outlined text-4xl notranslate select-none"
                             style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48">thermostat</span>
                     </div>
-                    <h4 class="font-headline font-extrabold text-lg mb-4 uppercase tracking-wide">HORNO TÉRMICO</h4>
-                    <p class="text-xs text-autoser-charcoal leading-relaxed opacity-70 max-w-[200px]">Secado controlado
+                    <h4 class="font-headline font-extrabold text-lg mb-4 uppercase tracking-wide" data-en="THERMAL OVEN">HORNO TÉRMICO</h4>
+                    <p class="text-xs text-autoser-charcoal leading-relaxed opacity-70 max-w-[200px]" data-en="Controlled drying that molecularly seals the finish, preventing orange peel effect.">Secado controlado
                         que sella el acabado molecularmente, evitando piel de naranja.</p>
                 </div>
                 <div class="group text-center flex flex-col items-center reveal-on-scroll"
@@ -595,8 +599,8 @@
                         <span class="material-symbols-outlined text-4xl notranslate select-none"
                             style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48">garage</span>
                     </div>
-                    <h4 class="font-headline font-extrabold text-lg mb-4 uppercase tracking-wide">100% CUBIERTO</h4>
-                    <p class="text-xs text-autoser-charcoal leading-relaxed opacity-70 max-w-[200px]">Tu auto nunca
+                    <h4 class="font-headline font-extrabold text-lg mb-4 uppercase tracking-wide" data-en="100% COVERED">100% CUBIERTO</h4>
+                    <p class="text-xs text-autoser-charcoal leading-relaxed opacity-70 max-w-[200px]" data-en="Your car never waits on the street. Total indoor storage throughout the entire process.">Tu auto nunca
                         espera en la calle. Resguardo total bajo techo durante todo el proceso.</p>
                 </div>
                 <div class="group text-center flex flex-col items-center reveal-on-scroll"
@@ -606,8 +610,8 @@
                         <span class="material-symbols-outlined text-4xl notranslate select-none"
                             style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48">architecture</span>
                     </div>
-                    <h4 class="font-headline font-extrabold text-lg mb-4 uppercase tracking-wide">BANCO DE ESTIRADO</h4>
-                    <p class="text-xs text-autoser-charcoal leading-relaxed opacity-70 max-w-[200px]">Rectificación de
+                    <h4 class="font-headline font-extrabold text-lg mb-4 uppercase tracking-wide" data-en="STRETCHING BENCH">BANCO DE ESTIRADO</h4>
+                    <p class="text-xs text-autoser-charcoal leading-relaxed opacity-70 max-w-[200px]" data-en="Rectification of chassis and structures with millimetric agency precision.">Rectificación de
                         chasises y estructuras con precisión milimétrica de agencia.</p>
                 </div>
             </div>
@@ -630,12 +634,12 @@
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-autoser-red opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-autoser-red"></span>
                         </div>
-                        <span class="text-xs font-bold tracking-[0.2em] text-white/90 uppercase">Infraestructura Certificada</span>
+                        <span class="text-xs font-bold tracking-[0.2em] text-white/90 uppercase" data-en="CERTIFIED INFRASTRUCTURE">Infraestructura Certificada</span>
                     </div>
 
                     <h2
                         class="text-3xl md:text-4xl font-headline font-extrabold text-white mb-8 uppercase tracking-wide leading-tight">
-                        UN ACABADO NIVEL AGENCIA <br /><span class="text-autoser-red italic">REQUIERE CONTROL TOTAL.</span>
+                        <span data-en="AN AGENCY QUALITY FINISH">UN ACABADO NIVEL AGENCIA</span> <br /><span class="text-autoser-red italic" data-en="REQUIRES TOTAL CONTROL.">REQUIERE CONTROL TOTAL.</span>
                     </h2>
                     <div class="space-y-12">
                         <div class="flex gap-6">
@@ -644,9 +648,9 @@
                                 <span class="material-symbols-outlined text-3xl notranslate select-none">valve</span>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg uppercase tracking-tight mb-3">CABINA DE PINTADO
+                                <h4 class="font-bold text-lg uppercase tracking-tight mb-3" data-en="PROFESSIONAL PAINT BOOTH">CABINA DE PINTADO
                                     PROFESIONAL</h4>
-                                <p class="text-sm text-gray-400 leading-relaxed font-light">
+                                <p class="text-sm text-gray-400 leading-relaxed font-light" data-en="Painting outdoors is leaving your finish to the chance of dust and humidity. Our pressurized booth with HEPA filtering drastically reduces impurities, ensuring a dealership-standard gloss and texture.">
                                     Pintar al aire libre es dejar tu acabado al azar del polvo y la humedad. Nuestra
                                     cabina presurizada con filtrado HEPA reduce drásticamente las impurezas, asegurando
                                     un brillo y textura de estándar de agencia.
@@ -659,8 +663,8 @@
                                 <span class="material-symbols-outlined text-3xl notranslate select-none">garage</span>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg uppercase tracking-tight mb-3">RESGUARDO 100% CUBIERTO</h4>
-                                <p class="text-sm text-gray-400 leading-relaxed font-light">
+                                <h4 class="font-bold text-lg uppercase tracking-tight mb-3" data-en="100% COVERED STORAGE">RESGUARDO 100% CUBIERTO</h4>
+                                <p class="text-sm text-gray-400 leading-relaxed font-light" data-en="Unlike common workshops where vehicles wait on the street or under the sun, at Autoser your investment always remains indoors in secure facilities, protected from the sea breeze and extreme sun of Vallarta.">
                                     A diferencia de los talleres comunes donde los vehículos esperan en la calle o bajo
                                     el sol, en Autoser tu inversión siempre permanece bajo techo en instalaciones
                                     seguras, protegida de la brisa marina y el sol extremo de Vallarta.
@@ -679,8 +683,8 @@
                     </div>
                     <div
                         class="absolute -bottom-10 -left-10 bg-autoser-red text-white p-10 rounded-sm shadow-2xl max-w-[280px]">
-                        <div class="text-4xl font-black mb-2 tracking-tighter uppercase">ZERO<br />DUST</div>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-80 leading-relaxed">Atmósfera
+                        <div class="text-4xl font-black mb-2 tracking-tighter uppercase" data-en="ZERO DUST">ZERO<br />DUST</div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-80 leading-relaxed" data-en="Controlled atmosphere for impeccable finishes.">Atmósfera
                             controlada para acabados impecables.</p>
                     </div>
                 </div>
@@ -695,30 +699,30 @@
                     class="w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 flex items-center justify-center p-12 text-center">
                     <div class="border-2 border-white/20 p-10 bg-black/40 backdrop-blur-sm">
-                        <h3 class="text-2xl font-headline font-extrabold text-white uppercase tracking-wide mb-4">MÁS DE
+                        <h3 class="text-2xl font-headline font-extrabold text-white uppercase tracking-wide mb-4" data-en="OVER 25 YEARS OF MASTERY">MÁS DE
                             25 AÑOS DE MAESTRÍA</h3>
-                        <p class="text-sm text-white/70 italic uppercase tracking-widest">El referente número uno en
+                        <p class="text-sm text-white/70 italic uppercase tracking-widest" data-en="The number one reference in bodywork for Vallarta">El referente número uno en
                             hojalatería para Vallarta</p>
                     </div>
                 </div>
             </div>
             <div class="reveal-from-right">
                 <h2
-                    class="text-4xl font-headline font-extrabold text-autoser-black mb-8 uppercase tracking-wide leading-tight">
+                    class="text-4xl font-headline font-extrabold text-autoser-black mb-8 uppercase tracking-wide leading-tight" data-en="PRECISE AND TRANSPARENT VALUATION.">
                     VALUACIÓN PRECISA Y TRANSPARENTE.</h2>
-                <p class="text-sm text-autoser-charcoal leading-relaxed mb-8">Nuestros asesores técnicos realizan
+                <p class="text-sm text-autoser-charcoal leading-relaxed mb-8" data-en="Our technical advisors perform exhaustive evaluations to offer clear quotes. No 'eyeball estimates', only precise data based on official manufacturer manuals.">Nuestros asesores técnicos realizan
                     evaluaciones exhaustivas para ofrecer presupuestos claros. Sin "estimaciones a ojo", solo datos
                     precisos basados en manuales oficiales del fabricante.</p>
                 <ul class="space-y-4">
                     <li class="flex items-center gap-4 font-bold text-xs uppercase tracking-widest"><span
-                            class="w-6 h-px bg-autoser-red"></span>REVISIÓN ESTRUCTURAL COMPLETA</li>
+                            class="w-6 h-px bg-autoser-red"></span><span data-en="FULL STRUCTURAL REVIEW">REVISIÓN ESTRUCTURAL COMPLETA</span></li>
                     <li class="flex items-center gap-4 font-bold text-xs uppercase tracking-widest"><span
-                            class="w-6 h-px bg-autoser-red"></span>DESGLOSE CLARO DE MATERIALES</li>
+                            class="w-6 h-px bg-autoser-red"></span><span data-en="CLEAR BREAKDOWN OF MATERIALS">DESGLOSE CLARO DE MATERIALES</span></li>
                     <li class="flex items-center gap-4 font-bold text-xs uppercase tracking-widest"><span
-                            class="w-6 h-px bg-autoser-red"></span>ORIENTACIÓN PARA CUIDADO POST-PINTURA</li>
+                            class="w-6 h-px bg-autoser-red"></span><span data-en="POST-PAINT CARE GUIDANCE">ORIENTACIÓN PARA CUIDADO POST-PINTURA</span></li>
                 </ul>
                 <div class="mt-12">
-                    <button class="btn-agency">AGENDAR MI VALUACIÓN</button>
+                    <button class="btn-agency" data-en="SCHEDULE MY VALUATION">AGENDAR MI VALUACIÓN</button>
                 </div>
             </div>
         </div>
@@ -729,7 +733,7 @@
         <div class="container mx-auto px-8 max-w-4xl">
             <div class="text-center mb-24 reveal-on-scroll">
                 <h2
-                    class="text-4xl font-headline font-extrabold text-autoser-black mb-4 uppercase tracking-wide leading-tight text-center">
+                    class="text-4xl font-headline font-extrabold text-autoser-black mb-4 uppercase tracking-wide leading-tight text-center" data-en="FREQUENTLY ASKED QUESTIONS">
                     PREGUNTAS FRECUENTES</h2>
                 <div class="w-24 h-1.5 bg-autoser-red mx-auto"></div>
             </div>
@@ -740,13 +744,13 @@
                     onclick="this.classList.toggle('active')">
                     <div class="flex items-center justify-between">
                         <span
-                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors">¿TRABAJAN
+                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors" data-en="DO YOU WORK WITH MY INSURANCE COMPANY?">¿TRABAJAN
                             CON MI COMPAÑÍA DE SEGUROS?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200" data-en="At Autoser Vallarta we have agreements with the main insurance companies in the country (Quálitas, AXA, GNP, Mapfre, Chubb, among others). If you already have an open claim, we can manage your repair directly with them.">
                             En Autoser Vallarta tenemos convenio con las principales aseguradoras del país (Quálitas,
                             AXA, GNP, Mapfre, Chubb, entre otras). Si ya tienes un siniestro abierto, podemos gestionar
                             tu reparación directamente con ellos.
@@ -759,13 +763,13 @@
                     onclick="this.classList.toggle('active')">
                     <div class="flex items-center justify-between">
                         <span
-                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors">¿CÓMO
+                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors" data-en="HOW DO YOU GUARANTEE THAT THE COLOR IS THE SAME AS THE ORIGINAL?">¿CÓMO
                             GARANTIZAN QUE EL COLOR SEA IGUAL AL ORIGINAL?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200" data-en="We use computerized color matching systems and state-of-the-art spectrophotometers. This allows us to replicate the original chromatic formula of your vehicle, guaranteeing that the repaired part is indistinguishable from the rest of the car.">
                             Utilizamos sistemas de igualación de color por computadora y espectrofotómetros de última
                             generación. Esto nos permite replicar la fórmula cromática original de tu vehículo,
                             garantizando que la pieza reparada sea indistinguible del resto del auto.
@@ -778,13 +782,13 @@
                     onclick="this.classList.toggle('active')">
                     <div class="flex items-center justify-between">
                         <span
-                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors">¿POR
+                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors" data-en="WHY IS IT BETTER TO PAINT IN A BOOTH THAN OUTDOORS?">¿POR
                             QUÉ ES MEJOR PINTAR EN CABINA QUE AL AIRE LIBRE?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200" data-en="Painting outdoors exposes your car to dust particles, insects, and humidity that ruin the gloss and adhesion. Our pressurized booth guarantees an environment with minimum impurities, achieving a smooth and professional finish that a conventional workshop cannot offer.">
                             Pintar al aire libre expone tu auto a partículas de polvo, insectos y humedad que arruinan
                             el brillo y la adherencia. Nuestra cabina presurizada garantiza un ambiente de mínimas
                             impurezas, logrando un acabado terso y profesional que un taller convencional no puede

@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
+    <script src="assets/js/i18n.js"></script>
     <meta name="description"
         content="Venta de autos seminuevos certificados en Puerto Vallarta y Nayarit. Compramos tu auto hoy mismo con valuación profesional y pago seguro. ¡Estrena con Autoser!">
     <meta name="keywords"
@@ -327,50 +328,55 @@
             <div
                 class="hidden xl:flex gap-4 lg:gap-8 xl:gap-10 font-headline text-[0.75rem] uppercase tracking-widest text-autoser-charcoal items-center">
                 <a href="/"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">Inicio</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="Home">Inicio</a>
                 <!-- Dropdown Seminuevos -->
                 <div class="relative group py-4">
-                    <button class="nav-link active font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link active font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="PRE-OWNED">
                         SEMINUEVOS <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-56 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">VER
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="VIEW INVENTORY">VER
                             INVENTARIO</a>
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">COMPRAMOS
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="WE BUY YOUR CAR">COMPRAMOS
                             TU AUTO</a>
                     </div>
                 </div>
 
                 <!-- Dropdown Taller -->
                 <div class="relative group py-4">
-                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="WORKSHOP">
                         TALLER <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-64 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="taller"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">TALLER MULTIMARCA</a>
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="MULTI-BRAND WORKSHOP">TALLER MULTIMARCA</a>
                         <a href="hojalateria"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">HOJALATERÍA Y PINTURA</a>
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="BODY & PAINT SHOP">HOJALATERÍA Y PINTURA</a>
                     </div>
                 </div>
 
                 <a href="refacciones"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">REFACCIONES</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PARTS">REFACCIONES</a>
                 <a href="seguros"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">SEGUROS</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="INSURANCE">SEGUROS</a>
                 <a href="promociones"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">PROMOCIONES</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PROMOTIONS">PROMOCIONES</a>
                 <a href="nosotros"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">NOSOTROS</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="ABOUT US">NOSOTROS</a>
             </div>
 
             <div class="flex items-center gap-2 lg:gap-4">
+                <button onclick="i18n.toggle()" 
+                    class="flex items-center gap-1 px-3 py-1.5 border border-autoser-black/10 rounded-sm text-[9px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
+                    <span class="lang-toggle-text">EN</span>
+                </button>
                 <a href="tel:3222263500"
                     class="hidden md:flex items-center justify-center w-10 h-10 lg:w-auto lg:h-auto bg-autoser-red/5 lg:bg-transparent rounded-full lg:rounded-none gap-2 font-headline font-bold text-sm hover:text-autoser-red transition-all text-autoser-charcoal group">
                     <span
@@ -379,7 +385,7 @@
                 </a>
                 <a href="vende-tu-auto"
                     class="hidden sm:flex items-center bg-transparent border-2 border-autoser-black text-autoser-black lg:bg-autoser-black lg:text-white px-4 lg:px-6 py-2 lg:py-3 rounded-sm font-headline text-[0.6rem] lg:text-[0.65rem] font-bold uppercase tracking-widest hover:bg-autoser-red hover:border-autoser-red hover:text-white transition-all">
-                    <span class="hidden lg:inline mr-1">VER</span> INVENTARIO
+                    <span class="hidden lg:inline mr-1" data-en="VIEW">VER</span> <span data-en="INVENTORY">INVENTARIO</span>
                 </a>
                 <button
                     class="xl:hidden text-autoser-black hover:text-autoser-red transition-all focus:outline-none"
@@ -409,27 +415,27 @@
                     <span
                         class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                     <span
-                        class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Proceso
+                        class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Safe Agency Process">Proceso
                         de Agencia Seguro</span>
                 </div>
                 <h1
                     class="text-3xl sm:text-4xl md:text-6xl font-headline font-extrabold text-white leading-tight mb-8 tracking-wide uppercase">
-                    VENDE TU AUTO <br /><span class="text-autoser-red shimmer px-2">SIN RIESGOS.</span>
+                    <span data-en="SELL YOUR CAR">VENDE TU AUTO</span> <br /><span class="text-autoser-red shimmer px-2" data-en="WITHOUT RISKS.">SIN RIESGOS.</span>
                 </h1>
-                <p class="text-gray-300 text-xl mb-12 leading-relaxed">
+                <p class="text-gray-300 text-xl mb-12 leading-relaxed" data-en="Avoid the insecurity of dealing with strangers. We buy your car with secure bank payment and the backing of an agency with 25 years of experience.">
                     Evita la inseguridad de tratar con desconocidos. Compramos tu auto con pago bancario seguro y el
                     respaldo de una agencia con 25 años de trayectoria.
                 </p>
                 <div class="flex gap-4">
                     <div class="bg-white/10 px-6 py-4 rounded-sm border border-white/10">
-                        <div class="text-autoser-red font-black text-2xl mb-1 tracking-tight uppercase text-center">
+                        <div class="text-autoser-red font-black text-2xl mb-1 tracking-tight uppercase text-center" data-en="SAFETY">
                             SEGURIDAD</div>
-                        <div class="text-[9px] text-white/50 font-bold uppercase tracking-widest text-center">ENTORNO
+                        <div class="text-[9px] text-white/50 font-bold uppercase tracking-widest text-center" data-en="PROTECTED ENVIRONMENT">ENTORNO
                             PROTEGIDO</div>
                     </div>
                     <div class="bg-white/10 px-6 py-4 rounded-sm border border-white/10">
                         <div class="text-autoser-red font-black text-2xl mb-1 tracking-tight">100%</div>
-                        <div class="text-[9px] text-white/50 font-bold uppercase tracking-widest text-center">LEGALIDAD
+                        <div class="text-[9px] text-white/50 font-bold uppercase tracking-widest text-center" data-en="TOTAL LEGALITY">LEGALIDAD
                             TOTAL</div>
                     </div>
                 </div>
@@ -439,26 +445,26 @@
             <div
                 class="bg-white/5 backdrop-blur-xl p-10 border border-white/10 shadow-2xl relative overflow-hidden shimmer reveal-from-right">
                 <div class="absolute top-0 left-0 w-full h-1 bg-autoser-red"></div>
-                <h3 class="text-2xl font-headline font-extrabold text-white mb-2 uppercase tracking-wide">SOLICITAR
+                <h3 class="text-2xl font-headline font-extrabold text-white mb-2 uppercase tracking-wide" data-en="REQUEST VALUATION">SOLICITAR
                     VALUACIÓN</h3>
-                <p class="text-xs text-gray-400 mb-8 font-bold uppercase tracking-widest">VALUACIÓN PROFESIONAL Y
+                <p class="text-xs text-gray-400 mb-8 font-bold uppercase tracking-widest" data-en="PROFESSIONAL & TRANSPARENT VALUATION">VALUACIÓN PROFESIONAL Y
                     TRANSPARENTE</p>
                 <form class="space-y-4">
-                    <input type="text" placeholder="NOMBRE COMPLETO" class="form-input">
+                    <input type="text" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input">
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="tel" placeholder="TELÉFONO" class="form-input">
+                        <input type="tel" placeholder="TELÉFONO" data-en-placeholder="PHONE" class="form-input">
                         <select class="form-input appearance-none bg-autoser-black/80">
-                            <option>ME INTERESA VENDER</option>
-                            <option>DAR A CUENTA</option>
+                            <option data-en="INTERESTED IN SELLING">ME INTERESA VENDER</option>
+                            <option data-en="TRADE-IN">DAR A CUENTA</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="MARCA DEL AUTO" class="form-input">
-                        <input type="text" placeholder="MODELO Y AÑO" class="form-input">
+                        <input type="text" placeholder="MARCA DEL AUTO" data-en-placeholder="CAR MAKE" class="form-input">
+                        <input type="text" placeholder="MODELO Y AÑO" data-en-placeholder="MODEL & YEAR" class="form-input">
                     </div>
-                    <button class="btn-agency w-full py-5 uppercase font-black tracking-widest">INICIAR MI
+                    <button class="btn-agency w-full py-5 uppercase font-black tracking-widest" data-en="START MY VALUATION">INICIAR MI
                         VALUACIÓN</button>
-                    <p class="text-[10px] text-center text-gray-500 font-bold uppercase tracking-widest mt-4">PAGO
+                    <p class="text-[10px] text-center text-gray-500 font-bold uppercase tracking-widest mt-4" data-en="SECURE PAYMENT WITH ESTABLISHED AGENCY BACKING">PAGO
                         SEGURO CON RESPALDO DE AGENCIA ESTABLECIDA</p>
                 </form>
             </div>
@@ -471,25 +477,25 @@
             <div class="flex items-center gap-4">
                 <span class="material-symbols-outlined text-3xl notranslate select-none">shield_person</span>
                 <div>
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] block leading-none mb-1">Cero
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] block leading-none mb-1" data-en="Zero Risks">Cero
                         Riesgos</span>
-                    <span class="text-[9px] opacity-70 uppercase font-medium">Entorno de Agencia</span>
+                    <span class="text-[9px] opacity-70 uppercase font-medium" data-en="Agency Environment">Entorno de Agencia</span>
                 </div>
             </div>
             <div class="flex items-center gap-4 md:border-l md:border-white/20 md:pl-12">
                 <span class="material-symbols-outlined text-3xl notranslate select-none">payments</span>
                 <div>
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] block leading-none mb-1">Pago
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] block leading-none mb-1" data-en="Secure Payment">Pago
                         Seguro</span>
-                    <span class="text-[9px] opacity-70 uppercase font-medium">Transferencia Garantizada</span>
+                    <span class="text-[9px] opacity-70 uppercase font-medium" data-en="Guaranteed Transfer">Transferencia Garantizada</span>
                 </div>
             </div>
             <div class="flex items-center gap-4 md:border-l md:border-white/20 md:pl-12">
                 <span class="material-symbols-outlined text-3xl notranslate select-none">gavel</span>
                 <div>
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] block leading-none mb-1">Deslinde
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] block leading-none mb-1" data-en="Legal Shield">Deslinde
                         Legal</span>
-                    <span class="text-[9px] opacity-70 uppercase font-medium">Trámite Notarial</span>
+                    <span class="text-[9px] opacity-70 uppercase font-medium" data-en="Notary Process">Trámite Notarial</span>
                 </div>
             </div>
         </div>
@@ -500,7 +506,7 @@
         <div class="container mx-auto px-8">
             <div class="text-center mb-24 reveal-on-scroll">
                 <h2
-                    class="text-4xl md:text-5xl font-headline font-extrabold text-autoser-black mb-6 uppercase tracking-wide">
+                    class="text-4xl md:text-5xl font-headline font-extrabold text-autoser-black mb-6 uppercase tracking-wide" data-en="THE PROCESS IS SIMPLE.">
                     EL PROCESO ES SENCILLO.</h2>
                 <div class="w-24 h-1.5 bg-autoser-red mx-auto"></div>
             </div>
@@ -512,8 +518,8 @@
                         01</div>
                     <div class="material-symbols-outlined text-autoser-red text-4xl mb-6 notranslate select-none">badge
                     </div>
-                    <h4 class="font-bold text-xl mb-4 uppercase tracking-tight">CONTÁCTANOS</h4>
-                    <p class="text-sm text-autoser-charcoal leading-relaxed opacity-70">Llena el formulario o visítanos.
+                    <h4 class="font-bold text-xl mb-4 uppercase tracking-tight" data-en="CONTACT US">CONTÁCTANOS</h4>
+                    <p class="text-sm text-autoser-charcoal leading-relaxed opacity-70" data-en="Fill out the form or visit us. An expert advisor will handle your case immediately under agency standards.">Llena el formulario o visítanos.
                         Un asesor experto tomará tu caso de inmediato bajo estándares de agencia.</p>
                 </div>
                 <div class="step-card group border-autoser-red border-b-8 reveal-on-scroll"
@@ -523,8 +529,8 @@
                         02</div>
                     <div class="material-symbols-outlined text-autoser-red text-4xl mb-6 notranslate select-none">
                         analytics</div>
-                    <h4 class="font-bold text-xl mb-4 uppercase tracking-tight">EVALUACIÓN AGENCIA</h4>
-                    <p class="text-sm text-autoser-charcoal leading-relaxed opacity-70">Realizamos un diagnóstico
+                    <h4 class="font-bold text-xl mb-4 uppercase tracking-tight" data-en="AGENCY EVALUATION">EVALUACIÓN AGENCIA</h4>
+                    <p class="text-sm text-autoser-charcoal leading-relaxed opacity-70" data-en="We perform a comprehensive diagnosis (mechanical and legal). In record time, you will receive a formal and fair offer.">Realizamos un diagnóstico
                         integral (mecánico y legal). En tiempo récord recibirás una oferta formal y justa.</p>
                 </div>
                 <div class="step-card group reveal-on-scroll" style="transition-delay: 300ms;">
@@ -533,8 +539,8 @@
                         03</div>
                     <div class="material-symbols-outlined text-autoser-red text-4xl mb-6 notranslate select-none">
                         handshake</div>
-                    <h4 class="font-bold text-xl mb-4 uppercase tracking-tight">TRATO SEGURO</h4>
-                    <p class="text-sm text-autoser-charcoal leading-relaxed opacity-70">Aceptas la oferta y nosotros
+                    <h4 class="font-bold text-xl mb-4 uppercase tracking-tight" data-en="SECURE DEAL">TRATO SEGURO</h4>
+                    <p class="text-sm text-autoser-charcoal leading-relaxed opacity-70" data-en="You accept the offer and we manage all the paperwork. You receive your payment via bank transfer and transparently.">Aceptas la oferta y nosotros
                         gestionamos todo el papeleo. Recibes tu pago de forma bancaria y transparente.</p>
                 </div>
             </div>
@@ -547,9 +553,9 @@
             <div class="max-w-4xl mx-auto text-center mb-16 reveal-on-scroll">
                 <h2
                     class="text-3xl md:text-4xl font-headline font-extrabold text-autoser-black mb-6 uppercase tracking-wide">
-                    ¿POR QUÉ ARRIESGARSE <span class="text-autoser-red italic">EN LA CALLE?</span>
+                    <span data-en="WHY RISK IT">¿POR QUÉ ARRIESGARSE</span> <span class="text-autoser-red italic" data-en="ON THE STREET?">EN LA CALLE?</span>
                 </h2>
-                <p class="text-autoser-charcoal opacity-70 font-medium">No te arriesgues con desconocidos que pueden
+                <p class="text-autoser-charcoal opacity-70 font-medium" data-en="Don't risk it with strangers who can disappear. Autoser guarantees transparency, legality, and the certainty of 25 years in Vallarta.">No te arriesgues con desconocidos que pueden
                     desaparecer. Autoser garantiza transparencia, legalidad y la certeza de 25 años de permanencia en
                     Vallarta.</p>
             </div>
@@ -562,24 +568,24 @@
                     <div class="flex items-center gap-3 mb-8">
                         <span
                             class="material-symbols-outlined text-gray-400 text-3xl notranslate select-none">dangerous</span>
-                        <h3 class="font-headline font-bold text-xl uppercase text-gray-500">VENTA PARTICULAR / LOTE</h3>
+                        <h3 class="font-headline font-bold text-xl uppercase text-gray-500" data-en="PRIVATE SALE / LOT">VENTA PARTICULAR / LOTE</h3>
                     </div>
                     <ul class="space-y-6">
                         <li class="flex gap-4 items-start">
                             <span class="material-symbols-outlined text-gray-400 notranslate select-none">close</span>
-                            <p class="text-sm text-gray-500 font-medium"><span
+                            <p class="text-sm text-gray-500 font-medium" data-en="Personal Insecurity: meetings with strangers in public places or at your own home."><span
                                      class="font-bold text-gray-600 block mb-1">INSEGURIDAD PERSONAL</span> Citas con
                                 desconocidos en lugares públicos o en tu propio domicilio.</p>
                         </li>
                         <li class="flex gap-4 items-start">
                             <span class="material-symbols-outlined text-gray-400 notranslate select-none">close</span>
-                            <p class="text-sm text-gray-500 font-medium"><span
+                            <p class="text-sm text-gray-500 font-medium" data-en="Unsecure payments: risk of counterfeit bills, bounced checks, or thefts after the transaction."><span
                                     class="font-bold text-gray-600 block mb-1">PAGOS INSEGUROS</span> Riesgo de billetes
                                 falsos, cheques sin fondos o robos tras la transacción.</p>
                         </li>
                         <li class="flex gap-4 items-start">
                             <span class="material-symbols-outlined text-gray-400 notranslate select-none">close</span>
-                            <p class="text-sm text-gray-500 font-medium"><span
+                            <p class="text-sm text-gray-500 font-medium" data-en="Legal liability: the car remains in your name. Risk of scams or misuse with your legal data."><span
                                     class="font-bold text-gray-600 block mb-1">RESPONSABILIDAD LEGAL</span> El auto
                                 sigue a tu nombre. Riesgo de estafas o mal uso con tus datos legales.</p>
                         </li>
@@ -592,13 +598,13 @@
                     <div class="flex items-center gap-3 mb-8">
                         <span
                             class="material-symbols-outlined text-autoser-red text-3xl notranslate select-none">verified_user</span>
-                        <h3 class="font-headline font-bold text-xl uppercase text-white">VENDER EN AUTOSER</h3>
+                        <h3 class="font-headline font-bold text-xl uppercase text-white" data-en="SELLING AT AUTOSER">VENDER EN AUTOSER</h3>
                     </div>
                     <ul class="space-y-6">
                         <li class="flex gap-4 items-start">
                             <span
                                 class="material-symbols-outlined text-autoser-red notranslate select-none">check_circle</span>
-                            <p class="text-sm text-gray-300 font-medium"><span
+                            <p class="text-sm text-gray-300 font-medium" data-en="100% Secure Environment: transaction inside our facilities with surveillance and agency backing."><span
                                     class="font-bold text-white block mb-1 uppercase tracking-tighter">ENTORNO 100%
                                     SEGURO</span> Transacción dentro de nuestras instalaciones con vigilancia y respaldo
                                 de agencia.</p>
@@ -606,7 +612,7 @@
                         <li class="flex gap-4 items-start">
                             <span
                                 class="material-symbols-outlined text-autoser-red notranslate select-none">check_circle</span>
-                            <p class="text-sm text-gray-300 font-medium"><span
+                            <p class="text-sm text-gray-300 font-medium" data-en="Guaranteed Payment: receive your money via traceable bank transfer and the solid backing of an established company."><span
                                     class="font-bold text-white block mb-1 uppercase tracking-tighter">PAGO
                                     GARANTIZADO</span> Recibe tu dinero vía transferencia bancaria rastreable y el
                                 sólido respaldo de una empresa establecida.</p>
@@ -614,7 +620,7 @@
                         <li class="flex gap-4 items-start">
                             <span
                                 class="material-symbols-outlined text-autoser-red notranslate select-none">check_circle</span>
-                            <p class="text-sm text-gray-300 font-medium"><span
+                            <p class="text-sm text-gray-300 font-medium" data-en="Total Legal Shield: we manage the change of ownership. Zero future concerns."><span
                                     class="font-bold text-white block mb-1 uppercase tracking-tighter">DESLINDE LEGAL
                                     TOTAL</span> Nosotros gestionamos el cambio de propietario. Cero preocupaciones
                                 futuras.</p>
@@ -631,16 +637,16 @@
             <div class="reveal-from-left">
                 <h2
                     class="text-4xl font-headline font-extrabold text-autoser-black mb-8 uppercase tracking-wide leading-tight">
-                    TRANQUILIDAD Y <br /><span class="text-autoser-red">MÁXIMA SEGURIDAD.</span></h2>
-                <p class="text-sm text-autoser-charcoal leading-relaxed mb-8">No te arriesgues tratando con
+                    <span data-en="PEACE OF MIND AND">TRANQUILIDAD Y</span> <br /><span class="text-autoser-red" data-en="MAXIMUM SECURITY.">MÁXIMA SEGURIDAD.</span></h2>
+                <p class="text-sm text-autoser-charcoal leading-relaxed mb-8" data-en="Don't risk it by dealing with strangers. At AutoSer, we have been guaranteeing 100% legal and safe transactions in Puerto Vallarta for more than two decades.">No te arriesgues tratando con
                     desconocidos. En AutoSer, llevamos más de dos décadas garantizando transacciones 100% legales y
                     seguras en Puerto Vallarta.</p>
                 <div class="space-y-6">
                     <div class="flex items-start gap-4">
                         <span class="material-symbols-outlined text-autoser-red notranslate select-none">verified</span>
                         <div>
-                            <h5 class="font-bold text-sm uppercase tracking-tighter">PAGO BANCARIO SEGURO</h5>
-                            <p class="text-xs text-autoser-charcoal opacity-60">Transferencia transaccionada
+                            <h5 class="font-bold text-sm uppercase tracking-tighter" data-en="SECURE BANK PAYMENT">PAGO BANCARIO SEGURO</h5>
+                            <p class="text-xs text-autoser-charcoal opacity-60" data-en="Transfer made directly to your personal account after legal validation.">Transferencia transaccionada
                                 directamente a tu cuenta personal tras la validación legal.</p>
                         </div>
                     </div>
@@ -648,16 +654,16 @@
                         <span
                             class="material-symbols-outlined text-autoser-red notranslate select-none">description</span>
                         <div>
-                            <h5 class="font-bold text-sm uppercase tracking-tighter">GESTIÓN ADMINISTRATIVA</h5>
-                            <p class="text-xs text-autoser-charcoal opacity-60">Nos encargamos de bajas de placas y
+                            <h5 class="font-bold text-sm uppercase tracking-tighter" data-en="ADMINISTRATIVE MANAGEMENT">GESTIÓN ADMINISTRATIVA</h5>
+                            <p class="text-xs text-autoser-charcoal opacity-60" data-en="We handle license plate deregulation and notary procedures.">Nos encargamos de bajas de placas y
                                 trámites notariales.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
                         <span class="material-symbols-outlined text-autoser-red notranslate select-none">lock</span>
                         <div>
-                            <h5 class="font-bold text-sm uppercase tracking-tighter">PRIVACIDAD DE DATOS</h5>
-                            <p class="text-xs text-autoser-charcoal opacity-60">Tus datos personales y la información de
+                            <h5 class="font-bold text-sm uppercase tracking-tighter" data-en="DATA PRIVACY">PRIVACIDAD DE DATOS</h5>
+                            <p class="text-xs text-autoser-charcoal opacity-60" data-en="Your personal data and your vehicle's information are protected under corporate standards.">Tus datos personales y la información de
                                 tu vehículo están protegidos bajo estándares corporativos.</p>
                         </div>
                     </div>
@@ -681,7 +687,7 @@
         <div class="container mx-auto px-8 max-w-4xl">
             <div class="text-center mb-24 reveal-on-scroll">
                 <h2
-                    class="text-4xl font-headline font-extrabold text-autoser-black mb-4 uppercase tracking-wide leading-tight text-center">
+                    class="text-4xl font-headline font-extrabold text-autoser-black mb-4 uppercase tracking-wide leading-tight text-center" data-en="FREQUENTLY ASKED QUESTIONS">
                     PREGUNTAS FRECUENTES</h2>
                 <div class="w-24 h-1.5 bg-autoser-red mx-auto"></div>
             </div>
@@ -692,13 +698,13 @@
                     onclick="this.classList.toggle('active')">
                     <div class="flex items-center justify-between">
                         <span
-                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors">¿QUÉ
+                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors" data-en="WHAT DOCUMENTS DO I NEED TO START?">¿QUÉ
                             DOCUMENTOS NECESITO PARA EMPEZAR?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200" data-en="For a quick pre-evaluation, we need the Original Invoice (or full sequence), Official ID, Proof of Address, and the status of tax payments and fines. Having these documents on hand speeds up the legal validation of the unit.">
                             Para una pre-evaluación rápida necesitamos la Factura Original (o secuencia completa),
                             Identificación Oficial, Comprobante de Domicilio y el estado de pagos de tenencias y multas.
                             Tener estos documentos a la mano agiliza la validación legal de la unidad.
@@ -710,13 +716,13 @@
                 <div class="faq-item group bg-autoser-gray border border-transparent p-8 hover:border-autoser-red transition-all cursor-pointer"
                     onclick="this.classList.toggle('active')">
                     <div class="flex items-center justify-between">
-                        <span class="font-headline font-bold text-lg uppercase tracking-tighter">¿PUEDO DEJAR MI AUTO A
+                        <span class="font-headline font-bold text-lg uppercase tracking-tighter" data-en="CAN I LEAVE MY CAR AS A TRADE-IN?">¿PUEDO DEJAR MI AUTO A
                             CUENTA POR OTRO?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200" data-en="Of course! This is one of our most requested options. We take your current car at a competitive market value so that you use it as a down payment or partial payment for any of our inventory units, facilitating your renovation without risks.">
                             ¡Claro! Esta es una de nuestras opciones más solicitadas. Tomamos tu auto actual a un valor
                             competitivo de mercado para que lo utilices como enganche o pago parcial de cualquiera de
                             nuestras unidades de inventario, facilitando tu renovación sin riesgos.
@@ -840,9 +846,9 @@
                     CONTACTO</h4>
                 <div class="space-y-6">
                     <div>
-                        <p class="text-gray-500 text-[10px] uppercase font-bold tracking-widest mb-1">Teléfonos</p>
+                        <p class="text-gray-500 text-[10px] uppercase font-bold tracking-widest mb-1" data-en="Phones">Teléfonos</p>
                         <p class="text-autoser-red font-bold text-sm">322 226 3500</p>
-                        <p class="text-gray-400 text-xs mt-1">Atención General</p>
+                        <p class="text-gray-400 text-xs mt-1" data-en="General Support">Atención General</p>
                     </div>
                     <div class="flex gap-5 pt-4">
                         <a href="https://www.facebook.com/AutoserVallarta" target="_blank"

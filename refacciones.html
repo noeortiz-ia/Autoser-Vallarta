@@ -116,6 +116,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;600&family=Outfit:wght@400;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         rel="stylesheet" />
+    <script src="assets/js/i18n.js"></script>
 
     <script>
         tailwind.config = {
@@ -427,50 +428,55 @@
             <div
                 class="hidden xl:flex gap-4 lg:gap-8 xl:gap-10 font-headline text-[0.75rem] uppercase tracking-widest text-autoser-charcoal items-center">
                 <a href="/"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">Inicio</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="Home">Inicio</a>
                 <!-- Dropdown Seminuevos -->
                 <div class="relative group py-4">
-                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="PRE-OWNED">
                         SEMINUEVOS <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-56 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">VER
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="VIEW INVENTORY">VER
                             INVENTARIO</a>
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">COMPRAMOS
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="WE BUY YOUR CAR">COMPRAMOS
                             TU AUTO</a>
                     </div>
                 </div>
 
                 <!-- Dropdown Taller -->
                 <div class="relative group py-4">
-                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="WORKSHOP">
                         TALLER <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-64 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="taller"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">TALLER MULTIMARCA</a>
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="MULTI-BRAND WORKSHOP">TALLER MULTIMARCA</a>
                         <a href="hojalateria"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">HOJALATERÍA Y PINTURA</a>
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="BODY & PAINT SHOP">HOJALATERÍA Y PINTURA</a>
                     </div>
                 </div>
 
                 <a href="refacciones"
-                    class="nav-link active font-bold hover:text-autoser-red transition-colors">REFACCIONES</a>
+                    class="nav-link active font-bold hover:text-autoser-red transition-colors" data-en="PARTS">REFACCIONES</a>
                 <a href="seguros"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">SEGUROS</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="INSURANCE">SEGUROS</a>
                 <a href="promociones"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">PROMOCIONES</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PROMOTIONS">PROMOCIONES</a>
                 <a href="nosotros"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">NOSOTROS</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="ABOUT US">NOSOTROS</a>
             </div>
 
             <div class="flex items-center gap-2 lg:gap-4">
+                <button onclick="i18n.toggle()" 
+                    class="flex items-center gap-1 px-3 py-1.5 border border-autoser-black/10 rounded-sm text-[9px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
+                    <span class="lang-toggle-text">EN</span>
+                </button>
                 <a href="tel:3222263500"
                     class="hidden md:flex items-center justify-center w-10 h-10 lg:w-auto lg:h-auto bg-autoser-red/5 lg:bg-transparent rounded-full lg:rounded-none gap-2 font-headline font-bold text-sm hover:text-autoser-red transition-all text-autoser-charcoal group">
                     <span
@@ -479,7 +485,7 @@
                 </a>
                 <a href="vende-tu-auto"
                     class="hidden sm:flex items-center bg-transparent border-2 border-autoser-black text-autoser-black lg:bg-autoser-black lg:text-white px-4 lg:px-6 py-2 lg:py-3 rounded-sm font-headline text-[0.6rem] lg:text-[0.65rem] font-bold uppercase tracking-widest hover:bg-autoser-red hover:border-autoser-red hover:text-white transition-all">
-                    <span class="hidden lg:inline mr-1">VER</span> INVENTARIO
+                    <span class="hidden lg:inline mr-1" data-en="VIEW">VER</span> <span data-en="INVENTORY">INVENTARIO</span>
                 </a>
                 <button
                     class="xl:hidden text-autoser-black hover:text-autoser-red transition-all focus:outline-none"
@@ -507,16 +513,16 @@
                         <span
                             class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                         <span
-                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Calidad
+                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Original & Multibrand Quality">Calidad
                             Original & Multimarca</span>
                     </div>
                     <h1
                         class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold text-white mb-10 leading-tight tracking-wide uppercase relative z-10">
-                        <span class="reveal-on-scroll block">REFACCIONES</span>
-                        <span class="text-autoser-red shimmer px-2 inline-block reveal-on-scroll delay-1">DE ALTO</span>
-                        <span class="reveal-on-scroll block delay-2">RENDIMIENTO</span>
+                        <span class="reveal-on-scroll block" data-en="PARTS">REFACCIONES</span>
+                        <span class="text-autoser-red shimmer px-2 inline-block reveal-on-scroll delay-1" data-en="HIGH">DE ALTO</span>
+                        <span class="reveal-on-scroll block delay-2" data-en="PERFORMANCE">RENDIMIENTO</span>
                     </h1>
-                    <p class="text-xl text-gray-300 font-light leading-relaxed mb-10 max-w-xl">
+                    <p class="text-xl text-gray-300 font-light leading-relaxed mb-10 max-w-xl" data-en="Experts in Jeep & RAM and multibrand specialists. From filters, oils, and wipers to critical engine components. If your car needs it, we have it.">
                         Expertos en <span class="font-bold text-white uppercase tracking-wider">Jeep & RAM</span> y
                         especialistas multimarca. Desde filtros, aceites y limpiaparabrisas hasta componentes críticos
                         de motor. Si tu auto lo necesita, lo tenemos.
@@ -526,13 +532,13 @@
                             <span
                                 class="material-symbols-outlined text-autoser-red text-3xl notranslate select-none">verified</span>
                             <span
-                                class="text-white text-xs font-bold uppercase tracking-widest leading-none">100%<br />Garantizado</span>
+                                class="text-white text-xs font-bold uppercase tracking-widest leading-none" data-en="100%<br />Guaranteed">100%<br />Garantizado</span>
                         </div>
                         <div class="flex items-center gap-4">
                             <span
                                 class="material-symbols-outlined text-autoser-red text-3xl notranslate select-none">local_shipping</span>
                             <span
-                                class="text-white text-xs font-bold uppercase tracking-widest leading-none">Entrega<br />Inmediata</span>
+                                class="text-white text-xs font-bold uppercase tracking-widest leading-none" data-en="Immediate<br />Delivery">Entrega<br />Inmediata</span>
                         </div>
                     </div>
                 </div>
@@ -542,24 +548,24 @@
                     <div
                         class="bg-white/5 backdrop-blur-xl p-10 border border-white/10 shadow-2xl relative overflow-hidden shimmer">
                         <div class="absolute top-0 left-0 w-full h-1 bg-autoser-red"></div>
-                        <h2 class="text-2xl font-headline font-extrabold text-white mb-8 uppercase tracking-tight">
+                        <h2 class="text-2xl font-headline font-extrabold text-white mb-8 uppercase tracking-tight" data-en="Quote your Parts">
                             Cotiza tus Refacciones</h2>
                         <form action="#" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" placeholder="NOMBRE COMPLETO" class="form-input" required>
-                                <input type="tel" placeholder="TELÉFONO / WHATSAPP" class="form-input" required>
+                                <input type="text" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input" required>
+                                <input type="tel" placeholder="TELÉFONO / WHATSAPP" data-en-placeholder="PHONE / WHATSAPP" class="form-input" required>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" placeholder="MARCA / MODELO / AÑO" class="form-input" required>
-                                <input type="text" placeholder="VIN / NÚMERO DE SERIE" class="form-input">
+                                <input type="text" placeholder="MARCA / MODELO / AÑO" data-en-placeholder="MAKE / MODEL / YEAR" class="form-input" required>
+                                <input type="text" placeholder="VIN / NÚMERO DE SERIE" data-en-placeholder="VIN / SERIAL NUMBER" class="form-input">
                             </div>
-                            <textarea placeholder="DESCRIBE LA REFACCIÓN QUE BUSCAS" rows="3" class="form-input"
+                            <textarea placeholder="DESCRIBE LA REFACCIÓN QUE BUSCAS" data-en-placeholder="DESCRIBE THE PART YOU ARE LOOKING FOR" rows="3" class="form-input"
                                 required></textarea>
                             <button type="submit"
-                                class="w-full bg-autoser-red text-white py-6 font-headline font-black uppercase tracking-[0.2em] hover:bg-white hover:text-autoser-red transition-all transform hover:-translate-y-1">
+                                class="w-full bg-autoser-red text-white py-6 font-headline font-black uppercase tracking-[0.2em] hover:bg-white hover:text-autoser-red transition-all transform hover:-translate-y-1" data-en="REQUEST QUOTE">
                                 SOLICITAR COTIZACIÓN
                             </button>
-                            <p class="text-[10px] text-gray-500 text-center uppercase tracking-widest">Respuesta
+                            <p class="text-[10px] text-gray-500 text-center uppercase tracking-widest" data-en="Immediate response by certified specialists.">Respuesta
                                 inmediata por especialistas certificados.</p>
                         </form>
                     </div>
@@ -611,14 +617,14 @@
                 <div class="lg:col-span-1 reveal-from-left text-left">
                     <h2
                         class="text-4xl font-headline font-extrabold text-autoser-black mb-8 leading-tight tracking-tight uppercase">
-                        HERENCIA<br /><span class="text-autoser-red">JEEP & RAM</span>
+                        <span data-en="JEEP & RAM">HERENCIA</span><br /><span class="text-autoser-red" data-en="HERITAGE">JEEP & RAM</span>
                     </h2>
-                    <p class="text-autoser-charcoal font-light leading-relaxed mb-8">
+                    <p class="text-autoser-charcoal font-light leading-relaxed mb-8" data-en="As a dealership with Chrysler roots, we possess the most robust inventory of original quality parts in the region. From engine components to extreme Off-Road accessories.">
                         Como concesionaria con raíces Chrysler, poseemos el inventario más robusto de piezas de calidad
                         original en la región. Desde componentes de motor hasta accesorios Off-Road extremos.
                     </p>
                     <p
-                        class="text-sm font-bold uppercase tracking-widest text-autoser-red underline underline-offset-8 decoration-2">
+                        class="text-sm font-bold uppercase tracking-widest text-autoser-red underline underline-offset-8 decoration-2" data-en="View Accessories Catalog">
                         Ver Catálogo de Accesorios
                     </p>
                 </div>
@@ -626,8 +632,8 @@
                     <div class="bg-autoser-gray p-10 border-l-4 border-autoser-red reveal-on-scroll">
                         <span
                             class="material-symbols-outlined text-autoser-red text-4xl mb-6 notranslate select-none">precision_manufacturing</span>
-                        <h3 class="text-xl font-headline font-extrabold mb-4 uppercase">Piezas Calidad Original</h3>
-                        <p class="text-sm text-autoser-charcoal leading-relaxed font-light">
+                        <h3 class="text-xl font-headline font-extrabold mb-4 uppercase" data-en="Original Quality Parts">Piezas Calidad Original</h3>
+                        <p class="text-sm text-autoser-charcoal leading-relaxed font-light" data-en="Parts specifically designed for your Jeep or Ram vehicle, ensuring a perfect fit and maximum factory performance.">
                             Piezas diseñadas específicamente para tu vehículo Jeep o Ram, asegurando un ajuste perfecto
                             y el máximo desempeño de fábrica.
                         </p>
@@ -636,8 +642,8 @@
                         style="transition-delay: 200ms">
                         <span
                             class="material-symbols-outlined text-autoser-red text-4xl mb-6 notranslate select-none">settings_input_component</span>
-                        <h3 class="text-xl font-headline font-extrabold mb-4 uppercase">Kits de Suspensión</h3>
-                        <p class="text-sm text-autoser-charcoal leading-relaxed font-light">
+                        <h3 class="text-xl font-headline font-extrabold mb-4 uppercase" data-en="Suspension Kits">Kits de Suspensión</h3>
+                        <p class="text-sm text-autoser-charcoal leading-relaxed font-light" data-en="Specialists in lift kits, heavy-duty shock absorbers, and traction components for your 4x4.">
                             Especialistas en sistemas de elevación (Lift Kits), amortiguadores heavy-duty y componentes
                             de tracción para tu 4x4.
                         </p>
@@ -656,10 +662,10 @@
             <div class="text-center max-w-4xl mx-auto mb-24 reveal-on-scroll">
                 <h2
                     class="text-5xl lg:text-6xl font-headline font-extrabold text-white mb-8 uppercase tracking-tighter leading-none">
-                    SOLUCIONES <span class="text-autoser-red">MULTIMARCA</span>
+                    <span data-en="MULTIBRAND">SOLUCIONES</span> <span class="text-autoser-red" data-en="SOLUTIONS">MULTIMARCA</span>
                 </h2>
                 <div class="w-32 h-2 bg-autoser-red mx-auto mb-10"></div>
-                <p class="text-xl text-gray-400 font-light leading-relaxed">
+                <p class="text-xl text-gray-400 font-light leading-relaxed" data-en="No matter what brand you drive. We have access to the most reliable specialized suppliers to get the exact part you need, guaranteeing quality in each component.">
                     No importa qué marca conduzcas. Contamos con acceso a los proveedores especializados más confiables
                     para conseguir la refacción exacta que necesites, garantizando calidad en cada componente.
                 </p>
@@ -679,10 +685,10 @@
                             <path d="M12 17v1"></path>
                         </svg>
                     </div>
-                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight">Motor
+                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight" data-en="Engine & Drivetrain">Motor
                         & Tren Motriz</h4>
                     <p
-                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">
+                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity" data-en="Engine internals, belts, pulleys">
                         Internos de motor, bandas, poleas</p>
                 </div>
                 <div class="bg-white/5 p-12 text-center border border-white/10 hover:border-autoser-red transition-all reveal-on-scroll group"
@@ -696,10 +702,10 @@
                             <path d="M12 2v2M12 20v2M2 12h2M20 12h2"></path>
                         </svg>
                     </div>
-                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight">
+                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight" data-en="Suspension & Brakes">
                         Suspensión & Frenos</h4>
                     <p
-                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">
+                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity" data-en="Brake pads, discs, shock absorbers">
                         Balatas, discos, amortiguadores</p>
                 </div>
                 <div class="bg-white/5 p-12 text-center border border-white/10 hover:border-autoser-red transition-all reveal-on-scroll group"
@@ -712,10 +718,10 @@
                             </path>
                         </svg>
                     </div>
-                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight">
+                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight" data-en="Electrical System">
                         Sistema Eléctrico</h4>
                     <p
-                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">
+                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity" data-en="Sensors, modules, harnesses">
                         Sensores, módulos, arneses</p>
                 </div>
                 <div class="bg-white/5 p-12 text-center border border-white/10 hover:border-autoser-red transition-all reveal-on-scroll group"
@@ -728,10 +734,10 @@
                             <circle cx="12" cy="12" r="9"></circle>
                         </svg>
                     </div>
-                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight">
+                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight" data-en="Air Conditioning (A/C)">
                         Climatización (A/C)</h4>
                     <p
-                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">
+                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity" data-en="Compressors, evaporators, gas">
                         Compresores, evaporadores, gas</p>
                 </div>
 
@@ -746,10 +752,10 @@
                             <path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path>
                         </svg>
                     </div>
-                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight">
+                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight" data-en="Filters & Maintenance">
                         Filtros & Mantenimiento</h4>
                     <p
-                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">
+                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity" data-en="Air, Oil, Cabin, Spark Plugs">
                         Aire, Aceite, Cabina, Bujías</p>
                 </div>
                 <div class="bg-white/5 p-12 text-center border border-white/10 hover:border-autoser-red transition-all reveal-on-scroll group"
@@ -763,10 +769,10 @@
                             <path d="M8 22h8"></path>
                         </svg>
                     </div>
-                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight">
+                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight" data-en="Fluids & Consumables">
                         Líquidos & Consumibles</h4>
                     <p
-                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">
+                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity" data-en="Oils, Antifreeze, Fluids">
                         Aceites, Anticongelante, Líquidos</p>
                 </div>
                 <div class="bg-white/5 p-12 text-center border border-white/10 hover:border-autoser-red transition-all reveal-on-scroll group"
@@ -780,10 +786,10 @@
                             </path>
                         </svg>
                     </div>
-                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight">
+                    <h4 class="text-white font-headline font-bold text-xs uppercase tracking-widest leading-tight" data-en="Lighting & Visibility">
                         Iluminación & Visibilidad</h4>
                     <p
-                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">
+                        class="text-[9px] text-gray-500 mt-4 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity" data-en="LED Bulbs, Wipers, Headlights">
                         Focos LED, Limpiaparabrisas, Faros</p>
                 </div>
                 <div class="bg-white/5 p-12 text-center border border-white/10 hover:border-autoser-red transition-all reveal-on-scroll group"
@@ -812,11 +818,11 @@
         <div class="container mx-auto px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="lg:w-1/2 reveal-from-left">
-                    <span class="text-autoser-red font-bold text-xs uppercase tracking-[0.4em] mb-4 block">Kits de
+                    <span class="text-autoser-red font-bold text-xs uppercase tracking-[0.4em] mb-4 block" data-en="Specialty Kits">Kits de
                         Especialidad</span>
                     <h2
                         class="text-4xl lg:text-6xl font-headline font-extrabold text-autoser-black mb-10 uppercase tracking-wide leading-tight">
-                        MANTENIMIENTO <br /><span class="text-autoser-red">SIN COMPROMISOS.</span></h2>
+                        <span data-en="MAINTENANCE">MANTENIMIENTO</span> <br /><span class="text-autoser-red" data-en="WITHOUT COMPROMISE.">SIN COMPROMISOS.</span></h2>
                     <div class="space-y-8">
                         <div class="flex gap-6 items-start group">
                             <div
@@ -825,8 +831,8 @@
                                     class="material-symbols-outlined text-autoser-red group-hover:text-white notranslate select-none">build</span>
                             </div>
                             <div>
-                                <h4 class="font-headline font-bold text-xl uppercase mb-2">Kits de Tune-Up Pro</h4>
-                                <p class="text-gray-600 text-sm leading-relaxed">Incluimos filtros de aire, aceite y
+                                <h4 class="font-headline font-bold text-xl uppercase mb-2" data-en="Tune-Up Pro Kits">Kits de Tune-Up Pro</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed" data-en="We include air, oil, and cabin filters from leading brands like Wix or Mann Filter, along with iridium spark plugs for maximum fuel efficiency.">Incluimos filtros de aire, aceite y
                                     cabina de marcas líderes como Wix o Mann Filter, junto con bujías de iridio para
                                     máxima eficiencia combustible.</p>
                             </div>
@@ -838,9 +844,9 @@
                                     class="material-symbols-outlined text-autoser-red group-hover:text-white notranslate select-none">speed</span>
                             </div>
                             <div>
-                                <h4 class="font-headline font-bold text-xl uppercase mb-2">Frenado de Alto Desempeño
+                                <h4 class="font-headline font-bold text-xl uppercase mb-2" data-en="High Performance Braking">Frenado de Alto Desempeño
                                 </h4>
-                                <p class="text-gray-600 text-sm leading-relaxed">Balatas cerámicas de bajo polvo y
+                                <p class="text-gray-600 text-sm leading-relaxed" data-en="Low-dust ceramic brake pads and ventilated discs that guarantee superior stopping distance, tested under original equipment standards.">Balatas cerámicas de bajo polvo y
                                     discos ventilados que garantizan una distancia de frenado superior, probados bajo
                                     estándares de equipo original.</p>
                             </div>
@@ -852,9 +858,9 @@
                                     class="material-symbols-outlined text-autoser-red group-hover:text-white notranslate select-none">terrain</span>
                             </div>
                             <div>
-                                <h4 class="font-headline font-bold text-xl uppercase mb-2">Suspensión 4x4 & Off-Road
+                                <h4 class="font-headline font-bold text-xl uppercase mb-2" data-en="4x4 & Off-Road Suspension">Suspensión 4x4 & Off-Road
                                 </h4>
-                                <p class="text-gray-600 text-sm leading-relaxed">Amortiguadores Bilstein, Fox y kits de
+                                <p class="text-gray-600 text-sm leading-relaxed" data-en="Bilstein, Fox shocks, and leveling kits. We elevate your Jeep or Pickup potential with components designed for rough handling.">Amortiguadores Bilstein, Fox y kits de
                                     nivelación. Elevamos el potencial de tu Jeep o Pickup con componentes diseñados para
                                     el trato rudo.</p>
                             </div>
@@ -868,10 +874,10 @@
                                 <span
                                     class="material-symbols-outlined text-autoser-red text-6xl mb-6 block notranslate select-none">barcode_scanner</span>
                                 <p
-                                    class="text-white font-headline font-black text-2xl uppercase tracking-widest leading-tight">
+                                    class="text-white font-headline font-black text-2xl uppercase tracking-widest leading-tight" data-en="REQUEST YOUR KITS USING YOUR UNIT'S VIN">
                                     SOLICITA TUS KITS MEDIANTE EL VIN DE TU UNIDAD</p>
                                 <div class="w-20 h-1 bg-autoser-red mx-auto mt-6"></div>
-                                <p class="text-gray-400 text-[10px] mt-6 uppercase tracking-widest leading-relaxed">
+                                <p class="text-gray-400 text-[10px] mt-6 uppercase tracking-widest leading-relaxed" data-en="Total precision guaranteed to avoid returns and delays.">
                                     Precisión total garantizada para evitar devoluciones y demoras.</p>
                             </div>
                         </div>
@@ -890,8 +896,8 @@
                 <div class="lg:col-span-1 bg-autoser-black p-12 reveal-on-scroll">
                     <h3
                         class="text-3xl font-headline font-extrabold text-white mb-6 uppercase leading-tight tracking-wide">
-                        SERVICIO A <br /><span class="text-autoser-red">PROFESIONALES</span></h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8">Si tienes un taller mecánico o administras una
+                        <span data-en="PROFESSIONAL">SERVICIO A</span> <br /><span class="text-autoser-red" data-en="SERVICE">PROFESIONALES</span></h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8" data-en="If you own a workshop or manage a fleet, Autoser is your strategic ally. We offer wholesale prices, technical advice on complex parts, and express supply to minimize your vehicle downtime.">Si tienes un taller mecánico o administras una
                         flotilla, Autoser es tu aliado estratégico con mejores márgenes y tiempos de entrega.</p>
                     <ul class="space-y-4 mb-10">
                         <li class="flex items-center gap-3 text-white text-xs font-bold uppercase tracking-widest">
@@ -1018,7 +1024,7 @@
         <div class="container mx-auto px-8 max-w-4xl">
             <div class="text-center mb-24 reveal-on-scroll">
                 <h2
-                    class="text-4xl font-headline font-extrabold text-autoser-black mb-4 uppercase tracking-wide leading-tight text-center">
+                    class="text-4xl font-headline font-extrabold text-autoser-black mb-4 uppercase tracking-wide leading-tight text-center" data-en="FREQUENTLY ASKED QUESTIONS">
                     PREGUNTAS FRECUENTES</h2>
                 <div class="w-24 h-1.5 bg-autoser-red mx-auto"></div>
             </div>
@@ -1029,13 +1035,13 @@
                     onclick="this.classList.toggle('active')">
                     <div class="flex items-center justify-between">
                         <span
-                            class="font-headline font-bold text-lg uppercase tracking-tighter transition-colors">¿Surten
+                            class="font-headline font-bold text-lg uppercase tracking-tighter transition-colors" data-en="DO YOU SUPPLY PARTS FOR ANY BRAND?">¿Surten
                             refacciones para cualquier marca de vehículo?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed border-t border-gray-200 pt-6 mt-0">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed border-t border-gray-200 pt-6 mt-0" data-en="Correct! While we are specialists in Jeep and RAM, our experience allows us to manage and supply parts for practically any American, European or Asian brand. We only request the serial number (VIN) to guarantee total compatibility.">
                             ¡Correcto! Si bien somos especialistas en Jeep y RAM, nuestra experiencia nos permite
                             gestionar y suministrar refacciones para prácticamente cualquier marca americana, europea o
                             asiática. Solo solicitamos el número de serie (VIN) para garantizar compatibilidad total.
@@ -1047,13 +1053,13 @@
                 <div class="faq-item group bg-autoser-gray border border-transparent p-8 hover:border-autoser-red transition-all cursor-pointer reveal-on-scroll"
                     onclick="this.classList.toggle('active')" style="transition-delay: 100ms">
                     <div class="flex items-center justify-between">
-                        <span class="font-headline font-bold text-lg uppercase tracking-tighter transition-colors">¿Qué
+                        <span class="font-headline font-bold text-lg uppercase tracking-tighter transition-colors" data-en="WHAT WARRANTY DO THE PARTS HAVE?">¿Qué
                             garantía tienen las refacciones?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed border-t border-gray-200 pt-6 mt-0">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed border-t border-gray-200 pt-6 mt-0" data-en="Original quality parts have a factory warranty against manufacturing defects. Multibrand parts have a direct warranty from Autoser for a specific period depending on the type of component.">
                             Las refacciones de calidad original cuentan con garantía de planta contra defectos de
                             fabricación. Las refacciones multimarca cuentan con garantía directa de Autoser por un
                             periodo determinado según el tipo de componente.
@@ -1066,13 +1072,13 @@
                     onclick="this.classList.toggle('active')" style="transition-delay: 200ms">
                     <div class="flex items-center justify-between">
                         <span
-                            class="font-headline font-bold text-lg uppercase tracking-tighter transition-colors">¿Venden
+                            class="font-headline font-bold text-lg uppercase tracking-tighter transition-colors" data-en="DO YOU ALSO SELL BASIC CONSUMABLES LIKE OILS OR FILTERS?">¿Venden
                             también consumibles básicos como aceites o filtros?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed border-t border-gray-200 pt-6 mt-0">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed border-t border-gray-200 pt-6 mt-0" data-en="Yes, everything! We have a complete inventory of high-rotation consumables: synthetic oils, air/oil filters, spark plugs, wipers, antifreeze, and batteries for practically any make and model.">
                             ¡Sí, de todo! Contamos con un inventario completo de consumibles de alta rotación: aceites
                             sintéticos, filtros de aire/aceite, bujías, limpiaparabrisas, anticongelante y baterías para
                             prácticamente cualquier marca y modelo.
@@ -1085,13 +1091,13 @@
                     onclick="this.classList.toggle('active')" style="transition-delay: 300ms">
                     <div class="flex items-center justify-between">
                         <span
-                            class="font-headline font-bold text-lg uppercase tracking-tighter transition-colors">¿Hacen
+                            class="font-headline font-bold text-lg uppercase tracking-tighter transition-colors" data-en="DO YOU SHIP ALL OVER MEXICO?">¿Hacen
                             envíos a todo México?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed border-t border-gray-200 pt-6 mt-0">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed border-t border-gray-200 pt-6 mt-0" data-en="Yes, we have national shipping service. Depending on the part and destination, we provide freight quotes with the safest courier companies in the country.">
                             Sí, contamos con servicio de envío nacional. Dependiendo de la pieza y destino, realizamos
                             cotizaciones de flete con las paqueterías más seguras del país.
                         </p>
@@ -1115,23 +1121,23 @@
 
             <div>
                 <h4
-                    class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white">
+                    class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white" data-en="DEPARTMENTS">
                     DEPARTAMENTOS</h4>
                 <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
-                    <li><a href="/" class="hover:text-autoser-red">Inicio</a></li>
+                    <li><a href="/" class="hover:text-autoser-red" data-en="Home">Inicio</a></li>
                     <li><a href="vende-tu-auto"
-                            class="hover:text-autoser-red">Inventario</a></li>
-                    <li><a href="taller" class="hover:text-autoser-red">Taller de
+                            class="hover:text-autoser-red" data-en="Inventory">Inventario</a></li>
+                    <li><a href="taller" class="hover:text-autoser-red" data-en="Service Workshop">Taller de
                             Servicio</a></li>
-                    <li><a href="hojalateria" class="hover:text-autoser-red">Hojalatería
+                    <li><a href="hojalateria" class="hover:text-autoser-red" data-en="Body & Paint Shop">Hojalatería
                             y Pintura</a></li>
                     <li><a href="refacciones"
-                            class="hover:text-autoser-red">Refacciones</a></li>
+                            class="hover:text-autoser-red" data-en="Parts">Refacciones</a></li>
                     <li><a href="seguros"
-                            class="hover:text-autoser-red">Seguros</a></li>
-                    <li><a href="promociones" class="hover:text-autoser-red">Promociones</a>
+                            class="hover:text-autoser-red" data-en="Insurance">Seguros</a></li>
+                    <li><a href="promociones" class="hover:text-autoser-red" data-en="Promotions">Promociones</a>
                     </li>
-                    <li><a href="nosotros" class="hover:text-autoser-red">Nosotros</a>
+                    <li><a href="nosotros" class="hover:text-autoser-red" data-en="About Us">Nosotros</a>
                     </li>
                 </ul>
             </div>

@@ -63,6 +63,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
+    <script src="assets/js/i18n.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -230,50 +231,55 @@
             <div
                 class="hidden xl:flex gap-4 lg:gap-8 xl:gap-10 font-headline text-[0.75rem] uppercase tracking-widest text-autoser-charcoal items-center">
                 <a href="/"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">Inicio</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="Home">Inicio</a>
                 <!-- Dropdown Seminuevos -->
                 <div class="relative group py-4">
-                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="PRE-OWNED">
                         SEMINUEVOS <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-56 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">VER
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="VIEW INVENTORY">VER
                             INVENTARIO</a>
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">COMPRAMOS
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="WE BUY YOUR CAR">COMPRAMOS
                             TU AUTO</a>
                     </div>
                 </div>
 
                 <!-- Dropdown Taller -->
                 <div class="relative group py-4">
-                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="WORKSHOP">
                         TALLER <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-64 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="taller"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">TALLER MULTIMARCA</a>
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="MULTI-BRAND WORKSHOP">TALLER MULTIMARCA</a>
                         <a href="hojalateria"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">HOJALATERÍA Y PINTURA</a>
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="BODY & PAINT SHOP">HOJALATERÍA Y PINTURA</a>
                     </div>
                 </div>
 
                 <a href="refacciones"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">REFACCIONES</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PARTS">REFACCIONES</a>
                 <a href="seguros"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">SEGUROS</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="INSURANCE">SEGUROS</a>
                 <a href="promociones"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">PROMOCIONES</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PROMOTIONS">PROMOCIONES</a>
                 <a href="nosotros"
-                    class="nav-link active font-bold hover:text-autoser-red transition-colors">NOSOTROS</a>
+                    class="nav-link active font-bold hover:text-autoser-red transition-colors" data-en="ABOUT US">NOSOTROS</a>
             </div>
 
             <div class="flex items-center gap-2 lg:gap-4">
+                <button onclick="i18n.toggle()" 
+                    class="flex items-center gap-1 px-3 py-1.5 border border-autoser-black/10 rounded-sm text-[9px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
+                    <span class="lang-toggle-text">EN</span>
+                </button>
                 <a href="tel:3222263500"
                     class="hidden md:flex items-center justify-center w-10 h-10 lg:w-auto lg:h-auto bg-autoser-red/5 lg:bg-transparent rounded-full lg:rounded-none gap-2 font-headline font-bold text-sm hover:text-autoser-red transition-all text-autoser-charcoal group">
                     <span
@@ -282,7 +288,7 @@
                 </a>
                 <a href="vende-tu-auto"
                     class="hidden sm:flex items-center bg-transparent border-2 border-autoser-black text-autoser-black lg:bg-autoser-black lg:text-white px-4 lg:px-6 py-2 lg:py-3 rounded-sm font-headline text-[0.6rem] lg:text-[0.65rem] font-bold uppercase tracking-widest hover:bg-autoser-red hover:border-autoser-red hover:text-white transition-all">
-                    <span class="hidden lg:inline mr-1">VER</span> INVENTARIO
+                    <span class="hidden lg:inline mr-1" data-en="VIEW">VER</span> <span data-en="INVENTORY">INVENTARIO</span>
                 </a>
                 <button
                     class="xl:hidden text-autoser-black hover:text-autoser-red transition-all focus:outline-none"
@@ -306,13 +312,13 @@
                     <span
                         class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                     <span
-                        class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Tradición
+                        class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Tradition and Excellence">Tradición
                         y Excelencia</span>
                 </div>
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold text-white leading-tight uppercase tracking-wide reveal-on-scroll delay-1">
-                    MÁS DE 25 AÑOS DE<br /><span class="text-autoser-red shimmer inline-block px-2">LEGADO EN VALLARTA</span>
+                    <span data-en="MORE THAN 25 YEARS OF">MÁS DE 25 AÑOS DE</span><br /><span class="text-autoser-red shimmer inline-block px-2" data-en="LEGACY IN VALLARTA">LEGADO EN VALLARTA</span>
                 </h1>
-                <p class="text-gray-300 text-xl max-w-2xl mx-auto reveal-on-scroll delay-2">
+                <p class="text-gray-300 text-xl max-w-2xl mx-auto reveal-on-scroll delay-2" data-en="Born with the vision of elevating automotive standards, today we are the most trusted multi-brand reference in the region.">
                     Nacidos con la visión de elevar los estándares automotrices, hoy somos el referente multimarca de mayor confianza en la región.
                 </p>
             </div>
@@ -329,16 +335,16 @@
                         <span
                             class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                         <span
-                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Valores
+                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Core Values">Valores
                             Fundamentales</span>
                     </div>
                     <h2 class="text-4xl font-headline font-extrabold text-autoser-black mb-6 uppercase tracking-wider">
-                        NUESTRA <span class="text-autoser-red">ESENCIA</span>
+                        <span data-en="OUR">NUESTRA</span> <span class="text-autoser-red" data-en="ESSENCE">ESENCIA</span>
                     </h2>
                     <div class="w-20 h-1.5 bg-autoser-red mb-10"></div>
                     <div class="space-y-6 text-autoser-charcoal leading-relaxed text-lg">
-                        <p>Autoser es un concesionario destacado en Puerto Vallarta, ofreciendo una amplia gama de vehículos nuevos y usados, con un fuerte énfasis en el servicio al cliente y calidad superior en cada compra.</p>
-                        <p>A lo largo de más de 25 años, hemos construido una reputación cimentada en la transparencia y un servicio excepcional. Desde nuestra etapa fundacional hasta nuestra actual expansión en Las Juntas y Valle Dorado, Autoser se ha consolidado como la agencia de referencia en Puerto Vallarta, atendiendo a cada cliente con la misma pasión y experiencia técnica que nos vio nacer.</p>
+                        <p data-en="Autoser is a prominent dealer in Puerto Vallarta, offering a wide range of new and used vehicles, with a strong emphasis on customer service and superior quality in every purchase.">Autoser es un concesionario destacado en Puerto Vallarta, ofreciendo una amplia gama de vehículos nuevos y usados, con un fuerte énfasis en el servicio al cliente y calidad superior en cada compra.</p>
+                        <p data-en="Over more than 25 years, we have built a reputation based on transparency and exceptional service. From our foundation stage to our current expansion in Las Juntas and Valle Dorado, Autoser has established itself as the leading agency in Puerto Vallarta, serving each client with the same passion and technical expertise that saw us born.">A lo largo de más de 25 años, hemos construido una reputación cimentada en la transparencia y un servicio excepcional. Desde nuestra etapa fundacional hasta nuestra actual expansión en Las Juntas y Valle Dorado, Autoser se ha consolidado como la agencia de referencia en Puerto Vallarta, atendiendo a cada cliente con la misma pasión y experiencia técnica que nos vio nacer.</p>
                     </div>
                 </div>
                 <div class="relative reveal-on-scroll reveal-from-right">
@@ -357,20 +363,20 @@
             <!-- Calidad -->
             <div class="card-agency p-12 space-y-6 reveal-on-scroll reveal-from-bottom">
                 <span class="material-symbols-outlined text-autoser-red text-5xl">verified</span>
-                <h3 class="text-2xl font-headline font-bold uppercase tracking-tight">Calidad Superior</h3>
-                <p class="text-autoser-charcoal text-sm leading-relaxed">Nos esforzamos por entregar vehículos de la más alta calidad, garantizando satisfacción total y confianza en cada transacción y servicio técnico.</p>
+                <h3 class="text-2xl font-headline font-bold uppercase tracking-tight" data-en="Superior Quality">Calidad Superior</h3>
+                <p class="text-autoser-charcoal text-sm leading-relaxed" data-en="We strive to deliver vehicles of the highest quality, guaranteeing total satisfaction and trust in every transaction and technical service.">Nos esforzamos por entregar vehículos de la más alta calidad, garantizando satisfacción total y confianza en cada transacción y servicio técnico.</p>
             </div>
             <!-- Atención -->
             <div class="card-agency p-12 space-y-6 reveal-on-scroll reveal-from-bottom delay-1">
                 <span class="material-symbols-outlined text-autoser-red text-5xl">person_pin</span>
-                <h3 class="text-2xl font-headline font-bold uppercase tracking-tight">Atención Personalizada</h3>
-                <p class="text-autoser-charcoal text-sm leading-relaxed">Valoramos a nuestros clientes, proporcionando un servicio personalizado que se adapta a las necesidades individuales de cada persona en Puerto Vallarta y Bahía de Banderas.</p>
+                <h3 class="text-2xl font-headline font-bold uppercase tracking-tight" data-en="Personalized Attention">Atención Personalizada</h3>
+                <p class="text-autoser-charcoal text-sm leading-relaxed" data-en="We value our clients, providing a personalized service that adapts to the individual needs of each person in Puerto Vallarta and Bahía de Banderas.">Valoramos a nuestros clientes, proporcionando un servicio personalizado que se adapta a las necesidades individuales de cada persona en Puerto Vallarta y Bahía de Banderas.</p>
             </div>
             <!-- Innovación -->
             <div class="card-agency p-12 space-y-6 reveal-on-scroll reveal-from-bottom delay-2">
                 <span class="material-symbols-outlined text-autoser-red text-5xl">rocket_launch</span>
-                <h3 class="text-2xl font-headline font-bold uppercase tracking-tight">Innovación Constante</h3>
-                <p class="text-autoser-charcoal text-sm leading-relaxed">Estamos comprometidos con la mejora continua, incorporando las últimas tecnologías y tendencias mundiales en la industria automotriz.</p>
+                <h3 class="text-2xl font-headline font-bold uppercase tracking-tight" data-en="Constant Innovation">Innovación Constante</h3>
+                <p class="text-autoser-charcoal text-sm leading-relaxed" data-en="We are committed to continuous improvement, incorporating the latest technologies and world trends in the automotive industry.">Estamos comprometidos con la mejora continua, incorporando las últimas tecnologías y tendencias mundiales en la industria automotriz.</p>
             </div>
         </div>
     </section>
@@ -385,21 +391,21 @@
                         <span
                             class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                         <span
-                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Trayectoria
+                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Trusted Proven Track Record">Trayectoria
                             de Confianza</span>
                     </div>
                     <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wider">
-                        NUESTRA <span class="text-autoser-red">HISTORIA</span>
+                        <span data-en="OUR">NUESTRA</span> <span class="text-autoser-red" data-en="HISTORY">HISTORIA</span>
                     </h2>
                     <div class="w-20 h-1.5 bg-autoser-red mx-auto"></div>
                     <div class="space-y-8 text-autoser-charcoal leading-relaxed text-xl font-light">
-                        <p>
+                        <p data-en="Founded more than a quarter of a century ago, Autoser Vallarta was established from its origin as the reference automotive agency in the region. For decades, our trajectory has consolidated a standard of service and trust unmatched for the entire Bay.">
                             Fundada hace más de un cuarto de siglo, Autoser Vallarta se estableció desde su origen como la agencia automotriz de referencia en la región. Durante décadas, nuestra trayectoria ha consolidado un estándar de servicio y confianza inigualable para toda la Bahía.
                         </p>
-                        <p>
+                        <p data-en="Today, that history has evolved into a new stage of growth. With the opening of modern and strategic facilities in Las Juntas and Valle Dorado, we take our capacity for attention to key points in the city, offering better infrastructure without losing the direct treatment that distinguishes us.">
                             Hoy, esa historia ha evolucionado hacia una nueva etapa de crecimiento. Con la apertura de instalaciones modernas y estratégicas en Las Juntas y Valle Dorado, llevamos nuestra capacidad de atención a puntos clave de la ciudad, ofreciendo una mejor infraestructura sin perder el trato directo que nos distingue.
                         </p>
-                        <p>
+                        <p data-en="We are not part of a large conglomerate; we are Autoser. Each client is served with the same passion as 25 years ago, backed by the technical experience of a team that deeply knows the needs of those who drive in Puerto Vallarta.">
                             No somos parte de un gran conglomerado; somos Autoser. Cada cliente es atendido con la misma pasión que hace 25 años, respaldada por la experiencia técnica de un equipo que conoce a profundidad las necesidades de quienes conducen en Puerto Vallarta.
                         </p>
                     </div>
@@ -417,11 +423,11 @@
                     <span
                         class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                     <span
-                        class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Presencia
+                        class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Regional Presence">Presencia
                         Regional</span>
                 </div>
                 <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wider">
-                    ¿DÓNDE <span class="text-autoser-red">ESTAMOS?</span>
+                    <span data-en="WHERE ARE">¿DÓNDE</span> <span class="text-autoser-red" data-en="WE?">ESTAMOS?</span>
                 </h2>
             </div>
             
@@ -431,8 +437,8 @@
                     <div class="flex items-start gap-4 mb-8">
                         <span class="material-symbols-outlined text-autoser-red text-4xl">location_on</span>
                         <div>
-                            <h3 class="text-2xl font-headline font-black uppercase tracking-tight text-autoser-black">Sucursal Las Juntas (Matriz)</h3>
-                            <p class="text-autoser-charcoal text-sm font-bold mt-1">VENTAS, TALLER Y REFACCIONES</p>
+                            <h3 class="text-2xl font-headline font-black uppercase tracking-tight text-autoser-black" data-en="Las Juntas Branch (Corporate)">Sucursal Las Juntas (Matriz)</h3>
+                            <p class="text-autoser-charcoal text-sm font-bold mt-1" data-en="SALES, WORKSHOP & PARTS">VENTAS, TALLER Y REFACCIONES</p>
                         </div>
                     </div>
                     <div class="aspect-video w-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden mb-6 border border-gray-100">
@@ -442,15 +448,15 @@
                     </div>
                     <div class="grid grid-cols-2 gap-4 text-xs font-bold uppercase tracking-widest text-gray-500">
                         <div>
-                            <p class="text-autoser-red mb-2">Ventas</p>
-                            <p>Lun-Vie: 9am - 7pm</p>
-                            <p>Sáb: 9am - 3pm</p>
-                            <p>Dom: 10am - 3pm</p>
+                            <p class="text-autoser-red mb-2" data-en="Sales">Ventas</p>
+                            <p data-en="Mon-Fri: 9am - 7pm">Lun-Vie: 9am - 7pm</p>
+                            <p data-en="Sat: 9am - 3pm">Sáb: 9am - 3pm</p>
+                            <p data-en="Sun: 10am - 3pm">Dom: 10am - 3pm</p>
                         </div>
                         <div>
-                            <p class="text-autoser-red mb-2">Taller</p>
-                            <p>Lun-Vie: 9am - 2pm / 3pm - 6pm</p>
-                            <p>Sáb: 9am - 2pm</p>
+                            <p class="text-autoser-red mb-2" data-en="Workshop">Taller</p>
+                            <p data-en="Mon-Fri: 9am-2pm / 3pm-6pm">Lun-Vie: 9am - 2pm / 3pm - 6pm</p>
+                            <p data-en="Sat: 9am - 2pm">Sáb: 9am - 2pm</p>
                         </div>
                     </div>
                 </div>
@@ -460,8 +466,8 @@
                     <div class="flex items-start gap-4 mb-8">
                         <span class="material-symbols-outlined text-autoser-red text-4xl">storefront</span>
                         <div>
-                            <h3 class="text-2xl font-headline font-black uppercase tracking-tight text-autoser-black">Sucursal Valle Dorado</h3>
-                            <p class="text-autoser-charcoal text-sm font-bold mt-1">VENTA DE SEMINUEVOS</p>
+                            <h3 class="text-2xl font-headline font-black uppercase tracking-tight text-autoser-black" data-en="Valle Dorado Branch">Sucursal Valle Dorado</h3>
+                            <p class="text-autoser-charcoal text-sm font-bold mt-1" data-en="PRE-OWNED SALES">VENTA DE SEMINUEVOS</p>
                         </div>
                     </div>
                     <div class="aspect-video w-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden mb-6 border border-gray-100">
@@ -470,10 +476,10 @@
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="text-xs font-bold uppercase tracking-widest text-gray-500">
-                        <p class="text-autoser-red mb-2">Horario de Ventas</p>
-                        <p>Lun-Vie: 9am - 8pm</p>
-                        <p>Sáb: 9am - 3pm</p>
-                        <p>Dom: 10am - 3pm</p>
+                        <p class="text-autoser-red mb-2" data-en="Sales Hours">Horario de Ventas</p>
+                        <p data-en="Mon-Fri: 9am - 8pm">Lun-Vie: 9am - 8pm</p>
+                        <p data-en="Sat: 9am - 3pm">Sáb: 9am - 3pm</p>
+                        <p data-en="Sun: 10am - 3pm">Dom: 10am - 3pm</p>
                     </div>
                 </div>
             </div>
@@ -489,16 +495,16 @@
             <div class="max-w-4xl mx-auto space-y-8">
                 <div class="inline-flex items-center gap-3 px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full mb-8 reveal-on-scroll">
                     <span class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
-                    <span class="text-white text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Oportunidades</span>
+                    <span class="text-white text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Opportunities">Oportunidades</span>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-white uppercase tracking-tight reveal-on-scroll">
-                    ¿QUIERES SER PARTE DE <br /><span class="text-autoser-red italic">NUESTRO EQUIPO?</span>
+                    <span data-en="WANT TO BE PART OF">¿QUIERES SER PARTE DE</span> <br /><span class="text-autoser-red italic" data-en="OUR TEAM?">NUESTRO EQUIPO?</span>
                 </h2>
-                <p class="text-gray-400 text-lg leading-relaxed reveal-on-scroll delay-1">
+                <p class="text-gray-400 text-lg leading-relaxed reveal-on-scroll delay-1" data-en="We are looking for innovative minds passionate about automotive excellence to continue building the legacy of Autoser Vallarta.">
                     Buscamos mentes innovadoras y apasionadas por la excelencia automotriz para seguir construyendo el legado de Autoser Vallarta.
                 </p>
                 <div class="pt-8 reveal-on-scroll delay-2">
-                    <a href="bolsa-de-trabajo" class="btn-agency !bg-white !text-autoser-black hover:!bg-autoser-red hover:!text-white border-none">VER BOLSA DE TRABAJO</a>
+                    <a href="bolsa-de-trabajo" class="btn-agency !bg-white !text-autoser-black hover:!bg-autoser-red hover:!text-white border-none" data-en="VIEW JOBS">VER BOLSA DE TRABAJO</a>
                 </div>
             </div>
         </div>
@@ -507,10 +513,11 @@
     <!-- CTA -->
     <section class="py-32 bg-white text-center">
         <div class="container mx-auto px-8">
-            <h2 class="text-4xl font-headline font-black text-autoser-black mb-12 uppercase tracking-tight">VISÍTANOS Y COMPRUEBA <br class="hidden md:block" />EL <span class="text-autoser-red">ESTÁNDAR AUTOSER.</span></h2>
+            <h2 class="text-4xl font-headline font-black text-autoser-black mb-12 uppercase tracking-tight">
+                <span data-en="VISIT US AND SEE">VISÍTANOS Y COMPRUEBA</span> <br class="hidden md:block" /><span data-en="THE">EL</span> <span class="text-autoser-red" data-en="AUTOSER STANDARD.">ESTÁNDAR AUTOSER.</span></h2>
             <div class="flex flex-wrap justify-center gap-6">
-                <a href="vende-tu-auto" class="btn-agency">VER INVENTARIO</a>
-                <a href="taller" class="btn-outline">AGENDAR CITA</a>
+                <a href="vende-tu-auto" class="btn-agency" data-en="VIEW INVENTORY">VER INVENTARIO</a>
+                <a href="taller" class="btn-outline" data-en="BOOK APPOINTMENT">AGENDAR CITA</a>
             </div>
         </div>
     </section>
@@ -523,30 +530,30 @@
                     <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
                         class="h-16 w-auto opacity-100">
                 </div>
-                <p class="text-gray-400 text-sm leading-relaxed">
+                <p class="text-gray-400 text-sm leading-relaxed" data-en="Proudly Vallartenses. More than two decades providing trust and quality in every kilometer.">
                     Orgullosamente Vallartenses. Más de dos décadas brindando confianza y calidad en cada kilómetro.
                 </p>
             </div>
 
             <div>
                 <h4
-                    class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white">
+                    class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white" data-en="DEPARTMENTS">
                     DEPARTAMENTOS</h4>
                 <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
-                    <li><a href="/" class="hover:text-autoser-red">Inicio</a></li>
+                    <li><a href="/" class="hover:text-autoser-red" data-en="Home">Inicio</a></li>
                     <li><a href="vende-tu-auto"
-                            class="hover:text-autoser-red">Inventario</a></li>
-                    <li><a href="taller" class="hover:text-autoser-red">Taller de
+                            class="hover:text-autoser-red" data-en="Inventory">Inventario</a></li>
+                    <li><a href="taller" class="hover:text-autoser-red" data-en="Service Workshop">Taller de
                             Servicio</a></li>
-                    <li><a href="hojalateria" class="hover:text-autoser-red">Hojalatería
+                    <li><a href="hojalateria" class="hover:text-autoser-red" data-en="Body & Paint Shop">Hojalatería
                             y Pintura</a></li>
                     <li><a href="refacciones"
-                            class="hover:text-autoser-red">Refacciones</a></li>
+                            class="hover:text-autoser-red" data-en="Parts">Refacciones</a></li>
                     <li><a href="seguros"
-                            class="hover:text-autoser-red">Seguros</a></li>
-                    <li><a href="promociones" class="hover:text-autoser-red">Promociones</a>
+                            class="hover:text-autoser-red" data-en="Insurance">Seguros</a></li>
+                    <li><a href="promociones" class="hover:text-autoser-red" data-en="Promotions">Promociones</a>
                     </li>
-                    <li><a href="nosotros" class="hover:text-autoser-red text-autoser-red">Nosotros</a></li>
+                    <li><a href="nosotros" class="hover:text-autoser-red text-autoser-red" data-en="About Us">Nosotros</a></li>
                 </ul>
             </div>
 

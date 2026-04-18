@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
+    <script src="assets/js/i18n.js"></script>
     <meta name="description"
         content="Aprovecha las mejores ofertas en servicio mecánico, refacciones y seguros en Puerto Vallarta. Promociones exclusivas de Autoser Vallarta para el cuidado y mantenimiento de tu auto.">
     <meta name="keywords"
@@ -295,50 +296,55 @@
             <div
                 class="hidden xl:flex gap-4 lg:gap-8 xl:gap-10 font-headline text-[0.75rem] uppercase tracking-widest text-autoser-charcoal items-center">
                 <a href="/"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">Inicio</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="Home">Inicio</a>
                 <!-- Dropdown Seminuevos -->
                 <div class="relative group py-4">
-                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="PRE-OWNED">
                         SEMINUEVOS <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-56 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">VER
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="VIEW INVENTORY">VER
                             INVENTARIO</a>
                         <a href="vende-tu-auto"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">COMPRAMOS
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="WE BUY YOUR CAR">COMPRAMOS
                             TU AUTO</a>
                     </div>
                 </div>
 
                 <!-- Dropdown Taller -->
                 <div class="relative group py-4">
-                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="WORKSHOP">
                         TALLER <span
                             class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
                     </button>
                     <div
                         class="absolute left-0 top-full w-64 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
                         <a href="taller"
-                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">TALLER MULTIMARCA</a>
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="MULTI-BRAND WORKSHOP">TALLER MULTIMARCA</a>
                         <a href="hojalateria"
-                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">HOJALATERÍA Y PINTURA</a>
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="BODY & PAINT SHOP">HOJALATERÍA Y PINTURA</a>
                     </div>
                 </div>
 
                 <a href="refacciones"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">REFACCIONES</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PARTS">REFACCIONES</a>
                 <a href="seguros"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">SEGUROS</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="INSURANCE">SEGUROS</a>
                 <a href="promociones"
-                    class="nav-link active font-bold hover:text-autoser-red transition-colors">PROMOCIONES</a>
+                    class="nav-link active font-bold hover:text-autoser-red transition-colors" data-en="PROMOTIONS">PROMOCIONES</a>
                 <a href="nosotros"
-                    class="nav-link font-bold hover:text-autoser-red transition-colors">NOSOTROS</a>
+                    class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="ABOUT US">NOSOTROS</a>
             </div>
 
             <div class="flex items-center gap-2 lg:gap-4">
+                <button onclick="i18n.toggle()" 
+                    class="flex items-center gap-1 px-3 py-1.5 border border-autoser-black/10 rounded-sm text-[9px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
+                    <span class="lang-toggle-text">EN</span>
+                </button>
                 <a href="tel:3222263500"
                     class="hidden md:flex items-center justify-center w-10 h-10 lg:w-auto lg:h-auto bg-autoser-red/5 lg:bg-transparent rounded-full lg:rounded-none gap-2 font-headline font-bold text-sm hover:text-autoser-red transition-all text-autoser-charcoal group">
                     <span
@@ -347,7 +353,7 @@
                 </a>
                 <a href="vende-tu-auto"
                     class="hidden sm:flex items-center bg-transparent border-2 border-autoser-black text-autoser-black lg:bg-autoser-black lg:text-white px-4 lg:px-6 py-2 lg:py-3 rounded-sm font-headline text-[0.6rem] lg:text-[0.65rem] font-bold uppercase tracking-widest hover:bg-autoser-red hover:border-autoser-red hover:text-white transition-all">
-                    <span class="hidden lg:inline mr-1">VER</span> INVENTARIO
+                    <span class="hidden lg:inline mr-1" data-en="VIEW">VER</span> <span data-en="INVENTORY">INVENTARIO</span>
                 </a>
                 <button
                     class="xl:hidden text-autoser-black hover:text-autoser-red transition-all focus:outline-none"
@@ -376,53 +382,53 @@
                 <span
                     class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                 <span
-                    class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Oportunidades
+                    class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Limited Time Opportunities">Oportunidades
                     por tiempo limitado</span>
             </div>
             <h1
                 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold text-white leading-tight mb-8 tracking-wide uppercase">
-                PROMOCIONES <br /><span class="text-autoser-red shimmer px-4">EXCLUSIVAS.</span>
+                <span data-en="EXCLUSIVE">PROMOCIONES</span> <br /><span class="text-autoser-red shimmer px-4" data-en="OFFERS.">EXCLUSIVAS.</span>
             </h1>
-            <p class="text-gray-300 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-gray-300 text-xl mb-12 max-w-2xl mx-auto leading-relaxed" data-en="Take advantage of preferential benefits in all our departments. Quality, trust, and the support of more than 25 years in Puerto Vallarta.">
                 Aprovecha beneficios preferenciales en todos nuestros departamentos. Calidad, confianza y el respaldo de
                 más de 25 años en Puerto Vallarta.
             </p>
 
             <!-- Countdown: Sense of Urgency -->
             <div class="mb-16 reveal-on-scroll">
-                <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-[0.4em] mb-6">LA
+                <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-[0.4em] mb-6" data-en="OPPORTUNITY EXPIRES IN:">LA
                     OPORTUNIDAD EXPIRA EN:</p>
                 <div class="flex justify-center items-center gap-4 lg:gap-6 font-headline">
                     <div class="countdown-box">
                         <div id="days" class="text-3xl md:text-4xl font-black text-white leading-none mb-1">00</div>
-                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Días
+                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest" data-en="Days">Días
                         </div>
                     </div>
                     <div class="text-2xl text-autoser-red font-bold">:</div>
                     <div class="countdown-box">
                         <div id="hours" class="text-3xl md:text-4xl font-black text-white leading-none mb-1">00</div>
-                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Horas
+                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest" data-en="Hours">Horas
                         </div>
                     </div>
                     <div class="text-2xl text-autoser-red font-bold">:</div>
                     <div class="countdown-box">
                         <div id="minutes" class="text-3xl md:text-4xl font-black text-white leading-none mb-1">00</div>
-                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Min
+                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest" data-en="Min">Min
                         </div>
                     </div>
                     <div class="text-2xl text-autoser-red font-bold">:</div>
                     <div class="countdown-box">
                         <div id="seconds" class="text-3xl md:text-4xl font-black text-white leading-none mb-1">00</div>
-                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Seg
+                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest" data-en="Sec">Seg
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="flex justify-center gap-6">
-                <button class="btn-agency px-12">VER PROMOCIONES</button>
+                <button class="btn-agency px-12" data-en="VIEW PROMOTIONS">VER PROMOCIONES</button>
                 <button
-                    class="border-2 border-white text-white font-headline font-bold uppercase tracking-widest rounded-sm px-10 py-4 hover:bg-white hover:text-autoser-black transition-all">ASISTENCIA
+                    class="border-2 border-white text-white font-headline font-bold uppercase tracking-widest rounded-sm px-10 py-4 hover:bg-white hover:text-autoser-black transition-all" data-en="VIP ASSISTANCE">ASISTENCIA
                     VIP</button>
             </div>
         </div>
@@ -441,13 +447,13 @@
                         <span
                             class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                         <span
-                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Especial
+                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Pre-Owned Special">Especial
                             Seminuevos</span>
                     </div>
-                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide">
+                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide" data-en="PRE-OWNED">
                         SEMINUEVOS</h2>
                 </div>
-                <p class="text-sm text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0">
+                <p class="text-sm text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0" data-en="AGENCY CERTIFICATION">
                     CERTIFICACIÓN AGENCIA</p>
             </div>
 
@@ -461,12 +467,12 @@
                 </div>
                 <div class="p-12 md:p-20 flex flex-col justify-center relative">
                     <span
-                        class="bg-autoser-red text-white text-[8px] font-black px-3 py-1.5 uppercase tracking-[0.3em] mb-8 inline-block w-fit">REGALO
+                        class="bg-autoser-red text-white text-[8px] font-black px-3 py-1.5 uppercase tracking-[0.3em] mb-8 inline-block w-fit" data-en="GIFT WITH YOUR PURCHASE">REGALO
                         EN TU COMPRA</span>
                     <h3
                         class="text-white text-4xl md:text-5xl font-headline font-extrabold mb-6 tracking-wide uppercase leading-tight">
-                        DAY PASS VIP <br /><span class="text-autoser-red shimmer px-2">MATLALI</span></h3>
-                    <p class="text-gray-400 text-[10px] mb-12 leading-relaxed uppercase tracking-[0.2em] font-bold">Al
+                        <span data-en="VIP DAY PASS">DAY PASS VIP</span> <br /><span class="text-autoser-red shimmer px-2" data-en="MATLALI">MATLALI</span></h3>
+                    <p class="text-gray-400 text-[10px] mb-12 leading-relaxed uppercase tracking-[0.2em] font-bold" data-en="When acquiring your pre-owned car, enjoy an exclusive day at Grand Matlali Suites & Villas and Beach Club Eva Mandarina.">Al
                         adquirir tu seminuevo, disfruta de un día exclusivo en Grand Matlali Suites & Villas y Beach
                         Club Eva Mandarina.</p>
 
@@ -474,26 +480,26 @@
                         <div class="flex items-center gap-4">
                             <span
                                 class="material-symbols-outlined text-autoser-red text-2xl notranslate select-none">restaurant</span>
-                            <div class="text-[9px] text-white font-bold tracking-widest uppercase">Desayuno</div>
+                            <div class="text-[9px] text-white font-bold tracking-widest uppercase" data-en="Breakfast">Desayuno</div>
                         </div>
                         <div class="flex items-center gap-4 border-l border-white/10 pl-8">
                             <span
                                 class="material-symbols-outlined text-white text-2xl notranslate select-none">pool</span>
-                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase">Pool Bar</div>
+                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase" data-en="Pool Bar">Pool Bar</div>
                         </div>
                         <div class="flex items-center gap-4">
                             <span
                                 class="material-symbols-outlined text-white text-2xl notranslate select-none">beach_access</span>
-                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase">Beach Club</div>
+                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase" data-en="Beach Club">Beach Club</div>
                         </div>
                         <div class="flex items-center gap-4 border-l border-white/10 pl-8">
                             <span
                                 class="material-symbols-outlined text-white text-2xl notranslate select-none">fastfood</span>
-                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase">Snacks VIP</div>
+                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase" data-en="VIP Snacks">Snacks VIP</div>
                         </div>
                     </div>
 
-                    <button class="btn-agency w-fit px-12">SOLICITAR CON MI ASESOR</button>
+                    <button class="btn-agency w-fit px-12" data-en="REQUEST WITH MY ADVISOR">SOLICITAR CON MI ASESOR</button>
                 </div>
             </div>
 
@@ -504,14 +510,14 @@
                     <span
                         class="material-symbols-outlined text-autoser-red text-6xl notranslate select-none">calendar_month</span>
                     <div>
-                        <h4 class="font-headline font-extrabold text-2xl uppercase tracking-wide">FINANCIAMIENTO HASTA
+                        <h4 class="font-headline font-extrabold text-2xl uppercase tracking-wide" data-en="FINANCING UP TO 60 MONTHS">FINANCIAMIENTO HASTA
                             60 MESES</h4>
-                        <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Planes diseñados a tu
+                        <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest" data-en="Tailor-made plans with competitive down payments.">Planes diseñados a tu
                             medida con enganches competitivos.</p>
                     </div>
                 </div>
                 <button
-                    class="border-2 border-autoser-black px-12 py-4 font-headline font-extrabold text-xs uppercase tracking-widest hover:bg-autoser-black hover:text-white transition-all">COTIZAR
+                    class="border-2 border-autoser-black px-12 py-4 font-headline font-extrabold text-xs uppercase tracking-widest hover:bg-autoser-black hover:text-white transition-all" data-en="QUOTE CREDIT">COTIZAR
                     CRÉDITO</button>
             </div>
         </div>
@@ -524,12 +530,12 @@
                 class="flex flex-col md:flex-row justify-between items-end mb-24 border-l-8 border-autoser-black pl-8 reveal-on-scroll">
                 <div>
                     <span
-                        class="text-autoser-black font-headline font-bold text-xs uppercase tracking-[0.3em] mb-2 block">Mantenimiento</span>
-                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide">TALLER
+                        class="text-autoser-black font-headline font-bold text-xs uppercase tracking-[0.3em] mb-2 block" data-en="Maintenance">Mantenimiento</span>
+                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide" data-en="MULTI-BRAND WORKSHOP">TALLER
                         MULTIMARCA</h2>
                 </div>
                 <p
-                    class="text-[10px] text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0">
+                    class="text-[10px] text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0" data-en="AGENCY TECHNOLOGY">
                     TECNOLOGÍA DE AGENCIA</p>
             </div>
 
@@ -538,31 +544,31 @@
                 class="grid grid-cols-1 lg:grid-cols-2 bg-autoser-black rounded-sm overflow-hidden shadow-2xl group border-r-8 border-autoser-black reveal-on-scroll">
                 <div class="p-12 md:p-20 flex flex-col justify-center order-2 lg:order-1">
                     <span
-                        class="bg-white text-autoser-black text-[8px] font-black px-3 py-1.5 uppercase tracking-[0.3em] mb-8 inline-block w-fit">OFERTA
+                        class="bg-white text-autoser-black text-[8px] font-black px-3 py-1.5 uppercase tracking-[0.3em] mb-8 inline-block w-fit" data-en="SERVICE OFFER">OFERTA
                         DE SERVICIO</span>
                     <h3
-                        class="text-white text-4xl md:text-5xl font-headline font-extrabold mb-2 tracking-wide uppercase leading-tight text-right lg:text-left">
+                        class="text-white text-4xl md:text-5xl font-headline font-extrabold mb-2 tracking-wide uppercase leading-tight text-right lg:text-left" data-en="EXPRESS SERVICE">
                         SERVICIO <span class="text-autoser-red shimmer px-2">EXPRESS</span></h3>
                     <div
-                        class="text-autoser-red text-6xl font-black mb-8 tracking-tighter text-right lg:text-left uppercase shimmer">
+                        class="text-autoser-red text-6xl font-black mb-8 tracking-tighter text-right lg:text-left uppercase shimmer" data-en="FROM <br />$1,550 MXN">
                         DESDE <br />$1,550 MXN</div>
 
                     <div
                         class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 uppercase tracking-widest text-[9px] font-black text-white/70">
                         <div class="flex items-center gap-2"><span
                                 class="material-symbols-outlined text-autoser-red text-sm notranslate select-none">check</span>
-                            Afinaciones
+                            <span data-en="Tune-ups">Afinaciones</span>
                         </div>
                         <div class="flex items-center gap-2 border-l border-white/10 pl-4"><span
                                 class="material-symbols-outlined text-autoser-red text-sm notranslate select-none">check</span>
-                            Frenos</div>
+                            <span data-en="Brakes">Frenos</span></div>
                         <div class="flex items-center gap-2 border-l border-white/10 pl-4"><span
                                 class="material-symbols-outlined text-autoser-red text-sm notranslate select-none">check</span>
-                            Suspensión</div>
+                            <span data-en="Suspension">Suspensión</span></div>
                     </div>
 
                     <button
-                        class="btn-agency w-full lg:w-fit px-12 bg-white text-autoser-black hover:bg-autoser-red hover:text-white">AGENDAR
+                        class="btn-agency w-full lg:w-fit px-12 bg-white text-autoser-black hover:bg-autoser-red hover:text-white" data-en="BOOK APPOINTMENT NOW">AGENDAR
                         CITA AHORA</button>
                 </div>
                 <div class="h-[500px] lg:h-auto overflow-hidden order-1 lg:order-2">
@@ -585,14 +591,14 @@
                         <span
                             class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
                         <span
-                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Mantenimiento
+                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic" data-en="Elite Maintenance">Mantenimiento
                             Elite</span>
                     </div>
-                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide">
+                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide" data-en="EXPRESS BODY SHOP">
                         HOJALATERÍA EXPRESS</h2>
                 </div>
                 <p
-                    class="text-[10px] text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0 order-1 md:order-2">
+                    class="text-[10px] text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0 order-1 md:order-2" data-en="RECOVER THE SHINE">
                     RECUPERA EL BRILLO</p>
             </div>
 
@@ -606,28 +612,28 @@
                 </div>
                 <div class="p-12 md:p-20 flex flex-col justify-center">
                     <span
-                        class="text-autoser-red font-headline font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Estética</span>
+                        class="text-autoser-red font-headline font-bold text-xs uppercase tracking-[0.3em] mb-4 block" data-en="Aesthetics">Estética</span>
                     <h3
                         class="text-white text-4xl md:text-5xl font-headline font-extrabold mb-6 tracking-wide uppercase leading-tight">
-                        PRECIO <span class="text-autoser-red shimmer px-2">ESPECIAL</span> DE TEMPORADA</h3>
-                    <p class="text-gray-400 text-[10px] mb-12 leading-relaxed uppercase tracking-[0.2em] font-bold">
+                        <span data-en="SEASONAL SPECIAL">PRECIO</span> <span class="text-autoser-red shimmer px-2" data-en="PRICE">ESPECIAL</span> <span data-en="OF SEASON">DE TEMPORADA</span></h3>
+                    <p class="text-gray-400 text-[10px] mb-12 leading-relaxed uppercase tracking-[0.2em] font-bold" data-en="Specialists in scratches and minor damage. Your car recovers its original shine without long waits.">
                         Especialistas en rayones y daños mínimos. Tu auto recupera su brillo original sin esperas
                         largas.</p>
 
                     <div class="flex items-center gap-12 mb-12">
                         <div class="text-center">
                             <div class="text-autoser-red text-2xl font-black mb-1">✨</div>
-                            <div class="text-[9px] text-white font-bold tracking-widest uppercase">Como Nuevo</div>
+                            <div class="text-[9px] text-white font-bold tracking-widest uppercase" data-en="Like New">Como Nuevo</div>
                         </div>
                         <div class="h-12 w-px bg-white/20"></div>
                         <div class="text-center">
                             <div class="text-white text-2xl font-black mb-1">⏱️</div>
-                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase">Entrega Rápida
+                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase" data-en="Fast Delivery">Entrega Rápida
                             </div>
                         </div>
                     </div>
 
-                    <button class="btn-agency w-fit px-12">COTIZAR SIN COMPROMISO</button>
+                    <button class="btn-agency w-fit px-12" data-en="QUOTE WITHOUT COMPROMISE">COTIZAR SIN COMPROMISO</button>
                 </div>
             </div>
         </div>
@@ -640,12 +646,12 @@
                 class="flex flex-col md:flex-row justify-between items-end mb-24 border-l-8 border-autoser-black pl-8 reveal-on-scroll">
                 <div>
                     <span
-                        class="text-autoser-black font-headline font-bold text-xs uppercase tracking-[0.3em] mb-2 block">Protección</span>
-                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide">SEGUROS
+                        class="text-autoser-black font-headline font-bold text-xs uppercase tracking-[0.3em] mb-2 block" data-en="Protection">Protección</span>
+                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide" data-en="CAR INSURANCE">SEGUROS
                         AUTO</h2>
                 </div>
                 <p
-                    class="text-[10px] text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0">
+                    class="text-[10px] text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0" data-en="TOTAL PEACE OF MIND">
                     TRANQUILIDAD TOTAL</p>
             </div>
 
@@ -654,12 +660,12 @@
                 class="grid grid-cols-1 lg:grid-cols-2 bg-white rounded-sm overflow-hidden shadow-2xl group border-r-8 border-autoser-red reveal-on-scroll">
                 <div class="p-12 md:p-20 flex flex-col justify-center order-2 lg:order-1">
                     <span
-                        class="bg-autoser-black text-white text-[8px] font-black px-3 py-1.5 uppercase tracking-[0.3em] mb-8 inline-block w-fit">TARIFAS
+                        class="bg-autoser-black text-white text-[8px] font-black px-3 py-1.5 uppercase tracking-[0.3em] mb-8 inline-block w-fit" data-en="PREFERENTIAL RATES">TARIFAS
                         PREFERENCIALES</span>
                     <h3
                         class="text-autoser-black text-4xl md:text-5xl font-headline font-extrabold mb-6 tracking-wide uppercase leading-tight text-right lg:text-left">
-                        RENOVACIÓN <span class="text-autoser-red shimmer px-2">DIRECTA</span></h3>
-                    <p class="text-gray-500 text-[10px] mb-12 leading-relaxed uppercase tracking-[0.2em] font-bold">
+                        <span data-en="DIRECT">RENOVACIÓN</span> <span class="text-autoser-red shimmer px-2" data-en="RENEWAL">DIRECTA</span></h3>
+                    <p class="text-gray-500 text-[10px] mb-12 leading-relaxed uppercase tracking-[0.2em] font-bold" data-en="We have exclusive agreements with the best insurance companies. Renew with us and get the benefits of being a home customer.">
                         Contamos con acuerdos exclusivos con las mejores aseguradoras. Renueva con nosotros y obtén los
                         beneficios de ser cliente de casa.</p>
 
@@ -667,19 +673,19 @@
                         <div class="flex items-center gap-4">
                             <span
                                 class="material-symbols-outlined text-autoser-red text-2xl notranslate select-none">verified_user</span>
-                            <div class="text-[9px] text-autoser-black font-black tracking-widest uppercase">Pólizas
+                            <div class="text-[9px] text-autoser-black font-black tracking-widest uppercase" data-en="Official Policies">Pólizas
                                 Oficiales</div>
                         </div>
                         <div class="flex items-center gap-4 border-l border-gray-100 pl-8">
                             <span
                                 class="material-symbols-outlined text-autoser-black text-2xl notranslate select-none">savings</span>
-                            <div class="text-[9px] text-gray-500 font-bold tracking-widest uppercase">Ahorro Garantizado
+                            <div class="text-[9px] text-gray-500 font-bold tracking-widest uppercase" data-en="Guaranteed Savings">Ahorro Garantizado
                             </div>
                         </div>
                     </div>
 
                     <button
-                        class="btn-agency w-full lg:w-fit px-12 bg-autoser-black text-white hover:bg-autoser-red transition-all">SOLICITAR
+                        class="btn-agency w-full lg:w-fit px-12 bg-autoser-black text-white hover:bg-autoser-red transition-all" data-en="REQUEST QUOTE">SOLICITAR
                         COTIZACIÓN</button>
                 </div>
                 <div class="h-[500px] lg:h-auto overflow-hidden order-1 lg:order-2">
@@ -705,23 +711,23 @@
 
             <div>
                 <h4
-                    class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white">
+                    class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white" data-en="DEPARTMENTS">
                     DEPARTAMENTOS</h4>
                 <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
-                    <li><a href="/" class="hover:text-autoser-red">Inicio</a></li>
+                    <li><a href="/" class="hover:text-autoser-red" data-en="Home">Inicio</a></li>
                     <li><a href="vende-tu-auto"
-                            class="hover:text-autoser-red">Inventario</a></li>
-                    <li><a href="taller" class="hover:text-autoser-red">Taller de
+                            class="hover:text-autoser-red" data-en="Inventory">Inventario</a></li>
+                    <li><a href="taller" class="hover:text-autoser-red" data-en="Service Workshop">Taller de
                             Servicio</a></li>
-                    <li><a href="hojalateria" class="hover:text-autoser-red">Hojalatería
+                    <li><a href="hojalateria" class="hover:text-autoser-red" data-en="Body & Paint Shop">Hojalatería
                             y Pintura</a></li>
                     <li><a href="refacciones"
-                            class="hover:text-autoser-red">Refacciones</a></li>
+                            class="hover:text-autoser-red" data-en="Parts">Refacciones</a></li>
                     <li><a href="seguros"
-                            class="hover:text-autoser-red">Seguros</a></li>
-                    <li><a href="promociones" class="hover:text-autoser-red">Promociones</a>
+                            class="hover:text-autoser-red" data-en="Insurance">Seguros</a></li>
+                    <li><a href="promociones" class="hover:text-autoser-red" data-en="Promotions">Promociones</a>
                     </li>
-                    <li><a href="nosotros" class="hover:text-autoser-red">Nosotros</a>
+                    <li><a href="nosotros" class="hover:text-autoser-red" data-en="About Us">Nosotros</a>
                     </li>
                 </ul>
             </div>
