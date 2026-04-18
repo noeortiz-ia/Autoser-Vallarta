@@ -1427,6 +1427,13 @@
             }, 500);
             document.body.style.overflow = '';
         }
+
+        // Escuchar mensaje de cierre desde el iframe
+        window.addEventListener('message', function(event) {
+            if (event.data === 'close-modal') {
+                closeAIModal();
+            }
+        });
     </script>
 
     <div id="mobile-menu"
