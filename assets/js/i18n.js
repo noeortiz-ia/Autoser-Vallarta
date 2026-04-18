@@ -32,17 +32,15 @@ const i18n = {
 
         // 1. Handle standard text content
         document.querySelectorAll('[data-en]').forEach(el => {
-            // Heuristic for complex elements (with icons, line breaks, etc.)
-            const hasTags = el.children.length > 0;
-
-            // Store original Spanish if not already stored
+            // Store original Spanish state and its type (text vs html)
             if (!el.hasAttribute('data-i18n-es')) {
-                if (hasTags) {
-                    el.setAttribute('data-i18n-es', el.innerHTML);
-                } else {
-                    el.setAttribute('data-i18n-es', el.innerText.trim());
-                }
+                const hasTags = el.children.length > 0;
+                el.setAttribute('data-i18n-es', hasTags ? el.innerHTML : el.innerText.trim());
+                el.setAttribute('data-i18n-type', hasTags ? 'html' : 'text');
             }
+
+            const original = el.getAttribute('data-i18n-es');
+            const type = el.getAttribute('data-i18n-type');
 
             if (isEn) {
                 const translation = el.getAttribute('data-en');
@@ -54,13 +52,16 @@ const i18n = {
                     const isIconAtStart = el.innerHTML.trim().startsWith('<span');
                     el.innerHTML = isIconAtStart ? `${iconHTML} ${translation}` : `${translation} ${iconHTML}`;
                 } else {
-                    // Simple replacement (can use innerHTML to allow <br> in data-en)
-                    el.innerHTML = translation;
+                    // Respect HTML in translations (allows <br> in data-en)
+                    if (translation.includes('<')) {
+                        el.innerHTML = translation;
+                    } else {
+                        el.innerText = translation;
+                    }
                 }
             } else {
                 // Restore original Spanish state perfectly
-                const original = el.getAttribute('data-i18n-es');
-                if (hasTags) {
+                if (type === 'html') {
                     el.innerHTML = original;
                 } else {
                     el.innerText = original;
