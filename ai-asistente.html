@@ -221,6 +221,28 @@
     </main>
 
     <script>
+        // Función para formatear el texto enriquecido (Links y Negritas)
+        function formatMessage(text) {
+            if (!text) return "";
+            
+            // 1. Escapamos HTML básico para seguridad (XSS)
+            let formatted = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+
+            // 2. Detectamos Links (http/https) y los convertimos en <a>
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            formatted = formatted.replace(urlRegex, function(url) {
+                return `<a href="${url}" target="_blank" class="text-autoser-red underline hover:text-white transition-colors break-all">${url}</a>`;
+            });
+
+            // 3. Detectamos Negritas de Markdown (**texto**)
+            formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            return formatted;
+        }
+
         // Configuración de Agentes (Opción A)
         const CONFIG = {
             ventas: {
@@ -289,8 +311,13 @@
         // Manejo de Mensajes
         function appendMessage(role, text) {
             const div = document.createElement('div');
-            div.className = `message-bubble ${role === 'user' ? 'self-end bg-autoser-red text-white' : 'self-start bg-autoser-charcoal text-gray-200'} px-6 py-4 rounded-sm text-sm font-light shadow-xl mb-4`;
-            div.innerText = text;
+            div.className = `message-bubble ${role === 'user' 
+                ? 'self-end bg-autoser-red text-white font-bold' 
+                : 'self-start bg-autoser-charcoal text-gray-100 border border-white/5 shadow-2xl'} 
+                px-8 py-5 rounded-sm text-base mb-6`;
+            
+            // Usamos la función de formateo para procesar links y negritas
+            div.innerHTML = formatMessage(text);
             messagesList.appendChild(div);
             
             const chatArea = document.getElementById('chat-area');
