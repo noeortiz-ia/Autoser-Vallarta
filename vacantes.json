@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "categoria": "Ventas",
+        "puesto": "ASESOR DE VENTAS",
+        "descripcion": "Únete a nuestro equipo comercial. Ofrecemos prestaciones de ley, pago semanal de comisiones y un excelente esquema de ingresos en un ambiente dinámico y rotativo.",
+        "icon": "sell",
+        "requisitos": [
+            "Gusto por las ventas (CV requerido)",
+            "Atención a clientes",
+            "Exp. en puestos comisionistas",
+            "Manejo de Office y Redes Sociales",
+            "Disponibilidad de horario"
+        ],
+        "whatsapp": "523223206616"
+    },
+    {
+        "id": 2,
+        "categoria": "Taller HyP",
+        "puesto": "LAMINERO Y PINTOR",
+        "descripcion": "Buscamos maestros lamineros y pintores para integrarse a nuestro centro especializado. Pago a destajo cada 2 semanas y excelente esquema de trabajo.",
+        "icon": "build",
+        "requisitos": [
+            "Experiencia comprobable",
+            "Herramienta propia",
+            "Disponibilidad de horario",
+            "Experiencia con aseguradoras"
+        ],
+        "whatsapp": "523223206616"
+    }
+]

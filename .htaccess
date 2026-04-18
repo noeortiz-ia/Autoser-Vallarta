@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Si la petición ya tiene .html al final, redireccionar a la versión limpia (SEO)
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [L,R=301]
+
+# Si la petición no es un directorio y existe el archivo .html correspondiente
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+
+# Manejo de error 404 personalizado
+ErrorDocument 404 /404

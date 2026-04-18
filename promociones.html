@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Promociones Exclusivas | Autoser Vallarta</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <meta name="description"
+        content="Aprovecha las mejores ofertas en servicio mecánico, refacciones y seguros en Puerto Vallarta. Promociones exclusivas de Autoser Vallarta para el cuidado y mantenimiento de tu auto.">
+    <meta name="keywords"
+        content="Promociones Taller Vallarta, Ofertas Refacciones Vallarta, Descuentos Seguros Puerto Vallarta, Autoser Vallarta Especiales, Cupones Servicio Automotriz">
+    <link rel="canonical" href="https://autoservallarta.com/promociones" />
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://autoservallarta.com/promociones">
+    <meta property="og:title" content="Promociones Exclusivas | Autoser Vallarta">
+    <meta property="og:description"
+        content="Las mejores oportunidades para tu auto. Descuentos exclusivos en servicios preventivos, refacciones y seguros en Puerto Vallarta.">
+    <meta property="og:image" content="https://autoservallarta.com/assets/img/portada.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://autoservallarta.com/promociones">
+    <meta property="twitter:title" content="Promociones Exclusivas | Autoser Vallarta">
+    <meta property="twitter:description"
+        content="Las mejores oportunidades para tu auto en Puerto Vallarta. Descubre todas nuestras promociones vigentes.">
+    <meta property="twitter:image" content="https://autoservallarta.com/assets/img/portada.jpg">
+
+    <!-- Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SpecialAnnouncement",
+      "name": "Promociones Autoser Vallarta",
+      "url": "https://autoservallarta.com/promociones",
+      "parentOrganization": {
+        "@type": "AutoDealer",
+        "name": "Autoser Vallarta",
+        "url": "https://autoservallarta.com"
+      },
+      "description": "Ofertas exclusivas en mantenimiento automotriz, refacciones originales y seguros en Puerto Vallarta y Bahía de Banderas.",
+      "sameAs": [
+        "https://www.facebook.com/autoservallarta",
+        "https://www.instagram.com/autoservallarta",
+        "https://www.youtube.com/@autoserpuertovallarta"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://autoservallarta.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Promociones",
+        "item": "https://autoservallarta.com/promociones"
+      }]
+    }
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        autoser: {
+                            red: '#ED1C24',
+                            black: '#1A1A1A',
+                            gray: '#F4F4F4',
+                            charcoal: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        headline: ['Montserrat', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .btn-agency {
+            background-color: #ED1C24;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+            border-radius: 0.125rem;
+            padding: 1rem 2.5rem;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-agency:hover {
+            background-color: #b91c1c;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .promo-card {
+            background-color: #ffffff;
+            border: 1px solid #f1f5f9;
+            border-radius: 0.125rem;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .promo-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge-red {
+            background-color: #ED1C24;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.125rem;
+            letter-spacing: 0.1em;
+            display: inline-block;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.25rem;
+            background-color: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.375rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            color: #1e293b;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .form-input:focus {
+            background-color: #ffffff;
+            border-color: #ED1C24;
+            box-shadow: 0 0 0 4px rgba(237, 28, 36, 0.1);
+        }
+
+        /* Premium Animations & Reveals */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-from-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-from-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-from-left.is-visible,
+        .reveal-from-right.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.2) 60%, rgba(255, 255, 255, 0));
+            animation: shimmer 2.5s infinite;
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(200%);
+            }
+        }
+
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-link {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .mobile-link:hover, .mobile-link.active {
+            color: #ED1C24;
+            padding-left: 10px;
+        }
+
+        /* Navigation Styles */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ED1C24;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #ED1C24;
+        }
+
+        /* Countdown Styles */
+        .countdown-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 80px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-box {
+                min-width: 60px;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-body bg-white text-autoser-charcoal selection:bg-autoser-red selection:text-white overflow-x-hidden">
+
+    <!-- Agency Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm py-1 px-8 border-t-4 border-autoser-red">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="flex-shrink-0 flex items-center">
+                <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
+                    class="h-12 md:h-14 lg:h-[72px] w-auto object-contain drop-shadow-sm transition-all duration-300">
+            </a>
+
+            <div
+                class="hidden xl:flex gap-4 lg:gap-8 xl:gap-10 font-headline text-[0.75rem] uppercase tracking-widest text-autoser-charcoal items-center">
+                <a href="/"
+                    class="nav-link font-bold hover:text-autoser-red transition-colors">Inicio</a>
+                <!-- Dropdown Seminuevos -->
+                <div class="relative group py-4">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                        SEMINUEVOS <span
+                            class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute left-0 top-full w-56 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
+                        <a href="vende-tu-auto"
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">VER
+                            INVENTARIO</a>
+                        <a href="vende-tu-auto"
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">COMPRAMOS
+                            TU AUTO</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown Taller -->
+                <div class="relative group py-4">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal">
+                        TALLER <span
+                            class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute left-0 top-full w-64 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
+                        <a href="taller"
+                            class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">TALLER MULTIMARCA</a>
+                        <a href="hojalateria"
+                            class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors">HOJALATERÍA Y PINTURA</a>
+                    </div>
+                </div>
+
+                <a href="refacciones"
+                    class="nav-link font-bold hover:text-autoser-red transition-colors">REFACCIONES</a>
+                <a href="seguros"
+                    class="nav-link font-bold hover:text-autoser-red transition-colors">SEGUROS</a>
+                <a href="promociones"
+                    class="nav-link active font-bold hover:text-autoser-red transition-colors">PROMOCIONES</a>
+                <a href="nosotros"
+                    class="nav-link font-bold hover:text-autoser-red transition-colors">NOSOTROS</a>
+            </div>
+
+            <div class="flex items-center gap-2 lg:gap-4">
+                <a href="tel:3222263500"
+                    class="hidden md:flex items-center justify-center w-10 h-10 lg:w-auto lg:h-auto bg-autoser-red/5 lg:bg-transparent rounded-full lg:rounded-none gap-2 font-headline font-bold text-sm hover:text-autoser-red transition-all text-autoser-charcoal group">
+                    <span
+                        class="material-symbols-outlined text-autoser-red notranslate select-none group-hover:scale-110 transition-transform">phone_in_talk</span>
+                    <span class="hidden xl:inline">322 226 3500</span>
+                </a>
+                <a href="vende-tu-auto"
+                    class="hidden sm:flex items-center bg-transparent border-2 border-autoser-black text-autoser-black lg:bg-autoser-black lg:text-white px-4 lg:px-6 py-2 lg:py-3 rounded-sm font-headline text-[0.6rem] lg:text-[0.65rem] font-bold uppercase tracking-widest hover:bg-autoser-red hover:border-autoser-red hover:text-white transition-all">
+                    <span class="hidden lg:inline mr-1">VER</span> INVENTARIO
+                </a>
+                <button
+                    class="xl:hidden text-autoser-black hover:text-autoser-red transition-all focus:outline-none"
+                    onclick="toggleMobileMenu()">
+                    <span class="material-symbols-outlined text-3xl select-none notranslate">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero: Promotions -->
+    <header
+        class="min-h-[70vh] lg:min-h-[85vh] relative flex items-center pt-44 pb-20 lg:pt-24 lg:pb-0 bg-autoser-black overflow-hidden">
+        <div
+            class="absolute inset-0 z-0 text-white flex items-center justify-center text-[20vw] opacity-5 font-black tracking-tight pointer-events-none uppercase">
+            OFFERS</div>
+        <div class="absolute inset-0 z-0">
+            <img src="assets/img/agencia-bgn.jpg" alt="Jeep Experience PV"
+                class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-t from-autoser-black via-autoser-black/40 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-8 relative z-10 text-center lg:pt-8 reveal-on-scroll">
+            <div
+                class="inline-flex items-center gap-3 px-4 py-2 bg-black/40 backdrop-blur-md border border-autoser-red/30 rounded-full mb-8">
+                <span
+                    class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
+                <span
+                    class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Oportunidades
+                    por tiempo limitado</span>
+            </div>
+            <h1
+                class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold text-white leading-tight mb-8 tracking-wide uppercase">
+                PROMOCIONES <br /><span class="text-autoser-red shimmer px-4">EXCLUSIVAS.</span>
+            </h1>
+            <p class="text-gray-300 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+                Aprovecha beneficios preferenciales en todos nuestros departamentos. Calidad, confianza y el respaldo de
+                más de 25 años en Puerto Vallarta.
+            </p>
+
+            <!-- Countdown: Sense of Urgency -->
+            <div class="mb-16 reveal-on-scroll">
+                <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-[0.4em] mb-6">LA
+                    OPORTUNIDAD EXPIRA EN:</p>
+                <div class="flex justify-center items-center gap-4 lg:gap-6 font-headline">
+                    <div class="countdown-box">
+                        <div id="days" class="text-3xl md:text-4xl font-black text-white leading-none mb-1">00</div>
+                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Días
+                        </div>
+                    </div>
+                    <div class="text-2xl text-autoser-red font-bold">:</div>
+                    <div class="countdown-box">
+                        <div id="hours" class="text-3xl md:text-4xl font-black text-white leading-none mb-1">00</div>
+                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Horas
+                        </div>
+                    </div>
+                    <div class="text-2xl text-autoser-red font-bold">:</div>
+                    <div class="countdown-box">
+                        <div id="minutes" class="text-3xl md:text-4xl font-black text-white leading-none mb-1">00</div>
+                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Min
+                        </div>
+                    </div>
+                    <div class="text-2xl text-autoser-red font-bold">:</div>
+                    <div class="countdown-box">
+                        <div id="seconds" class="text-3xl md:text-4xl font-black text-white leading-none mb-1">00</div>
+                        <div class="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Seg
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-6">
+                <button class="btn-agency px-12">VER PROMOCIONES</button>
+                <button
+                    class="border-2 border-white text-white font-headline font-bold uppercase tracking-widest rounded-sm px-10 py-4 hover:bg-white hover:text-autoser-black transition-all">ASISTENCIA
+                    VIP</button>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- BONOS SEMINUEVOS -->
+    <section id="seminuevos" class="py-32 bg-white">
+        <div class="container mx-auto px-8">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-24 border-l-8 border-autoser-red pl-8 reveal-on-scroll">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-3 px-4 py-2 bg-black/5 backdrop-blur-md border border-autoser-red/20 rounded-full mb-8">
+                        <span
+                            class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
+                        <span
+                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Especial
+                            Seminuevos</span>
+                    </div>
+                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide">
+                        SEMINUEVOS</h2>
+                </div>
+                <p class="text-sm text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0">
+                    CERTIFICACIÓN AGENCIA</p>
+            </div>
+
+            <!-- Matlali Split Card -->
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 bg-autoser-black rounded-sm overflow-hidden shadow-2xl group border-l-8 border-autoser-red reveal-on-scroll">
+                <div class="h-[500px] lg:h-auto overflow-hidden">
+                    <img src="assets/img/seminuevos-promo.jpg"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                        alt="Matlali Promo">
+                </div>
+                <div class="p-12 md:p-20 flex flex-col justify-center relative">
+                    <span
+                        class="bg-autoser-red text-white text-[8px] font-black px-3 py-1.5 uppercase tracking-[0.3em] mb-8 inline-block w-fit">REGALO
+                        EN TU COMPRA</span>
+                    <h3
+                        class="text-white text-4xl md:text-5xl font-headline font-extrabold mb-6 tracking-wide uppercase leading-tight">
+                        DAY PASS VIP <br /><span class="text-autoser-red shimmer px-2">MATLALI</span></h3>
+                    <p class="text-gray-400 text-[10px] mb-12 leading-relaxed uppercase tracking-[0.2em] font-bold">Al
+                        adquirir tu seminuevo, disfruta de un día exclusivo en Grand Matlali Suites & Villas y Beach
+                        Club Eva Mandarina.</p>
+
+                    <div class="grid grid-cols-2 gap-8 mb-12">
+                        <div class="flex items-center gap-4">
+                            <span
+                                class="material-symbols-outlined text-autoser-red text-2xl notranslate select-none">restaurant</span>
+                            <div class="text-[9px] text-white font-bold tracking-widest uppercase">Desayuno</div>
+                        </div>
+                        <div class="flex items-center gap-4 border-l border-white/10 pl-8">
+                            <span
+                                class="material-symbols-outlined text-white text-2xl notranslate select-none">pool</span>
+                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase">Pool Bar</div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span
+                                class="material-symbols-outlined text-white text-2xl notranslate select-none">beach_access</span>
+                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase">Beach Club</div>
+                        </div>
+                        <div class="flex items-center gap-4 border-l border-white/10 pl-8">
+                            <span
+                                class="material-symbols-outlined text-white text-2xl notranslate select-none">fastfood</span>
+                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase">Snacks VIP</div>
+                        </div>
+                    </div>
+
+                    <button class="btn-agency w-fit px-12">SOLICITAR CON MI ASESOR</button>
+                </div>
+            </div>
+
+            <!-- Financing Mini Card -->
+            <div
+                class="mt-12 bg-autoser-gray p-12 flex flex-col md:flex-row justify-between items-center rounded-sm reveal-on-scroll">
+                <div class="flex items-center gap-6 mb-8 md:mb-0">
+                    <span
+                        class="material-symbols-outlined text-autoser-red text-6xl notranslate select-none">calendar_month</span>
+                    <div>
+                        <h4 class="font-headline font-extrabold text-2xl uppercase tracking-wide">FINANCIAMIENTO HASTA
+                            60 MESES</h4>
+                        <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Planes diseñados a tu
+                            medida con enganches competitivos.</p>
+                    </div>
+                </div>
+                <button
+                    class="border-2 border-autoser-black px-12 py-4 font-headline font-extrabold text-xs uppercase tracking-widest hover:bg-autoser-black hover:text-white transition-all">COTIZAR
+                    CRÉDITO</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TALLER SECTION -->
+    <section id="taller" class="py-32 bg-autoser-gray">
+        <div class="container mx-auto px-8">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-24 border-l-8 border-autoser-black pl-8 reveal-on-scroll">
+                <div>
+                    <span
+                        class="text-autoser-black font-headline font-bold text-xs uppercase tracking-[0.3em] mb-2 block">Mantenimiento</span>
+                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide">TALLER
+                        MULTIMARCA</h2>
+                </div>
+                <p
+                    class="text-[10px] text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0">
+                    TECNOLOGÍA DE AGENCIA</p>
+            </div>
+
+            <!-- Taller Split Card -->
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 bg-autoser-black rounded-sm overflow-hidden shadow-2xl group border-r-8 border-autoser-black reveal-on-scroll">
+                <div class="p-12 md:p-20 flex flex-col justify-center order-2 lg:order-1">
+                    <span
+                        class="bg-white text-autoser-black text-[8px] font-black px-3 py-1.5 uppercase tracking-[0.3em] mb-8 inline-block w-fit">OFERTA
+                        DE SERVICIO</span>
+                    <h3
+                        class="text-white text-4xl md:text-5xl font-headline font-extrabold mb-2 tracking-wide uppercase leading-tight text-right lg:text-left">
+                        SERVICIO <span class="text-autoser-red shimmer px-2">EXPRESS</span></h3>
+                    <div
+                        class="text-autoser-red text-6xl font-black mb-8 tracking-tighter text-right lg:text-left uppercase shimmer">
+                        DESDE <br />$1,550 MXN</div>
+
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 uppercase tracking-widest text-[9px] font-black text-white/70">
+                        <div class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-autoser-red text-sm notranslate select-none">check</span>
+                            Afinaciones
+                        </div>
+                        <div class="flex items-center gap-2 border-l border-white/10 pl-4"><span
+                                class="material-symbols-outlined text-autoser-red text-sm notranslate select-none">check</span>
+                            Frenos</div>
+                        <div class="flex items-center gap-2 border-l border-white/10 pl-4"><span
+                                class="material-symbols-outlined text-autoser-red text-sm notranslate select-none">check</span>
+                            Suspensión</div>
+                    </div>
+
+                    <button
+                        class="btn-agency w-full lg:w-fit px-12 bg-white text-autoser-black hover:bg-autoser-red hover:text-white">AGENDAR
+                        CITA AHORA</button>
+                </div>
+                <div class="h-[500px] lg:h-auto overflow-hidden order-1 lg:order-2">
+                    <img src="assets/img/taller-promo.jpg"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                        alt="Taller Promo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOJALATERIA SECTION -->
+    <section id="hojalateria" class="py-32 bg-white">
+        <div class="container mx-auto px-8">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-24 border-l-8 border-autoser-red pl-8 text-right md:text-left reveal-on-scroll">
+                <div class="order-2 md:order-1">
+                    <div
+                        class="inline-flex items-center gap-3 px-4 py-2 bg-black/5 backdrop-blur-md border border-autoser-red/20 rounded-full mb-8">
+                        <span
+                            class="w-2 h-2 bg-autoser-red rounded-full animate-pulse shadow-[0_0_10px_rgba(237,28,36,0.6)]"></span>
+                        <span
+                            class="text-autoser-red text-[10px] font-headline font-black uppercase tracking-[0.2em] italic">Mantenimiento
+                            Elite</span>
+                    </div>
+                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide">
+                        HOJALATERÍA EXPRESS</h2>
+                </div>
+                <p
+                    class="text-[10px] text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0 order-1 md:order-2">
+                    RECUPERA EL BRILLO</p>
+            </div>
+
+            <!-- Hojalatería Split Card -->
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 bg-autoser-black rounded-sm overflow-hidden shadow-2xl group border-l-8 border-autoser-red reveal-on-scroll">
+                <div class="h-[500px] lg:h-auto overflow-hidden">
+                    <img src="assets/img/hojalateria-promo.jpg"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                        alt="Hojalatería Promo">
+                </div>
+                <div class="p-12 md:p-20 flex flex-col justify-center">
+                    <span
+                        class="text-autoser-red font-headline font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Estética</span>
+                    <h3
+                        class="text-white text-4xl md:text-5xl font-headline font-extrabold mb-6 tracking-wide uppercase leading-tight">
+                        PRECIO <span class="text-autoser-red shimmer px-2">ESPECIAL</span> DE TEMPORADA</h3>
+                    <p class="text-gray-400 text-[10px] mb-12 leading-relaxed uppercase tracking-[0.2em] font-bold">
+                        Especialistas en rayones y daños mínimos. Tu auto recupera su brillo original sin esperas
+                        largas.</p>
+
+                    <div class="flex items-center gap-12 mb-12">
+                        <div class="text-center">
+                            <div class="text-autoser-red text-2xl font-black mb-1">✨</div>
+                            <div class="text-[9px] text-white font-bold tracking-widest uppercase">Como Nuevo</div>
+                        </div>
+                        <div class="h-12 w-px bg-white/20"></div>
+                        <div class="text-center">
+                            <div class="text-white text-2xl font-black mb-1">⏱️</div>
+                            <div class="text-[9px] text-gray-400 font-bold tracking-widest uppercase">Entrega Rápida
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-agency w-fit px-12">COTIZAR SIN COMPROMISO</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEGUROS SECTION -->
+    <section id="seguros" class="py-32 bg-autoser-gray">
+        <div class="container mx-auto px-8">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-24 border-l-8 border-autoser-black pl-8 reveal-on-scroll">
+                <div>
+                    <span
+                        class="text-autoser-black font-headline font-bold text-xs uppercase tracking-[0.3em] mb-2 block">Protección</span>
+                    <h2 class="text-4xl font-headline font-extrabold text-autoser-black uppercase tracking-wide">SEGUROS
+                        AUTO</h2>
+                </div>
+                <p
+                    class="text-[10px] text-autoser-charcoal opacity-60 uppercase tracking-widest font-bold mt-4 md:mt-0">
+                    TRANQUILIDAD TOTAL</p>
+            </div>
+
+            <!-- Seguros Split Card -->
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 bg-white rounded-sm overflow-hidden shadow-2xl group border-r-8 border-autoser-red reveal-on-scroll">
+                <div class="p-12 md:p-20 flex flex-col justify-center order-2 lg:order-1">
+                    <span
+                        class="bg-autoser-black text-white text-[8px] font-black px-3 py-1.5 uppercase tracking-[0.3em] mb-8 inline-block w-fit">TARIFAS
+                        PREFERENCIALES</span>
+                    <h3
+                        class="text-autoser-black text-4xl md:text-5xl font-headline font-extrabold mb-6 tracking-wide uppercase leading-tight text-right lg:text-left">
+                        RENOVACIÓN <span class="text-autoser-red shimmer px-2">DIRECTA</span></h3>
+                    <p class="text-gray-500 text-[10px] mb-12 leading-relaxed uppercase tracking-[0.2em] font-bold">
+                        Contamos con acuerdos exclusivos con las mejores aseguradoras. Renueva con nosotros y obtén los
+                        beneficios de ser cliente de casa.</p>
+
+                    <div class="grid grid-cols-2 gap-8 mb-12">
+                        <div class="flex items-center gap-4">
+                            <span
+                                class="material-symbols-outlined text-autoser-red text-2xl notranslate select-none">verified_user</span>
+                            <div class="text-[9px] text-autoser-black font-black tracking-widest uppercase">Pólizas
+                                Oficiales</div>
+                        </div>
+                        <div class="flex items-center gap-4 border-l border-gray-100 pl-8">
+                            <span
+                                class="material-symbols-outlined text-autoser-black text-2xl notranslate select-none">savings</span>
+                            <div class="text-[9px] text-gray-500 font-bold tracking-widest uppercase">Ahorro Garantizado
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="btn-agency w-full lg:w-fit px-12 bg-autoser-black text-white hover:bg-autoser-red transition-all">SOLICITAR
+                        COTIZACIÓN</button>
+                </div>
+                <div class="h-[500px] lg:h-auto overflow-hidden order-1 lg:order-2">
+                    <img src="assets/img/seguros-card.jpg"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                        alt="Insurance Promo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-autoser-black text-white py-12 px-8 border-t-8 border-autoser-red">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
+            <div class="space-y-8">
+                <div class="flex items-center">
+                    <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
+                        class="h-16 w-auto opacity-100">
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Orgullosamente Vallartenses. Más de dos décadas brindando confianza y calidad en cada kilómetro.
+                </p>
+            </div>
+
+            <div>
+                <h4
+                    class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white">
+                    DEPARTAMENTOS</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
+                    <li><a href="/" class="hover:text-autoser-red">Inicio</a></li>
+                    <li><a href="vende-tu-auto"
+                            class="hover:text-autoser-red">Inventario</a></li>
+                    <li><a href="taller" class="hover:text-autoser-red">Taller de
+                            Servicio</a></li>
+                    <li><a href="hojalateria" class="hover:text-autoser-red">Hojalatería
+                            y Pintura</a></li>
+                    <li><a href="refacciones"
+                            class="hover:text-autoser-red">Refacciones</a></li>
+                    <li><a href="seguros"
+                            class="hover:text-autoser-red">Seguros</a></li>
+                    <li><a href="promociones" class="hover:text-autoser-red">Promociones</a>
+                    </li>
+                    <li><a href="nosotros" class="hover:text-autoser-red">Nosotros</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4
+                    class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white">
+                    UBICACIONES</h4>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-xs font-bold text-autoser-red uppercase tracking-widest mb-2">Las Juntas (Matriz)
+                        </p>
+                        <p class="text-gray-400 text-[10px] leading-relaxed uppercase font-medium">
+                            Carr. Tepic-Vallarta 6020, Las Juntas,<br />Puerto Vallarta, Jal. CP 48291
+                        </p>
+                        <p class="text-gray-500 text-[9px] mt-2 font-bold group-hover:text-white transition-colors">
+                            Ventas: Lun-Vie 9-7 / Sáb 9-3 / Dom 10-3</p>
+                        <p class="text-gray-500 text-[9px] font-bold">Taller: Lun-Vie 9-2 y 3-6 / Sáb 9-2</p>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-autoser-red uppercase tracking-widest mb-2">Valle Dorado</p>
+                        <p class="text-gray-400 text-[10px] leading-relaxed uppercase font-medium">
+                            Av. México 2, Valle Dorado,<br />Mezcales, Nay. CP 63735
+                        </p>
+                        <p class="text-gray-500 text-[9px] mt-2 font-bold">Ventas: Lun-Vie 9-8 / Sáb 9-3 / Dom 10-3</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h4
+                    class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white">
+                    CONTACTO</h4>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-gray-500 text-[10px] uppercase font-bold tracking-widest mb-1">Teléfonos</p>
+                        <p class="text-autoser-red font-bold text-sm">322 226 3500</p>
+                        <p class="text-gray-400 text-xs mt-1">Atención General</p>
+                    </div>
+                    <div class="flex gap-5 pt-4">
+                        <a href="https://www.facebook.com/AutoserVallarta" target="_blank"
+                            class="text-white hover:text-autoser-red transition-all duration-300 transform hover:-translate-y-1">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/autoservallarta" target="_blank"
+                            class="text-white hover:text-autoser-red transition-all duration-300 transform hover:-translate-y-1">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.013 3.584-.07 4.85c-.054 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.584-.013-4.85-.07c-1.17-.054-1.806-.249-2.227-.413-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.057-.413-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.806.413-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.227-.413 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 5.775.131 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.059 1.278.26 2.148.557 2.913.306.789.717 1.459 1.384 2.126s1.384 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.059 2.148-.26 2.913-.557 1.459-.306 1.384-.717 2.126-1.384s1.078-1.384 1.384-2.126c.296-.765.499-1.636.558-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.059-1.278-.26-2.148-.557-2.913-.306-.789-.717-1.459-1.384-2.126S20.65 1.078 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@autoserpuertovallarta" target="_blank"
+                            class="text-white hover:text-autoser-red transition-all duration-300 transform hover:-translate-y-1">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container mx-auto mt-24 pt-8 border-t border-white/10 flex flex-col items-center gap-6 text-center">
+            <a href="bolsa-de-trabajo" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors">Bolsa de Trabajo</a>
+            <div class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.4em]">
+                © <span id="currentYear"></span> AUTOSER VALLARTA // Agencia Multimarca / Especialistas en Jeep y RAM
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll, .reveal-from-left, .reveal-from-right').forEach(el => revealObserver.observe(el));
+        
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Simple Countdown logic
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 5);
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = d.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-autoser-black z-[9999] flex flex-col p-8 md:p-12 xl:hidden translate-x-full transition-transform duration-500 overflow-y-auto">
+        <button class="absolute top-8 right-8 text-white hover:text-autoser-red transition-colors"
+            onclick="toggleMobileMenu()">
+            <span class="material-symbols-outlined text-4xl font-light select-none notranslate">close</span>
+        </button>
+        <div class="mt-12 space-y-8 pb-12">
+            <a href="/" class="block mobile-link"
+                onclick="toggleMobileMenu()">Inicio</a>
+
+            <!-- Seminuevos Group -->
+            <div class="space-y-4">
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Seminuevos</p>
+                <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Ver Inventario</a>
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Compramos tu auto</a>
+                </div>
+            </div>
+
+            <!-- Taller Group -->
+            <div class="space-y-4">
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Servicios de Taller</p>
+                <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
+                    <a href="taller" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Taller Multimarca</a>
+                    <a href="hojalateria" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Hojalatería y Pintura</a>
+                </div>
+            </div>
+
+            <a href="refacciones" class="block mobile-link"
+                onclick="toggleMobileMenu()">Refacciones</a>
+            <a href="seguros" class="block mobile-link"
+                onclick="toggleMobileMenu()">Seguros</a>
+            <a href="promociones" class="block mobile-link active"
+                onclick="toggleMobileMenu()">Promociones</a>
+            <a href="nosotros" class="block mobile-link"
+                onclick="toggleMobileMenu()">Nosotros</a>
+        </div>
+        <div class="mt-auto border-t border-white/10 pt-12">
+            <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-widest mb-4">Contacto Directo
+            </p>
+            <a href="tel:3222263500" class="text-white text-xl font-bold flex items-center gap-3">
+                <span class="material-symbols-outlined text-autoser-red select-none notranslate">phone_in_talk</span>
+                322 226 3500
+            </a>
+            <div class="flex gap-6 mt-8">
+                <a href="https://www.facebook.com/AutoserVallarta" target="_blank"
+                    class="text-white hover:text-autoser-red transition-all duration-300 transform hover:-translate-y-1">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/autoservallarta" target="_blank"
+                    class="text-white hover:text-autoser-red transition-all duration-300 transform hover:-translate-y-1">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.013 3.584-.07 4.85c-.054 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.584-.013-4.85-.07c-1.17-.054-1.806-.249-2.227-.413-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.057-.413-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.806.413-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.227-.413 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 5.775.131 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.059 1.278.26 2.148.557 2.913.306.789.717 1.459 1.384 2.126s1.384 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.059 2.148-.26 2.913-.557 1.459-.306 1.384-.717 2.126-1.384s1.078-1.384 1.384-2.126c.296-.765.499-1.636.558-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.059-1.278-.26-2.148-.557-2.913-.306-.789-.717-1.459-1.384-2.126S20.65 1.078 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@autoserpuertovallarta" target="_blank"
+                    class="text-white hover:text-autoser-red transition-all duration-300 transform hover:-translate-y-1">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
