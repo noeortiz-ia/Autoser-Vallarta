@@ -251,10 +251,22 @@
                     // Restauramos el link protegido quitando las marcas
                     return part.replace('___LINK_START___', '').replace('___LINK_END___', '');
                 } else {
-                    // En texto plano, buscamos cualquier URL y la convertimos en botón
-                    const rawUrlRegex = /(https?:\/\/[^\s)]+)/g;
+                    // Ajustamos el regex para ser más "ambicioso" con links de WhatsApp
+                    // pero cuidando de no atrapar puntuación final que no sea del link
+                    const rawUrlRegex = /(https?:\/\/[^\s<>]+)/g;
                     return part.replace(rawUrlRegex, function(url) {
-                        const cleanUrl = url.replace(/[.,;]$/, "");
+                        // Limpieza inteligente: quitamos puntuación común al final de una oración
+                        // pero permitimos paréntesis si parecen ser parte del mensaje de WhatsApp (codificados)
+                        let cleanUrl = url.replace(/[.,;!]$/, "");
+                        
+                        // Si la URL termina en un paréntesis de cierre ")", verificamos si hay uno de apertura "("
+                        // Si no hay apertura, es probable que la URL esté dentro de paréntesis y el de cierre no sea parte del link
+                        const openCount = (cleanUrl.match(/\(/g) || []).length;
+                        const closeCount = (cleanUrl.match(/\)/g) || []).length;
+                        if (closeCount > openCount) {
+                            cleanUrl = cleanUrl.substring(0, cleanUrl.lastIndexOf(')'));
+                        }
+
                         const isWA = cleanUrl.includes('wa.me');
                         
                         if (isWA) {
