@@ -110,11 +110,11 @@
     <header class="p-6 glass z-50">
         <div class="max-w-5xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-6">
-                <button onclick="showLobby()" class="p-2 hover:bg-white/5 rounded-full transition-colors group">
+                <button onclick="showLobby()" class="p-2 hover:bg-white/5 rounded-full transition-colors group" title="Cambiar Departamento">
                     <span class="material-symbols-outlined text-3xl group-hover:text-autoser-red transition-colors">apps</span>
                 </button>
                 <div class="flex items-center gap-4">
-                    <div id="agent-icon-bg" class="w-12 h-12 bg-autoser-red flex items-center justify-center rounded-sm shadow-lg shadow-autoser-red/20">
+                    <div id="agent-icon-bg" class="w-12 h-12 bg-autoser-red flex items-center justify-center rounded-sm shadow-lg shadow-autoser-red/20 transition-colors">
                         <span id="agent-icon" class="material-symbols-outlined text-white text-3xl">smart_toy</span>
                     </div>
                     <div>
@@ -126,9 +126,16 @@
                     </div>
                 </div>
             </div>
-            <a href="/" class="hidden md:block">
-                <img src="assets/img/logo-autoser.png" alt="Autoser" class="h-8 brightness-110">
-            </a>
+            
+            <div class="flex items-center gap-4">
+                <button onclick="resetConversation()" class="flex items-center gap-2 bg-white/5 hover:bg-autoser-red/20 text-gray-400 hover:text-autoser-red px-4 py-2 rounded-sm transition-all text-xs font-bold uppercase tracking-widest group border border-transparent hover:border-autoser-red/30">
+                    <span class="material-symbols-outlined text-lg group-hover:rotate-180 transition-transform duration-500">restart_alt</span>
+                    <span class="hidden sm:inline">Nuevo Chat</span>
+                </button>
+                <a href="/" class="hidden md:block">
+                    <img src="assets/img/logo-autoser.png" alt="Autoser" class="h-8 brightness-110">
+                </a>
+            </div>
         </div>
     </header>
 
@@ -316,6 +323,58 @@
         let currentAgent = null;
         let currentSessionId = null;
 
+        // --- LÓGICA DE PERSISTENCIA (LocalStorage) ---
+        function saveConversation() {
+            if (!currentAgent) return;
+            const history = Array.from(messagesList.children).map(msg => ({
+                className: msg.className,
+                innerHTML: msg.innerHTML
+            }));
+            localStorage.setItem('autoser_chat_history', JSON.stringify(history));
+            localStorage.setItem('autoser_session_id', currentSessionId);
+            localStorage.setItem('autoser_agent_type', localStorage.getItem('last_agent_type'));
+        }
+
+        function loadConversation() {
+            const history = JSON.parse(localStorage.getItem('autoser_chat_history'));
+            const sessionId = localStorage.getItem('autoser_session_id');
+            const agentType = localStorage.getItem('autoser_agent_type');
+
+            if (history && sessionId && agentType && CONFIG[agentType]) {
+                currentSessionId = sessionId;
+                currentAgent = CONFIG[agentType];
+                
+                // Restaurar UI del Agente
+                lobby.classList.add('hidden');
+                document.getElementById('agent-name').innerText = currentAgent.name;
+                document.getElementById('agent-icon').innerText = currentAgent.icon;
+                document.getElementById('agent-icon-bg').style.backgroundColor = currentAgent.color;
+
+                // Restaurar Mensajes
+                messagesList.innerHTML = '';
+                history.forEach(msgData => {
+                    const div = document.createElement('div');
+                    div.className = msgData.className;
+                    div.innerHTML = msgData.innerHTML;
+                    messagesList.appendChild(div);
+                });
+
+                const chatArea = document.getElementById('chat-area');
+                chatArea.scrollTop = chatArea.scrollHeight;
+                return true;
+            }
+            return false;
+        }
+
+        function resetConversation() {
+            if (confirm('¿Quieres borrar esta conversación y empezar una nueva?')) {
+                localStorage.removeItem('autoser_chat_history');
+                localStorage.removeItem('autoser_session_id');
+                localStorage.removeItem('autoser_agent_type');
+                location.reload();
+            }
+        }
+
         // Elementos DOM
         const lobby = document.getElementById('lobby-screen');
         const inputField = document.getElementById('user-input');
@@ -327,8 +386,9 @@
         function selectAgent(type) {
             const agent = CONFIG[type];
             currentAgent = agent;
+            localStorage.setItem('last_agent_type', type);
             
-            // Generamos un ID de sesión ÚNICO para esta conversación específico para este agente
+            // Generamos un ID de sesión ÚNICO
             currentSessionId = "autoser-" + type + "-" + Math.random().toString(36).substring(7);
 
             // Transición visual
@@ -340,6 +400,7 @@
             // Limpiar y Dar Bienvenida
             messagesList.innerHTML = `<div class="text-center mb-6"><span class="text-[9px] text-gray-600 bg-white/5 px-4 py-1 rounded-full uppercase tracking-widest">Hablando con ${agent.name}</span></div>`;
             appendMessage('bot', agent.welcome);
+            saveConversation();
         }
 
         function showLobby() {
@@ -354,12 +415,14 @@
                 : 'self-start bg-autoser-charcoal text-gray-100 border border-white/5 shadow-2xl'} 
                 px-8 py-5 rounded-sm text-base mb-6`;
             
-            // Usamos la función de formateo para procesar links y negritas
             div.innerHTML = formatMessage(text);
             messagesList.appendChild(div);
             
             const chatArea = document.getElementById('chat-area');
             chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
+            
+            // Guardar historial después de cada mensaje
+            saveConversation();
         }
 
         async function sendMessage() {
@@ -386,8 +449,6 @@
                 });
                 
                 const data = await response.json();
-                
-                // Detectamos la respuesta en diferentes formatos posibles de n8n
                 const botResponse = data.output || data.text || data.response || (Array.isArray(data) ? data[0].output : null);
                 
                 if (botResponse) {
@@ -421,12 +482,18 @@
             this.style.height = (this.scrollHeight) + 'px';
         });
 
-        // DETECCIÓN AUTOMÁTICA POR URL (Para fase real)
+        // INICIALIZACIÓN
         document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const forceAgent = urlParams.get('agente');
-            if (forceAgent && CONFIG[forceAgent]) {
-                selectAgent(forceAgent);
+            // Intentar cargar conversación previa
+            const hasHistory = loadConversation();
+
+            // Si no hay historia, ver si se fuerza un agente por URL
+            if (!hasHistory) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const forceAgent = urlParams.get('agente');
+                if (forceAgent && CONFIG[forceAgent]) {
+                    selectAgent(forceAgent);
+                }
             }
         });
     </script>
