@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Inteligente | Autoser Vallarta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        autoser: {
+                            red: '#ED1C24',
+                            black: '#1A1A1A',
+                            charcoal: '#252525',
+                        }
+                    },
+                    fontFamily: {
+                        headline: ['Montserrat', 'sans-serif'],
+                        body: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .chat-container::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb {
+            background: rgba(237, 28, 36, 0.3);
+            border-radius: 10px;
+        }
+
+        .message-bubble {
+            max-width: 85%;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #ED1C24;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .agent-active {
+            position: relative;
+        }
+
+        .agent-active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            background: #22c55e;
+            border-radius: 50%;
+            border: 2px solid #1A1A1A;
+            animation: shadowPulse 2s infinite;
+        }
+
+        @keyframes shadowPulse {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        /* Lobby Animations */
+        .lobby-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .lobby-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(237, 28, 36, 0.1);
+            border-color: rgba(237, 28, 36, 0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-autoser-black text-white font-body min-h-screen overflow-hidden flex flex-col">
+
+    <!-- Header Dinámico -->
+    <header class="p-6 border-b border-white/5 flex items-center justify-between glass z-50">
+        <div class="flex items-center gap-4">
+            <button onclick="showLobby()" class="hover:text-autoser-red transition-colors">
+                <span class="material-symbols-outlined text-3xl">grid_view</span>
+            </button>
+            <div class="flex items-center gap-3">
+                <div id="agent-avatar-container" class="agent-active">
+                    <div id="agent-icon-bg" class="w-10 h-10 bg-autoser-red flex items-center justify-center rounded-sm">
+                        <span id="agent-icon" class="material-symbols-outlined text-white">smart_toy</span>
+                    </div>
+                </div>
+                <div>
+                    <h1 id="agent-name" class="font-headline font-bold text-sm tracking-widest uppercase">Asistente Autoser</h1>
+                    <p id="agent-status" class="text-[10px] text-gray-500 uppercase tracking-tighter">Conectado a Red IA</p>
+                </div>
+            </div>
+        </div>
+        <a href="/" class="opacity-50 hover:opacity-100 transition-opacity">
+            <img src="assets/img/logo-autoser.png" alt="Autoser" class="h-6">
+        </a>
+    </header>
+
+    <!-- Área Principal: Lobby vs Chat -->
+    <main class="flex-grow relative flex flex-col">
+        
+        <!-- Pantalla de Selección (Lobby) -->
+        <div id="lobby-screen" class="absolute inset-0 z-40 bg-autoser-black/95 backdrop-blur-md p-8 overflow-y-auto flex flex-col items-center justify-center">
+            <div class="max-w-4xl w-full text-center space-y-12">
+                <div class="space-y-4">
+                    <span class="text-autoser-red font-headline font-bold text-xs uppercase tracking-[0.5em]">Bienvenido al Centro Digital</span>
+                    <h2 class="text-3xl md:text-5xl font-headline font-black uppercase leading-none">¿CÓMO PODEMOS <br><span class="text-autoser-red">AYUDARTE</span> HOY?</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Ventas Card -->
+                    <button onclick="selectAgent('ventas')" class="lobby-card glass p-8 rounded-sm border border-white/10 text-center space-y-4 group">
+                        <span class="material-symbols-outlined text-4xl text-autoser-red group-hover:scale-110 transition-transform">directions_car</span>
+                        <h3 class="font-headline font-bold text-xs uppercase tracking-widest">Seminuevos</h3>
+                        <p class="text-[10px] text-gray-400 font-light">Comprar, vender o valuar una unidad.</p>
+                    </button>
+
+                    <!-- Taller Card -->
+                    <button onclick="selectAgent('taller')" class="lobby-card glass p-8 rounded-sm border border-white/10 text-center space-y-4 group">
+                        <span class="material-symbols-outlined text-4xl text-white group-hover:text-autoser-red transition-all">build</span>
+                        <h3 class="font-headline font-bold text-xs uppercase tracking-widest">Taller</h3>
+                        <p class="text-[10px] text-gray-400 font-light">Citas de servicio y estatus de reparación.</p>
+                    </button>
+
+                    <!-- HyP Card -->
+                    <button onclick="selectAgent('hyp')" class="lobby-card glass p-8 rounded-sm border border-white/10 text-center space-y-4 group">
+                        <span class="material-symbols-outlined text-4xl text-white group-hover:text-autoser-red transition-all">format_paint</span>
+                        <h3 class="font-headline font-bold text-xs uppercase tracking-widest">Hojalatería</h3>
+                        <p class="text-[10px] text-gray-400 font-light">Cotizaciones de pintura y golpes.</p>
+                    </button>
+
+                    <!-- Refacciones Card -->
+                    <button onclick="selectAgent('refacciones')" class="lobby-card glass p-8 rounded-sm border border-white/10 text-center space-y-4 group">
+                        <span class="material-symbols-outlined text-4xl text-white group-hover:text-autoser-red transition-all">settings_suggest</span>
+                        <h3 class="font-headline font-bold text-xs uppercase tracking-widest">Refacciones</h3>
+                        <p class="text-[10px] text-gray-400 font-light">Catálogo y existencia de piezas.</p>
+                    </button>
+                </div>
+                
+                <p class="text-gray-500 text-[9px] uppercase tracking-widest">Autoser Vallarta // Inteligencia Artificial Avanzada</p>
+            </div>
+        </div>
+
+        <!-- Contenedor del Chat -->
+        <div id="chat-area" class="flex-grow flex flex-col p-6 space-y-6 overflow-y-auto chat-container h-0">
+            <!-- Los mensajes se insertarán aquí -->
+            <div id="messages-list" class="space-y-6 flex flex-col">
+                <!-- Mensaje de Sistema Inicial -->
+                <div class="text-center">
+                    <span class="text-[9px] text-gray-600 bg-white/5 px-4 py-1 rounded-full uppercase tracking-widest">Iniciando encriptación de chat...</span>
+                </div>
+            </div>
+            
+            <!-- Indicador de Escribiendo (Oculto por defecto) -->
+            <div id="typing-indicator" class="hidden flex items-center gap-2 text-autoser-red px-4">
+                <div class="typing-dot"></div>
+                <div class="typing-dot" style="animation-delay: 0.2s"></div>
+                <div class="typing-dot" style="animation-delay: 0.4s"></div>
+                <span class="text-[10px] uppercase font-black tracking-widest ml-2">IA Pensando</span>
+            </div>
+        </div>
+
+        <!-- Input Bar Stickey at bottom -->
+        <div class="p-6 border-t border-white/5 glass">
+            <div class="max-w-4xl mx-auto flex items-end gap-4 relative">
+                <div class="flex-grow relative">
+                    <textarea id="user-input" rows="1" placeholder="Escribe tu pregunta aquí..." 
+                        class="w-full bg-autoser-charcoal border-none rounded-sm px-6 py-4 text-sm text-white focus:ring-2 focus:ring-autoser-red transition-all resize-none pr-12"></textarea>
+                    <button id="send-btn" class="absolute right-4 bottom-4 text-autoser-red hover:scale-110 transition-transform disabled:opacity-30 disabled:hover:scale-100">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </div>
+            </div>
+            <p class="text-center text-[9px] text-gray-600 mt-4 uppercase tracking-tighter">Respuestas generadas por IA • Sujetas a disponibilidad de taller y stock</p>
+        </div>
+    </main>
+
+    <script>
+        // Configuración de Agentes (Opción A)
+        const CONFIG = {
+            ventas: {
+                name: "Especialista Ventas",
+                icon: "directions_car",
+                color: "#ED1C24",
+                webhook: "https://n8n.tu-server.com/webhook/ventas", // Reemplazar con real
+                welcome: "Hola, soy el Especialista en Seminuevos. ¿Buscas un modelo en particular o te gustaría valuar tu auto actual?"
+            },
+            taller: {
+                name: "Ingeniero Servicio",
+                icon: "build",
+                color: "#2A4B8D",
+                webhook: "https://n8n.tu-server.com/webhook/taller", // Reemplazar con real
+                welcome: "Bienvenido a Servicio Técnico. ¿Qué mantenimiento necesita tu unidad hoy?"
+            },
+            hyp: {
+                name: "Consultor de Pintura",
+                icon: "format_paint",
+                color: "#F39C12",
+                webhook: "https://n8n.tu-server.com/webhook/hyp", // Reemplazar con real
+                welcome: "Hola, soy experto en Hojalatería y Pintura. ¿Quieres enviarme una foto de algún golpe para cotizar?"
+            },
+            refacciones: {
+                name: "Gestor Refacciones",
+                icon: "settings_suggest",
+                color: "#607D8B",
+                webhook: "https://n8n.tu-server.com/webhook/refacciones", // Reemplazar con real
+                welcome: "Área de Refacciones lista. ¿Buscas alguna pieza original para tu Jeep o RAM?"
+            }
+        };
+
+        let currentAgent = null;
+
+        // Elementos DOM
+        const lobby = document.getElementById('lobby-screen');
+        const inputField = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const messagesList = document.getElementById('messages-list');
+        const typingIndicator = document.getElementById('typing-indicator');
+
+        // Selección de Agente
+        function selectAgent(type) {
+            const agent = CONFIG[type];
+            currentAgent = agent;
+
+            // Transición visual
+            lobby.classList.add('hidden');
+            document.getElementById('agent-name').innerText = agent.name;
+            document.getElementById('agent-icon').innerText = agent.icon;
+            document.getElementById('agent-icon-bg').style.backgroundColor = agent.color;
+            
+            // Limpiar y Dar Bienvenida
+            messagesList.innerHTML = `<div class="text-center mb-6"><span class="text-[9px] text-gray-600 bg-white/5 px-4 py-1 rounded-full uppercase tracking-widest">Hablando con ${agent.name}</span></div>`;
+            appendMessage('bot', agent.welcome);
+        }
+
+        function showLobby() {
+            lobby.classList.remove('hidden');
+        }
+
+        // Manejo de Mensajes
+        function appendMessage(role, text) {
+            const div = document.createElement('div');
+            div.className = `message-bubble ${role === 'user' ? 'self-end bg-autoser-red text-white' : 'self-start bg-autoser-charcoal text-gray-200'} px-6 py-4 rounded-sm text-sm font-light shadow-xl mb-4`;
+            div.innerText = text;
+            messagesList.appendChild(div);
+            
+            const chatArea = document.getElementById('chat-area');
+            chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
+        }
+
+        async function sendMessage() {
+            const text = inputField.value.trim();
+            if (!text || !currentAgent) return;
+
+            appendMessage('user', text);
+            inputField.value = '';
+            inputField.style.height = 'auto';
+
+            // Simular IA pensando
+            typingIndicator.classList.remove('hidden');
+            
+            try {
+                // AQUÍ SE CONECTA A N8N
+                const response = await fetch(currentAgent.webhook, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text, agent: currentAgent.name })
+                });
+                
+                // NOTA: Para pruebas locales, esto probablemente dará error CORS o 404
+                const data = await response.json();
+                appendMessage('bot', data.output || "Lo siento, tuve un problema al procesar tu solicitud.");
+            } catch (error) {
+                console.error("Fetch Error:", error);
+                // Respuesta de simulacro para que el usuario pruebe la UI
+                setTimeout(() => {
+                    appendMessage('bot', `Simulacro: He recibido tu mensaje sobre "${text}". (En un entorno real, esto se envió al webhook: ${currentAgent.webhook})`);
+                }, 1000);
+            } finally {
+                typingIndicator.classList.add('hidden');
+                const chatArea = document.getElementById('chat-area');
+                chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
+            }
+        }
+
+        // Listeners
+        sendBtn.addEventListener('click', sendMessage);
+        inputField.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Auto-expand textarea
+        inputField.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+
+        // DETECCIÓN AUTOMÁTICA POR URL (Para fase real)
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const forceAgent = urlParams.get('agente');
+            if (forceAgent && CONFIG[forceAgent]) {
+                selectAgent(forceAgent);
+            }
+        });
+    </script>
+</body>
+
+</html>
