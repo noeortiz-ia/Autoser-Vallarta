@@ -361,7 +361,6 @@
             typingIndicator.classList.remove('hidden');
             
             try {
-                // n8n suele esperar 'chatInput' en sus nodos de AI Chat
                 const response = await fetch(currentAgent.webhook, {
                     method: 'POST',
                     headers: { 
@@ -369,37 +368,25 @@
                     },
                     body: JSON.stringify({ 
                         chatInput: text, 
-                        sessionId: currentSessionId, // Ahora es persistente
+                        sessionId: currentSessionId,
                         agent: currentAgent.name 
                     })
                 });
                 
-                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-
                 const data = await response.json();
                 
-                // n8n puede devolver la respuesta en 'output', 'text' o 'response'
+                // Detectamos la respuesta en diferentes formatos posibles de n8n
                 const botResponse = data.output || data.text || data.response || (Array.isArray(data) ? data[0].output : null);
                 
                 if (botResponse) {
                     appendMessage('bot', botResponse);
                 } else {
-                    throw new Error("Formato de respuesta desconocido");
+                    appendMessage('bot', "Recibí una respuesta pero el formato no es el esperado. Verifica n8n.");
                 }
 
             } catch (error) {
-                console.error("Detalle del error:", error);
-                
-                // Si estamos en local (file://), avisamos del CORS pero permitimos seguir probando con un simulacro
-                if (window.location.protocol === 'file:') {
-                    appendMessage('bot', "⚠️ **MODO SIMULACIÓN ACTIVO**: Como estás abriendo el archivo localmente, el navegador bloquea la conexión real con n8n (CORS). Pero no te preocupes, puedes seguir probando la interfaz con esta respuesta de prueba:");
-                    
-                    setTimeout(() => {
-                        appendMessage('bot', `[Simulacro de n8n]\n\nHe recibido tu mensaje: **"${text}"**. \n\nRecuerda que para que esta respuesta sea real, el sitio debe estar en un servidor o puedes usar el link de GitHub que te pasé. Aquí puedes probar los nuevos botones: [Ver inventario de prueba](https://autoser.com.mx) o contactar por WhatsApp: https://wa.me/523221234567?text=Hola`);
-                    }, 800);
-                } else {
-                    appendMessage('bot', "Hubo un problema al conectar con el agente. Por favor, verifica que el flujo en n8n esté activo y tenga el Webhook en modo producción.");
-                }
+                console.error("Error de conexión:", error);
+                appendMessage('bot', "No pude conectar con n8n. Por favor verifica que el webhook esté activo.");
             } finally {
                 typingIndicator.classList.add('hidden');
                 const chatArea = document.getElementById('chat-area');
