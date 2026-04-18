@@ -41,8 +41,9 @@ const i18n = {
             // Store original Spanish state and its type (text vs html)
             if (!el.hasAttribute('data-i18n-es')) {
                 // Ensure we capture the original state before any translation happened
+                // Use innerHTML/textContent as innerText fails on invisible elements
                 const hasTags = el.children.length > 0 || el.innerHTML.includes('<br');
-                el.setAttribute('data-i18n-es', hasTags ? el.innerHTML : el.innerText.trim());
+                el.setAttribute('data-i18n-es', hasTags ? el.innerHTML : el.textContent.trim());
                 el.setAttribute('data-i18n-type', hasTags ? 'html' : 'text');
             }
 
@@ -61,11 +62,10 @@ const i18n = {
                     el.innerHTML = isIconAtStart ? `${iconHTML} ${translation}` : `${translation} ${iconHTML}`;
                 } else {
                     // Respect HTML in translations (allows <br> in data-en)
-                    // We use innerHTML if translation has tags or if the element is an HTML type
                     if (translation.includes('<') || type === 'html') {
                         el.innerHTML = translation;
                     } else {
-                        el.innerText = translation;
+                        el.textContent = translation;
                     }
                 }
             } else {
@@ -73,7 +73,7 @@ const i18n = {
                 if (type === 'html') {
                     el.innerHTML = original;
                 } else {
-                    el.innerText = original;
+                    el.textContent = original;
                 }
             }
         });
