@@ -143,7 +143,7 @@
             </div>
             
             <div class="flex items-center gap-2 md:gap-4">
-                <button onclick="i18n.toggle()" 
+                <button onclick="i18n.toggle(); if(typeof renderSuggestions === 'function') renderSuggestions();" 
                     class="flex items-center gap-1 px-3 py-1.5 border border-white/10 rounded-sm text-[9px] font-headline font-extrabold hover:bg-autoser-red transition-all">
                     <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
                     <span class="lang-toggle-text">EN</span>
@@ -237,6 +237,11 @@
         <!-- Input Island (Centralizada para mejor UX) -->
         <div class="p-4 md:p-12">
             <div class="max-w-3xl mx-auto w-full">
+                <!-- Quick Suggestions Menu -->
+                <div id="suggestions-container" class="mb-4 flex flex-wrap gap-2 justify-center transition-all duration-300">
+                    <!-- Suggestions will be injected here -->
+                </div>
+
                 <div class="input-island flex items-center p-1 md:p-2 rounded-sm pr-4">
                     <textarea id="user-input" rows="1" placeholder="¿En qué puedo ayudarte?" data-en-placeholder="How can I help you?" 
                         class="flex-grow bg-transparent border-none px-4 md:px-6 py-3 md:py-4 text-sm md:text-base text-white focus:ring-0 placeholder:text-gray-600 resize-none min-h-[48px] md:min-h-[56px] max-h-40 font-medium"></textarea>
@@ -316,43 +321,63 @@
             return processedParts.join('');
         }
 
-        // Configuración de Agentes (Opción A)
+        // Configuración de Agentes
         const CONFIG = {
             ventas: {
-                name: "Especialista Ventas",
-                name_en: "Sales Specialist",
+                name: "Asesor de Seminuevos",
+                name_en: "Pre-owned Advisor",
                 icon: "directions_car",
                 color: "#ED1C24",
                 webhook: "https://n8n.orbys.one/webhook/1f275daf-907f-4021-8716-a95ae1e8f32f/chat",
-                welcome: "Hola, soy el Especialista en Seminuevos de Autoser. ¿Buscas un modelo en particular o te gustaría valuar tu auto actual?",
-                welcome_en: "Hello, I am Autoser's Pre-owned Specialist. Are you looking for a specific model or would you like to value your current car?"
+                welcome: "Hola, soy tu Asesor de Seminuevos Autoser. ¿Buscas un modelo en particular o te gustaría valuar tu auto actual?",
+                welcome_en: "Hello, I am your Autoser Pre-owned Advisor. Are you looking for a specific model or would you like to value your current car?",
+                suggestions: [
+                    { es: "Quiero comprar un auto", en: "I want to buy a car" },
+                    { es: "Quiero vender mi auto", en: "I want to sell my car" },
+                    { es: "Ver inventario disponible", en: "View inventory" }
+                ]
             },
             taller: {
-                name: "Ingeniero Servicio",
-                name_en: "Service Engineer",
+                name: "Asesor de Servicio",
+                name_en: "Service Advisor",
                 icon: "build",
                 color: "#2A4B8D",
                 webhook: "https://n8n.orbys.one/webhook/69d809ac-2e54-4bf2-8e5e-dde13c2b4fcd/chat",
-                welcome: "Bienvenido a Servicio Técnico. ¿Qué mantenimiento necesita tu unidad hoy?",
-                welcome_en: "Welcome to Technical Service. What maintenance does your unit need today?"
+                welcome: "Bienvenido a Servicio Técnico, soy tu Asesor de Servicio. ¿Qué mantenimiento necesita tu unidad hoy?",
+                welcome_en: "Welcome to Technical Service, I am your Service Advisor. What maintenance does your unit need today?",
+                suggestions: [
+                    { es: "Agendar servicio", en: "Schedule service" },
+                    { es: "Horarios de atención", en: "Business hours" },
+                    { es: "Ubicación del taller", en: "Workshop location" }
+                ]
             },
             hyp: {
-                name: "Especialista en Hojalatería y Pintura",
-                name_en: "Body & Paint Specialist",
+                name: "Asesor de Hojalatería y Pintura",
+                name_en: "Body & Paint Advisor",
                 icon: "format_paint",
                 color: "#F39C12",
-                webhook: "https://api.tu-server.com/webhook/hyp", // Reemplazar con real
-                welcome: "Hola, soy experto en Hojalatería y Pintura. ¿Quieres enviarme una foto de algún golpe para cotizar?",
-                welcome_en: "Hello, I'm an expert in Body & Paint. Would you like to send me a photo of a dent for a quote?"
+                webhook: "https://api.tu-server.com/webhook/hyp", 
+                welcome: "Hola, soy tu Asesor de Hojalatería y Pintura. ¿Quieres enviarme una foto de algún golpe para cotizar?",
+                welcome_en: "Hello, I'm your Body & Paint Advisor. Would you like to send me a photo of a dent for a quote?",
+                suggestions: [
+                    { es: "Cotizar reparación", en: "Quote repair" },
+                    { es: "Estatus de mi auto", en: "Car status" },
+                    { es: "Cita para presupuesto", en: "Quote appointment" }
+                ]
             },
             refacciones: {
-                name: "Gestor Refacciones",
-                name_en: "Parts Manager",
+                name: "Asesor de Refacciones",
+                name_en: "Parts Advisor",
                 icon: "settings_suggest",
                 color: "#607D8B",
-                webhook: "https://api.tu-server.com/webhook/refacciones", // Reemplazar con real
-                welcome: "Área de Refacciones lista. ¿Buscas alguna pieza original para tu Jeep o RAM?",
-                welcome_en: "Parts Area ready. Are you looking for an original part for your Jeep or RAM?"
+                webhook: "https://api.tu-server.com/webhook/refacciones",
+                welcome: "Área de Refacciones lista, soy tu Asesor de Refacciones. ¿Buscas alguna pieza original para tu Jeep o RAM?",
+                welcome_en: "Parts Area ready, I am your Parts Advisor. Are you looking for an original part for your Jeep or RAM?",
+                suggestions: [
+                    { es: "Cotizar refacción", en: "Quote part" },
+                    { es: "Accesorios originales", en: "Original accessories" },
+                    { es: "Precios de llantas", en: "Tire prices" }
+                ]
             }
         };
 
@@ -441,7 +466,8 @@
             
             // 1. Intentamos cargar si este agente ya tenía historia
             if (loadAgentState(type)) {
-                return; // Si cargó historia, salimos (ya restauró la UI)
+                renderSuggestions();
+                return; 
             }
 
             // 2. Si no hay historia, iniciamos de cero para este agente
@@ -459,7 +485,27 @@
             messagesList.innerHTML = `<div class="text-center mb-6"><span class="text-[9px] text-gray-600 bg-white/5 px-4 py-1 rounded-full uppercase tracking-widest">${startMsg}</span></div>`;
             appendMessage('bot', i18n.currentLang === 'en' ? agent.welcome_en : agent.welcome);
             
+            renderSuggestions();
             saveConversation();
+        }
+
+        function renderSuggestions() {
+            const container = document.getElementById('suggestions-container');
+            container.innerHTML = '';
+            
+            if (currentAgent && currentAgent.suggestions) {
+                currentAgent.suggestions.forEach(sug => {
+                    const text = i18n.currentLang === 'en' ? sug.en : sug.es;
+                    const btn = document.createElement('button');
+                    btn.className = "bg-white/5 hover:bg-autoser-red border border-white/10 hover:border-autoser-red text-gray-300 hover:text-white px-4 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-1 shadow-lg";
+                    btn.innerText = text;
+                    btn.onclick = () => {
+                        inputField.value = text;
+                        sendMessage();
+                    };
+                    container.appendChild(btn);
+                });
+            }
         }
 
         function showLobby() {
@@ -493,6 +539,9 @@
             inputField.value = '';
             inputField.style.height = 'auto';
 
+            // Hide suggestions while processing
+            document.getElementById('suggestions-container').classList.add('opacity-0', 'pointer-events-none');
+
             typingIndicator.classList.remove('hidden');
             
             try {
@@ -522,6 +571,9 @@
                 appendMessage('bot', "Lo siento, no puedo conectar con el servidor en este momento. Por favor, intenta de nuevo más tarde o contacta directamente a la sucursal.");
             } finally {
                 typingIndicator.classList.add('hidden');
+                // Show suggestions again
+                document.getElementById('suggestions-container').classList.remove('opacity-0', 'pointer-events-none');
+                
                 const chatArea = document.getElementById('chat-area');
                 chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
             }
