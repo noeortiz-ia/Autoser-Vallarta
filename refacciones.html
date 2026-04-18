@@ -1293,6 +1293,45 @@
             </div>
         </div>
     </div>
+    <!-- AI Assistant Widget -->
+    <div id="ai-widget-container" class="fixed bottom-8 right-8 z-[9998] flex flex-col items-end gap-4">
+        <!-- Pulse Button -->
+        <button id="ai-widget-trigger" onclick="openAIModal()" class="group relative flex items-center gap-3 bg-autoser-red text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300">
+            <div class="absolute inset-0 rounded-full bg-autoser-red animate-ping opacity-20 group-hover:opacity-0"></div>
+            <span class="material-symbols-outlined text-3xl select-none notranslate">smart_toy</span>
+            <span class="max-w-0 overflow-hidden whitespace-nowrap font-headline font-bold text-xs uppercase tracking-widest group-hover:max-w-xs transition-all duration-500 ease-in-out">Agente AI 24/7</span>
+        </button>
+    </div>
+
+    <!-- AI Fullscreen Modal -->
+    <div id="ai-modal" class="fixed inset-0 z-[10000] hidden opacity-0 transition-all duration-500 backdrop-blur-2xl bg-autoser-black/90">
+        <div class="absolute top-8 right-8 z-[10001]">
+            <button onclick="closeAIModal()" class="flex items-center gap-2 bg-white/5 hover:bg-autoser-red text-white px-6 py-3 rounded-sm transition-all group">
+                <span class="font-headline font-bold text-xs uppercase tracking-[0.3em]">Cerrar Asistente</span>
+                <span class="material-symbols-outlined group-hover:rotate-90 transition-transform select-none notranslate">close</span>
+            </button>
+        </div>
+        <div class="w-full h-full p-4 md:p-12">
+            <iframe id="ai-frame" src="about:blank" class="w-full h-full rounded-sm shadow-2xl border border-white/5 bg-autoser-black" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openAIModal() {
+            const modal = document.getElementById('ai-modal');
+            const frame = document.getElementById('ai-frame');
+            if (frame.src === 'about:blank') { frame.src = 'ai-asistente.html'; }
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.add('opacity-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+        function closeAIModal() {
+            const modal = document.getElementById('ai-modal');
+            modal.classList.remove('opacity-100');
+            setTimeout(() => { modal.classList.add('hidden'); }, 500);
+            document.body.style.overflow = '';
+        }
+    </script>
 </body>
 
 </html>
