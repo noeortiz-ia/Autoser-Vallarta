@@ -290,26 +290,44 @@
             inputField.value = '';
             inputField.style.height = 'auto';
 
-            // Simular IA pensando
             typingIndicator.classList.remove('hidden');
             
             try {
-                // AQUÍ SE CONECTA A N8N
+                // n8n suele esperar 'chatInput' en sus nodos de AI Chat
                 const response = await fetch(currentAgent.webhook, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: text, agent: currentAgent.name })
+                    headers: { 
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        chatInput: text, // Cambiado de 'message' a 'chatInput' para n8n
+                        sessionId: "autoser-session-" + Date.now(), // Ayuda a n8n a mantener memoria
+                        agent: currentAgent.name 
+                    })
                 });
                 
-                // NOTA: Para pruebas locales, esto probablemente dará error CORS o 404
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
                 const data = await response.json();
-                appendMessage('bot', data.output || "Lo siento, tuve un problema al procesar tu solicitud.");
+                
+                // n8n puede devolver la respuesta en 'output', 'text' o 'response'
+                const botResponse = data.output || data.text || data.response || (Array.isArray(data) ? data[0].output : null);
+                
+                if (botResponse) {
+                    appendMessage('bot', botResponse);
+                } else {
+                    throw new Error("Formato de respuesta desconocido");
+                }
+
             } catch (error) {
-                console.error("Fetch Error:", error);
-                // Respuesta de simulacro para que el usuario pruebe la UI
-                setTimeout(() => {
-                    appendMessage('bot', `Simulacro: He recibido tu mensaje sobre "${text}". (En un entorno real, esto se envió al webhook: ${currentAgent.webhook})`);
-                }, 1000);
+                console.error("Detalle del error:", error);
+                
+                // Si estamos en local (file://), avisamos claramente del CORS
+                if (window.location.protocol === 'file:') {
+                    appendMessage('bot', "⚠️ ERROR DE SEGURIDAD (CORS): El navegador bloquea la conexión porque estás abriendo el archivo localmente. Intenta subirlo a un servidor o usar la terminal para correrlo.");
+                } else {
+                    appendMessage('bot', "Hubo un problema al conectar con el agente. Por favor, verifica que el webhook esté activo en n8n.");
+                }
             } finally {
                 typingIndicator.classList.add('hidden');
                 const chatArea = document.getElementById('chat-area');
