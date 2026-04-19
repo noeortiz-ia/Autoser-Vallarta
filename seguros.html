@@ -573,6 +573,40 @@
                         }, 400);
                     }
                 }
+
+                // Handle Form Submission via WhatsApp
+                document.getElementById('insurance-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const inputs = this.querySelectorAll('.form-input');
+                    const data = {
+                        nombre: inputs[0].value,
+                        email: inputs[1].value,
+                        tel: inputs[2].value,
+                        cp: inputs[3].value,
+                        marca: inputs[4].value,
+                        modelo: inputs[5].value,
+                        anio: inputs[6].value,
+                        edad: inputs[7].value
+                    };
+
+                    const message = encodeURIComponent(
+                        `*SOLICITUD DE COTIZACIÓN - SEGUROS*\n\n` +
+                        `*DATOS DEL CLIENTE*\n` +
+                        `👤 Nombre: ${data.nombre}\n` +
+                        `📧 Email: ${data.email}\n` +
+                        `📞 Tel: ${data.tel}\n` +
+                        `📍 C.P: ${data.cp}\n\n` +
+                        `*DATOS DEL VEHÍCULO*\n` +
+                        `🚗 Marca: ${data.marca}\n` +
+                        `📦 Modelo: ${data.modelo}\n` +
+                        `🗓️ Año: ${data.anio}\n` +
+                        `🎂 Edad Conductor: ${data.edad}\n\n` +
+                        `_Enviado desde el sitio web Autoser Vallarta_`
+                    );
+
+                    window.open(`https://wa.me/523222263500?text=${message}`, '_blank');
+                });
             </script>
         </div>
     </header>
