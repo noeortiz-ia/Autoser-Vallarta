@@ -457,9 +457,20 @@
                             <option data-en="TRADE-IN">DAR A CUENTA</option>
                         </select>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="MARCA DEL AUTO" data-en-placeholder="CAR MAKE" class="form-input">
-                        <input type="text" placeholder="MODELO Y AÑO" data-en-placeholder="MODEL & YEAR" class="form-input">
+                    <div class="grid grid-cols-12 gap-3">
+                        <input type="text" placeholder="MARCA" data-en-placeholder="MAKE" class="col-span-5 form-input">
+                        <input type="text" placeholder="MODELO" data-en-placeholder="MODEL" class="col-span-4 form-input">
+                        <select class="col-span-3 form-input appearance-none bg-autoser-black/80">
+                            <option disabled selected data-en="YEAR">AÑO</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                        </select>
                     </div>
                     <button class="btn-agency w-full py-5 uppercase font-black tracking-widest" data-en="START MY VALUATION">INICIAR MI
                         VALUACIÓN</button>
