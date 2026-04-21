@@ -1001,12 +1001,14 @@
                     <div class="bg-white p-12 shadow-2xl border-t-8 border-autoser-red">
                         <form class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Nombre completo" required>
-                                <input type="tel" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Teléfono" required>
+                                <input type="text" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Nombre completo" data-en-placeholder="Full Name" required>
+                                <input type="email" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Correo Electrónico" data-en-placeholder="Email" required>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Marca / Modelo" required>
-                                <select class="form-input uppercase font-bold text-[10px] tracking-widest">
+                                <input type="tel" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Teléfono" data-en-placeholder="Phone" required>
+                                <input type="text" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Marca / Modelo" data-en-placeholder="Make / Model" required>
+                            </div>
+                            <select class="form-input uppercase font-bold text-[10px] tracking-widest">
                                     <option data-en="Service Type">Tipo de Servicio</option>
                                     <option data-en="Preventive Maintenance">Mantenimiento Preventivo</option>
                                     <option data-en="Mechanical Diagnosis">Diagnóstico Mecánico</option>
@@ -1014,7 +1016,7 @@
                                     <option data-en="Other">Otro</option>
                                 </select>
                             </div>
-                            <textarea class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="¿Algún detalle adicional?"></textarea>
+                            <textarea class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="¿Algún detalle adicional?" data-en-placeholder="Any additional details?"></textarea>
                             <button type="submit" class="btn-agency w-full py-5 text-sm font-black shadow-xl" data-en="SEND APPOINTMENT REQUEST">ENVIAR SOLICITUD DE CITA</button>
                         </form>
                     </div>
@@ -1140,7 +1142,7 @@
                     class="material-symbols-outlined text-autoser-red text-4xl notranslate select-none">schedule</span>
                 <div class="text-left">
                     <h5 class="font-headline font-black text-sm uppercase tracking-tight" data-en="Service Hours">Horario de Servicio</h5>
-                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed">Lun - Vie:
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed" data-en="Mon - Fri: 9am-2pm and 3pm-6pm | Sat: 9am-2pm">Lun - Vie:
                         9am-2pm y 3pm-6pm | Sáb: 9am-2pm</p>
                 </div>
             </div>
@@ -1157,7 +1159,7 @@
                                 class="material-symbols-outlined text-autoser-red text-4xl notranslate select-none">location_on</span>
                 <div class="text-left">
                     <h5 class="font-headline font-black text-sm uppercase tracking-tight" data-en="Workshop Location">Ubicación Taller</h5>
-                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed">Las Juntas
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed" data-en="Las Juntas (Tepic-Vallarta Hwy 6020)">Las Juntas
                         (Carr. Tepic-Vallarta 6020)</p>
                 </div>
             </div>
@@ -1263,7 +1265,7 @@
         </div>
 
         <div class="container mx-auto mt-24 pt-8 border-t border-white/10 flex flex-col items-center gap-6 text-center">
-            <a href="bolsa-de-trabajo" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors">Bolsa de Trabajo</a>
+            <a href="bolsa-de-trabajo" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors" data-en="Careers">Bolsa de Trabajo</a>
             <div class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.4em]">
                 © <span id="year"></span> AUTOSER VALLARTA // <span data-en="Multi-Brand Agency / Specialists in Jeep & RAM">Agencia Multimarca / Especialistas en Jeep y RAM</span>
             </div>
@@ -1280,7 +1282,7 @@
             </button>
             <video id="promoVideo" controls poster="assets/img/taller-card.jpg" class="w-full aspect-video">
                 <source src="assets/vid/Taller-multimarca.mp4" type="video/mp4">
-                Tu navegador no soporta el formato de video.
+                <span data-en="Your browser does not support the video format.">Tu navegador no soporta el formato de video.</span>
             </video>
         </div>
     </div>
@@ -1337,34 +1339,34 @@
         </button>
         <div class="mt-12 space-y-8 pb-12 text-left">
             <a href="/" class="block mobile-link"
-                onclick="toggleMobileMenu()">Inicio</a>
+                onclick="toggleMobileMenu()" data-en="Home">Inicio</a>
 
             <!-- Seminuevos Group -->
             <div class="space-y-4">
-                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Seminuevos</p>
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Pre-Owned">Seminuevos</p>
                 <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
-                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Ver Inventario</a>
-                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Compramos tu auto</a>
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="View Inventory">Ver Inventario</a>
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="We Buy Your Car">Compramos tu auto</a>
                 </div>
             </div>
 
             <!-- Taller Group -->
             <div class="space-y-4">
-                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Servicios de Taller</p>
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Service & Workshop">Servicios de Taller</p>
                 <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
-                    <a href="taller" class="block mobile-link active !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Taller Multimarca</a>
-                    <a href="hojalateria" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Hojalatería y Pintura</a>
+                    <a href="taller" class="block mobile-link active !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Multi-Brand Workshop">Taller Multimarca</a>
+                    <a href="hojalateria" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Body & Paint Shop">Hojalatería y Pintura</a>
                 </div>
             </div>
 
             <a href="refacciones" class="block mobile-link"
-                onclick="toggleMobileMenu()">Refacciones</a>
+                onclick="toggleMobileMenu()" data-en="Parts">Refacciones</a>
             <a href="seguros" class="block mobile-link"
-                onclick="toggleMobileMenu()">Seguros</a>
+                onclick="toggleMobileMenu()" data-en="Insurance">Seguros</a>
             <a href="promociones" class="block mobile-link"
-                onclick="toggleMobileMenu()">Promociones</a>
+                onclick="toggleMobileMenu()" data-en="Promotions">Promociones</a>
             <a href="nosotros" class="block mobile-link"
-                onclick="toggleMobileMenu()">Nosotros</a>
+                onclick="toggleMobileMenu()" data-en="About Us">Nosotros</a>
         </div>
     </div>
     <!-- AI Assistant Widget -->

@@ -498,8 +498,10 @@
                     <!-- Step 1: Contact Info -->
                     <div id="step-1" class="space-y-4 transition-all duration-500">
                         <div class="space-y-4">
-                            <input type="text" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input">
-                            <input type="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" class="form-input">
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input">
+                                <input type="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" class="form-input">
+                            </div>
                             <div class="grid grid-cols-2 gap-4">
                                 <input type="tel" placeholder="TELÉFONO" data-en-placeholder="PHONE" class="form-input">
                                 <input type="text" placeholder="C.P." data-en-placeholder="ZIP CODE" class="form-input">
@@ -522,12 +524,12 @@
                                 <input type="number" placeholder="AÑO" data-en-placeholder="YEAR" class="form-input">
                                 <input type="number" placeholder="EDAD DEL CONDUCTOR" data-en-placeholder="DRIVER AGE" class="form-input">
                             </div>
-                            <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed">
+                            <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed" data-en="* These data are necessary to calculate the risk level and offer you the best rate.">
                                 * Estos datos son necesarios para calcular el nivel de riesgo y ofrecerte la mejor tarifa.
                             </p>
                         </div>
                         <div class="flex gap-3">
-                            <button type="button" onclick="changeStep(1)" class="w-1/3 border border-white/20 text-white/60 hover:text-white hover:bg-white/5 transition-all text-[10px] font-bold uppercase tracking-widest rounded-sm">
+                            <button type="button" onclick="changeStep(1)" class="w-1/3 border border-white/20 text-white/60 hover:text-white hover:bg-white/5 transition-all text-[10px] font-bold uppercase tracking-widest rounded-sm" data-en="BACK">
                                 VOLVER
                             </button>
                             <button type="submit" class="btn-agency flex-grow py-4 text-xs font-black tracking-widest" data-en="GET QUOTE">
@@ -843,10 +845,9 @@
         <div class="container mx-auto px-8 max-w-4xl">
             <div class="text-center mb-24 reveal-on-scroll">
                 <h2
-                    class="text-4xl font-headline font-extrabold text-autoser-black mb-4 uppercase tracking-wide leading-tight text-center" data-en="DOUBTS ABOUT YOUR INSURANCE">
-                    DUDAS SOBRE TU SEGURO</h2>
-                <div class="w-24 h-1.5 bg-autoser-red mx-auto"></div>
-            </div>
+                    class="text-4xl md:text-5xl font-headline font-extrabold text-autoser-black mb-6 uppercase tracking-wide text-center" data-en="FREQUENTLY ASKED QUESTIONS">
+                    PREGUNTAS FRECUENTES</h2>
+                <div class="w-24 h-1.5 bg-autoser-red mx-auto mb-16"></div>
 
             <div class="space-y-6">
                 <!-- FAQ 1 -->
@@ -911,54 +912,65 @@
                     onclick="this.classList.toggle('active')">
                     <div class="flex items-center justify-between">
                         <span
-                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors">¿PUEDO
+                            class="font-headline font-bold text-lg uppercase tracking-tighter group-active:text-autoser-red transition-colors" data-en="CAN I INSURE ANY BRAND?">¿PUEDO
                             ASEGURAR CUALQUIER MARCA?</span>
                         <span
                             class="material-symbols-outlined text-autoser-red transition-transform duration-300 notranslate select-none">add</span>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200">
+                        <p class="text-autoser-charcoal text-sm leading-relaxed mt-6 pt-6 border-t border-gray-200" data-en="Yes! We have multi-brand agreements that allow us to insure vehicles from practically any manufacturer present in Mexico, from entry-level models to luxury segments.">
                             ¡Sí! Contamos con convenios multimarca que nos permiten asegurar vehículos de prácticamente
                             cualquier fabricante presente en México, desde modelos de entrada hasta segmentos de lujo.
                         </p>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
-    <!-- Final Conversion Section -->
-    <section class="py-32 bg-autoser-black relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 grayscale pointer-events-none">
-            <img src="https://autoservallarta.com/wp-content/uploads/Agencia.jpg" alt="Background"
-                class="w-full h-full object-cover">
+    <!-- Unified Contact CTA -->
+    <section class="py-24 bg-autoser-black text-white relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10">
+            <img src="assets/img/hojalateria/hero.jpg" class="w-full h-full object-cover">
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-autoser-black via-autoser-black/80 to-transparent"></div>
+        <div class="container mx-auto px-8 relative z-10">
+            <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-from-left">
+                    <h2 class="text-4xl font-headline font-extrabold mb-6 uppercase tracking-tight" data-en="PROTECT YOUR INVESTMENT TODAY">PROTEGE TU
+                        INVERSIÓN HOY MISMO</h2>
+                    <p class="text-gray-400 text-lg mb-8" data-en="Don't wait for an accident to happen. Contact our insurance experts and receive a comparative quote in minutes.">
+                        No esperes a que ocurra un imprevisto. Contacta a nuestros expertos en seguros y recibe una
+                        cotización comparativa en minutos.
+                    </p>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-4">
+                            <span
+                                class="w-10 h-10 rounded-full bg-autoser-red/20 flex items-center justify-center text-autoser-red">
+                                <span class="material-symbols-outlined text-xl notranslate select-none">phone_in_talk</span>
+                            </span>
+                            <span class="font-bold text-lg">322 226 3500</span>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="container mx-auto px-8 relative z-10 text-center reveal-on-scroll">
-            <span class="text-autoser-red font-bold text-xs uppercase tracking-[0.4em] mb-6 block">Protección
-                Inmediata</span>
-            <h2
-                class="text-3xl lg:text-7xl font-headline font-extrabold text-white mb-10 uppercase tracking-wide leading-tight">
-                ¿BUSCAS LA MEJOR COBERTURA <br /><span class="text-autoser-red shimmer px-4">AL MEJOR PRECIO?</span>
-            </h2>
-            <p
-                class="max-w-2xl mx-auto text-gray-400 mb-12 leading-relaxed font-bold uppercase tracking-widest text-[10px]">
-                Personalizamos tu póliza para que pagues solo por lo que realmente necesitas. Sin letras chiquitas.</p>
-
-            <div class="flex flex-wrap justify-center gap-8 mt-12">
-                <a href="#form" class="btn-agency flex items-center gap-4 py-4 px-10">
-                    <span class="material-symbols-outlined !text-lg notranslate select-none">description</span> COTIZAR
-                    AHORA
-                </a>
-                <a href="https://wa.me/523222263500"
-                    class="btn-outline border-white text-white hover:bg-white hover:text-black flex items-center gap-4 py-4 px-10">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.174.2-.298.298-.497.099-.198.05-.371-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-                    </svg> WHATSAPP
-                </a>
+                <div class="bg-white/5 backdrop-blur-xl p-8 border border-white/10 rounded-sm reveal-from-right">
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="NOMBRE" data-en-placeholder="NAME"
+                                class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all">
+                            <input type="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL"
+                                class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all">
+                        </div>
+                        <input type="tel" placeholder="WHATSAPP / TEL" data-en-placeholder="WHATSAPP / TEL"
+                            class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all">
+                        <textarea placeholder="¿EN QUÉ PODEMOS AYUDARTE?" data-en-placeholder="HOW CAN WE HELP YOU?"
+                            class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all h-24 resize-none"></textarea>
+                        <button
+                            class="w-full bg-autoser-red hover:bg-white hover:text-autoser-black text-white font-headline font-black py-4 rounded-sm uppercase tracking-widest transition-all text-xs" data-en="REQUEST QUOTE">SOLICITAR
+                            COTIZACIÓN</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -1061,9 +1073,9 @@
         </div>
 
         <div class="container mx-auto mt-24 pt-8 border-t border-white/10 flex flex-col items-center gap-6 text-center">
-            <a href="bolsa-de-trabajo" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors">Bolsa de Trabajo</a>
+            <a href="bolsa-de-trabajo" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors" data-en="Careers">Bolsa de Trabajo</a>
             <div class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.4em]">
-                © <span id="year"></span> AUTOSER VALLARTA // Agencia Multimarca / Especialistas en Jeep y RAM
+                © <span id="year"></span> AUTOSER VALLARTA // <span data-en="Multi-Brand Agency / Specialists in Jeep & RAM">Agencia Multimarca / Especialistas en Jeep y RAM</span>
             </div>
         </div>
     </footer>
@@ -1104,37 +1116,37 @@
         </button>
         <div class="mt-12 space-y-8 pb-12">
             <a href="/" class="block mobile-link"
-                onclick="toggleMobileMenu()">Inicio</a>
+                onclick="toggleMobileMenu()" data-en="Home">Inicio</a>
 
             <!-- Seminuevos Group -->
             <div class="space-y-4">
-                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Seminuevos</p>
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Pre-Owned">Seminuevos</p>
                 <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
-                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Ver Inventario</a>
-                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Compramos tu auto</a>
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="View Inventory">Ver Inventario</a>
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="We Buy Your Car">Compramos tu auto</a>
                 </div>
             </div>
 
             <!-- Taller Group -->
             <div class="space-y-4">
-                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Servicios de Taller</p>
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Service & Workshop">Servicios de Taller</p>
                 <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
-                    <a href="taller" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Taller Multimarca</a>
-                    <a href="hojalateria" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Hojalatería y Pintura</a>
+                    <a href="taller" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Multi-Brand Workshop">Taller Multimarca</a>
+                    <a href="hojalateria" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Body & Paint Shop">Hojalatería y Pintura</a>
                 </div>
             </div>
 
             <a href="refacciones" class="block mobile-link"
-                onclick="toggleMobileMenu()">Refacciones</a>
+                onclick="toggleMobileMenu()" data-en="Parts">Refacciones</a>
             <a href="seguros" class="block mobile-link active"
-                onclick="toggleMobileMenu()">Seguros</a>
+                onclick="toggleMobileMenu()" data-en="Insurance">Seguros</a>
             <a href="promociones" class="block mobile-link"
-                onclick="toggleMobileMenu()">Promociones</a>
+                onclick="toggleMobileMenu()" data-en="Promotions">Promociones</a>
             <a href="nosotros" class="block mobile-link"
-                onclick="toggleMobileMenu()">Nosotros</a>
+                onclick="toggleMobileMenu()" data-en="About Us">Nosotros</a>
         </div>
         <div class="mt-auto border-t border-white/10 pt-12">
-            <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-widest mb-4">Contacto Directo
+            <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-widest mb-4" data-en="Direct Contact">Contacto Directo
             </p>
             <a href="tel:3222263500" class="text-white text-xl font-bold flex items-center gap-3">
                 <span class="material-symbols-outlined text-autoser-red select-none notranslate">phone_in_talk</span>

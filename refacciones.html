@@ -611,12 +611,13 @@
                         <form action="#" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <input type="text" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input" required>
-                                <input type="tel" placeholder="TELÉFONO / WHATSAPP" data-en-placeholder="PHONE / WHATSAPP" class="form-input" required>
+                                <input type="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" class="form-input" required>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" placeholder="MARCA / MODELO / AÑO" data-en-placeholder="MAKE / MODEL / YEAR" class="form-input" required>
+                                <input type="tel" placeholder="TELÉFONO / WHATSAPP" data-en-placeholder="PHONE / WHATSAPP" class="form-input" required>
                                 <input type="text" placeholder="VIN / NÚMERO DE SERIE" data-en-placeholder="VIN / SERIAL NUMBER" class="form-input">
                             </div>
+                            <input type="text" placeholder="MARCA / MODELO / AÑO" data-en-placeholder="MAKE / MODEL / YEAR" class="form-input" required>
                             <textarea placeholder="DESCRIBE LA REFACCIÓN QUE BUSCAS" data-en-placeholder="DESCRIBE THE PART YOU ARE LOOKING FOR" rows="3" class="form-input"
                                 required></textarea>
                             <button type="submit"
@@ -977,21 +978,21 @@
                         <li class="flex items-center gap-3 text-white text-xs font-bold uppercase tracking-widest">
                             <span
                                 class="material-symbols-outlined text-autoser-red text-sm notranslate select-none">check_circle</span>
-                            Precios Preferenciales
+                            <span data-en="Preferential Pricing">Precios Preferenciales</span>
                         </li>
                         <li class="flex items-center gap-3 text-white text-xs font-bold uppercase tracking-widest">
                             <span
                                 class="material-symbols-outlined text-autoser-red text-sm notranslate select-none">check_circle</span>
-                            Facturación Inmediata
+                            <span data-en="Immediate Invoicing">Facturación Inmediata</span>
                         </li>
                         <li class="flex items-center gap-3 text-white text-xs font-bold uppercase tracking-widest">
                             <span
                                 class="material-symbols-outlined text-autoser-red text-sm notranslate select-none">check_circle</span>
-                            Soporte Técnico VIN
+                            <span data-en="VIN Technical Support">Soporte Técnico VIN</span>
                         </li>
                     </ul>
                     <a href="https://wa.me/523222263500"
-                        class="btn-agency w-full text-center py-4 bg-autoser-red border-autoser-red hover:bg-white hover:text-autoser-red transition-all">Socio
+                        class="btn-agency w-full text-center py-4 bg-autoser-red border-autoser-red hover:bg-white hover:text-autoser-red transition-all" data-en="Business Partner">Socio
                         Comercial</a>
                 </div>
 
@@ -1001,9 +1002,9 @@
                         <span
                             class="material-symbols-outlined text-4xl text-autoser-red mb-6 notranslate select-none">inventory</span>
                         <h4
-                            class="font-headline font-bold text-lg uppercase mb-4 group-hover:text-autoser-red transition-colors">
+                            class="font-headline font-bold text-lg uppercase mb-4 group-hover:text-autoser-red transition-colors" data-en="Strategic Stock">
                             Stock Estratégico</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed uppercase font-bold tracking-widest">Contamos
+                        <p class="text-gray-500 text-xs leading-relaxed uppercase font-bold tracking-widest" data-en="We have a high-rotation inventory ready for immediate delivery in Puerto Vallarta and Bahía de Banderas.">Contamos
                             con un inventario de alta rotación listo para entrega inmediata en Puerto Vallarta y Bahía
                             de Banderas.</p>
                     </div>
@@ -1011,9 +1012,9 @@
                         <span
                             class="material-symbols-outlined text-4xl text-autoser-red mb-6 notranslate select-none">flight_takeoff</span>
                         <h4
-                            class="font-headline font-bold text-lg uppercase mb-4 group-hover:text-autoser-red transition-colors">
+                            class="font-headline font-bold text-lg uppercase mb-4 group-hover:text-autoser-red transition-colors" data-en="Agile Supply">
                             Suministro Ágil</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed uppercase font-bold tracking-widest">Para piezas
+                        <p class="text-gray-500 text-xs leading-relaxed uppercase font-bold tracking-widest" data-en="For special parts, we manage direct shipments with reduced response times so your car doesn't stop.">Para piezas
                             especiales, gestionamos envíos directos con tiempos de respuesta reducidos para que tu auto
                             no se detenga.</p>
                     </div>
@@ -1031,9 +1032,9 @@
                         <span
                             class="material-symbols-outlined text-4xl text-autoser-red mb-6 notranslate select-none">workspace_premium</span>
                         <h4
-                            class="font-headline font-bold text-lg uppercase mb-4 group-hover:text-autoser-red transition-colors">
+                            class="font-headline font-bold text-lg uppercase mb-4 group-hover:text-autoser-red transition-colors" data-en="MULTIBRAND">
                             Multimarca</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed uppercase font-bold tracking-widest">Desde
+                        <p class="text-gray-500 text-xs leading-relaxed uppercase font-bold tracking-widest" data-en="From Asian to premium European brands. We supply parts for Toyota, Nissan, Ford, BMW, and VW.">Desde
                             marcas asiáticas hasta europeas premium. Suministramos piezas para Toyota, Nissan, Ford, BMW
                             y VW.</p>
                     </div>
@@ -1045,9 +1046,9 @@
     <!-- Brands Logo Marquee (Simplified) -->
     <section class="py-20 bg-autoser-black border-b border-white/5 overflow-hidden">
         <div class="container mx-auto px-8 mb-12 text-center reveal-on-scroll">
-            <span class="text-autoser-red font-bold text-[10px] uppercase tracking-[0.6em] mb-4 block">Marcas de
+            <span class="text-autoser-red font-bold text-[10px] uppercase tracking-[0.6em] mb-4 block" data-en="Trusted Brands">Marcas de
                 Confianza</span>
-            <h3 class="text-white font-headline font-bold text-xl uppercase tracking-widest whitespace-nowrap">CALIDAD
+            <h3 class="text-white font-headline font-bold text-xl uppercase tracking-widest whitespace-nowrap" data-en="ORIGINAL QUALITY & PREMIUM REPLACEMENT">CALIDAD
                 ORIGINAL & REEMPLAZO PREMIUM</h3>
         </div>
         <div class="relative py-10">
@@ -1279,9 +1280,9 @@
         </div>
 
         <div class="container mx-auto mt-24 pt-8 border-t border-white/10 flex flex-col items-center gap-6 text-center">
-             <a href="bolsa-de-trabajo" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors">Bolsa de Trabajo</a>
+             <a href="bolsa-de-trabajo" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors" data-en="Careers">Bolsa de Trabajo</a>
              <div class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.4em]">
-                 © <span id="currentYear"></span> AUTOSER VALLARTA // Agencia Multimarca / Especialistas en Jeep y RAM
+                 © <span id="currentYear"></span> AUTOSER VALLARTA // <span data-en="Multi-Brand Agency / Specialists in Jeep & RAM">Agencia Multimarca / Especialistas en Jeep y RAM</span>
              </div>
         </div>
     </footer>
@@ -1319,37 +1320,37 @@
         </button>
         <div class="mt-12 space-y-8 pb-12">
             <a href="/" class="block mobile-link"
-                onclick="toggleMobileMenu()">Inicio</a>
+                onclick="toggleMobileMenu()" data-en="Home">Inicio</a>
 
             <!-- Seminuevos Group -->
             <div class="space-y-4">
-                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Seminuevos</p>
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Pre-Owned">Seminuevos</p>
                 <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
-                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Ver Inventario</a>
-                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Compramos tu auto</a>
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="View Inventory">Ver Inventario</a>
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="We Buy Your Car">Compramos tu auto</a>
                 </div>
             </div>
 
             <!-- Taller Group -->
             <div class="space-y-4">
-                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Servicios de Taller</p>
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Service & Workshop">Servicios de Taller</p>
                 <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
-                    <a href="taller" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Taller Multimarca</a>
-                    <a href="hojalateria" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Hojalatería y Pintura</a>
+                    <a href="taller" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Multi-Brand Workshop">Taller Multimarca</a>
+                    <a href="hojalateria" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Body & Paint Shop">Hojalatería y Pintura</a>
                 </div>
             </div>
 
             <a href="refacciones" class="block mobile-link active"
-                onclick="toggleMobileMenu()">Refacciones</a>
+                onclick="toggleMobileMenu()" data-en="Parts">Refacciones</a>
             <a href="seguros" class="block mobile-link"
-                onclick="toggleMobileMenu()">Seguros</a>
+                onclick="toggleMobileMenu()" data-en="Insurance">Seguros</a>
             <a href="promociones" class="block mobile-link"
-                onclick="toggleMobileMenu()">Promociones</a>
+                onclick="toggleMobileMenu()" data-en="Promotions">Promociones</a>
             <a href="nosotros" class="block mobile-link"
-                onclick="toggleMobileMenu()">Nosotros</a>
+                onclick="toggleMobileMenu()" data-en="About Us">Nosotros</a>
         </div>
         <div class="mt-auto border-t border-white/10 pt-12">
-            <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-widest mb-4">Contacto Directo
+            <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-widest mb-4" data-en="Direct Contact">Contacto Directo
             </p>
             <a href="tel:3222263500" class="text-white text-xl font-bold flex items-center gap-3">
                 <span class="material-symbols-outlined text-autoser-red select-none notranslate">phone_in_talk</span>

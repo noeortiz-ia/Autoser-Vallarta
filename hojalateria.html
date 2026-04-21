@@ -500,9 +500,12 @@
                 <form class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <input type="text" placeholder="NOMBRE" data-en-placeholder="NAME" class="form-input">
-                        <input type="tel" placeholder="WHATSAPP / TEL" data-en-placeholder="WHATSAPP / TEL" class="form-input">
+                        <input type="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" class="form-input">
                     </div>
-                    <input type="text" placeholder="MODELO DEL AUTO" data-en-placeholder="CAR MODEL" class="form-input">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="tel" placeholder="WHATSAPP / TEL" data-en-placeholder="WHATSAPP / TEL" class="form-input">
+                        <input type="text" placeholder="MODELO DEL AUTO" data-en-placeholder="CAR MODEL" class="form-input">
+                    </div>
                     <textarea placeholder="DESCRIBE EL DAÑO" data-en-placeholder="DESCRIBE THE DAMAGE" class="form-input h-16"></textarea>
                     <div
                         class="border-2 border-dashed border-white/10 bg-white/5 py-4 px-6 text-center rounded-sm hover:bg-white/10 hover:border-autoser-red transition-all cursor-pointer">
@@ -638,7 +641,7 @@
 
                     <h2
                         class="text-3xl md:text-4xl font-headline font-extrabold text-white mb-8 uppercase tracking-wide leading-tight">
-                        <span data-en="AN AGENCY QUALITY FINISH">UN ACABADO NIVEL AGENCIA</span> <br /><span class="text-autoser-red italic" data-en="REQUIRES TOTAL CONTROL.">REQUIERE CONTROL TOTAL.</span>
+                        <span data-en="AN AGENCY QUALITY FINISH">UN ACABADO NIVEL AGENCIA</span> <br /><span class="text-autoser-red italic" data-en="REQUIRES TOTAL CONTROL.">REQUIRES CONTROL TOTAL.</span>
                     </h2>
                     <div class="space-y-12">
                         <div class="flex gap-6">
@@ -864,7 +867,7 @@
                         <p class="text-gray-400 text-[10px] leading-relaxed uppercase font-medium">
                             Carr. Tepic-Vallarta 6020, Las Juntas,<br />Puerto Vallarta, Jal. CP 48291
                         </p>
-                        <p class="text-gray-500 text-[9px] mt-2 font-bold group-hover:text-white transition-colors" data-en="Sales: Mon-Fri 9-7 / Sáb 9-3 / Dom 10-3">
+                        <p class="text-gray-500 text-[9px] mt-2 font-bold group-hover:text-white transition-colors" data-en="Sales: Mon-Fri 9-7 / Sat 9-3 / Sun 10-3">
                             Ventas: Lun-Vie 9-7 / Sáb 9-3 / Dom 10-3</p>
                         <p class="text-gray-500 text-[9px] font-bold" data-en="Workshop: Mon-Fri 9-2 & 3-6 / Sat 9-2">Taller: Lun-Vie 9-2 y 3-6 / Sáb 9-2</p>
                     </div>
@@ -920,7 +923,7 @@
         <div class="container mx-auto mt-24 pt-8 border-t border-white/10 flex flex-col items-center gap-6 text-center">
             <a href="bolsa-de-trabajo" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors" data-en="Careers">Bolsa de Trabajo</a>
             <div class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.4em]" data-en="© 2024 AUTOSER VALLARTA // Multi-brand Agency / Specialists in Jeep and RAM">
-                © <span id="currentYear"></span> AUTOSER VALLARTA // Agencia Multimarca / Especialistas en Jeep y RAM
+                © <span id="currentYear"></span> AUTOSER VALLARTA // <span data-en="Multi-Brand Agency / Specialists in Jeep & RAM">Agencia Multimarca / Especialistas en Jeep y RAM</span>
             </div>
         </div>
     </footer>
@@ -959,37 +962,37 @@
         </button>
         <div class="mt-12 space-y-8 pb-12">
             <a href="/" class="block mobile-link"
-                onclick="toggleMobileMenu()">Inicio</a>
+                onclick="toggleMobileMenu()" data-en="Home">Inicio</a>
 
             <!-- Seminuevos Group -->
             <div class="space-y-4">
-                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Seminuevos</p>
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Pre-Owned">Seminuevos</p>
                 <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
-                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Ver Inventario</a>
-                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Compramos tu auto</a>
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="View Inventory">Ver Inventario</a>
+                    <a href="vende-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="We Buy Your Car">Compramos tu auto</a>
                 </div>
             </div>
 
             <!-- Taller Group -->
             <div class="space-y-4">
-                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold">Servicios de Taller</p>
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Service & Workshop">Servicios de Taller</p>
                 <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
-                    <a href="taller" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Taller Multimarca</a>
-                    <a href="hojalateria" class="block mobile-link active !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()">Hojalatería y Pintura</a>
+                    <a href="taller" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Multi-Brand Workshop">Taller Multimarca</a>
+                    <a href="hojalateria" class="block mobile-link active !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Body & Paint Shop">Hojalatería y Pintura</a>
                 </div>
             </div>
 
             <a href="refacciones" class="block mobile-link"
-                onclick="toggleMobileMenu()">Refacciones</a>
+                onclick="toggleMobileMenu()" data-en="Parts">Refacciones</a>
             <a href="seguros" class="block mobile-link"
-                onclick="toggleMobileMenu()">Seguros</a>
+                onclick="toggleMobileMenu()" data-en="Insurance">Seguros</a>
             <a href="promociones" class="block mobile-link"
-                onclick="toggleMobileMenu()">Promociones</a>
+                onclick="toggleMobileMenu()" data-en="Promotions">Promociones</a>
             <a href="nosotros" class="block mobile-link"
-                onclick="toggleMobileMenu()">Nosotros</a>
+                onclick="toggleMobileMenu()" data-en="About Us">Nosotros</a>
         </div>
         <div class="mt-auto border-t border-white/10 pt-12">
-            <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-widest mb-4">Contacto Directo
+            <p class="text-autoser-red font-headline font-bold text-xs uppercase tracking-widest mb-4" data-en="Direct Contact">Contacto Directo
             </p>
             <a href="tel:3222263500" class="text-white text-xl font-bold flex items-center gap-3">
                 <span class="material-symbols-outlined text-autoser-red select-none notranslate">phone_in_talk</span>
@@ -1027,7 +1030,7 @@
         <button id="ai-widget-trigger" onclick="openAIModal()" class="group relative flex items-center gap-3 bg-autoser-red text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300">
             <div class="absolute inset-0 rounded-full bg-autoser-red animate-ping opacity-20 group-hover:opacity-0"></div>
             <span class="material-symbols-outlined text-3xl select-none notranslate">smart_toy</span>
-            <span class="max-w-0 overflow-hidden whitespace-nowrap font-headline font-bold text-xs uppercase tracking-widest group-hover:max-w-xs transition-all duration-500 ease-in-out">Agente AI 24/7</span>
+            <span class="max-w-0 overflow-hidden whitespace-nowrap font-headline font-bold text-xs uppercase tracking-widest group-hover:max-w-xs transition-all duration-500 ease-in-out" data-en="24/7 AI Agent">Agente AI 24/7</span>
         </button>
     </div>
 
