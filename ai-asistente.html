@@ -269,7 +269,8 @@
             formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
             // 3. Aplicamos Links de Markdown [Texto](URL) y los protegemos
-            const markdownLinkRegex = /\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g;
+            // Esta regex ahora soporta un nivel de paréntesis balanceados (común en años de autos en links de WA)
+            const markdownLinkRegex = /\[(.*?)\]\((https?:\/\/(?:[^\s()]+|\([^\s()]*\))+)\)/g;
             formatted = formatted.replace(markdownLinkRegex, function(match, label, url) {
                 const isWA = url.includes('wa.me');
                 let displayLabel = label;
