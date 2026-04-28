@@ -1,6 +1,7 @@
 /**
  * Autoser Vallarta - Forms Handler
  * Centralized script to handle all form submissions and send them to n8n
+ * Version: 1.0.7
  */
 
 const FORMS_CONFIG = {
