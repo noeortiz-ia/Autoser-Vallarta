@@ -71,12 +71,16 @@ const initForms = () => {
                     console.log('Éxito! Redirigiendo con:', { userName, formType });
                     
                     showNotification(true, isEnglish);
-                    form.reset();
+                    
+                    // Construct absolute URL for redirection
+                    const redirectUrl = new URL('gracias.html', window.location.origin);
+                    redirectUrl.searchParams.set('name', userName);
+                    redirectUrl.searchParams.set('type', formType);
                     
                     // Redirect to Thank You page after a small delay
                     setTimeout(() => {
-                        window.location.href = `gracias.html?name=${encodeURIComponent(userName)}&type=${encodeURIComponent(formType)}`;
-                    }, 1000);
+                        window.location.assign(redirectUrl.toString());
+                    }, 800);
                 } else {
                     const errorText = await response.text();
                     console.error(`Submission failed: ${response.status}`, errorText);
