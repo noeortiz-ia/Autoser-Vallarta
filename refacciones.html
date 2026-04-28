@@ -211,7 +211,7 @@
             padding: 1rem 1.5rem;
             color: #ffffff;
             font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
+            font-size: 1rem;
             transition: all 0.3s;
         }
 
@@ -608,7 +608,7 @@
                         <div class="absolute top-0 left-0 w-full h-1 bg-autoser-red"></div>
                         <h2 class="text-2xl font-headline font-extrabold text-white mb-8 uppercase tracking-tight" data-en="Quote your Parts">
                             Cotiza tus Refacciones</h2>
-                        <form id="refacciones-form" class="space-y-6">
+                        <form id="refacciones-form" class="space-y-6" method="POST" data-form-type="Refacciones">
                             <input type="hidden" name="form_type" value="Refacciones">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <input type="text" name="nombre_completo" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input" required>
@@ -1463,7 +1463,7 @@
             });
         });
     </script>
-    <script src="assets/js/forms-handler.js"></script>
+    <script src="assets/js/forms-handler.js?v=1.0.6"></script>
 </body>
 
 </html>

@@ -135,7 +135,7 @@
             padding: 1.25rem;
             color: #ffffff;
             font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
+            font-size: 1rem;
             transition: all 0.3s;
             border-radius: 0.125rem;
             outline: none;
@@ -494,7 +494,7 @@
                     </div>
                 </div>
 
-                <form id="insurance-form" class="flex-grow flex flex-col justify-between">
+                <form id="insurance-form" class="flex-grow flex flex-col justify-between" method="POST" data-form-type="Seguros">
                     <input type="hidden" name="form_type" value="Seguros - Cotización Rápida">
                     <!-- Step 1: Contact Info -->
                     <div id="step-1" class="space-y-4 transition-all duration-500">
@@ -1205,7 +1205,7 @@
             }
         });
     </script>
-    <script src="assets/js/forms-handler.js"></script>
+    <script src="assets/js/forms-handler.js?v=1.0.6"></script>
 </body>
 
 </html>

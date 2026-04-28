@@ -188,7 +188,7 @@
             border: 2px solid #e2e8f0;
             border-radius: 0.375rem;
             font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
+            font-size: 1rem;
             color: #1e293b;
             outline: none;
             transition: all 0.2s ease-in-out;
@@ -1002,14 +1002,14 @@
                         <form id="taller-form" class="space-y-6" method="POST" data-form-type="Taller">
                             <input type="hidden" name="form_type" value="Taller">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" name="nombre_completo" class="form-input" placeholder="Nombre completo" data-en-placeholder="Full Name" required>
-                                <input type="email" name="email" class="form-input" placeholder="Correo Electrónico" data-en-placeholder="Email" required>
+                                <input type="text" name="nombre_completo" class="form-input" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" required>
+                                <input type="email" name="email" class="form-input" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" required>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="tel" name="telefono" class="form-input" placeholder="Teléfono (10 dígitos)" data-en-placeholder="Phone (10 digits)" 
+                                <input type="tel" name="telefono" class="form-input" placeholder="TELÉFONO (10 DÍGITOS)" data-en-placeholder="PHONE (10 DIGITS)" 
                                     pattern="[0-9]{10}" minlength="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
                                     title="Por favor, ingresa los 10 dígitos de tu número telefónico" required>
-                                <input type="text" name="vehiculo" class="form-input" placeholder="Marca / Modelo" data-en-placeholder="Make / Model" required>
+                                <input type="text" name="vehiculo" class="form-input" placeholder="MARCA / MODELO" data-en-placeholder="MAKE / MODEL" required>
                             </div>
                             <select name="tipo_servicio" class="form-input" required>
                                 <option value="" disabled selected data-en="Service Type">Tipo de Servicio</option>
@@ -1018,7 +1018,7 @@
                                 <option data-en="Brakes / Suspension">Frenos / Suspensión</option>
                                 <option data-en="Other">Otro</option>
                             </select>
-                            <textarea name="mensaje" class="form-input" placeholder="¿Algún detalle adicional?" data-en-placeholder="Any additional details?"></textarea>
+                            <textarea name="mensaje" rows="4" class="form-input" placeholder="CUÉNTANOS CÓMO PODEMOS AYUDARTE" data-en-placeholder="TELL US HOW WE CAN HELP YOU" required></textarea>
                             <button type="submit" class="btn-agency w-full py-5 text-sm font-black shadow-xl" data-en="SEND APPOINTMENT REQUEST">ENVIAR SOLICITUD DE CITA</button>
                         </form>
                     </div>

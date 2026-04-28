@@ -188,7 +188,7 @@
             padding: 1.25rem;
             color: #ffffff;
             font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
+            font-size: 1rem;
             transition: all 0.3s;
             border-radius: 0.125rem;
             outline: none;
@@ -497,14 +497,14 @@
                     RÁPIDO</h3>
                 <p class="text-[10px] text-gray-400 mb-8 font-bold uppercase tracking-widest" data-en="SEND PHOTOS BY WHATSAPP OR FORM">ENVÍA FOTOS POR WHATSAPP O
                     FORMULARIO</p>
-                <form id="hojalateria-form" class="space-y-4">
+                <form id="hojalateria-form" class="space-y-4" method="POST" data-form-type="Hojalatería">
                     <input type="hidden" name="form_type" value="Hojalatería y Pintura">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" name="nombre_completo" placeholder="NOMBRE" data-en-placeholder="NAME" class="form-input" required>
+                        <input type="text" name="nombre_completo" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input" required>
                         <input type="email" name="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" class="form-input" required>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="tel" name="telefono" placeholder="WHATSAPP / TEL (10 DÍGITOS)" data-en-placeholder="WHATSAPP / TEL (10 DIGITS)" class="form-input" 
+                        <input type="tel" name="telefono" placeholder="TELÉFONO (10 DÍGITOS)" data-en-placeholder="PHONE (10 DIGITS)" class="form-input" 
                             pattern="[0-9]{10}" minlength="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
                             title="Por favor, ingresa los 10 dígitos de tu número telefónico" required>
                         <input type="text" name="modelo_auto" placeholder="MODELO DEL AUTO" data-en-placeholder="CAR MODEL" class="form-input" required>
@@ -1067,7 +1067,7 @@
             }
         });
     </script>
-    <script src="assets/js/forms-handler.js"></script>
+    <script src="assets/js/forms-handler.js?v=1.0.6"></script>
 </body>
 
 </html>
