@@ -13,10 +13,15 @@ const FORMS_CONFIG = {
     ERROR_TEXT_EN: 'We could not send your request. Please try again or contact us via WhatsApp.'
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+const initForms = () => {
     const forms = document.querySelectorAll('form');
+    console.log('Detectados formularios:', forms.length);
     
     forms.forEach(form => {
+        // Prevent multiple listeners
+        if (form.dataset.handlerAttached) return;
+        form.dataset.handlerAttached = 'true';
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -84,9 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
             }
-        });
     });
-});
+};
+
+// Initialize
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initForms);
+} else {
+    initForms();
+}
 
 /**
  * Show a premium notification
