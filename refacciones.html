@@ -608,17 +608,20 @@
                         <div class="absolute top-0 left-0 w-full h-1 bg-autoser-red"></div>
                         <h2 class="text-2xl font-headline font-extrabold text-white mb-8 uppercase tracking-tight" data-en="Quote your Parts">
                             Cotiza tus Refacciones</h2>
-                        <form action="#" class="space-y-6">
+                        <form id="refacciones-form" class="space-y-6">
+                            <input type="hidden" name="form_type" value="Refacciones">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input" required>
-                                <input type="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" class="form-input" required>
+                                <input type="text" name="nombre_completo" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input" required>
+                                <input type="email" name="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" class="form-input" required>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="tel" placeholder="TELÉFONO / WHATSAPP" data-en-placeholder="PHONE / WHATSAPP" class="form-input" required>
-                                <input type="text" placeholder="VIN / NÚMERO DE SERIE" data-en-placeholder="VIN / SERIAL NUMBER" class="form-input">
+                                <input type="tel" name="telefono" placeholder="TELÉFONO / WHATSAPP (10 DÍGITOS)" data-en-placeholder="PHONE / WHATSAPP (10 DIGITS)" class="form-input" 
+                                    pattern="[0-9]{10}" minlength="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                                    title="Por favor, ingresa los 10 dígitos de tu número telefónico" required>
+                                <input type="text" name="vin" placeholder="VIN / NÚMERO DE SERIE" data-en-placeholder="VIN / SERIAL NUMBER" class="form-input">
                             </div>
-                            <input type="text" placeholder="MARCA / MODELO / AÑO" data-en-placeholder="MAKE / MODEL / YEAR" class="form-input" required>
-                            <textarea placeholder="DESCRIBE LA REFACCIÓN QUE BUSCAS" data-en-placeholder="DESCRIBE THE PART YOU ARE LOOKING FOR" rows="3" class="form-input"
+                            <input type="text" name="vehiculo" placeholder="MARCA / MODELO / AÑO" data-en-placeholder="MAKE / MODEL / YEAR" class="form-input" required>
+                            <textarea name="mensaje" placeholder="DESCRIBE LA REFACCIÓN QUE BUSCAS" data-en-placeholder="DESCRIBE THE PART YOU ARE LOOKING FOR" rows="3" class="form-input"
                                 required></textarea>
                             <button type="submit"
                                 class="w-full bg-autoser-red text-white py-6 font-headline font-black uppercase tracking-[0.2em] hover:bg-white hover:text-autoser-red transition-all transform hover:-translate-y-1" data-en="REQUEST QUOTE">
@@ -1460,6 +1463,7 @@
             });
         });
     </script>
+    <script src="assets/js/forms-handler.js"></script>
 </body>
 
 </html>

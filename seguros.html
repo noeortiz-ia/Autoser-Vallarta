@@ -495,16 +495,19 @@
                 </div>
 
                 <form id="insurance-form" class="flex-grow flex flex-col justify-between">
+                    <input type="hidden" name="form_type" value="Seguros - Cotización Rápida">
                     <!-- Step 1: Contact Info -->
                     <div id="step-1" class="space-y-4 transition-all duration-500">
                         <div class="space-y-4">
                             <div class="grid grid-cols-2 gap-4">
-                                <input type="text" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input">
-                                <input type="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" class="form-input">
+                                <input type="text" name="nombre_completo" placeholder="NOMBRE COMPLETO" data-en-placeholder="FULL NAME" class="form-input" required>
+                                <input type="email" name="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL" class="form-input" required>
                             </div>
                             <div class="grid grid-cols-2 gap-4">
-                                <input type="tel" placeholder="TELÉFONO" data-en-placeholder="PHONE" class="form-input">
-                                <input type="text" placeholder="C.P." data-en-placeholder="ZIP CODE" class="form-input">
+                                <input type="tel" name="telefono" placeholder="TELÉFONO (10 DÍGITOS)" data-en-placeholder="PHONE (10 DIGITS)" class="form-input" 
+                                    pattern="[0-9]{10}" minlength="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                                    title="Por favor, ingresa los 10 dígitos de tu número telefónico" required>
+                                <input type="text" name="cp" placeholder="C.P." data-en-placeholder="ZIP CODE" class="form-input" required>
                             </div>
                         </div>
                         <button type="button" onclick="changeStep(2)" class="btn-agency w-full py-4 text-xs font-black tracking-widest flex items-center justify-center gap-2 group">
@@ -517,12 +520,12 @@
                     <div id="step-2" class="space-y-4 hidden opacity-0 transition-all duration-500">
                         <div class="space-y-4">
                             <div class="grid grid-cols-2 gap-4">
-                                <input type="text" placeholder="MARCA" data-en-placeholder="MAKE" class="form-input">
-                                <input type="text" placeholder="MODELO" data-en-placeholder="MODEL" class="form-input">
+                                <input type="text" name="marca" placeholder="MARCA" data-en-placeholder="MAKE" class="form-input">
+                                <input type="text" name="modelo" placeholder="MODELO" data-en-placeholder="MODEL" class="form-input">
                             </div>
                             <div class="grid grid-cols-2 gap-4">
-                                <input type="number" placeholder="AÑO" data-en-placeholder="YEAR" class="form-input">
-                                <input type="number" placeholder="EDAD DEL CONDUCTOR" data-en-placeholder="DRIVER AGE" class="form-input">
+                                <input type="number" name="anio" placeholder="AÑO" data-en-placeholder="YEAR" class="form-input">
+                                <input type="number" name="edad_conductor" placeholder="EDAD DEL CONDUCTOR" data-en-placeholder="DRIVER AGE" class="form-input">
                             </div>
                             <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed" data-en="* These data are necessary to calculate the risk level and offer you the best rate.">
                                 * Estos datos son necesarios para calcular el nivel de riesgo y ofrecerte la mejor tarifa.
@@ -553,7 +556,21 @@
                     const indicator = document.getElementById('step-indicator');
                     const isEn = document.documentElement.lang === 'en';
 
+                    // Validar campos del paso 1 antes de avanzar
                     if (step === 2) {
+                        const inputs = s1.querySelectorAll('input[required]');
+                        let allValid = true;
+                        inputs.forEach(input => {
+                            if (!input.value.trim()) {
+                                input.classList.add('border-autoser-red');
+                                allValid = false;
+                            } else {
+                                input.classList.remove('border-autoser-red');
+                            }
+                        });
+
+                        if (!allValid) return;
+
                         s1.classList.add('opacity-0');
                         setTimeout(() => {
                             s1.classList.add('hidden');
@@ -576,39 +593,7 @@
                     }
                 }
 
-                // Handle Form Submission via WhatsApp
-                document.getElementById('insurance-form').addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const inputs = this.querySelectorAll('.form-input');
-                    const data = {
-                        nombre: inputs[0].value,
-                        email: inputs[1].value,
-                        tel: inputs[2].value,
-                        cp: inputs[3].value,
-                        marca: inputs[4].value,
-                        modelo: inputs[5].value,
-                        anio: inputs[6].value,
-                        edad: inputs[7].value
-                    };
-
-                    const message = encodeURIComponent(
-                        `*SOLICITUD DE COTIZACIÓN - SEGUROS*\n\n` +
-                        `*DATOS DEL CLIENTE*\n` +
-                        `👤 Nombre: ${data.nombre}\n` +
-                        `📧 Email: ${data.email}\n` +
-                        `📞 Tel: ${data.tel}\n` +
-                        `📍 C.P: ${data.cp}\n\n` +
-                        `*DATOS DEL VEHÍCULO*\n` +
-                        `🚗 Marca: ${data.marca}\n` +
-                        `📦 Modelo: ${data.modelo}\n` +
-                        `🗓️ Año: ${data.anio}\n` +
-                        `🎂 Edad Conductor: ${data.edad}\n\n` +
-                        `_Enviado desde el sitio web Autoser Vallarta_`
-                    );
-
-                    window.open(`https://wa.me/523222263500?text=${message}`, '_blank');
-                });
+                }
             </script>
         </div>
     </header>
@@ -955,18 +940,21 @@
                 </div>
 
                 <div class="bg-white/5 backdrop-blur-xl p-8 border border-white/10 rounded-sm reveal-from-right">
-                    <form class="space-y-4">
+                    <form id="insurance-contact-form" class="space-y-4">
+                        <input type="hidden" name="form_type" value="Seguros - Contacto">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="text" placeholder="NOMBRE" data-en-placeholder="NAME"
-                                class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all">
-                            <input type="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL"
-                                class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all">
+                            <input type="text" name="nombre_completo" placeholder="NOMBRE" data-en-placeholder="NAME"
+                                class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all" required>
+                            <input type="email" name="email" placeholder="CORREO ELECTRÓNICO" data-en-placeholder="EMAIL"
+                                class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all" required>
                         </div>
-                        <input type="tel" placeholder="WHATSAPP / TEL" data-en-placeholder="WHATSAPP / TEL"
-                            class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all">
-                        <textarea placeholder="¿EN QUÉ PODEMOS AYUDARTE?" data-en-placeholder="HOW CAN WE HELP YOU?"
-                            class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all h-24 resize-none"></textarea>
-                        <button
+                        <input type="tel" name="telefono" placeholder="WHATSAPP / TEL (10 DÍGITOS)" data-en-placeholder="WHATSAPP / TEL (10 DIGITS)"
+                            class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all" 
+                            pattern="[0-9]{10}" minlength="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                            title="Por favor, ingresa los 10 dígitos de tu número telefónico" required>
+                        <textarea name="mensaje" placeholder="¿EN QUÉ PODEMOS AYUDARTE?" data-en-placeholder="HOW CAN WE HELP YOU?"
+                            class="w-full bg-white/5 border border-white/10 p-4 rounded-sm text-sm focus:border-autoser-red outline-none transition-all h-24 resize-none" required></textarea>
+                        <button type="submit"
                             class="w-full bg-autoser-red hover:bg-white hover:text-autoser-black text-white font-headline font-black py-4 rounded-sm uppercase tracking-widest transition-all text-xs" data-en="REQUEST QUOTE">SOLICITAR
                             COTIZACIÓN</button>
                     </form>
@@ -1217,6 +1205,7 @@
             }
         });
     </script>
+    <script src="assets/js/forms-handler.js"></script>
 </body>
 
 </html>

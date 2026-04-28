@@ -999,24 +999,26 @@
                 </div>
                 <div class="lg:w-1/2 reveal-from-right">
                     <div class="bg-white p-12 shadow-2xl border-t-8 border-autoser-red">
-                        <form class="space-y-6">
+                        <form id="taller-form" class="space-y-6">
+                            <input type="hidden" name="form_type" value="Taller">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Nombre completo" data-en-placeholder="Full Name" required>
-                                <input type="email" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Correo Electrónico" data-en-placeholder="Email" required>
+                                <input type="text" name="nombre_completo" class="form-input" placeholder="Nombre completo" data-en-placeholder="Full Name" required>
+                                <input type="email" name="email" class="form-input" placeholder="Correo Electrónico" data-en-placeholder="Email" required>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="tel" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Teléfono" data-en-placeholder="Phone" required>
-                                <input type="text" class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="Marca / Modelo" data-en-placeholder="Make / Model" required>
+                                <input type="tel" name="telefono" class="form-input" placeholder="Teléfono (10 dígitos)" data-en-placeholder="Phone (10 digits)" 
+                                    pattern="[0-9]{10}" minlength="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                                    title="Por favor, ingresa los 10 dígitos de tu número telefónico" required>
+                                <input type="text" name="vehiculo" class="form-input" placeholder="Marca / Modelo" data-en-placeholder="Make / Model" required>
                             </div>
-                            <select class="form-input uppercase font-bold text-[10px] tracking-widest">
-                                    <option data-en="Service Type">Tipo de Servicio</option>
-                                    <option data-en="Preventive Maintenance">Mantenimiento Preventivo</option>
-                                    <option data-en="Mechanical Diagnosis">Diagnóstico Mecánico</option>
-                                    <option data-en="Brakes / Suspension">Frenos / Suspensión</option>
-                                    <option data-en="Other">Otro</option>
-                                </select>
-                            </div>
-                            <textarea class="form-input uppercase font-bold text-[10px] tracking-widest" placeholder="¿Algún detalle adicional?" data-en-placeholder="Any additional details?"></textarea>
+                            <select name="tipo_servicio" class="form-input" required>
+                                <option value="" disabled selected data-en="Service Type">Tipo de Servicio</option>
+                                <option data-en="Preventive Maintenance">Mantenimiento Preventivo</option>
+                                <option data-en="Mechanical Diagnosis">Diagnóstico Mecánico</option>
+                                <option data-en="Brakes / Suspension">Frenos / Suspensión</option>
+                                <option data-en="Other">Otro</option>
+                            </select>
+                            <textarea name="mensaje" class="form-input" placeholder="¿Algún detalle adicional?" data-en-placeholder="Any additional details?"></textarea>
                             <button type="submit" class="btn-agency w-full py-5 text-sm font-black shadow-xl" data-en="SEND APPOINTMENT REQUEST">ENVIAR SOLICITUD DE CITA</button>
                         </form>
                     </div>
@@ -1409,6 +1411,7 @@
             }
         });
     </script>
+    <script src="assets/js/forms-handler.js"></script>
 </body>
 
 </html>
