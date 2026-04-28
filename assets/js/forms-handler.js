@@ -91,6 +91,7 @@ const initForms = () => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
             }
+        });
     });
 };
 
