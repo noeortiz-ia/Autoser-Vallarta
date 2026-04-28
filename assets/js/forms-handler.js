@@ -73,7 +73,7 @@ const initForms = () => {
                     showNotification(true, isEnglish);
                     
                     // Construct URL for redirection
-                    const tyUrl = window.location.origin + '/gracias.html?name=' + encodeURIComponent(userName) + '&type=' + encodeURIComponent(formType);
+                    const tyUrl = `gracias.html?name=${encodeURIComponent(userName)}&type=${encodeURIComponent(formType)}`;
                     
                     // Redirect to Thank You page after a small delay
                     setTimeout(() => {
