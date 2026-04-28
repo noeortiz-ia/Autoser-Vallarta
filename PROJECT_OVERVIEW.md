@@ -49,5 +49,16 @@ Este documento resume el sistema de diseño actual de **Autoser Vallarta** para 
 2. **SEO:** Implementación de `meta tags` y `OpenGraph` faltantes (Prioridad alta).
 3. **Optimización:** Revisión de rutas de imágenes en `../assets/`.
 
+## 📋 Manejo de Formularios y Conversión (Actualizado v2.5)
+- **Script Central:** `assets/js/forms-handler.js` (Gestiona todos los envíos a n8n).
+- **Integración:** Webhook único `https://n8n.orbys.one/webhook/bc567c7b-b05d-4723-a977-84d8b0666ee6`.
+- **Campos Requeridos:**
+  - `nombre_completo`: Captura el nombre del cliente.
+  - `form_type`: Campo `hidden` que define el departamento (Taller, Vende tu Auto, etc.).
+- **Flujo de Redirección:**
+  - Tras éxito, el script redirige a `gracias.html` usando una **ruta relativa** (para compatibilidad con `file://` local y producción).
+  - Parámetros de URL: `?name=[nombre]&type=[tipo]` para personalizar la Thank You Page.
+- **Cache-Busting:** Siempre incluir el script con versión (ej: `forms-handler.js?v=1.0.6`) para forzar actualizaciones en el navegador.
+
 ---
-*Documentación actualizada por Antigravity el 5 de abril de 2026 para reflejar el cambio de tipografía (Montserrat) y estandarización de alturas hero.*
+*Documentación actualizada por Antigravity el 28 de abril de 2026 para reflejar los estándares de formularios y redirección dinámica.*
