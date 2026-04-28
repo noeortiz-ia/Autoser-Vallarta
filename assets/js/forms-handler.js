@@ -64,11 +64,11 @@ const initForms = () => {
                 console.log('Respuesta recibida:', response.status);
 
                 // n8n usually returns 200/201 if handled correctly
-                if (response.ok) {
+                if (response.ok || response.status === 200) {
                     const userName = data.nombre_completo || data.nombre || data.name || 'Cliente';
                     const formType = form.getAttribute('data-form-type') || data.form_type || 'General';
                     
-                    console.log('Éxito! Redirigiendo con:', { userName, formType });
+                    console.log('Éxito! Preparando redirección:', { userName, formType });
                     
                     showNotification(true, isEnglish);
                     
@@ -77,9 +77,11 @@ const initForms = () => {
                     redirectUrl.searchParams.set('name', userName);
                     redirectUrl.searchParams.set('type', formType);
                     
+                    console.log('URL de destino:', redirectUrl.toString());
+                    
                     // Redirect to Thank You page after a small delay
                     setTimeout(() => {
-                        window.location.assign(redirectUrl.toString());
+                        window.location.href = redirectUrl.toString();
                     }, 800);
                 } else {
                     const errorText = await response.text();
