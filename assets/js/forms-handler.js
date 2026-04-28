@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             try {
+                console.log('Iniciando envío de formulario:', form.id);
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
                 
@@ -44,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 data.submitted_at = new Date().toLocaleString();
                 data.page_url = window.location.href;
                 data.language = isEnglish ? 'en' : 'es';
+
+                console.log('Datos a enviar:', data);
 
                 const response = await fetch(FORMS_CONFIG.WEBHOOK_URL, {
                     method: 'POST',
@@ -53,10 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(data)
                 });
 
+                console.log('Respuesta recibida:', response.status);
+
                 // n8n usually returns 200/201 if handled correctly
                 if (response.ok) {
                     const userName = data.nombre_completo || data.nombre || data.name || 'Cliente';
                     const formType = form.getAttribute('data-form-type') || data.form_type || 'General';
+                    
+                    console.log('Éxito! Redirigiendo con:', { userName, formType });
                     
                     showNotification(true, isEnglish);
                     form.reset();
@@ -64,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Redirect to Thank You page after a small delay
                     setTimeout(() => {
                         window.location.href = `gracias.html?name=${encodeURIComponent(userName)}&type=${encodeURIComponent(formType)}`;
-                    }, 1500);
+                    }, 1000);
                 } else {
                     const errorText = await response.text();
                     console.error(`Submission failed: ${response.status}`, errorText);
