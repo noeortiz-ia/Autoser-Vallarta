@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>¡Gracias por tu interés! | Autoser Vallarta</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        autoser: {
+                            red: '#ED1C24',
+                            black: '#1A1A1A',
+                            gray: '#F4F4F4',
+                            charcoal: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        headline: ['Montserrat', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .btn-premium {
+            background-color: #ED1C24;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0.25rem;
+            padding: 1.25rem 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 20px -5px rgba(237, 28, 36, 0.3);
+        }
+
+        .btn-premium:hover {
+            background-color: #ffffff;
+            color: #ED1C24;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-bg {
+            position: absolute;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(237, 28, 36, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 20s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-10%, -10%); }
+            100% { transform: translate(10%, 10%); }
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff 0%, #ED1C24 50%, #fff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+    </style>
+</head>
+
+<body class="font-body bg-white text-autoser-charcoal overflow-hidden min-h-screen flex items-center justify-center">
+
+    <div class="floating-bg top-0 left-0"></div>
+    <div class="floating-bg bottom-0 right-0" style="animation-delay: -10s;"></div>
+
+    <div class="container mx-auto px-8 max-w-4xl text-center">
+        <!-- Logo -->
+        <div class="mb-12 flex justify-center">
+            <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta" class="h-20 w-auto">
+        </div>
+
+        <!-- Dynamic Success Icon -->
+        <div class="mb-8 inline-flex items-center justify-center w-24 h-24 rounded-full bg-autoser-red/10 text-autoser-red">
+            <span class="material-symbols-outlined !text-5xl animate-bounce">check_circle</span>
+        </div>
+
+        <!-- Dynamic Heading -->
+        <h1 class="text-4xl md:text-6xl font-headline font-extrabold text-autoser-black mb-6 uppercase tracking-tight leading-tight">
+            ¡GRACIAS, <span id="user-name" class="text-autoser-red">CLIENTE</span>!
+        </h1>
+
+        <!-- Dynamic Subtext -->
+        <p class="text-xl text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Hemos recibido tu solicitud para <span id="interest-type" class="font-bold text-autoser-black">nuestro departamento</span>. Un asesor experto se pondrá en contacto contigo en breve.
+        </p>
+
+        <!-- Dynamic Action Buttons -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
+            <a id="whatsapp-btn" href="#" target="_blank" class="btn-premium">
+                <span class="material-symbols-outlined">chat</span>
+                ATENCIÓN INMEDIATA POR WHATSAPP
+            </a>
+            <a href="/" class="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-autoser-red transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">arrow_back</span>
+                VOLVER AL INICIO
+            </a>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="pt-12 border-t border-gray-100 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-40">
+            <div class="flex flex-col items-center gap-2">
+                <span class="material-symbols-outlined">verified</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest">CERTIFICADOS</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <span class="material-symbols-outlined">history</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest">25 AÑOS</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <span class="material-symbols-outlined">shield</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest">SEGURIDAD</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <span class="material-symbols-outlined">star</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest">LÍDERES</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('name') || 'Cliente';
+            const type = params.get('type') || 'General';
+
+            // Actualizar textos dinámicos
+            document.getElementById('user-name').textContent = name.split(' ')[0].toUpperCase();
+            
+            const findType = (t) => {
+                if (t.includes('Taller')) return 'Taller';
+                if (t.includes('Refacciones')) return 'Refacciones';
+                if (t.includes('Hojalatería') || t.includes('Hojalateria')) return 'Hojalateria';
+                if (t.includes('Venta') || t.includes('Vende')) return 'Ventas';
+                if (t.includes('Seguro')) return 'Seguros';
+                return 'General';
+            };
+
+            const detectedType = findType(type);
+            
+            const interestMap = {
+                'Taller': 'el área de Servicio Técnico',
+                'Refacciones': 'la solicitud de Refacciones',
+                'Hojalateria': 'nuestro taller de Hojalatería y Pintura',
+                'Ventas': 'la compra de un Seminuevo',
+                'Vende tu Auto': 'la valuación de tu vehículo',
+                'Seguros': 'la cotización de tu Seguro',
+                'General': 'nuestra atención al cliente'
+            };
+
+            document.getElementById('interest-type').textContent = interestMap[detectedType] || interestMap['General'];
+
+            // Lógica de WhatsApp
+            const waNumbers = {
+                'Taller': '523222263500',
+                'Refacciones': '523222263500',
+                'Hojalateria': '523222263500',
+                'Ventas': '523221960922',
+                'Vende tu Auto': '523221960922',
+                'Seguros': '523221960922'
+            };
+
+            const waMsg = {
+                'Taller': `Hola! Soy ${name}, acabo de llenar el formulario de Taller en su sitio web y me gustaría atención inmediata.`,
+                'Refacciones': `Hola! Soy ${name}, busco una refacción y acabo de llenar el formulario en su sitio web.`,
+                'Hojalateria': `Hola! Soy ${name}, me interesa un presupuesto de Hojalatería y Pintura.`,
+                'Ventas': `Hola! Soy ${name}, me interesa información sobre un auto seminuevo.`,
+                'Vende tu Auto': `Hola! Soy ${name}, quiero vender mi auto y acabo de enviar mis datos.`,
+                'Seguros': `Hola! Soy ${name}, me interesa una cotización de seguro para mi auto.`
+            };
+
+            const number = waNumbers[detectedType] || '523222263500';
+            const message = encodeURIComponent(waMsg[detectedType] || `Hola! Soy ${name}, acabo de llenar un formulario en su sitio web.`);
+            
+            document.getElementById('whatsapp-btn').href = `https://wa.me/${number}?text=${message}`;
+        });
+    </script>
+</body>
+</html>

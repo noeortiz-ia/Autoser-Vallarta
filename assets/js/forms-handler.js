@@ -55,8 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // n8n usually returns 200/201 if handled correctly
                 if (response.ok) {
+                    const userName = data.nombre_completo || data.nombre || data.name || 'Cliente';
+                    const formType = form.getAttribute('data-form-type') || data.form_type || 'General';
+                    
                     showNotification(true, isEnglish);
                     form.reset();
+                    
+                    // Redirect to Thank You page after a small delay
+                    setTimeout(() => {
+                        window.location.href = `gracias.html?name=${encodeURIComponent(userName)}&type=${encodeURIComponent(formType)}`;
+                    }, 1500);
                 } else {
                     const errorText = await response.text();
                     console.error(`Submission failed: ${response.status}`, errorText);
