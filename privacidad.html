@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Política de Privacidad | Autoser Vallarta</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta name="description"
+        content="Aviso de privacidad de Autoser Vallarta. Conoce cómo protegemos y tratamos tu información personal.">
+    <link rel="canonical" href="https://autoservallarta.com/privacidad" />
+    <meta name="robots" content="index, follow">
+
+    <!-- Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Política de Privacidad",
+      "description": "Política de privacidad y manejo de datos personales de Autoser Vallarta.",
+      "publisher": {
+        "@type": "AutoDealer",
+        "name": "Autoser Vallarta"
+      }
+    }
+    </script>
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://autoservallarta.com/privacidad">
+    <meta property="og:title" content="Política de Privacidad | Autoser Vallarta">
+    <meta property="og:description" content="Consulta nuestro aviso de privacidad y el manejo responsable de tus datos personales.">
+    <meta property="og:image" content="https://autoservallarta.com/assets/img/agencia-bgn.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        autoser: {
+                            red: '#ED1C24',
+                            black: '#1A1A1A',
+                            gray: '#F4F4F4',
+                            charcoal: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        headline: ['Montserrat', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .reveal-on-scroll {
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .is-visible {
+            opacity: 1 !important;
+            transform: translate(0, 0) scale(1) !important;
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s;
+            padding-bottom: 4px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ED1C24;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-white font-body text-autoser-charcoal antialiased">
+    <!-- Red Accent Top Bar -->
+    <div class="h-1.5 w-full bg-autoser-red fixed top-0 left-0 z-[1001]"></div>
+
+    <!-- Navigation Header -->
+    <nav id="main-nav" class="fixed top-1.5 left-0 w-full z-[1000] transition-all duration-500 bg-white shadow-md py-4">
+        <div class="container mx-auto px-8 flex justify-between items-center">
+            <a href="/" class="flex items-center gap-4 group">
+                <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
+                    class="h-12 md:h-14 lg:h-[72px] w-auto object-contain">
+            </a>
+
+            <div class="hidden xl:flex gap-10 font-headline text-[0.75rem] uppercase tracking-widest text-autoser-charcoal items-center font-bold">
+                <a href="/" class="nav-link" data-en="HOME">INICIO</a>
+                <a href="seminuevos" class="nav-link" data-en="INVENTORY">SEMINUEVOS</a>
+                <a href="taller-multimarcas" class="nav-link" data-en="WORKSHOP">TALLER</a>
+                <a href="hojalateria-y-pintura" class="nav-link" data-en="BODY SHOP">HOJALATERÍA</a>
+                <a href="nosotros" class="nav-link" data-en="ABOUT">NOSOTROS</a>
+            </div>
+
+            <button onclick="i18n.toggle()" 
+                class="flex items-center gap-1 px-3 py-1.5 border border-gray-200 rounded-sm text-[10px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
+                <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
+                <span class="lang-toggle-text">EN</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="pt-48 pb-20 bg-autoser-gray">
+        <div class="container mx-auto px-8">
+            <h1 class="text-4xl md:text-5xl font-headline font-extrabold text-autoser-black uppercase tracking-tight mb-4">
+                POLÍTICA DE <span class="text-autoser-red">PRIVACIDAD</span>
+            </h1>
+            <div class="w-20 h-1 bg-autoser-red mb-8"></div>
+            <p class="text-sm text-gray-500 font-bold uppercase tracking-widest" data-en="DATA PROTECTION & USER TRUST">PROTECCIÓN DE DATOS Y CONFIANZA DEL USUARIO</p>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <main class="py-24">
+        <div class="container mx-auto px-8 max-w-4xl">
+            <div class="prose prose-lg max-w-none text-autoser-charcoal leading-relaxed space-y-8">
+                <p>La presente Política de Privacidad establece los términos en que <strong>AUTOS SERVICIO Y REFACCIONES</strong> usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web. Esta compañía está comprometida con la seguridad de los datos de sus usuarios.</p>
+
+                <div class="border-l-4 border-autoser-red pl-8 py-2">
+                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Información que es recogida</h2>
+                    <p>Nuestro sitio web podrá recoger información personal por ejemplo: Nombre, información de contacto como su dirección de correo electrónica e información demográfica. Así mismo cuando sea necesario podrá ser requerida información específica para procesar algún pedido o realizar una entrega o Facturación.</p>
+                </div>
+
+                <div class="border-l-4 border-autoser-red pl-8 py-2">
+                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Uso de la información recogida</h2>
+                    <p>Nuestro sitio web emplea la información con el fin de proporcionar el mejor servicio posible, particularmente para mantener un registro de usuarios, de pedidos en caso que aplique, y mejorar nuestros productos y servicios. Es posible que sean enviados correos electrónicos periódicamente a través de nuestro sitio con ofertas especiales, nuevos productos y otra información publicitaria que consideremos relevante para usted o que pueda brindarle algún beneficio.</p>
+                    <p>AUTOS SERVICIO Y REFACCIONES está altamente comprometido para cumplir con el compromiso de mantener su información segura. Usamos los sistemas más avanzados y los actualizamos constantemente para asegurarnos que no exista ningún acceso no autorizado.</p>
+                </div>
+
+                <div class="border-l-4 border-autoser-red pl-8 py-2">
+                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Cookies</h2>
+                    <p>Una cookie se refiere a un fichero que es enviado con la finalidad de solicitar permiso para almacenarse en su ordenador. Nuestro sitio web emplea las cookies para poder identificar las páginas que son visitadas y su frecuencia. Esta información es empleada únicamente para análisis estadístico y después la información se elimina de forma permanente. Usted puede eliminar las cookies en cualquier momento desde su ordenador.</p>
+                </div>
+
+                <div class="border-l-4 border-autoser-red pl-8 py-2">
+                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Enlaces a Terceros</h2>
+                    <p>Este sitio web pudiera contener enlaces a otros sitios que pudieran ser de su interés. Una vez que usted de clic en estos enlaces y abandone nuestra página, ya no tenemos control sobre al sitio al que es redirigido y por lo tanto no somos responsables de los términos o privacidad ni de la protección de sus datos en esos otros sitios terceros.</p>
+                </div>
+
+                <div class="border-l-4 border-autoser-red pl-8 py-2">
+                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Control de su información personal</h2>
+                    <p>En cualquier momento usted puede restringir la recopilación o el uso de la información personal que es proporcionada a nuestro sitio web. Esta compañía no venderá, cederá ni distribuirá la información personal que es recopilada sin su consentimiento, salvo que sea requerido por un juez con una orden judicial.</p>
+                </div>
+
+                <p class="text-xs text-gray-400 mt-12 italic">AUTOS SERVICIO Y REFACCIONES se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-autoser-black text-white py-16 border-t-8 border-autoser-red">
+        <div class="container mx-auto px-8 text-center">
+            <img src="assets/img/logo-autoser.png" alt="Autoser" class="h-12 mx-auto mb-8 opacity-50 grayscale brightness-200">
+            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 mb-8" data-en="AUTOSER VALLARTA &copy; 2026. ALL RIGHTS RESERVED.">AUTOSER VALLARTA &copy; <span id="currentYear"></span>. TODOS LOS DERECHOS RESERVADOS.</p>
+            <div class="flex justify-center gap-8">
+                <a href="/" class="text-[9px] font-bold uppercase tracking-widest hover:text-autoser-red transition-colors" data-en="HOME">INICIO</a>
+                <a href="nosotros" class="text-[9px] font-bold uppercase tracking-widest hover:text-autoser-red transition-colors" data-en="ABOUT">NOSOTROS</a>
+                <a href="privacidad" class="text-[9px] font-bold uppercase tracking-widest text-autoser-red" data-en="PRIVACY">PRIVACIDAD</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Reveal Logic
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
