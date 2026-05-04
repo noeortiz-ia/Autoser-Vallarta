@@ -16,7 +16,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^([^/]+)$ $1.html [L]
 
-# 4. Manejo de Error 404
+# 4. Redirección de Seminuevos (De ruta vieja a nueva estructura de carpeta)
+# Ejemplo: /seminuevo/auto-slug -> /seminuevos/seminuevo/auto-slug
+RewriteRule ^seminuevo/(.*)$ /seminuevos/seminuevo/$1 [R=301,L,QSA]
+
+# 5. Manejo de Error 404
 ErrorDocument 404 /404.html
 
 # Opcional: Cache Control para assets (Mejora velocidad en cPanel)
