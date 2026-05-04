@@ -83,7 +83,7 @@
             background-color: #ED1C24;
             transition: width 0.3s;
         }
-        .nav-link:hover::after {
+        .nav-link:hover::after, .nav-link.active::after {
             width: 100%;
         }
         .mobile-link {
@@ -102,103 +102,129 @@
     </style>
 </head>
 
-<body class="bg-white font-body text-autoser-charcoal antialiased">
-    <!-- Red Accent Top Bar -->
-    <div class="h-1.5 w-full bg-autoser-red fixed top-0 left-0 z-[1001]"></div>
+<body class="font-body bg-white text-autoser-charcoal selection:bg-autoser-red selection:text-white overflow-x-hidden">
 
-    <!-- Navigation Header -->
-    <nav id="main-nav" class="fixed top-1.5 left-0 w-full z-[1000] transition-all duration-500 bg-white shadow-md py-4">
-        <div class="container mx-auto px-8 flex justify-between items-center">
-            <a href="/" class="flex items-center gap-4 group">
-                <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta"
-                    class="h-12 md:h-14 lg:h-[72px] w-auto object-contain">
+    <!-- Agency Navigation (EXACT same as index.html) -->
+    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-sm shadow-sm py-1 px-8 border-t-4 border-autoser-red">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="flex-shrink-0 flex items-center">
+                <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
+                    class="h-12 md:h-14 lg:h-[72px] w-auto object-contain drop-shadow-sm transition-all duration-300">
             </a>
 
-            <div class="hidden xl:flex gap-10 font-headline text-[0.75rem] uppercase tracking-widest text-autoser-charcoal items-center font-bold">
-                <a href="/" class="nav-link" data-en="HOME">INICIO</a>
-                <a href="seminuevos" class="nav-link" data-en="INVENTORY">SEMINUEVOS</a>
-                <a href="taller-multimarcas" class="nav-link" data-en="WORKSHOP">TALLER</a>
-                <a href="hojalateria-y-pintura" class="nav-link" data-en="BODY SHOP">HOJALATERÍA</a>
-                <a href="nosotros" class="nav-link" data-en="ABOUT">NOSOTROS</a>
+            <div class="hidden xl:flex gap-4 lg:gap-8 xl:gap-10 font-headline text-[0.75rem] uppercase tracking-widest text-autoser-charcoal items-center">
+                <!-- Dropdown Seminuevos -->
+                <div class="relative group py-4">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="PRE-OWNED">
+                        SEMINUEVOS <span class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 top-full w-56 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
+                        <a href="seminuevos" class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="VIEW INVENTORY">VER INVENTARIO</a>
+                        <a href="compramos-tu-auto" class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="WE BUY YOUR CAR">COMPRAMOS TU AUTO</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown Taller -->
+                <div class="relative group py-4">
+                    <button class="nav-link font-bold hover:text-autoser-red transition-colors flex items-center gap-1 uppercase text-autoser-charcoal" data-en="SERVICE">
+                        TALLER <span class="material-symbols-outlined text-[14px] notranslate select-none">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 top-full w-64 bg-white border-t-2 border-autoser-red shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100]">
+                        <a href="taller-multimarcas" class="block px-6 py-4 text-[0.65rem] border-b border-gray-100 font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="MULTI-BRAND WORKSHOP">TALLER MULTIMARCA</a>
+                        <a href="hojalateria-y-pintura" class="block px-6 py-4 text-[0.65rem] font-bold hover:bg-autoser-gray hover:text-autoser-red transition-colors" data-en="BODY & PAINT SHOP">HOJALATERÍA Y PINTURA</a>
+                    </div>
+                </div>
+
+                <a href="refacciones" class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PARTS">REFACCIONES</a>
+                <a href="seguros" class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="INSURANCE">SEGUROS</a>
+                <a href="promociones" class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="PROMOTIONS">PROMOCIONES</a>
+                <a href="nosotros" class="nav-link font-bold hover:text-autoser-red transition-colors" data-en="ABOUT US">NOSOTROS</a>
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 lg:gap-4">
                 <button onclick="i18n.toggle()" 
                     class="flex items-center gap-1 px-3 py-1.5 border border-gray-200 rounded-sm text-[10px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
                     <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
                     <span class="lang-toggle-text">EN</span>
                 </button>
-                <button onclick="toggleMobileMenu()" class="xl:hidden text-autoser-black">
-                    <span class="material-symbols-outlined text-3xl notranslate select-none">menu</span>
+                <a href="tel:3222263500" class="hidden md:flex items-center gap-2 font-headline font-bold text-sm hover:text-autoser-red transition-all text-autoser-charcoal">
+                    <span class="material-symbols-outlined text-autoser-red notranslate select-none">phone_in_talk</span>
+                    <span class="hidden xl:inline">322 226 3500</span>
+                </a>
+                <a href="seminuevos" class="hidden sm:flex items-center bg-autoser-black text-white px-6 py-3 rounded-sm font-headline text-[0.65rem] font-bold uppercase tracking-widest hover:bg-autoser-red transition-all">
+                    <span class="hidden lg:inline mr-1" data-en="VIEW">VER</span> <span data-en="INVENTORY">INVENTARIO</span>
+                </a>
+                <button class="xl:hidden text-autoser-black hover:text-autoser-red transition-all focus:outline-none" onclick="toggleMobileMenu()">
+                    <span class="material-symbols-outlined text-3xl select-none notranslate">menu</span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
+    <!-- Page Header (Adjusted for navigation height) -->
     <header class="pt-48 pb-20 bg-autoser-gray">
         <div class="container mx-auto px-8 text-center md:text-left">
-            <h1 class="text-4xl md:text-5xl font-headline font-extrabold text-autoser-black uppercase tracking-tight mb-4">
+            <h1 class="text-4xl md:text-6xl font-headline font-extrabold text-autoser-black uppercase tracking-tight mb-4">
                 POLÍTICA DE <span class="text-autoser-red">PRIVACIDAD</span>
             </h1>
             <div class="w-20 h-1 bg-autoser-red mb-8 mx-auto md:mx-0"></div>
-            <p class="text-sm text-gray-500 font-bold uppercase tracking-widest" data-en="DATA PROTECTION & USER TRUST">PROTECCIÓN DE DATOS Y CONFIANZA DEL USUARIO</p>
+            <p class="text-[0.65rem] text-gray-500 font-bold uppercase tracking-[0.3em]" data-en="DATA PROTECTION & USER TRUST">PROTECCIÓN DE DATOS Y CONFIANZA DEL USUARIO</p>
         </div>
     </header>
 
     <!-- Content Section -->
-    <main class="py-24">
+    <main class="py-24 bg-white">
         <div class="container mx-auto px-8 max-w-4xl">
-            <div class="prose prose-lg max-w-none text-autoser-charcoal leading-relaxed space-y-8">
-                <p>La presente Política de Privacidad establece los términos en que <strong>AUTOS SERVICIO Y REFACCIONES</strong> usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web. Esta compañía está comprometida con la seguridad de los datos de sus usuarios.</p>
+            <div class="prose prose-lg max-w-none text-autoser-charcoal leading-relaxed space-y-12">
+                <p class="text-xl font-medium border-l-4 border-autoser-red pl-8 italic text-gray-600">La presente Política de Privacidad establece los términos en que <strong>AUTOS SERVICIO Y REFACCIONES</strong> usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web.</p>
 
-                <div class="border-l-4 border-autoser-red pl-8 py-2">
-                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Información que es recogida</h2>
+                <div class="space-y-6">
+                    <h2 class="font-headline font-bold text-2xl uppercase tracking-tight text-autoser-black">Información que es recogida</h2>
                     <p>Nuestro sitio web podrá recoger información personal por ejemplo: Nombre, información de contacto como su dirección de correo electrónica e información demográfica. Así mismo cuando sea necesario podrá ser requerida información específica para procesar algún pedido o realizar una entrega o Facturación.</p>
                 </div>
 
-                <div class="border-l-4 border-autoser-red pl-8 py-2">
-                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Uso de la información recogida</h2>
-                    <p>Nuestro sitio web emplea la información con el fin de proporcionar el mejor servicio posible, particularmente para mantener un registro de usuarios, de pedidos en caso que aplique, y mejorar nuestros productos y servicios. Es posible que sean enviados correos electrónicos periódicamente a través de nuestro sitio con ofertas especiales, nuevos productos y otra información publicitaria que consideremos relevante para usted o que pueda brindarle algún beneficio.</p>
+                <div class="space-y-6">
+                    <h2 class="font-headline font-bold text-2xl uppercase tracking-tight text-autoser-black">Uso de la información recogida</h2>
+                    <p>Nuestro sitio web emplea la información con el fin de proporcionar el mejor servicio posible, particularmente para mantener un registro de usuarios, de pedidos en caso que aplique, y mejorar nuestros productos y servicios.</p>
                     <p>AUTOS SERVICIO Y REFACCIONES está altamente comprometido para cumplir con el compromiso de mantener su información segura. Usamos los sistemas más avanzados y los actualizamos constantemente para asegurarnos que no exista ningún acceso no autorizado.</p>
                 </div>
 
-                <div class="border-l-4 border-autoser-red pl-8 py-2">
-                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Cookies</h2>
+                <div class="space-y-6">
+                    <h2 class="font-headline font-bold text-2xl uppercase tracking-tight text-autoser-black">Cookies</h2>
                     <p>Una cookie se refiere a un fichero que es enviado con la finalidad de solicitar permiso para almacenarse en su ordenador. Nuestro sitio web emplea las cookies para poder identificar las páginas que son visitadas y su frecuencia. Esta información es empleada únicamente para análisis estadístico y después la información se elimina de forma permanente. Usted puede eliminar las cookies en cualquier momento desde su ordenador.</p>
                 </div>
 
-                <div class="border-l-4 border-autoser-red pl-8 py-2">
-                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Enlaces a Terceros</h2>
+                <div class="space-y-6">
+                    <h2 class="font-headline font-bold text-2xl uppercase tracking-tight text-autoser-black">Enlaces a Terceros</h2>
                     <p>Este sitio web pudiera contener enlaces a otros sitios que pudieran ser de su interés. Una vez que usted de clic en estos enlaces y abandone nuestra página, ya no tenemos control sobre al sitio al que es redirigido y por lo tanto no somos responsables de los términos o privacidad ni de la protección de sus datos en esos otros sitios terceros.</p>
                 </div>
 
-                <div class="border-l-4 border-autoser-red pl-8 py-2">
-                    <h2 class="font-headline font-bold text-xl uppercase mb-4 text-autoser-black">Control de su información personal</h2>
+                <div class="space-y-6">
+                    <h2 class="font-headline font-bold text-2xl uppercase tracking-tight text-autoser-black">Control de su información personal</h2>
                     <p>En cualquier momento usted puede restringir la recopilación o el uso de la información personal que es proporcionada a nuestro sitio web. Esta compañía no venderá, cederá ni distribuirá la información personal que es recopilada sin su consentimiento, salvo que sea requerido por un juez con una orden judicial.</p>
                 </div>
 
-                <p class="text-xs text-gray-400 mt-12 italic">AUTOS SERVICIO Y REFACCIONES se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</p>
+                <div class="pt-12 border-t border-gray-100">
+                    <p class="text-xs text-gray-400 italic">AUTOS SERVICIO Y REFACCIONES se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</p>
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer: Heritage -->
+    <!-- Footer (EXACT same as index.html) -->
     <footer class="bg-autoser-black text-white py-12 px-8 border-t-8 border-autoser-red">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
-            <div class="space-y-8 text-center md:text-left">
+            <div class="space-y-8">
                 <div class="flex items-center justify-center md:justify-start">
-                    <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
-                        class="h-16 w-auto opacity-100">
+                    <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage" class="h-16 w-auto">
                 </div>
-                <p class="text-gray-400 text-sm leading-relaxed" data-en="Proudly from Vallarta. Over two decades providing trust and quality in every kilometer.">
+                <p class="text-gray-400 text-sm leading-relaxed text-center md:text-left" data-en="Proudly from Vallarta. Over two decades providing trust and quality in every kilometer.">
                     Orgullosamente Vallartenses. Más de dos décadas brindando confianza y calidad en cada kilómetro.
                 </p>
             </div>
 
             <div class="text-center md:text-left">
-                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white inline-block md:block" data-en="DEPARTMENTS">
-                    DEPARTAMENTOS</h4>
+                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white inline-block md:block" data-en="DEPARTMENTS">DEPARTAMENTOS</h4>
                 <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
                     <li><a href="/" class="hover:text-autoser-red" data-en="Home">Inicio</a></li>
                     <li><a href="seminuevos" class="hover:text-autoser-red" data-en="Inventory">Inventario</a></li>
@@ -212,42 +238,30 @@
             </div>
 
             <div class="text-center md:text-left">
-                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white inline-block md:block" data-en="LOCATIONS">
-                    UBICACIONES</h4>
+                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white inline-block md:block" data-en="LOCATIONS">UBICACIONES</h4>
                 <div class="space-y-6">
                     <div>
                         <p class="text-xs font-bold text-autoser-red uppercase tracking-widest mb-2" data-en="Las Juntas (Main)">Las Juntas (Matriz)</p>
-                        <p class="text-gray-400 text-[10px] leading-relaxed uppercase font-medium">
-                            Carr. Tepic-Vallarta 6020, Las Juntas,<br />Puerto Vallarta, Jal. CP 48291
-                        </p>
+                        <p class="text-gray-400 text-[10px] leading-relaxed uppercase font-medium">Carr. Tepic-Vallarta 6020, Las Juntas,<br />Puerto Vallarta, Jal. CP 48291</p>
                         <p class="text-gray-500 text-[9px] mt-2 font-bold" data-en="Sales: Mon-Fri 9-7 / Sat 9-3 / Sun 10-3">Ventas: Lun-Vie 9-7 / Sáb 9-3 / Dom 10-3</p>
-                        <p class="text-gray-500 text-[9px] font-bold" data-en="Workshop: Mon-Fri 9-2 & 3-6 / Sat 9-2">Taller: Lun-Vie 9-2 y 3-6 / Sáb 9-2</p>
                     </div>
                     <div>
                         <p class="text-xs font-bold text-autoser-red uppercase tracking-widest mb-2" data-en="Valle Dorado">Valle Dorado</p>
-                        <p class="text-gray-400 text-[10px] leading-relaxed uppercase font-medium">
-                            Av. México 2, Valle Dorado,<br />Mezcales, Nay. CP 63735
-                        </p>
-                        <p class="text-gray-500 text-[9px] mt-2 font-bold" data-en="Sales: Mon-Fri 9-8 / Sat 9-3 / Sun 10-3">Ventas: Lun-Vie 9-8 / Sáb 9-3 / Dom 10-3</p>
+                        <p class="text-gray-400 text-[10px] leading-relaxed uppercase font-medium">Av. México 2, Valle Dorado,<br />Mezcales, Nay. CP 63735</p>
                     </div>
                 </div>
             </div>
 
             <div class="text-center md:text-left">
-                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white inline-block md:block" data-en="CONTACT">
-                    CONTACTO</h4>
+                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white inline-block md:block" data-en="CONTACT">CONTACTO</h4>
                 <div class="space-y-6">
                     <div>
                         <p class="text-gray-500 text-[10px] uppercase font-bold tracking-widest mb-1" data-en="Central Hub">Central Telefónica</p>
                         <p class="text-autoser-red font-bold text-sm">322 226 3500</p>
                     </div>
                     <div class="flex justify-center md:justify-start gap-5 pt-4">
-                        <a href="https://www.facebook.com/AutoserVallarta" target="_blank" class="text-white hover:text-autoser-red transition-all">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
-                        </a>
-                        <a href="https://www.instagram.com/autoservallarta" target="_blank" class="text-white hover:text-autoser-red transition-all">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.013 3.584-.07 4.85c-.054 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07zM12 0C8.741 0 8.333.014 7.053.072 5.775.131 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.059 1.278.26 2.148.557 2.913.306.789.717 1.459 1.384 2.126s1.384 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.059 2.148-.26 2.913-.557 1.459-.306 1.384-.717 2.126-1.384s1.078-1.384 1.384-2.126c.296-.765.499-1.636.558-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.059-1.278-.26-2.148-.557-2.913-.306-.789-.717-1.459-1.384-2.126S20.65 1.078 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" /></svg>
-                        </a>
+                        <a href="https://www.facebook.com/AutoserVallarta" target="_blank" class="text-white hover:text-autoser-red transition-all transform hover:-translate-y-1"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg></a>
+                        <a href="https://www.instagram.com/autoservallarta" target="_blank" class="text-white hover:text-autoser-red transition-all transform hover:-translate-y-1"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.013 3.584-.07 4.85c-.054 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07zM12 0C8.741 0 8.333.014 7.053.072 5.775.131 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.059 1.278.26 2.148.557 2.913.306.789.717 1.459 1.384 2.126s1.384 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.059 2.148-.26 2.913-.557 1.459-.306 1.384-.717 2.126-1.384s1.078-1.384 1.384-2.126c.296-.765.499-1.636.558-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.059-1.278-.26-2.148-.557-2.913-.306-.789-.717-1.459-1.384-2.126S20.65 1.078 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" /></svg></a>
                     </div>
                 </div>
             </div>
@@ -264,17 +278,47 @@
         </div>
     </footer>
 
+    <!-- AI Assistant Widget (EXACT same as index.html) -->
+    <div id="ai-widget-container" class="fixed bottom-8 right-8 z-[9998] flex flex-col items-end gap-4">
+        <button id="ai-widget-trigger" onclick="openAIModal()" class="group relative flex items-center gap-3 bg-autoser-red text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300">
+            <div class="absolute inset-0 rounded-full bg-autoser-red animate-ping opacity-20 group-hover:opacity-0"></div>
+            <span class="material-symbols-outlined text-3xl select-none notranslate">smart_toy</span>
+            <span class="max-w-0 overflow-hidden whitespace-nowrap font-headline font-bold text-xs uppercase tracking-widest group-hover:max-w-xs transition-all duration-500 ease-in-out" data-en="24/7 AI Agent">Agente AI 24/7</span>
+        </button>
+    </div>
+
+    <!-- AI Fullscreen Modal -->
+    <div id="ai-modal" class="fixed inset-0 z-[10000] hidden opacity-0 transition-all duration-500 backdrop-blur-2xl bg-autoser-black/90">
+        <div class="w-full h-full p-0 md:p-12">
+            <iframe id="ai-frame" src="about:blank" class="w-full h-full md:rounded-sm shadow-2xl border-none md:border md:border-white/5 bg-autoser-black" frameborder="0"></iframe>
+        </div>
+    </div>
+
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-autoser-black z-[9999] flex flex-col p-8 md:p-12 xl:hidden translate-x-full transition-transform duration-500 overflow-y-auto">
         <button class="absolute top-8 right-8 text-white hover:text-autoser-red transition-colors" onclick="toggleMobileMenu()">
             <span class="material-symbols-outlined text-4xl font-light select-none notranslate">close</span>
         </button>
-        <div class="mt-12 space-y-8 pb-12 text-left">
+        <div class="mt-12 space-y-8 pb-12">
             <a href="/" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Home">Inicio</a>
-            <a href="seminuevos" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Inventory">Seminuevos</a>
-            <a href="taller-multimarcas" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Workshop">Taller</a>
-            <a href="hojalateria-y-pintura" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Body Shop">Hojalatería</a>
-            <a href="nosotros" class="block mobile-link" onclick="toggleMobileMenu()" data-en="About">Nosotros</a>
+            <div class="space-y-4">
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Pre-Owned">Seminuevos</p>
+                <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
+                    <a href="seminuevos" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="View Inventory">Ver Inventario</a>
+                    <a href="compramos-tu-auto" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="We Buy Your Car">Compramos tu auto</a>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <p class="text-white/30 text-[0.6rem] uppercase tracking-[0.3em] font-headline font-bold" data-en="Service & Workshop">Servicios de Taller</p>
+                <div class="flex flex-col gap-6 pl-4 border-l border-autoser-red/30">
+                    <a href="taller-multimarcas" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Multi-Brand Workshop">Taller Multimarca</a>
+                    <a href="hojalateria-y-pintura" class="block mobile-link !text-xl opacity-80 hover:opacity-100" onclick="toggleMobileMenu()" data-en="Body & Paint Shop">Hojalatería y Pintura</a>
+                </div>
+            </div>
+            <a href="refacciones" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Parts">Refacciones</a>
+            <a href="seguros" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Insurance">Seguros</a>
+            <a href="promociones" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Promotions">Promociones</a>
+            <a href="nosotros" class="block mobile-link" onclick="toggleMobileMenu()" data-en="About Us">Nosotros</a>
         </div>
     </div>
 
@@ -292,11 +336,29 @@
             }
         }
 
+        function openAIModal() {
+            const modal = document.getElementById('ai-modal');
+            const frame = document.getElementById('ai-frame');
+            if (frame.src === 'about:blank') { frame.src = 'ai-asistente.html'; }
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.add('opacity-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAIModal() {
+            const modal = document.getElementById('ai-modal');
+            modal.classList.remove('opacity-100');
+            setTimeout(() => { modal.classList.add('hidden'); }, 500);
+            document.body.style.overflow = '';
+        }
+
+        window.addEventListener('message', (event) => {
+            if (event.data === 'close-modal') closeAIModal();
+        });
+
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('is-visible');
             });
         }, { threshold: 0.1 });
 
