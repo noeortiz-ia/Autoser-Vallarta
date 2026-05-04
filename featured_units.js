@@ -14,7 +14,7 @@ const FEATURED_UNITS = [
         specs_en: "75,000 km • Automatic",
         tag: "Premium SUV",
         tag_en: "Premium SUV",
-        image: "https://autoservallarta.com/seminuevos/wp-content/uploads/1-Mazda-CX-5-signature-2.5Turbo-2022-75mil-km-69df238927ac5.jpeg",
+        image: "https://autoservallarta.com/seminuevos/wp-content/uploads/11-Mazda-CX-5-signature-2.5Turbo-2022-75mil-km-69df22e26f9c8.jpeg",
         url: "https://autoservallarta.com/seminuevos/auto/mazda-cx-5-signature-2-5turbo/"
     },
     {
@@ -74,7 +74,7 @@ const FEATURED_UNITS = [
         specs_en: "12,000 km • Manual",
         tag: "Compacto Style",
         tag_en: "Compact Style",
-        image: "https://autoservallarta.com/seminuevos/wp-content/uploads/opt-1-MG-3-Style-TM-2025-698278a498326.jpeg",
+        image: "https://autoservallarta.com/seminuevos/wp-content/uploads/opt-4-MG-3-Style-TM-2025-698278990dd1c.jpeg",
         url: "https://autoservallarta.com/seminuevos/auto/mg-3-style-tm/"
     },
     {
@@ -86,7 +86,7 @@ const FEATURED_UNITS = [
         specs_en: "84,000 km • Automatic",
         tag: "Sedán Elegance",
         tag_en: "Elegant Sedan",
-        image: "https://autoservallarta.com/seminuevos/wp-content/uploads/fea-submissions/1-Mg-5-Elegance-TA-2024-69ee52ff4fb0e.jpeg",
+        image: "https://autoservallarta.com/seminuevos/wp-content/uploads/fea-submissions/6-Mg-5-Elegance-TA-2024-69ee52f87a3bb.jpeg",
         url: "https://autoservallarta.com/seminuevos/auto/mg-5-elegance-ta-2/"
     }
 ];
