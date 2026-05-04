@@ -86,6 +86,19 @@
         .nav-link:hover::after {
             width: 100%;
         }
+        .mobile-link {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s;
+        }
+        .mobile-link:hover {
+            color: #ED1C24;
+            padding-left: 10px;
+        }
     </style>
 </head>
 
@@ -97,7 +110,7 @@
     <nav id="main-nav" class="fixed top-1.5 left-0 w-full z-[1000] transition-all duration-500 bg-white shadow-md py-4">
         <div class="container mx-auto px-8 flex justify-between items-center">
             <a href="/" class="flex items-center gap-4 group">
-                <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
+                <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta"
                     class="h-12 md:h-14 lg:h-[72px] w-auto object-contain">
             </a>
 
@@ -109,21 +122,26 @@
                 <a href="nosotros" class="nav-link" data-en="ABOUT">NOSOTROS</a>
             </div>
 
-            <button onclick="i18n.toggle()" 
-                class="flex items-center gap-1 px-3 py-1.5 border border-gray-200 rounded-sm text-[10px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
-                <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
-                <span class="lang-toggle-text">EN</span>
-            </button>
+            <div class="flex items-center gap-4">
+                <button onclick="i18n.toggle()" 
+                    class="flex items-center gap-1 px-3 py-1.5 border border-gray-200 rounded-sm text-[10px] font-headline font-extrabold hover:bg-autoser-red hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-[16px] notranslate select-none">language</span>
+                    <span class="lang-toggle-text">EN</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="xl:hidden text-autoser-black">
+                    <span class="material-symbols-outlined text-3xl notranslate select-none">menu</span>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Page Header -->
     <header class="pt-48 pb-20 bg-autoser-gray">
-        <div class="container mx-auto px-8">
+        <div class="container mx-auto px-8 text-center md:text-left">
             <h1 class="text-4xl md:text-5xl font-headline font-extrabold text-autoser-black uppercase tracking-tight mb-4">
                 POLÍTICA DE <span class="text-autoser-red">PRIVACIDAD</span>
             </h1>
-            <div class="w-20 h-1 bg-autoser-red mb-8"></div>
+            <div class="w-20 h-1 bg-autoser-red mb-8 mx-auto md:mx-0"></div>
             <p class="text-sm text-gray-500 font-bold uppercase tracking-widest" data-en="DATA PROTECTION & USER TRUST">PROTECCIÓN DE DATOS Y CONFIANZA DEL USUARIO</p>
         </div>
     </header>
@@ -165,33 +183,124 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-autoser-black text-white py-16 border-t-8 border-autoser-red">
-        <div class="container mx-auto px-8 text-center">
-            <img src="assets/img/logo-autoser.png" alt="Autoser" class="h-12 mx-auto mb-8 opacity-50 grayscale brightness-200">
-            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 mb-8" data-en="AUTOSER VALLARTA &copy; 2026. ALL RIGHTS RESERVED.">AUTOSER VALLARTA &copy; <span id="currentYear"></span>. TODOS LOS DERECHOS RESERVADOS.</p>
-            <div class="flex justify-center gap-8">
-                <a href="/" class="text-[9px] font-bold uppercase tracking-widest hover:text-autoser-red transition-colors" data-en="HOME">INICIO</a>
-                <a href="nosotros" class="text-[9px] font-bold uppercase tracking-widest hover:text-autoser-red transition-colors" data-en="ABOUT">NOSOTROS</a>
-                <a href="privacidad" rel="nofollow" class="text-[9px] font-bold uppercase tracking-widest text-autoser-red" data-en="PRIVACY">PRIVACIDAD</a>
+    <!-- Footer: Heritage -->
+    <footer class="bg-autoser-black text-white py-12 px-8 border-t-8 border-autoser-red">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
+            <div class="space-y-8 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start">
+                    <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
+                        class="h-16 w-auto opacity-100">
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed" data-en="Proudly from Vallarta. Over two decades providing trust and quality in every kilometer.">
+                    Orgullosamente Vallartenses. Más de dos décadas brindando confianza y calidad en cada kilómetro.
+                </p>
+            </div>
+
+            <div class="text-center md:text-left">
+                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white inline-block md:block" data-en="DEPARTMENTS">
+                    DEPARTAMENTOS</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
+                    <li><a href="/" class="hover:text-autoser-red" data-en="Home">Inicio</a></li>
+                    <li><a href="seminuevos" class="hover:text-autoser-red" data-en="Inventory">Inventario</a></li>
+                    <li><a href="taller-multimarcas" class="hover:text-autoser-red" data-en="Service Workshop">Taller de Servicio</a></li>
+                    <li><a href="hojalateria-y-pintura" class="hover:text-autoser-red" data-en="Body & Paint Shop">Hojalatería y Pintura</a></li>
+                    <li><a href="refacciones" class="hover:text-autoser-red" data-en="Parts">Refacciones</a></li>
+                    <li><a href="seguros" class="hover:text-autoser-red" data-en="Insurance">Seguros</a></li>
+                    <li><a href="promociones" class="hover:text-autoser-red" data-en="Promotions">Promociones</a></li>
+                    <li><a href="nosotros" class="hover:text-autoser-red" data-en="About Us">Nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="text-center md:text-left">
+                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white inline-block md:block" data-en="LOCATIONS">
+                    UBICACIONES</h4>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-xs font-bold text-autoser-red uppercase tracking-widest mb-2" data-en="Las Juntas (Main)">Las Juntas (Matriz)</p>
+                        <p class="text-gray-400 text-[10px] leading-relaxed uppercase font-medium">
+                            Carr. Tepic-Vallarta 6020, Las Juntas,<br />Puerto Vallarta, Jal. CP 48291
+                        </p>
+                        <p class="text-gray-500 text-[9px] mt-2 font-bold" data-en="Sales: Mon-Fri 9-7 / Sat 9-3 / Sun 10-3">Ventas: Lun-Vie 9-7 / Sáb 9-3 / Dom 10-3</p>
+                        <p class="text-gray-500 text-[9px] font-bold" data-en="Workshop: Mon-Fri 9-2 & 3-6 / Sat 9-2">Taller: Lun-Vie 9-2 y 3-6 / Sáb 9-2</p>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-autoser-red uppercase tracking-widest mb-2" data-en="Valle Dorado">Valle Dorado</p>
+                        <p class="text-gray-400 text-[10px] leading-relaxed uppercase font-medium">
+                            Av. México 2, Valle Dorado,<br />Mezcales, Nay. CP 63735
+                        </p>
+                        <p class="text-gray-500 text-[9px] mt-2 font-bold" data-en="Sales: Mon-Fri 9-8 / Sat 9-3 / Sun 10-3">Ventas: Lun-Vie 9-8 / Sáb 9-3 / Dom 10-3</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center md:text-left">
+                <h4 class="font-headline text-sm font-bold border-l-4 border-autoser-red pl-4 mb-8 uppercase tracking-widest text-white inline-block md:block" data-en="CONTACT">
+                    CONTACTO</h4>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-gray-500 text-[10px] uppercase font-bold tracking-widest mb-1" data-en="Central Hub">Central Telefónica</p>
+                        <p class="text-autoser-red font-bold text-sm">322 226 3500</p>
+                    </div>
+                    <div class="flex justify-center md:justify-start gap-5 pt-4">
+                        <a href="https://www.facebook.com/AutoserVallarta" target="_blank" class="text-white hover:text-autoser-red transition-all">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+                        </a>
+                        <a href="https://www.instagram.com/autoservallarta" target="_blank" class="text-white hover:text-autoser-red transition-all">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.013 3.584-.07 4.85c-.054 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07zM12 0C8.741 0 8.333.014 7.053.072 5.775.131 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.059 1.278.26 2.148.557 2.913.306.789.717 1.459 1.384 2.126s1.384 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.059 2.148-.26 2.913-.557 1.459-.306 1.384-.717 2.126-1.384s1.078-1.384 1.384-2.126c.296-.765.499-1.636.558-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.059-1.278-.26-2.148-.557-2.913-.306-.789-.717-1.459-1.384-2.126S20.65 1.078 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto mt-24 pt-8 border-t border-white/10 flex flex-col items-center gap-6 text-center">
+            <div class="flex gap-12">
+                <a href="bolsa-de-trabajo" rel="nofollow" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors" data-en="Careers">Bolsa de Trabajo</a>
+                <a href="privacidad" rel="nofollow" class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.4em] hover:text-autoser-red transition-colors" data-en="Privacy Policy">Privacidad</a>
+            </div>
+            <div class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.4em]">
+                © <span id="currentYear"></span> AUTOSER VALLARTA // <span data-en="Multi-Brand Agency / Specialists in Jeep & RAM">Agencia Multimarca / Especialistas en Jeep y RAM</span>
             </div>
         </div>
     </footer>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-autoser-black z-[9999] flex flex-col p-8 md:p-12 xl:hidden translate-x-full transition-transform duration-500 overflow-y-auto">
+        <button class="absolute top-8 right-8 text-white hover:text-autoser-red transition-colors" onclick="toggleMobileMenu()">
+            <span class="material-symbols-outlined text-4xl font-light select-none notranslate">close</span>
+        </button>
+        <div class="mt-12 space-y-8 pb-12 text-left">
+            <a href="/" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Home">Inicio</a>
+            <a href="seminuevos" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Inventory">Seminuevos</a>
+            <a href="taller-multimarcas" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Workshop">Taller</a>
+            <a href="hojalateria-y-pintura" class="block mobile-link" onclick="toggleMobileMenu()" data-en="Body Shop">Hojalatería</a>
+            <a href="nosotros" class="block mobile-link" onclick="toggleMobileMenu()" data-en="About">Nosotros</a>
+        </div>
+    </div>
+
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // Reveal Logic
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('translate-x-0');
+            menu.classList.toggle('translate-x-full');
+            if (menu.classList.contains('translate-x-0')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
     </script>
 </body>
 
