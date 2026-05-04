@@ -15,7 +15,7 @@ const FEATURED_UNITS = [
         tag: "Pick-up Elite",
         tag_en: "Elite Pick-up",
         image: "https://autoservallarta.com/wp-content/uploads/3-Ford-Lobo-Platinum-4x4-2020-69408e915d191.jpeg",
-        url: "https://autoservallarta.com/seminuevo/ford-lobo-platinum-4x4/"
+        url: "https://autoservallarta.com/seminuevos/auto/ford-lobo-platinum-4x4/"
     },
     {
         id: "nissan-frontier-pro-4x4",
@@ -27,7 +27,7 @@ const FEATURED_UNITS = [
         tag: "Aventura 4X4",
         tag_en: "4X4 Adventure",
         image: "https://autoservallarta.com/wp-content/uploads/7-Nissan-Frontier-PRO-4x4-2024-69b345dab5725.jpeg",
-        url: "https://autoservallarta.com/seminuevo/nissan-frontier-pro-4x4/"
+        url: "https://autoservallarta.com/seminuevos/auto/nissan-frontier-pro-4x4/"
     },
     {
         id: "chevrolet-s10-max-crew-cab-2-4",
@@ -39,7 +39,7 @@ const FEATURED_UNITS = [
         tag: "Pickup Versátil",
         tag_en: "Versatile Pickup",
         image: "https://autoservallarta.com/wp-content/uploads/fea-submissions/10-Chevrolet-S10-Max-crew-cab-2.4--69df21d2e01ec.jpeg",
-        url: "https://autoservallarta.com/seminuevo/chevrolet-s10-max-crew-cab-2-4/"
+        url: "https://autoservallarta.com/seminuevos/auto/chevrolet-s10-max-crew-cab-2-4/"
     },
     {
         id: "jeep-renegade-latitude",
@@ -51,7 +51,7 @@ const FEATURED_UNITS = [
         tag: "Icono Jeep",
         tag_en: "Jeep Icon",
         image: "https://autoservallarta.com/wp-content/uploads/JEEP-RENEGADE-LATITUDE-2022-68d87e769cea1.jpg",
-        url: "https://autoservallarta.com/seminuevo/jeep-renegade-latitude/"
+        url: "https://autoservallarta.com/seminuevos/auto/jeep-renegade-latitude/"
     },
     {
         id: "mazda-cx-5-signature-2-5-turbo",
@@ -63,6 +63,6 @@ const FEATURED_UNITS = [
         tag: "Premium SUV",
         tag_en: "Premium SUV",
         image: "https://autoservallarta.com/wp-content/uploads/11-Mazda-CX-5-signature-2.5Turbo-2022-75mil-km-69df22e26f9c8.jpeg",
-        url: "https://autoservallarta.com/seminuevo/mazda-cx-5-signature-2-5turbo/"
+        url: "https://autoservallarta.com/seminuevos/auto/mazda-cx-5-signature-2-5turbo/"
     }
 ];
