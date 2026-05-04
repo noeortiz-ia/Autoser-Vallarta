@@ -16,9 +16,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^([^/]+)$ $1.html [L]
 
-# 4. Redirección de Seminuevos (De ruta vieja a nueva estructura de carpeta)
-# Ejemplo: /seminuevo/auto-slug -> /seminuevos/seminuevo/auto-slug
-RewriteRule ^seminuevo/(.*)$ /seminuevos/seminuevo/$1 [R=301,L,QSA]
+# 4. Redirección y Máscara de Seminuevos (De ruta vieja a nueva estructura elegante)
+# A. Redirección 301: Manda /seminuevo/slug -> /seminuevos/auto/slug (Visible para el usuario)
+RewriteRule ^seminuevo/(.*)$ /seminuevos/auto/$1 [R=301,L,QSA]
+
+# B. Máscara Interna: Traduce /seminuevos/auto/ -> /seminuevos/seminuevo/ (Invisible para el usuario, WordPress lo entiende)
+RewriteRule ^seminuevos/auto/(.*)$ /seminuevos/seminuevo/$1 [L]
 
 # 5. Manejo de Error 404
 ErrorDocument 404 /404.html
