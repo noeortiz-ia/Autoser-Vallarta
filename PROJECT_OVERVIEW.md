@@ -40,14 +40,16 @@ Este documento resume el sistema de diseño actual de **Autoser Vallarta** para 
 | **Refacciones**| `refacciones_multimarca_moderno` | ✅ | **Update:** Hero ajustado a `85vh` para consistencia. |
 | **Taller** | `taller_y_mec_nica_moderno` | ✅ | |
 | **Hojalatería**| `hojalater_a_y_pintura_moderno` | ✅ | |
-| **Seguros** | `seguros_multimarca_autoser_vallarta`| ✅ | |
-| **Promociones**| `promociones_velocity_elite` | ✅ | Integrando sistema "Velocity Elite". |
-| **Venta (S)** | `vende_tu_auto_redise_o_corregido` | ✅ | |
+| **Seguros** | `seguros.html` | ✅ | |
+| **Promociones**| `promociones.html` | ✅ | Integrando sistema "Velocity Elite". |
+| **Venta (S)** | `compramos-tu-auto.html` | ✅ | **Update:** Optimizado para SEO. |
+| **Bolsa de Trabajo** | `bolsa-de-trabajo.html` | ✅ | SEO Completo. |
+| **AI Asistente**| `ai-asistente.html` | ✅ | Modo `noindex`. |
 
 ## 🔮 Roadmap de Calidad
 1. **Unificación de Navegación:** Mantener el header con el borde superior rojo en todas las páginas.
-2. **SEO:** Implementación de `meta tags` y `OpenGraph` faltantes (Prioridad alta).
-3. **Optimización:** Revisión de rutas de imágenes en `../assets/`.
+2. **SEO (Completado):** Implementación de URLs canónicas absolutas (`https://autoservallarta.com`), OpenGraph y Twitter Cards.
+3. **Optimización:** Hosting de imágenes de formulario en Cloudinary.
 
 ## 📋 Manejo de Formularios y Conversión (Actualizado v2.5)
 - **Script Central:** `assets/js/forms-handler.js` (Gestiona todos los envíos a n8n).
@@ -58,7 +60,11 @@ Este documento resume el sistema de diseño actual de **Autoser Vallarta** para 
 - **Flujo de Redirección:**
   - Tras éxito, el script redirige a `gracias.html` usando una **ruta relativa** (para compatibilidad con `file://` local y producción).
   - Parámetros de URL: `?name=[nombre]&type=[tipo]` para personalizar la Thank You Page.
-- **Cache-Busting:** Siempre incluir el script con versión (ej: `forms-handler.js?v=1.0.6`) para forzar actualizaciones en el navegador.
+- **Cache-Busting:** Siempre incluir el script con versión (ej: `forms-handler.js?v=1.0.7`) para forzar actualizaciones en el navegador.
+- **Gestión de Imágenes:**
+  - Las imágenes de los formularios se suben directamente a **Cloudinary** (`dfxs1bn3o`) mediante "Unsigned Uploads".
+  - n8n recibe el campo `foto_url` con el enlace directo.
+  - Límite de tamaño: 4MB por archivo.
 
 ---
-*Documentación actualizada por Antigravity el 28 de abril de 2026 para reflejar los estándares de formularios y redirección dinámica.*
+*Documentación actualizada por Antigravity el 04 de mayo de 2026 para reflejar los estándares de SEO absoluto y gestión de imágenes vía Cloudinary.*

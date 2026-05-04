@@ -26,10 +26,11 @@ Bienvenido a la documentación técnica maestra de **Autoser Vallarta**. Este re
 │   └── css/                <-- Estilos globales (opcional, la mayoría es Tailwind)
 ├── index.html              <-- Página Principal
 ├── refacciones.html        <-- Catálogo multimarca
-├── taller.html             <-- Taller y mantenimiento
-├── hojalateria.html        <-- Hojalatería y Pintura (Premium)
+├── taller-multimarcas.html <-- Taller y mantenimiento (SEO URL)
+├── hojalateria-y-pintura.html <-- Hojalatería y Pintura (SEO URL)
 ├── seguros.html            <-- Cotizador multietapa de seguros
-├── vende-tu-auto.html      <-- Valuación y Seminuevos
+├── compramos-tu-auto.html  <-- Valuación y Adquisición (SEO URL)
+├── seminuevos/             <-- Carpeta de WordPress (Inventario dinámico)
 ├── bolsa-de-trabajo.html   <-- Reclutamiento y Programa de Entrenamiento
 ├── vacantes.json           <-- Base de datos dinámica de empleos
 └── .htaccess               <-- Configuración de servidor (URLs amigables)
@@ -57,7 +58,7 @@ Todos los botones de contacto generan mensajes dinámicos para que el cliente no
 
 ### 2. Lógica de Valuación (Seminuevos)
 - **Restricción 2020+:** El sistema está reforzado visual y técnicamente para priorizar modelos 2020 en adelante.
-- **Campos Inteligentes:** El formulario de `vende-tu-auto.html` utiliza una cuadrícula de 12 columnas para mantener 3 campos (Marca, Modelo, Año) en una sola fila, optimizando el espacio vertical.
+- **Campos Inteligentes:** El formulario de `compramos-tu-auto.html` utiliza una cuadrícula de 12 columnas para mantener 3 campos (Marca, Modelo, Año) en una sola fila, optimizando el espacio vertical.
 
 ### 3. Seguros (Multi-step)
 El formulario de seguros es un proceso de 2 pasos con transiciones suaves. Los pasos se controlan mediante clases `.hidden` gestionadas por JavaScript al final de `seguros.html`.

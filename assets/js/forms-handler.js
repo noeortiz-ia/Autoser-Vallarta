@@ -11,7 +11,11 @@ const FORMS_CONFIG = {
     SUCCESS_TEXT_EN: 'Thank you for contacting us. An advisor will get back to you shortly.',
     ERROR_TITLE: 'UPS, ALGO SALIÓ MAL',
     ERROR_TEXT: 'No pudimos enviar tu solicitud. Por favor, intenta de nuevo o contáctanos por WhatsApp.',
-    ERROR_TEXT_EN: 'We could not send your request. Please try again or contact us via WhatsApp.'
+    ERROR_TEXT_EN: 'We could not send your request. Please try again or contact us via WhatsApp.',
+    CLOUDINARY: {
+        CLOUD_NAME: 'dfxs1bn3o',
+        UPLOAD_PRESET: 'autoser'
+    }
 };
 
 const initForms = () => {
@@ -46,6 +50,43 @@ const initForms = () => {
                 console.log('Iniciando envío de formulario:', form.id);
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
+
+                // Handle file attachments (Base64 for JSON webhooks)
+                const fileInput = form.querySelector('input[type="file"]');
+                if (fileInput && fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    // Check size (limit to 4MB for safe webhook transit)
+                    if (file.size > 4 * 1024 * 1024) {
+                        alert(isEnglish ? "File is too large (max 4MB)" : "El archivo es muy pesado (máximo 4MB)");
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                        return;
+                    }
+                    data.archivo_nombre = file.name;
+                    // data.archivo_base64 = await convertFileToBase64(file); // Legacy Base64
+                    
+                    // New: Cloudinary Upload
+                    try {
+                        submitBtn.innerHTML = `
+                            <div class="flex items-center justify-center gap-2">
+                                <svg class="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                <span>${isEnglish ? 'UPLOADING PHOTO...' : 'SUBIENDO FOTO...'}</span>
+                            </div>
+                        `;
+                        const cloudinaryUrl = await uploadToCloudinary(file);
+                        data.foto_url = cloudinaryUrl;
+                        console.log('Imagen subida a Cloudinary:', cloudinaryUrl);
+                    } catch (uploadError) {
+                        console.error('Error subiendo a Cloudinary:', uploadError);
+                        alert(isEnglish ? "Error uploading image. Please try again." : "Error al subir la imagen. Intenta de nuevo.");
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                        return;
+                    }
+                }
                 
                 // Meta info
                 data.submitted_at = new Date().toLocaleString();
@@ -95,6 +136,44 @@ const initForms = () => {
         });
     });
 };
+
+/**
+ * Upload file to Cloudinary (Unsigned)
+ */
+async function uploadToCloudinary(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', FORMS_CONFIG.CLOUDINARY.UPLOAD_PRESET);
+
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${FORMS_CONFIG.CLOUDINARY.CLOUD_NAME}/image/upload`, {
+        method: 'POST',
+        body: formData
+    });
+
+    if (!response.ok) {
+        throw new Error('Cloudinary upload failed');
+    }
+
+    const data = await response.json();
+    return data.secure_url;
+}
+
+/**
+ * Helper to convert file to Base64
+ */
+function convertFileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            // Remove the prefix (e.g., "data:image/jpeg;base64,") if you want just the raw base64
+            // but keeping it makes it easier for many systems to detect type.
+            // For n8n, keeping it is usually fine or even helpful.
+            resolve(reader.result);
+        };
+        reader.onerror = error => reject(error);
+    });
+}
 
 // Initialize
 if (document.readyState === 'loading') {
