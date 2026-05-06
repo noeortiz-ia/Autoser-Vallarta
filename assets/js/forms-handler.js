@@ -114,6 +114,26 @@ const initForms = () => {
                     
                     showNotification(true, isEnglish);
                     
+                    // --- ANALYTICS EVENTS ---
+                    // Google Analytics 4 Event
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'generate_lead', {
+                            'form_type': formType,
+                            'user_name': userName
+                        });
+                        // Google Ads Conversion (Optional but recommended if you have a conversion ID/label)
+                        // gtag('event', 'conversion', {'send_to': 'AW-17485718013/CONVERSION_LABEL'});
+                    }
+
+                    // Meta Pixel Lead Event
+                    if (typeof fbq === 'function') {
+                        fbq('track', 'Lead', {
+                            content_category: formType,
+                            content_name: 'Form Submission'
+                        });
+                    }
+                    // ------------------------
+                    
                     // Construct URL for redirection
                     const tyUrl = `gracias.html?name=${encodeURIComponent(userName)}&type=${encodeURIComponent(formType)}`;
                     

@@ -2,6 +2,34 @@
 <html lang="es">
 
 <head>
+            <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag.js?id=G-JHZZBMKPQL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHZZBMKPQL');
+      gtag('config', 'AW-17485718013');
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '484188108096985');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=484188108096985&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Seguros Automotrices | Autoser Vallarta</title>
@@ -358,9 +386,10 @@
 </head>
 
 <body class="font-body bg-white text-autoser-charcoal selection:bg-autoser-red selection:text-white overflow-x-hidden">
+    
 
     <!-- Agency Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm py-1 px-8 border-t-4 border-autoser-red">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm py-1 px-8 border-t-4 border-autoser-red">
         <div class="container mx-auto flex justify-between items-center">
             <a href="/" class="flex-shrink-0 flex items-center">
                 <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
@@ -1068,12 +1097,16 @@
     <script>
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('translate-x-full');
+            menu.classList.toggle('translate-x-0');
             menu.classList.toggle('active');
             
-            if (menu.classList.contains('active')) {
+            if (menu.classList.contains('translate-x-0')) {
                 document.body.style.overflow = 'hidden';
+                document.body.style.paddingRight = '0px';
             } else {
                 document.body.style.overflow = '';
+                document.body.style.paddingRight = '';
             }
         }
 
@@ -1201,6 +1234,7 @@
         });
     </script>
     <script src="assets/js/forms-handler.js?v=1.0.7"></script>
+    <script src="assets/js/analytics-events.js"></script>
 </body>
 
 </html>

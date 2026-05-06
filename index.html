@@ -2,8 +2,36 @@
 <html lang="es">
 
 <head>
+            <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag.js?id=G-JHZZBMKPQL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHZZBMKPQL');
+      gtag('config', 'AW-17485718013');
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '484188108096985');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=484188108096985&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    
     <title>Autoser Vallarta | Agencia Multimarca | Especialistas en Jeep y RAM</title>
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <meta name="description"
@@ -494,7 +522,7 @@
 <body class="font-body bg-white text-autoser-charcoal selection:bg-autoser-red selection:text-white overflow-x-hidden">
 
     <!-- Agency Navigation -->
-    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-sm shadow-sm py-1 px-8 border-t-4 border-autoser-red">
+    <nav class="fixed top-0 left-0 w-full z-[100] bg-white/95 backdrop-blur-sm shadow-sm py-1 px-8 border-t-4 border-autoser-red">
         <div class="container mx-auto flex justify-between items-center">
             <a href="/" class="flex-shrink-0 flex items-center">
                 <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta Heritage"
@@ -1132,7 +1160,7 @@
         </div>
     </div>
 
-    <script src="./featured_units.js"></script>
+    <script src="./featured_units.js?v=1.0.1"></script>
     <script>
         function openVideoModal() {
             const modal = document.getElementById('videoModal');
@@ -1381,12 +1409,16 @@
         // --- MOBILE MENU TOGGLE ---
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('translate-x-full');
+            menu.classList.toggle('translate-x-0');
             menu.classList.toggle('active');
-
-            if (menu.classList.contains('active')) {
+            
+            if (menu.classList.contains('translate-x-0')) {
                 document.body.style.overflow = 'hidden';
+                document.body.style.paddingRight = '0px';
             } else {
                 document.body.style.overflow = '';
+                document.body.style.paddingRight = '';
             }
         }
 
@@ -1411,8 +1443,11 @@
         </button>
     </div>
 
-    <!-- AI Fullscreen Modal -->
     <div id="ai-modal" class="fixed inset-0 z-[10000] hidden opacity-0 transition-all duration-500 backdrop-blur-2xl bg-autoser-black/90">
+        <!-- Parent Close Button (Safety Fallback for Mobile) -->
+        <button onclick="closeAIModal()" class="absolute top-4 right-4 z-[10001] text-white/50 hover:text-white md:hidden">
+            <span class="material-symbols-outlined !text-4xl notranslate select-none">cancel</span>
+        </button>
         <div class="w-full h-full p-0 md:p-12">
             <iframe id="ai-frame" src="about:blank" class="w-full h-full md:rounded-sm shadow-2xl border-none md:border md:border-white/5 bg-autoser-black" frameborder="0"></iframe>
         </div>
@@ -1522,5 +1557,6 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/analytics-events.js"></script>
 </body>
 </html>

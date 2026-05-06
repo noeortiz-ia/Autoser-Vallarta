@@ -1,32 +1,37 @@
 RewriteEngine On
+AddDefaultCharset UTF-8
+
 
 # 1. Forzar HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 2. Quitar .html de la URL (Redirección 301 para SEO)
-# Evita bucle infinito comprobando que no sea una redirección interna
+# 2. Quitar barra diagonal al final (Trailing Slash)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [L,R=301]
+
+# 3. Quitar .html de la URL (Redirección 301 para SEO)
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [L,R=301]
 
-# 3. Mapeo interno de URL limpia a archivo .html
-# Si la petición no es un directorio y existe el archivo .html
+# 4. Mapeo interno de URL limpia a archivo .html
+# Soporta tanto raíz como subdirectorios
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^([^/]+)$ $1.html [L]
+RewriteRule ^(.*)$ $1.html [L]
 
-# 4. Redirección y Máscara de Seminuevos (De ruta vieja a nueva estructura elegante)
-# A. Redirección 301: Manda /seminuevo/slug -> /seminuevos/auto/slug (Visible para el usuario)
-RewriteRule ^seminuevo/(.*)$ /seminuevos/auto/$1 [R=301,L,QSA]
+# 5. Redirección de Seminuevos (De ruta vieja a estructura de WordPress)
+# Nota: Se redirige directamente a /seminuevos/seminuevo/ que es la ruta que el servidor reconoce correctamente.
+RewriteRule ^seminuevo/(.*)$ /seminuevos/seminuevo/$1 [R=301,L,QSA]
+RewriteRule ^seminuevos/auto/(.*)$ /seminuevos/seminuevo/$1 [R=301,L,QSA]
 
-# B. Máscara Interna: Traduce /seminuevos/auto/ -> /seminuevos/seminuevo/ (Invisible para el usuario, WordPress lo entiende)
-RewriteRule ^seminuevos/auto/(.*)$ /seminuevos/seminuevo/$1 [L]
-
-# 5. Manejo de Error 404
+# 6. Manejo de Error 404
 ErrorDocument 404 /404.html
 
-# Opcional: Cache Control para assets (Mejora velocidad en cPanel)
+# 7. Cache Control para assets (Mejora velocidad en cPanel)
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresDefault "access plus 1 month"
