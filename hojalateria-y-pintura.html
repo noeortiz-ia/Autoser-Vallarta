@@ -550,10 +550,10 @@
                         id="upload-trigger"
                         class="border-2 border-dashed border-white/10 bg-white/5 py-4 px-6 text-center rounded-sm hover:bg-white/10 hover:border-autoser-red transition-all cursor-pointer group relative overflow-hidden"
                         onclick="document.getElementById('file-input').click()">
-                        <input type="file" id="file-input" name="foto_dano" accept="image/*" class="hidden" onchange="updateFileStatus(this)">
+                        <input type="file" id="file-input" name="foto_dano" accept="image/*,video/*" multiple class="hidden" onchange="updateFileStatus(this)">
                         <div id="upload-status" class="flex flex-col items-center">
                             <span class="material-symbols-outlined text-autoser-red text-2xl mb-1 notranslate select-none group-hover:scale-110 transition-transform">cloud_upload</span>
-                            <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest leading-tight" data-en="Upload photo of damage for precise quote">Sube foto del daño para cotización precisa</p>
+                            <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest leading-tight" data-en="Select one or more photos/videos (Multiple support)">Selecciona una o más fotos/videos (puedes elegir varios)</p>
                         </div>
                         <div id="file-preview-container" class="hidden absolute inset-0 bg-autoser-black flex items-center justify-between px-4">
                             <div class="flex items-center gap-3">
@@ -1011,12 +1011,16 @@
             const nameDisplay = document.getElementById('file-name-display');
             const trigger = document.getElementById('upload-trigger');
 
-            if (input.files && input.files[0]) {
-                const fileName = input.files[0].name;
-                nameDisplay.textContent = fileName;
+            if (input.files && input.files.length > 0) {
                 status.classList.add('hidden');
                 preview.classList.remove('hidden');
                 trigger.classList.add('border-autoser-red');
+                
+                if (input.files.length === 1) {
+                    nameDisplay.textContent = input.files[0].name.toUpperCase();
+                } else {
+                    nameDisplay.textContent = `${input.files.length} ARCHIVOS SELECCIONADOS`;
+                }
             }
         }
 
@@ -1144,7 +1148,7 @@
             }
         });
     </script>
-    <script src="assets/js/forms-handler.js?v=1.0.7"></script>
+    <script src="assets/js/forms-handler.js?v=1.1.0"></script>
     <script src="assets/js/analytics-events.js"></script>
 </body>
 

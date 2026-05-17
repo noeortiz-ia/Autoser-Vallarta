@@ -1167,7 +1167,7 @@
         </div>
     </div>
 
-    <script src="./featured_units.js?v=1.0.1"></script>
+    <script src="./featured_units.js?v=1.0.2"></script>
     <script>
         function openVideoModal() {
             const modal = document.getElementById('videoModal');
@@ -1198,19 +1198,44 @@
         // Dynamic Inventory Rendering
         function loadFeaturedInventory() {
             const container = document.getElementById('featuredInventoryGrid');
-            if (!container || typeof FEATURED_UNITS === 'undefined') return;
+            if (!container) return;
 
-            const allItems = [...FEATURED_UNITS, ...FEATURED_UNITS, ...FEATURED_UNITS];
+            // Intentar cargar desde el endpoint REST API dinámico de WordPress
+            fetch('/seminuevos/wp-json/autoser/v1/featured?_t=' + Date.now())
+                .then(response => {
+                    if (!response.ok) throw new Error('REST API Offline');
+                    return response.json();
+                })
+                .then(data => {
+                    if (Array.isArray(data) && data.length > 0) {
+                        renderFeaturedUnits(data);
+                    } else {
+                        throw new Error('Datos vacíos o inválidos');
+                    }
+                })
+                .catch(error => {
+                    console.warn('Usando fallback estático de destacados:', error.message);
+                    if (typeof FEATURED_UNITS !== 'undefined') {
+                        renderFeaturedUnits(FEATURED_UNITS);
+                    }
+                });
+        }
+
+        function renderFeaturedUnits(units) {
+            const container = document.getElementById('featuredInventoryGrid');
+            if (!container) return;
+
+            const allItems = [...units, ...units, ...units];
 
             container.innerHTML = allItems.map((unit, index) => {
-                const isOriginal = index >= FEATURED_UNITS.length && index < FEATURED_UNITS.length * 2;
+                const isOriginal = index >= units.length && index < units.length * 2;
                 const className = isOriginal ? 'original' : 'clone';
                 
                 // Internationalization logic for dynamic units
                 const tag = i18n.currentLang === 'en' ? (unit.tag_en || unit.tag) : unit.tag;
                 const specs = i18n.currentLang === 'en' ? (unit.specs_en || unit.specs) : unit.specs;
-                const viewText = i18n.currentLang === 'en' ? 'VIEW' : 'VER';
-                const inventoryText = i18n.currentLang === 'en' ? 'INVENTORY' : 'INVENTARIO';
+                const offerBadgeText = i18n.currentLang === 'en' ? 'SALE' : 'OFERTA';
+                const regularPriceLabel = i18n.currentLang === 'en' ? 'List Price' : 'Precio de Lista';
 
                 return `
                 <div class="min-w-full md:min-w-[calc(50%-1rem)] lg:min-w-[calc(25%-1.5rem)] bg-white group rounded-sm overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border-b-4 border-transparent hover:border-autoser-red snap-start hover:-translate-y-2 flex ${className}">
@@ -1218,6 +1243,9 @@
                         <div class="h-56 overflow-hidden relative flex-shrink-0">
                             <img src="${unit.image}" alt="${unit.title}" class="w-full h-full object-cover brightness-[0.95] group-hover:brightness-100 transition-all duration-700 group-hover:scale-110">
                             <div class="absolute top-4 left-4 bg-autoser-black text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest">${tag}</div>
+                            ${unit.price_special ? `
+                                <div class="absolute top-4 right-4 bg-autoser-red text-white text-[9px] font-extrabold px-3 py-1 uppercase tracking-widest shadow-md animate-pulse">${offerBadgeText}</div>
+                            ` : ''}
                         </div>
                         <div class="p-8 flex flex-col flex-grow">
                             <div class="text-[10px] text-autoser-red font-bold uppercase tracking-widest mb-1 font-headline">${unit.title.split(' ')[0]} Heritage</div>
@@ -1226,7 +1254,17 @@
                                 <span>${specs}</span>
                             </div>
                             <div class="flex justify-between items-center mt-auto">
-                                <span class="text-xl font-headline font-black text-autoser-black">${unit.price}</span>
+                                <div class="flex flex-col">
+                                    ${unit.price_special ? `
+                                        <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider mb-1">${regularPriceLabel}: <span class="line-through text-autoser-red font-extrabold">${unit.price}</span></span>
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-[11px] text-autoser-red font-extrabold uppercase tracking-wider mr-0.5">${offerBadgeText}:</span>
+                                            <span class="text-2xl font-headline font-black text-autoser-black leading-none">${unit.price_special}</span>
+                                        </div>
+                                    ` : `
+                                        <span class="text-xl font-headline font-black text-autoser-black">${unit.price}</span>
+                                    `}
+                                </div>
                                 <span class="material-symbols-outlined text-autoser-red group-hover:scale-110 transition-transform notranslate select-none">add_circle</span>
                             </div>
                         </div>

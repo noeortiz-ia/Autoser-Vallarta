@@ -1,0 +1,229 @@
+{
+  "name": "Autoser - WordPress Inventory Sync (ACF Optimized - HTTP)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "inventory-sync",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-node-id",
+      "name": "WordPress Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.body.status }}",
+              "value2": "active"
+            }
+          ]
+        }
+      },
+      "id": "if-node-id",
+      "name": "Is Active?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        320,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "Sincronización procesada con éxito",
+        "options": {}
+      },
+      "id": "respond-node-id",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const vehicle = items[0].json.body;\n\n// Armamos un texto técnico consolidado súper rico con todos los campos ACF exactos para los embeddings\nlet textRepresentation = `Vehículo: ${vehicle.title}\\n`;\nif (vehicle.subtitulo) textRepresentation += `Subtítulo: ${vehicle.subtitulo}\\n`;\ntextRepresentation += `Marca: ${vehicle.brand}\\n`;\nif (vehicle.model) textRepresentation += `Modelo: ${vehicle.model}\\n`;\ntextRepresentation += `Año: ${vehicle.year}\\n`;\ntextRepresentation += `Precio: $${vehicle.price ? vehicle.price.toLocaleString('es-MX') : 'Consultar'} MXN\\n`;\nif (vehicle.price_special) textRepresentation += `Precio Especial (Descuento): $${vehicle.price_special.toLocaleString('es-MX')} MXN\\n`;\ntextRepresentation += `Kilometraje: ${vehicle.mileage ? vehicle.mileage.toLocaleString('es-MX') : '0'} km\\n`;\ntextRepresentation += `Transmisión: ${vehicle.transmission || 'No especificada'}\\n`;\nif (vehicle.engine_type) textRepresentation += `Tipo Motor: ${vehicle.engine_type}\\n`;\nif (vehicle.cilindros) textRepresentation += `Cilindros: ${vehicle.cilindros}\\n`;\nif (vehicle.puertas) textRepresentation += `Puertas: ${vehicle.puertas}\\n`;\nif (vehicle.color) textRepresentation += `Color Exterior: ${vehicle.color}\\n`;\nif (vehicle.color_interior) textRepresentation += `Color Interior: ${vehicle.color_interior}\\n`;\nif (vehicle.carroceria) textRepresentation += `Carrocería: ${vehicle.carroceria}\\n`;\nif (vehicle.features) textRepresentation += `Características adicionales: ${vehicle.features}\\n`;\nif (vehicle.downpayment) textRepresentation += `Enganche: ${vehicle.downpayment}\\n`;\nif (vehicle.financing_term) textRepresentation += `Plazo financiamiento: ${vehicle.financing_term}\\n`;\nif (vehicle.financing_info) textRepresentation += `Información de financiamiento: ${vehicle.financing_info}\\n`;\nif (vehicle.technical_sheet) textRepresentation += `Ficha Técnica (PDF): ${vehicle.technical_sheet}\\n`;\ntextRepresentation += `Enlace: ${vehicle.permalink}\\n\\n`;\ntextRepresentation += `Descripción:\\n${vehicle.description}`;\n\nreturn [{\n  json: {\n    id: `wp-auto-${vehicle.id}`,\n    title: vehicle.title,\n    price: vehicle.price,\n    price_special: vehicle.price_special,\n    mileage: vehicle.mileage,\n    year: vehicle.year,\n    brand: vehicle.brand,\n    model: vehicle.model,\n    color: vehicle.color,\n    transmission: vehicle.transmission,\n    engine_type: vehicle.engine_type,\n    featured_image: vehicle.featured_image,\n    permalink: vehicle.permalink,\n    textRepresentation: textRepresentation\n  }\n}];"
+      },
+      "id": "code-node-id",
+      "name": "Format Technical Text",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        520,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/embeddings",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "fields",
+        "fieldsToSend": {
+          "properties": [
+            {
+              "name": "model",
+              "value": "text-embedding-3-small"
+            },
+            {
+              "name": "input",
+              "value": "={{ $json.textRepresentation }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "http-openai-embeddings-id",
+      "name": "OpenAI - Create Embedding (HTTP)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        720,
+        200
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_OPENAI_API_HEADER_CREDENTIALS_ID"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://YOUR_PINECONE_INDEX_HOST/vectors/upsert",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=null",
+        "options": {
+          "rawBody": "=JSON.stringify({\n  \"vectors\": [\n    {\n      \"id\": $node[\"Format Technical Text\"].json.id,\n      \"values\": $json.data[0].embedding,\n      \"metadata\": {\n        \"title\": $node[\"Format Technical Text\"].json.title,\n        \"price\": $node[\"Format Technical Text\"].json.price || 0,\n        \"price_special\": $node[\"Format Technical Text\"].json.price_special || 0,\n        \"mileage\": $node[\"Format Technical Text\"].json.mileage || 0,\n        \"year\": $node[\"Format Technical Text\"].json.year || 0,\n        \"brand\": $node[\"Format Technical Text\"].json.brand,\n        \"model\": $node[\"Format Technical Text\"].json.model || '',\n        \"color\": $node[\"Format Technical Text\"].json.color || '',\n        \"transmission\": $node[\"Format Technical Text\"].json.transmission || '',\n        \"engine_type\": $node[\"Format Technical Text\"].json.engine_type || '',\n        \"permalink\": $node[\"Format Technical Text\"].json.permalink,\n        \"text\": $node[\"Format Technical Text\"].json.textRepresentation\n      }\n    }\n  ],\n  \"namespace\": \"inventory\"\n})"
+        }
+      },
+      "id": "http-pinecone-upsert-id",
+      "name": "Pinecone - Upsert Vector",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        940,
+        200
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_PINECONE_API_HEADER_CREDENTIALS_ID"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=https://YOUR_PINECONE_INDEX_HOST/vectors/delete",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"ids\": [\"wp-auto-{{ $json.body.id }}\"],\n  \"namespace\": \"inventory\"\n}",
+        "options": {}
+      },
+      "id": "http-pinecone-delete-id",
+      "name": "Delete from Pinecone API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        520,
+        420
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_PINECONE_API_HEADER_CREDENTIALS_ID"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "WordPress Webhook": {
+      "main": [
+        [
+          {
+            "node": "Is Active?",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Active?": {
+      "main": [
+        [
+          {
+            "node": "Format Technical Text",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete from Pinecone API",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Technical Text": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Create Embedding (HTTP)",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI - Create Embedding (HTTP)": {
+      "main": [
+        [
+          {
+            "node": "Pinecone - Upsert Vector",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone - Upsert Vector": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete from Pinecone API": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

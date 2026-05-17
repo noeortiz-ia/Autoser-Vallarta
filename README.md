@@ -92,7 +92,7 @@ El formulario de seguros es un proceso de 2 pasos con transiciones suaves. Los p
 3. El frontend lo renderizará automáticamente con el botón de WhatsApp pre-configurado.
 
 ### ¿Cómo cambiar el número de WhatsApp?
-Busca la variable global (o el enlace `wa.me/`) en el script al final de cada página. El número principal de Ventas Digitales es `523221960922`.
+Busca la variable global (o el enlace `wa.me/`) en el script al final de cada página. El número principal de Ventas Digitales es `523343462849`.
 
 ### SEO y Rendimiento
 - **Imágenes:** Usa formatos web optimizados.

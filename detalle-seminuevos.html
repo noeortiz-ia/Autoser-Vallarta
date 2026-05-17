@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Valuación Seminuevos | Autoser Vallarta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Inter:wght@400;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <script>
+        // Protección por contraseña sencilla
+        const PASS_SEMI = "1234";
+        if (sessionStorage.getItem('auth_semi') !== 'true') {
+            const entry = prompt("Acceso restringido - Departamento Seminuevos. Ingresa la contraseña:");
+            if (entry === PASS_SEMI) {
+                sessionStorage.setItem('auth_semi', 'true');
+            } else {
+                alert("Acceso denegado.");
+                document.body.innerHTML = "";
+                window.location.href = "/";
+            }
+        }
+    </script>    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { autoser: { red: '#ED1C24', black: '#1A1A1A', gray: '#F4F4F4' } },
+                    fontFamily: { headline: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 0, 0, 0.05); }
+        .gradient-bg { background: linear-gradient(135deg, #1A1A1A 0%, #333333 100%); }
+        
+        /* Lightbox Styles */
+        #lightbox { display: none; transition: opacity 0.3s ease; }
+        #lightbox.active { display: flex; opacity: 1; }
+        .media-container img, .media-container video { max-height: 85vh; max-width: 90vw; object-contain: contain; }
+    </style>
+</head>
+<body class="bg-autoser-gray font-body text-autoser-black min-h-screen pb-20">
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 items-center justify-center p-4 backdrop-blur-sm">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors">
+            <span class="material-symbols-outlined !text-4xl">close</span>
+        </button>
+        
+        <button onclick="prevMedia()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-all">
+            <span class="material-symbols-outlined !text-6xl">chevron_left</span>
+        </button>
+        <button onclick="nextMedia()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-all">
+            <span class="material-symbols-outlined !text-6xl">chevron_right</span>
+        </button>
+
+        <div id="lightbox-content" class="media-container flex flex-col items-center">
+            <!-- Contenido dinámico aquí -->
+        </div>
+        
+        <div id="lightbox-counter" class="absolute bottom-10 text-white/40 font-headline font-bold text-xs tracking-widest uppercase">
+            Archivo 1 de 5
+        </div>
+    </div>
+
+    <header class="gradient-bg py-10 px-6 shadow-2xl relative overflow-hidden text-white">
+        <!-- ... (Contenido igual) ... -->
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <img src="assets/img/logo-autoser.png" alt="Autoser Vallarta" class="h-16 w-auto object-contain">
+            <div class="text-center md:text-right">
+                <p class="font-headline font-black uppercase tracking-[0.3em] text-[10px] text-autoser-red mb-1">Unidad de Valuación</p>
+                <h1 class="font-headline font-bold text-2xl uppercase tracking-wider">Ficha de Valuación Seminuevos</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 -mt-10 relative z-20">
+        <!-- Aviso de Vigencia -->
+        <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-8 flex items-center gap-4 shadow-sm rounded-sm">
+            <span class="material-symbols-outlined text-amber-500">info</span>
+            <p class="text-[10px] font-bold text-amber-800 uppercase tracking-widest">
+                Importante: Esta ficha y su multimedia estarán disponibles por un periodo de 15 días naturales a partir de la fecha de recepción.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Sidebar -->
+            <div class="lg:col-span-1 space-y-8">
+                <div class="glass-card p-8 rounded-sm shadow-xl border-t-4 border-autoser-red">
+                    <h3 class="font-headline font-black text-xs uppercase tracking-widest text-autoser-red mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">person</span> DATOS PROSPECTO
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Nombre</p>
+                            <p id="client-name" class="font-bold text-lg uppercase tracking-tight">---</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Teléfono</p>
+                            <p id="client-phone" class="font-bold text-lg">---</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-gray-100 flex gap-2">
+                        <a id="wa-link" href="#" target="_blank" class="flex-1 bg-[#25D366] text-white py-3 rounded-sm text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:brightness-110 transition-all">WhatsApp</a>
+                        <a id="call-link" href="#" class="flex-1 bg-autoser-black text-white py-3 rounded-sm text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-autoser-red transition-all">Llamar</a>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-sm shadow-xl border-t-4 border-autoser-black">
+                    <h3 class="font-headline font-black text-xs uppercase tracking-widest text-autoser-black mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">assignment</span> FICHA TÉCNICA
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Vehículo</p>
+                            <p id="car-model" class="font-bold text-sm uppercase tracking-tight">---</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Año</p>
+                                <p id="car-year" class="font-bold text-sm">---</p>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Kilometraje</p>
+                                <p id="car-km" class="font-bold text-sm">---</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main -->
+            <div class="lg:col-span-2 space-y-8">
+                <div class="glass-card p-10 rounded-sm shadow-xl">
+                    <h3 class="font-headline font-black text-xs uppercase tracking-widest text-autoser-red mb-8 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">photo_library</span> GALERÍA DE VALUACIÓN
+                    </h3>
+                    <div id="media-gallery" class="columns-1 md:columns-2 gap-6 space-y-6"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const CLOUD_NAME = 'dfxs1bn3o';
+        let mediaList = [];
+        let currentIndex = 0;
+
+        function render() {
+            const p = new URLSearchParams(window.location.search);
+            document.getElementById('client-name').textContent = p.get('name') || '---';
+            document.getElementById('client-phone').textContent = p.get('phone') || '---';
+            document.getElementById('car-model').textContent = p.get('model') || '---';
+            document.getElementById('car-year').textContent = p.get('year') || '---';
+            document.getElementById('car-km').textContent = p.get('km') || '---';
+            document.getElementById('wa-link').href = `https://wa.me/52${p.get('phone')}`;
+            document.getElementById('call-link').href = `tel:${p.get('phone')}`;
+            
+            const gallery = document.getElementById('media-gallery');
+            const idsStr = p.get('ids');
+            
+            if (idsStr && idsStr !== 'undefined') {
+                mediaList = idsStr.split(',').map(item => {
+                    const [id, type] = item.split(':');
+                    return { id, type };
+                });
+
+                mediaList.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'break-inside-avoid relative group cursor-pointer overflow-hidden rounded-sm border-2 border-transparent hover:border-autoser-red hover:scale-[1.02] transition-all duration-500 shadow-md hover:shadow-2xl';
+                    div.onclick = () => openLightbox(index);
+                    
+                    if (item.type === 'video') {
+                        div.innerHTML = `
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent z-10 transition-colors flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-5xl drop-shadow-lg group-hover:scale-110 transition-transform">play_circle</span>
+                            </div>
+                            <img src="https://res.cloudinary.com/${CLOUD_NAME}/video/upload/so_2,q_auto,f_auto/${item.id}.jpg" class="w-full h-auto block">
+                        `;
+                    } else {
+                        div.innerHTML = `<img src="https://res.cloudinary.com/${CLOUD_NAME}/image/upload/q_auto,f_auto/${item.id}" class="w-full h-auto block">`;
+                    }
+                    gallery.appendChild(div);
+                });
+            } else {
+                gallery.parentElement.innerHTML += `
+                    <div class="flex flex-col items-center justify-center py-12 border-2 border-dashed border-gray-200 rounded-sm opacity-40">
+                        <span class="material-symbols-outlined text-4xl mb-2">no_photography</span>
+                        <p class="text-xs font-bold uppercase tracking-widest">No se adjuntaron archivos multimedia</p>
+                    </div>
+                `;
+            }
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const content = document.getElementById('lightbox-content');
+            const counter = document.getElementById('lightbox-counter');
+            const item = mediaList[currentIndex];
+
+            if (item.type === 'video') {
+                content.innerHTML = `<video controls autoplay class="shadow-2xl border-4 border-white/5"><source src="https://res.cloudinary.com/${CLOUD_NAME}/video/upload/${item.id}" type="video/mp4"></video>`;
+            } else {
+                content.innerHTML = `<img src="https://res.cloudinary.com/${CLOUD_NAME}/image/upload/q_auto/${item.id}" class="shadow-2xl border-4 border-white/5">`;
+            }
+
+            counter.textContent = `Archivo ${currentIndex + 1} de ${mediaList.length}`;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            document.getElementById('lightbox-content').innerHTML = "";
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextMedia() {
+            currentIndex = (currentIndex + 1) % mediaList.length;
+            openLightbox(currentIndex);
+        }
+
+        function prevMedia() {
+            currentIndex = (currentIndex - 1 + mediaList.length) % mediaList.length;
+            openLightbox(currentIndex);
+        }
+
+        // Teclado para navegar
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'ArrowRight') nextMedia();
+            if (e.key === 'ArrowLeft') prevMedia();
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        window.addEventListener('DOMContentLoaded', render);
+    </script>
+</body>
+</html>
+</body>
+</html>
