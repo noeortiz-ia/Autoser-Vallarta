@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Autoser Inventory Sync
  * Plugin URI: https://autoservallarta.com
- * Description: Sincroniza en tiempo real el inventario de autos desde WordPress hacia un webhook de n8n / Convex para alimentar el asistente de IA con datos 100% reales de ACF.
- * Version: 1.1.0
+ * Description: Sincroniza en tiempo real el inventario de autos desde WordPress hacia un webhook de n8n / Convex y genera el feed XML oficial para catálogo de Facebook / WhatsApp.
+ * Version: 1.2.0
  * Author: Antigravity AI
  * Author URI: https://autoservallarta.com
  * License: GPL2
@@ -131,6 +131,26 @@ function autoser_sync_settings_page() {
             autoser_trigger_bulk_sync();
         }
         ?>
+
+        <hr>
+        
+        <h2>🔗 Feeds de Catálogo (Facebook, WhatsApp y Google Shopping)</h2>
+        <p>Nuestro feed XML está construido bajo el estándar oficial de Google Merchant Center (<code>xmlns:g="http://base.google.com/ns/1.0"</code>), lo que significa que es 100% compatible con Meta Commerce Manager y Google Shopping.</p>
+        
+        <h3>🟦 Facebook & WhatsApp Catalog</h3>
+        <p>
+            <code style="background: #eaecf0; padding: 8px 14px; border: 1px solid #d0d5dd; border-radius: 6px; display: inline-block; font-size: 13px; font-family: monospace; font-weight: bold; color: #101828; user-select: all;">
+                <?php echo esc_url( home_url('/wp-json/autoser/v1/facebook-feed') ); ?>
+            </code>
+        </p>
+        
+        <h3>🟩 Google Merchant Center (Google Shopping)</h3>
+        <p>
+            <code style="background: #eaecf0; padding: 8px 14px; border: 1px solid #d0d5dd; border-radius: 6px; display: inline-block; font-size: 13px; font-family: monospace; font-weight: bold; color: #101828; user-select: all;">
+                <?php echo esc_url( home_url('/wp-json/autoser/v1/google-feed') ); ?>
+            </code>
+        </p>
+        <p class="description">Ambas URLs generan la información estructurada correcta en tiempo real. Configúralas como <strong>Scheduled Fetch (Recuperación Programada)</strong> en sus respectivas plataformas y tu inventario se sincronizará sin intervención manual.</p>
     </div>
     <?php
 }
@@ -221,6 +241,7 @@ function autoser_get_vehicle_payload( $post_id, $status_override = null ) {
 
     return array(
         'id'             => $post_id,
+        'slug'           => $post->post_name,
         'title'          => html_entity_decode($post->post_title),
         'permalink'      => get_permalink( $post_id ),
         'status'         => $status,
@@ -384,12 +405,27 @@ function autoser_trigger_bulk_sync() {
 }
 
 // ----------------------------------------------------
-// ENDPOINT REST API PARA UNIDADES DESTACADAS (HOME)
+// ENDPOINT REST API PARA UNIDADES DESTACADAS (HOME) Y CATALOG FEED
 // ----------------------------------------------------
 add_action( 'rest_api_init', function () {
+    // Endpoint para tarjetas destacadas en el Home de la web
     register_rest_route( 'autoser/v1', '/featured', array(
         'methods'             => 'GET',
         'callback'            => 'autoser_get_featured_endpoint',
+        'permission_callback' => '__return_true',
+    ) );
+    
+    // Endpoint para alimentar el Catálogo de Facebook/WhatsApp
+    register_rest_route( 'autoser/v1', '/facebook-feed', array(
+        'methods'             => 'GET',
+        'callback'            => 'autoser_get_catalog_feed_endpoint',
+        'permission_callback' => '__return_true',
+    ) );
+    
+    // Endpoint para Google Merchant Center (Shopping)
+    register_rest_route( 'autoser/v1', '/google-feed', array(
+        'methods'             => 'GET',
+        'callback'            => 'autoser_get_catalog_feed_endpoint',
         'permission_callback' => '__return_true',
     ) );
 } );
@@ -437,7 +473,7 @@ function autoser_get_featured_endpoint() {
             
             $price_val = isset($payload['price']) ? floatval($payload['price']) : 0;
             $price_special_val = isset($payload['price_special']) ? floatval($payload['price_special']) : 0;
-
+ 
             $featured[] = array(
                 'id'            => $payload['id'],
                 'title'         => $payload['title'],
@@ -459,4 +495,92 @@ function autoser_get_featured_endpoint() {
     $response->header( 'Pragma', 'no-cache' );
     $response->header( 'Expires', 'Thu, 01 Jan 1970 00:00:00 GMT' );
     return $response;
+}
+
+/**
+ * Genera el feed XML en formato RSS 2.0 compatible con Facebook Commerce Manager y Google Merchant Center
+ */
+function autoser_get_catalog_feed_endpoint() {
+    $target_post_type = get_option('autoser_sync_post_type', 'seminuevo');
+    
+    $args = array(
+        'post_type'      => $target_post_type,
+        'post_status'    => 'publish',
+        'posts_per_page' => -1, // Exportar todo el inventario activo
+    );
+    
+    $query = new WP_Query( $args );
+    
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    $xml .= '<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">' . "\n";
+    $xml .= '  <channel>' . "\n";
+    $xml .= '    <title>Inventario de Seminuevos Autoser Vallarta</title>' . "\n";
+    $xml .= '    <link>' . esc_url( home_url('/') ) . '</link>' . "\n";
+    $xml .= '    <description>Catálogo oficial de vehículos seminuevos sincronizado en tiempo real para Facebook y WhatsApp.</description>' . "\n";
+    
+    foreach ( $query->posts as $post ) {
+        $payload = autoser_get_vehicle_payload( $post->ID );
+        if ( $payload ) {
+            $price_val = isset($payload['price']) ? floatval($payload['price']) : 0;
+            $price_special_val = isset($payload['price_special']) ? floatval($payload['price_special']) : 0;
+            
+            // Formatear precios al estándar ISO 4217 requerido por Meta (ej: 498000.00 MXN)
+            $price_string = $price_val > 0 ? number_format($price_val, 2, '.', '') . ' MXN' : '';
+            $sale_price_string = $price_special_val > 0 ? number_format($price_special_val, 2, '.', '') . ' MXN' : '';
+            
+            // Construir descripción enriquecida técnica para CRO
+            $desc = "Vehículo: " . $payload['title'] . "\n";
+            if ($payload['brand']) $desc .= "Marca: " . $payload['brand'] . "\n";
+            if ($payload['model']) $desc .= "Modelo: " . $payload['model'] . "\n";
+            if ($payload['year']) $desc .= "Año: " . $payload['year'] . "\n";
+            if ($payload['transmission']) $desc .= "Transmisión: " . $payload['transmission'] . "\n";
+            if ($payload['mileage']) $desc .= "Kilometraje: " . number_format($payload['mileage']) . " km\n";
+            if ($payload['color']) $desc .= "Color Exterior: " . $payload['color'] . "\n";
+            if ($payload['engine_type']) $desc .= "Motor: " . $payload['engine_type'] . "\n";
+            if ($payload['description']) $desc .= "\nDetalles:\n" . $payload['description'];
+            
+            $desc = wp_strip_all_tags(trim($desc));
+            
+            $xml .= '    <item>' . "\n";
+            $xml .= '      <g:id>wp-auto-' . $payload['slug'] . '</g:id>' . "\n";
+            $xml .= '      <g:title><![CDATA[' . $payload['title'] . ']]></g:title>' . "\n";
+            $xml .= '      <g:description><![CDATA[' . $desc . ']]></g:description>' . "\n";
+            $xml .= '      <g:link>' . esc_url( $payload['permalink'] ) . '</g:link>' . "\n";
+            $xml .= '      <g:image_link>' . esc_url( $payload['featured_image'] ) . '</g:image_link>' . "\n";
+            
+            // Inyectar imágenes secundarias de galería (hasta un máximo de 5 adicionales)
+            if ( !empty($payload['gallery_images']) ) {
+                $additional = array_slice($payload['gallery_images'], 0, 5);
+                $xml .= '      <g:additional_image_link>' . implode( ',', array_map('esc_url', $additional) ) . '</g:additional_image_link>' . "\n";
+            }
+            
+            $xml .= '      <g:brand><![CDATA[' . ($payload['brand'] ? $payload['brand'] : 'Autoser') . ']]></g:brand>' . "\n";
+            $xml .= '      <g:condition>used</g:condition>' . "\n";
+            $xml .= '      <g:availability>in stock</g:availability>' . "\n";
+            
+            if ($price_string) {
+                if ($sale_price_string) {
+                    // Si hay oferta, g:price es el precio regular tachado y g:sale_price es el precio final
+                    $xml .= '      <g:price>' . $price_string . '</g:price>' . "\n";
+                    $xml .= '      <g:sale_price>' . $sale_price_string . '</g:sale_price>' . "\n";
+                } else {
+                    $xml .= '      <g:price>' . $price_string . '</g:price>' . "\n";
+                }
+            } else {
+                $xml .= '      <g:price>0.00 MXN</g:price>' . "\n";
+            }
+            
+            // Categoría estándar de Google Product Taxonomy para Autos
+            $xml .= '      <g:google_product_category>Vehicles &amp; Parts &gt; Vehicles &gt; Motor Vehicles &gt; Cars, Trucks &amp; Vans</g:google_product_category>' . "\n";
+            $xml .= '    </item>' . "\n";
+        }
+    }
+    
+    $xml .= '  </channel>' . "\n";
+    $xml .= '</rss>' . "\n";
+    
+    // Imprimir directamente como RSS XML y salir
+    header('Content-Type: application/rss+xml; charset=UTF-8');
+    echo $xml;
+    exit;
 }

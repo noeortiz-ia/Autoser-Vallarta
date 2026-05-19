@@ -1,6 +1,15 @@
 # 📓 Registro de Sesiones - Autoser Vallarta
 
 Este archivo es la bitácora exclusiva del desarrollo del sitio web **Autoser Vallarta**. Registra únicamente los cambios técnicos, despliegues y optimizaciones realizados en esta carpeta.
+## Sesión 10: Prevención de Alucinaciones en n8n y Feed Universal (19 de Mayo de 2026)
+
+### Objetivos Logrados
+1. **Prevención de Alucinaciones (Completado):** Se diagnosticó y resolvió el error `Cannot read properties of undefined` en el nodo de *OpenAI Embeddings* causado por consultas vacías. Se añadieron "Reglas de Oro" al `System Message` del Agente y a la descripción de la herramienta en n8n para blindar al bot: ahora, si falla Pinecone o el usuario no pide nada específico, la IA jamás inventará vehículos ficticios.
+2. **Desarrollo de Feed Universal (Completado):** Se modificó el plugin `autoser-inventory-sync.php` para exponer un endpoint dual (`/facebook-feed` y `/google-feed`). Esto preparó el inventario bajo el estándar oficial de Google Merchant Center.
+3. **Descubrimiento de Restricción Regional (Google):** Documentamos que Google Shopping (Merchant Center) actualmente prohíbe la venta de vehículos en México porque su programa *Vehicle Ads* no está disponible en el país. El feed está listo y funcional en código, en espera de que Google libere la función en MX. Meta Commerce Manager, sin embargo, opera de manera impecable.
+
+---
+
 ## Sesión 9: Depuración Profunda de Chat Memory y Handoff de Carrito en n8n (19 de Mayo de 2026)
 
 ### Objetivos Logrados
