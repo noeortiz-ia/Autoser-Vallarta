@@ -1,6 +1,44 @@
 # 📓 Registro de Sesiones - Autoser Vallarta
 
 Este archivo es la bitácora exclusiva del desarrollo del sitio web **Autoser Vallarta**. Registra únicamente los cambios técnicos, despliegues y optimizaciones realizados en esta carpeta.
+## Sesión 9: Depuración Profunda de Chat Memory y Handoff de Carrito en n8n (19 de Mayo de 2026)
+
+### Objetivos Logrados
+1. **Resolución de Error Crítico en Chat Memory (Completado):** Se solucionó el error `Got unexpected type: undefined` en el nodo de Chat Memory de LangChain en n8n. El problema radicaba en que el nodo de Supabase guardaba el objeto JSON como texto literal con saltos de línea y no como JSONB nativo, debido a que el editor de n8n interpretaba los corchetes dobles `{{ }}` y los saltos de línea al final como una cadena de texto.
+2. **Activación de JS Expression Mode (Completado):** Guiamos el cambio hacia el uso estricto del "Expression Mode" en n8n, lo que permitió que la base de datos Postgres (Supabase) recibiera y parseara un `[object Object]` de JavaScript de manera limpia, habilitando a la IA a leer el historial sin corromper la memoria.
+3. **Traducción en Tiempo Real de Mensajes de Carrito (Completado):** Modificamos el nodo `Edit Fields` para que, cuando WhatsApp reciba un mensaje tipo `order` (carrito de compras), lo traduzca automáticamente a texto plano (e.g., *"🛒 Acabo de añadir a mi carrito la unidad: chevrolet-aveo-lt"*). Esto evita que el Agente reciba un prompt vacío.
+4. **Modificación de Prompt y Ejecución de Herramientas (Completado):** Se agregó una "Regla de Oro" al `System Message` del Agente para asegurar que siempre dispare la ejecución de las herramientas **Sheet** y **Email** al recibir la frase traducida del carrito.
+5. **Corrección de Formato de Email y Tool Parameters (Completado):** Cambiamos el modo del `System Message` en el Agente a "Expression" (fondo verde) para que la variable `{{ $json.telefono }}` sea evaluada por n8n e inyectada con el teléfono real antes de pasársela al LLM. Añadimos una prohibición explícita de Markdown en el prompt para que el Email se envíe en texto plano profesional.
+
+---
+
+## Sesión 8: Optimización de Carrusel de WhatsApp, Extracción Inteligente por Slugs y Vinculación de Catálogo (18 de Mayo de 2026)
+
+### Objetivos Logrados
+1. **Resolución de Errores de n8n Code Node (Completado):** Corregido el error de ejecución `Code doesn't return a single object` configurando el modo del nodo `Preparar Payload de Carrusel` a **`Run Once for All Items`** para retornar correctamente la estructura consolidada de tarjetas.
+2. **Corrección de Flujo de Ejecución (Completado):** Cambiado el flujo para conectar el nodo `Preparar Payload de Carrusel` en **paralelo** al nodo de formato de texto `Code`, evitando que se detuviera la cadena debido a las salidas vacías (`[]`) nativas del nodo de WhatsApp (`Send message`).
+3. **Sintaxis de Entrada de n8n (Completado):** Corregido el error de referencia en JavaScript adaptando el script del nodo de código a la sintaxis nativa de n8n v1.108.1 (`$input.all()` en lugar de `input.first()`).
+4. **Arquitectura Robusta Basada en Slugs (Completado):** Reemplazamos el método anterior de lectura del nodo herramienta vector-store por una **extracción directa y robusta de slugs** desde el texto del bot mediante expresiones regulares (Regex). Esto resolvió el lag de las sub-ejecuciones LangChain.
+5. **Actualización de IDs de Sincronización (Completado):**
+   - Modificado [autoser-inventory-sync.php](file:///Users/noeortiz/Dev/Github/Autoser-Vallarta_new/assets/wp-plugin-autoser-sync/autoser-inventory-sync.php) para incorporar el `slug` del auto en el payload de sincronización y mapearlo como el identificador `<g:id>wp-auto-{slug}</g:id>` en el feed XML de Facebook.
+   - Compilado y regenerado el instalable limpio de producción [autoser-inventory-sync.zip](file:///Users/noeortiz/Dev/Github/Autoser-Vallarta_new/autoser-inventory-sync.zip).
+6. **Verificación de Indexación y Vinculación de Catálogo (Completado):** Confirmamos que el ID del catálogo `1707194432870602` y la vinculación comercial son 100% correctos. Documentamos el tiempo de espera por propagación/indexación en los servidores de mensajería de Meta como la razón del error temporal de producto no encontrado.
+
+---
+
+## Sesión 7: Diagnóstico del Chatbot, Corrección 404 y Sincronización de Catálogo de Facebook (18 de Mayo de 2026)
+
+### Objetivos Logrados
+1. **Diagnóstico Técnico del Chatbot (Completado):** Analizamos las capturas de pantalla de n8n e identificamos que la herramienta `buscar_inventario_autos` falló debido al error `Cannot read properties of undefined (reading 'replace')` en el subnodo `Embeddings OpenAI` al recibir una consulta de búsqueda vacía o malformada del agente.
+2. **Explicación del Error 404 en WhatsApp (Completado):** Al quedarse "ciego" por el fallo de la base de datos de Pinecone, el chatbot alucinó nombres y URLs ficticias que llevaron a los usuarios a pantallas de error 404 en el sitio web.
+3. **Desarrollo del Feed XML para Catálogo de Facebook/WhatsApp (Completado):** Extendimos el plugin oficial de WordPress `Autoser Inventory Sync` (v1.2.0) creando un endpoint nativo `/wp-json/autoser/v1/facebook-feed` que autogenera un feed XML/RSS 2.0 compatible con el Commerce Manager de Meta. Esto permite:
+   - Sincronizar automáticamente marcas, modelos, años, kilometrajes y descripciones técnicas de los autos.
+   - Respetar los precios de lista y los precios especiales de oferta (saliendo tachados en Facebook/WhatsApp).
+   - Enlazar la galería de imágenes ACF de WordPress como fotos secundarias en la ficha de Meta.
+4. **Diseño de Interfaz Administrativa en WordPress (Completado):** Agregamos una tarjeta informativa en el panel de control de ajustes de `Autoser Sync` en WordPress para exponer de manera directa y visual la URL del feed XML, facilitando la copia y configuración de forma inmediata en el Administrador de Ventas de Meta.
+5. **Generación del Instalable (Completado):** Compilamos el nuevo archivo listo para producción [autoser-inventory-sync.zip](file:///Users/noeortiz/Dev/Github/Autoser-Vallarta_new/autoser-inventory-sync.zip) conteniendo las actualizaciones técnicas.
+
+---
 
 ## Sesión 6: Optimización de Formato WhatsApp y Vinculación de Promociones (17 Mayo 2026)
 
