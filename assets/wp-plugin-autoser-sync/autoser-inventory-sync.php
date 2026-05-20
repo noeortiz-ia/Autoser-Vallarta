@@ -584,3 +584,64 @@ function autoser_get_catalog_feed_endpoint() {
     echo $xml;
     exit;
 }
+
+// ----------------------------------------------------
+// EVENTOS DE META PIXEL PARA CATALOG MATCHING (DYNAMIC ADS)
+// ----------------------------------------------------
+add_action('wp_footer', 'autoser_inject_meta_pixel_events', 20);
+function autoser_inject_meta_pixel_events() {
+    $target_post_type = get_option('autoser_sync_post_type', 'seminuevo');
+    
+    // Solo inyectar si estamos en la vista individual de un vehículo
+    if ( is_singular($target_post_type) ) {
+        global $post;
+        $payload = autoser_get_vehicle_payload($post->ID);
+        
+        if ($payload) {
+            $price_val = isset($payload['price_special']) && $payload['price_special'] > 0 
+                ? $payload['price_special'] 
+                : (isset($payload['price']) ? $payload['price'] : 0);
+                
+            $content_id = 'wp-auto-' . $payload['slug'];
+            
+            // Inyectamos el evento ViewContent asegurando que fbq exista (el plugin oficial de Meta lo carga)
+            ?>
+            <!-- Autoser Meta Pixel Event Matcher -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Timeout ligero para asegurar que el plugin oficial de Meta ya haya inicializado fbq()
+                    setTimeout(function() {
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'ViewContent', {
+                                content_ids: ['<?php echo esc_js($content_id); ?>'],
+                                content_type: 'product',
+                                value: <?php echo floatval($price_val); ?>,
+                                currency: 'MXN'
+                            });
+                            console.log('Autoser Sync: Evento ViewContent enviado a Meta -> ' + '<?php echo esc_js($content_id); ?>');
+                        } else {
+                            console.warn('Autoser Sync: No se detectó fbq() activo en la página para reportar ViewContent.');
+                        }
+                    }, 800);
+                });
+
+                // Escuchar envíos exitosos de formularios de Elementor para disparar el evento Lead con metadatos del catálogo
+                if (typeof jQuery !== 'undefined') {
+                    jQuery(document).on('submit_success', function(event, response) {
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'Lead', {
+                                content_ids: ['<?php echo esc_js($content_id); ?>'],
+                                content_type: 'product',
+                                value: <?php echo floatval($price_val); ?>,
+                                currency: 'MXN'
+                            });
+                            console.log('Autoser Sync: Evento Lead enviado a Meta tras completar formulario de Elementor -> ' + '<?php echo esc_js($content_id); ?>');
+                        }
+                    });
+                }
+            </script>
+            <!-- /Autoser Meta Pixel Event Matcher -->
+            <?php
+        }
+    }
+}

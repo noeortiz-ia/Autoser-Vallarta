@@ -127,6 +127,16 @@ const initForms = () => {
                     const formType = form.getAttribute('data-form-type') || 'General';
                     showNotification(true, isEnglish);
                     
+                    // --- META PIXEL LEAD TRACKING ---
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead', {
+                            content_name: formType,
+                            content_category: 'Website Form'
+                        });
+                        console.log('Analytics: Lead Event Tracked (' + formType + ')');
+                    }
+                    // --------------------------------
+
                     // Redirection
                     const tyUrl = `gracias.html?name=${encodeURIComponent(userName)}&type=${encodeURIComponent(formType)}`;
                     setTimeout(() => { window.location.href = tyUrl; }, 500);

@@ -1,6 +1,22 @@
 # 📓 Registro de Sesiones - Autoser Vallarta
 
 Este archivo es la bitácora exclusiva del desarrollo del sitio web **Autoser Vallarta**. Registra únicamente los cambios técnicos, despliegues y optimizaciones realizados en esta carpeta.
+## Sesión 11: Configuración de Eventos de Meta para Catálogo Web (19 de Mayo de 2026)
+
+### Objetivos Planteados
+1. **Mapeo de Eventos (Completado):** Configurar los eventos del Píxel de Meta en el sitio web para que hagan "match" correctamente con el catálogo dinámico (`wp-auto-{slug}`).
+2. **Registro de Leads (Completado):** Implementar el disparo del evento `Lead` con la información del vehículo cuando un usuario llena el formulario de cotización.
+
+### Resumen Técnico y Cambios
+*   **Plugin Autoser Inventory Sync:** 
+    *   Se inyectó un hook en `wp_footer` dentro del archivo `autoser-inventory-sync.php` que dispara el evento `ViewContent` nativo de Meta cuando un visitante abre la ficha individual de un vehículo.
+    *   Se implementó un interceptor `jQuery(document).on('submit_success')` que escucha el envío exitoso de los formularios de **Elementor**. Justo antes de que el usuario sea redirigido a la página de "Registro Correcto", se dispara un evento `Lead` a Meta incluyendo los parámetros `content_ids` (ID del catálogo), `value` (precio) y `currency` (MXN).
+*   **Web Estática Principal:** 
+    *   Se modificó el archivo `assets/js/forms-handler.js` para disparar genéricamente un evento `Lead` (con la categoría del formulario) cada vez que se envía un formulario (Taller, Seguros, Refacciones, etc.), garantizando medición transversal en todas las propiedades web.
+*   **Archivos Modificados:** `autoser-inventory-sync.php`, `autoser-inventory-sync.zip`, `assets/js/forms-handler.js`.
+
+---
+
 ## Sesión 10: Prevención de Alucinaciones en n8n y Feed Universal (19 de Mayo de 2026)
 
 ### Objetivos Logrados
